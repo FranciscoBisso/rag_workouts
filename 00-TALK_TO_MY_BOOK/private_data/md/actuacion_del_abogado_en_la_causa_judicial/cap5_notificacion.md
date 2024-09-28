@@ -22,6 +22,12 @@ En conclusión, con el régimen de notificaciones la ley persigue que el litigan
 
 Antes de abordar el qué y el cómo actuar, respecto de las notificaciones, repasaremos el funcionamiento básico de sus principales y más frecuentes vías de concreción: las denominadas por ministerio de la ley o automática, por cédula (papel y electrónica), y tácita o implícita. Dejamos a cargo del lector los demás modos: personal, por examen del expediente, telegrama, carta documento, acta notarial, edictos, radio y televisión, no tan usados, algunos casi inexistentes en la práctica.
 
+[^1]: "La situación descripta, de las notificaciones tácitas, se ha potenciado (en la actualidad) dada la vigencia del servicio MEV en el sitio web oficial de la Suprema Corte de Justicia. Es que —por tal vía— partes y letrados pueden acceder al conocimiento de la información relativa a los expedientes, sin que ello quede registrado —al menos formalmente— en el ámbito de la causa y dentro del sistema Augusta. Con lo cual, es harto frecuente que (aun sin mediar notificación formal en el expediente) las partes y sus asistentes técnicos conozcan las resoluciones" (CACC Morón, Sala II, 11/9/18, "Medina, Cecilia Noelia c. Fleitas, José Eduardo y otro/a s/Daños y perj.", disponible en [e-procesal.com/fallo-medina-notificaciones-notificacion-tacita-mesa-virtual-1727](e-procesal.com/fallo-medina-notificaciones-notificacion-tacita-mesa-virtual-1727)).
+
+[^2]: Eisner, en el Seminario de Posgrado "Constitución y contingencias del proceso civil", diciembre de 1992, Departamento de Derecho Procesal, Facultad de Derecho, UBA.
+
+[^3]: Se presume iuris et de jure el conocimiento del inicio del proceso colectivo a partir del día siguiente a la última publicación de edictos, de suerte que cualquier plazo consecuente se encadena inexorablemente desde esa fecha (CNCom., Sala B, 11/8/97, JA, 1998-1-121; LL, 1998-B-735). La notificación por ministerio de la ley se verifica en los días expresamente determinados por el art. 133 del CPCCN aun en el supuesto en que a raíz de la incomparecencia de la parte a la sede del órgano judicial no haya tomado conocimiento de la resolución correspondiente (CNCiv., Sala G, 10/2/98, LL, 1999-C-58). En la notificación automática no hay un acto de comunicación real, y solo se la tiene por ocurrida por una ficción de la ley (ST Chubut, 14/11/96, DJ, 1997-2-851). Las notificaciones se regulan en el proceso civil por el principio de la recepción y no del conocimiento que de las mismas puede tener el litigante, lo que resulta congruente con el sistema procesal preponderantemente dispositivo que impera en nuestra ley procesal; de esta forma se descartan notificaciones fictas que resultan extralegales (CACCL Venado Tuerto, 24/5/96, JA, 1998-II, síntesis). Si la notificación fue dirigida correctamente al domicilio constituido por el accionado resulta totalmente irrelevante a los fines de la notificación efectivamente cumplida la circunstancia alegada por su destinataria —y no probada— de que la cédula haya sido pasada por la parte inferior de la puerta de la oficina, yendo a ocultarse debajo de un alfombra, "descubriéndola" más de un mes y medio después, por intermedio de la limpieza que habría realizado en ese sector una mucama. De seguirse tal criterio, podría llegarse a entender que, aun en los supuestos del domicilio constituido, el real conocimiento de la cédula siempre quedaría sujeto a la sola voluntad del receptor, cuando en nuestro sistema y, por el contrario, la notificación por este medio no constituye un acto personal del destinatario (CNCiv., Sala A, 16/12/99, ED, 186-539). La ley requiere en materia de notificación no la solemnidad de actos rituales, sino la verosimilitud, o tan solo la presunción de que el interesado se haya impuesto de su contenido (CACC La Matanza, Sala II, 5/2/04, Juba, B3400465; CACC Dolores, 29/4/94, Juba, B950260).
+
 ## 29. FUNCIONAMIENTO DE LAS PRINCIPALES FORMAS DE NOTIFICACIÓN
 
 ### 29.1. NOTIFICACIÓN POR «MINISTERIO DE LA LEY» O AUTOMÁTICA
@@ -37,7 +43,6 @@ La notificación se produce ipso facto, sin necesidad de actividad alguna de la 
 Mas para que esta consulta se concrete, es necesario que la resolución esté en condiciones de ser vista por el interesado, que se encuentre a su disposición. Para el modelo clásico de expediente en soporte papel, el legislador nacional previó dos situaciones en las que entendió que no se presentaba esta circunstancia y, por lo tanto, la notificación "no se considerará cumplida" (art. 133, incs. 1° y 2°, CPCCN):
 
 1. "Si el expediente no se encontrare en el tribunal" (art. 133, inc. 1°, CPCCN), por ejemplo, salió en pase o en vista (véase supra, 14.1.1.3.9. y 14.1.1.3.10), ausencia factible de acreditarse con el registro del egreso dejado en el libro pertinente por los empleados judiciales, así como en el programa informático de gestión del tribunal.
-
 2. "Si hallándose en él, no se exhibiere a quien lo solicita y se hiciera constar tal circunstancia en el libro de asistencia por las personas indicadas en el artículo siguiente…" (art. 133, inc. 1°, CPCCN). Lo normal es que el expediente papel no se exhiba a quien lo solicita cuando no está en letra por hallarse a despacho, a confronte o posición análoga (véase supra, 14.1.1.3.). En tal caso, alguna de las personas autorizadas por la norma[^9] debía asentar la circunstancia ("dejar nota" en la jerga forense) en el libro de asistencia o libro de notas[^10].
 
 Ocurrida cualquiera de estas dos hipótesis, la notificación automática no se producía, y se trasladaba al próximo martes o viernes.
@@ -54,6 +59,32 @@ Veamos una situación que puede generar dudas, ¿solo la parte que deja nota es 
 
 Por principio, la notificación automática rige para las providencias simples, no para las sentencias, sin perjuicio de que, en algunos casos, la ley o el juez establecen la notificación por cédula de aquellas.
 
+[^4]: El texto anterior a esta reforma era ambiguo al referirse a cuál día quedaba como día de nota cuando un martes o viernes era feriado. Decía en la parte pertinente: "…los días martes y viernes, o el siguiente hábil, si alguno de ellos fuere feriado". La expresión "el siguiente hábil" podía entenderse como "cualquier día, mientras sea hábil", o como "el siguiente martes o viernes hábil" En general, los tribunales nacionales admitieron la primer interpretación: "Si el día de nota es inhábil, la notificación tiene lugar el día hábil siguiente, según el art. 133 del CPCCN no se refiere únicamente al martes o viernes siguientes, pues los días hábiles son todos los del año, con excepción de los que determine el Reglamento para la Justicia Nacional" (CNCCF, Sala I, 20/3/97, LL, 1997-C-642). Mas no por ello deja de ser cierto que la expresión no era clara.
+
+[^5]: En la provincia de Buenos Aires, cuyo art. 133 del CPCCBA es similar al antiguo nacional, la ambigüedad descripta en la nota anterior sigue en pie, pero en general se comulga con la siguiente solución: "Cuando el primer día de nota a que se refiere el art. 133 del CPCCBA es inhábil, este pasa automáticamente al día siguiente hábil posterior al feriado, o sea que si los días de nota son martes y viernes y si alguno de ellos fuere feriado se computaría como día de nota el miércoles o lunes posterior al mismo" (CACC 1ª Mar del Plata, Sala Il, 19/6/79, Juba, B1400756; CACC 2ª La Plata, Sala 1II, 29/3/16, Juba, B356121). Otra cuestión es determinar si el "feriado" —día en el cual no se cumple la notificación automática- abarca a las ferias judiciales de invierno y verano, pues de que sea así ono dependerá que luego de ellas el día de nota pase al lunes o al martes posterior a la feria. En el ámbito nacional, el asunto ha perdido vigencia luego de la reforma, pues ahora siempre el día de nota pasa al martes o viernes posterior, pero no sucede lo mismo en jurisdicción bonaerense, a raíz del texto de su art. 133 del CPCCBA. La jurisprudencia provincial se inclina por la afirmativa: "Los términos 'inhábil' y 'feriado' no revisten diferencia desde el punto de vista procesal, sino que aparecen como sinónimos. Días hábiles son los del funcionamiento del tribunal y su enumeración resulta por exclusión de los días inhábiles señalados por la reglamentación respectiva. A fin de determinar cuándo se produce la notificación automática, no importa si la inhabilidad afecta a una sola jornada, a varias o a todo el mes como ocurre con el de enero, pues dicha notificación se produce el primer día hábil siguiente a los días incluidos en el mes de feria" (CACC Dolores, 27/11/93, Juba, B950222; CACC 1ª Mar del Plata, Sala lI, 18/9/01, Juba, B1402867). Al aludir el art. 133 del CPCCBA a que los días de nota fueren "feriado", se está refiriendo al día inhábil, hipótesis asimilable al caso en que se encontraren suspendidos los términos procesales por resolución de la Suprema Corte de Justicia, actuando ambos supuestos como sinónimos (CACC San Nicolás, Sala I, 26/2/02, Juba, B856324; CACC San Nicolás, Sala I, 19/5/16, Juba, B657349).
+
+[^6]: Art. 93, ACPCCN: "Principio general. Notificación automática. Las resoluciones judiciales dictadas en primera instancia quedarán notificadas automáticamente los días martes y viernes. Si uno de ellos fuere feriado, la notificación tendrá lugar el siguiente martes o viernes hábil. No se producirá el efecto previsto en el párrafo anterior cuando el expediente electrónico no estuviere disponible para la consulta en línea. Cuando la parte estuviere debidamente citada y no compareciere en el plazo previsto, abandonare el juicio o habiendo comparecido no constituyere domicilio, quedará notificado según lo previsto en el párrafo primero de este artículo. Se exceptúa de este principio a los supuestos mencionados en el art. 94".
+
+[^7]: Art. 127, PRCPCCBA: "Principio general. Salvo los casos en que procede la notificación a un domicilio, las resoluciones judiciales quedarán notificadas por ministerio de la ley en todas las ins-tancias, el día martes o viernes posterior a la fecha en que ellas se encuentren disponibles para su consulta virtual en el sistema informático de la Suprema Corte, o el siguiente martes o viernes, si fuera inhábil. La reglamentación de la Suprema Corte establecerá el modo en que la fecha en que cada resolución se encontró disponible sea claramente visible en los sistemas de consulta".
+
+[^8]: CNCiv., Sala C, 5/9/79, LL, 1980-A-452.
+
+[^9]: Sobre quienes podían dejar nota en el libro de asistencia papel, el art. 133 del CPCCN remite "a las personas indicadas en el artículo siguiente", y el art. 134 menciona a la parte, su apoderado, su letrado, y personas autorizadas en el expediente. Como se verá en el texto, hoy día, la nota en el expediente es electrónica, y solo puede dejarla el letrado enrolado en el sistema y que actúa en la causa u otro usuario autorizado por él a través del sistema de gestión.
+
+[^10]: Recordamos una antigua dicotomía jurisprudencial acerca de si la constancia en el libro de asistencia es el único medio de enervar la notificación automática o si puede prescindirse de ella si por otro medio serio y objetivo se comprueba que el expediente no está en letra. Una línea sostiene que para que no se tenga por cumplida la notificación por ministerio de la ley "es insuficiente tratar de demostrar que el expediente no se encontraba en secretaría a disposición de las partes, pues la conjunción 'y' contenida en el art. 133 del CPCCN exige el cumplimiento del otro recaudo, esto es, dejar nota en el libro de asistencia" (CNCiv., Sala A, 19/9/95, LL, 1996-B-295, comentado por Alvarez Juliá; CNCCF, Sala Il, 31/5/91, LL, 1992-D-613; CNCiv., Sala C, 16/1 1/99, JA, 2000-IV-27; el fallo contiene votos en disidencia; CACC 1ª Mar del Plata, Sala III, 5/4/17, Juba, B5059188; CACC2ª La Plata, Sala II, 23/11/16, Juba, B5028026, entre otros). Otra postura, menos rigurosa, sobre la base del principio de instrumentalidad de las formas, admite prescindir de la nota en el libro de asistencia "si se acredita por otro medio serio y objetivo que las actuaciones no se encuentran en secretaría" (CNCCF, Sala III, 14/11/00, JA, 2001-11-14; CNCiv., Sala I, 21/5/98, LL, 1998-E-285; CNCom., Sala B, 30/11/94, LL, 1995-C-599; DJ, 1995-2-802; CNCiv., Sala F, 22/9/92, LL, 1994-E-690), v. gr., si pasaron a Cámara y ello consta en el libro de pases (CNCiv., Sala l, 14/5/98, LL, 1998-E-286), o si de las propias constancias del expediente se desprende que con motivo de presentaciones posteriores a la resolución que deba notificarse las actuaciones han permanecido a despacho (CACC 1ª La Plata, Sala II, 21/9/93, Juba, B150943), v. gr., el caso de la "seguidilla de escritos"; "la interpretación restrictiva (…) constituye un exceso ritual manifiesto." (CACC Quilmes, Sala Il, 6/2/17, Juba, B2953225) Si bien compartimos esta última doctrina, nos reservaremos usar sus postulados únicamente para casos de emergencia, de excepción. Como ya advertimos al tratar otros temas, la regla es asegurar de la mejor manera una actuación eficaz, por lo tanto, cumpliremos debidamente en cada oportunidad la carga de dejar nota en el libro de asistencia.
+
+[^11]: "A partir del primer día hábil del mes de mayo de 2015, en todas las Cámaras, Tribunales y Juzgados del Poder Judicial de la Nación, el Libro de Asistencia en papel se remplazará por un registro digital dentro del Sistema de Gestión Judicial y la oficina judicial deberá asentarlo en el expediente en soporte papel conforme lo dispuesto en el Anexo II" (art. 11, Acordada 3/15 CSJN).
+
+[^12]: Puede verse el procedimiento en el video tutorial de función de registración del Poder Judicial, en [www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be](http://www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be).
+
+[^13]: Esta autorización el letrado la hace a través del módulo "Gestión de autorizados" que se encuentra tanto en el módulo de notificaciones electrónicas como en el de copia de escritos. Sobre el procedimiento de esta gestión, véase infra 29.4.1.3 y/o video tutorial en [www.youtube.com/watch?v=XB5p6wp_cXA](http://www.youtube.com/watch?v=XB5p6wp_cXA).
+
+[^14]: Por la necesidad, llegado el caso, de dejar nota electrónica, es que la consulta del expediente ha de hacerse vía web. Nada impide que el letrado, si quiere, vaya al juzgado el día de notificación automática, pida el expediente papel, y lo consulte ahí, pero si no puede verlo porque "no está en letra" solo podrá dejar nota —y evitar así la posible notificación ministerio legis— ingresando en el sistema de consulta de causas. Hay quienes sostienen que, en estos casos de intento de consulta en el tribunal de un expediente que no está en letra, a requerimiento del letrado el empleado judicial debería dejar una constancia electrónica de dicha circunstancia, pero no es esta una posibilidad segura, conocemos juzgados en los que niegan hacerlo.
+
+[^15]: El Código Procesal local —a diferencia del nacional— no menciona, entre los legitimados a dejar la constancia en el expediente papel, a "personas autorizadas", sino que solo habla en su art. 133 de "litigantes o profesionales". Esta alusión normativa a los "profesionales" ¿se referirá solo a los que actúen patrocinando o representado a las partes o a cualquier otro, v. gr. un abogado designado en el pleito como simple "autorizado"? Creemos que esta última es la respuesta correcta. De ser así, entendemos que el profesional mero "autorizado" podría dejar nota en el expediente. En este sentido, se ha decidido que la autorización a un letrado para que consulte el expediente, presente escritos, retire copias "y cuantos actos más conlleven al desarrollo de estos actuados" comprende la de dejar nota cuando los autos no están en letra, y lo contrario importaría un excesivo rigor formal con menoscabo para el derecho de defensa en juicio (CNCiv., Sala K, 7/3/03, LL, 2003-В-936). No obstante nuestra opinión, nos encontramos, muchas veces, con obstáculos a la hora de dejar nota un "autorizado", se trate de profesional o no (es decir, alguien que no es la parte o alguno de sus asistentes), solución que no compartimos: la realidad manda, y hoy es casi imposible que el letrado, personalmente, pueda ir a consultar todos sus expedientes los días de notificación automática, de ahí la ventaja de designar a un colaborador del Estudio para que cumpla dicha tarea meramente material.
+
+[^16]: CNCiv., Sala E, ED, 176-90; LL, 1998-C-71; CNCom., Sala C, 14/2/85, LL, 1985-D-6. En contra, Álvarez Juliá, Notificación por ministerio de la ley, LL, 1996-B-295; Leguisamón, Dos aspectos interesantes sobre la notificación "ministerio legis", LL, 1998-D-100. La nota del libro de asistencia beneficia únicamente a la parte que la deja, toda vez que ello no significa que los demás interesados no hubiesen podido ver el expediente (CNCom., Sala B, 29/11/99, Lexis, n° 1/505491).
+
 ### 29.2. NOTIFICACIÓN POR CÉDULA
 
 La excepción al principio general de notificación automática está dada por las resoluciones que se notifican por cédula o su equivalente, la notificación personal (arts. 135 y 142, CPCCN y CPCCBA).
@@ -66,6 +97,16 @@ Por regla, el letrado de la parte que tenga interés en que se cumpla la notific
 
 Si bien legalmente existe la posibilidad de reemplazar la cédula papel por otros medios —v. gr. acta notarial, carta documento, telegrama (arts. 136, CPCCN y 143, CPCCBA)—, su uso es infrecuente.
 
+[^17]: "La tradicional cédula en soporte papel quedó relegada a casos puntuales, ya no es más la reina del proceso, sino que tuvo que ceder su corona a la cédula electrónica y en menor medida a la cédula papeltrónica. La cédula electrónica vino a convertirse en el estandarte de las notificaciones en la jurisdicción" (Ordoñez, La nulidad de la notificación electrónica. Peculiaridades generales y particulares de aquellos supuestos excluidos del régimen por el art. 143 CPCCBA, disponible en [http://iadpi.com.ar/2018/08/31/la-nulidad-de-la-notificacion-electronicas-y-sus-peculiaridades/](http://iadpi.com.ar/2018/08/31/la-nulidad-de-la-notificacion-electronicas-y-sus-peculiaridades/)).
+
+[^18]: Art. 95 del ACPCCN: "Notificación por cédula en formato papel. Solo se notificarán por cédula papel las siguientes resoluciones: 1. La primera notificación con respecto al sujeto a notificar; 2. La citación de terceros y de aquellas personas que no han sido tenidas como partes. Las copias acompañadas deberán ser firmadas por quien suscribe la cédula".
+
+[^19]: No es así en la provincia de Buenos Aires, cuando se trata de cédulas que no llevan copias de escritos o documentos, pues" …su generación y remisión a los organismos encargados de practicar las notificaciones se hará por medios electrónicos (...) Las Oficinas de Mandamientos y Notificaciones (…) se encargarán de imprimir los instrumentos para su diligenciamiento" (art. 8°, inc. a, Acuerdo SCBA 3845/17): es la llamada "cédula papeltrónica". Si la cédula lleva copias, "…el interesado en practicar la comunicación presentará el instrumento ya impreso —así como las copias en formato papel— en el órgano judicial…" (art. 8°, inc. b, Acuerdo SCBA 3845/17).
+
+[^20]: Véanse arts. 137 a 141 del CPCCN y del CPCCBA Acerca del oficial notificador y el régimen de la Oficina de Notificaciones, véase el "Reglamento para la Organización y Funcionamiento de la Oficina de Notificaciones para la Justicia Nacional y Federal" (Acordada CSJN 19/80, del 9/9/80); y Acuerdo SCBA 3397, "Reglamento sobre el régimen de Receptorías de Expedientes, Archivos del Poder Judicial y Mandamientos y Notificaciones. Funcionamiento del Registro Público de Juicios Universales y Mesas Receptoras de Escritos", especialmente sección quinta.
+
+[^21]: Las principales resoluciones que se notifican en el domicilio real son: el traslado de la demanda (arts. 339, CPCCN y 338, CPCCBA), la citación a absolver posiciones cuando se actúa por apoderado (art. 409, párr. 3°, a contrario sensu, CPCCN), la declaración de rebeldía y la sentencia al rebelde (arts. 59 y 62, CPCCN y CPCCBA), la citación a absolver posiciones y la sentencia a quien no constituyó domicilio (art. 41, CPCCN). Un supuesto dudoso podría ser el del traslado de la reconvención, atento la similitud de esta con la demanda, lo que llevaría a sostener su notificación al domicilio real, pero la opinión que creemos prevaleciente es que debe hacérselo en el domicilio constituido por el actor.
+
 ### 29.3. NOTIFICACIÓN TÁCITA O IMPLÍCITA
 
 La notificación tácita o implícita se da en aquellos supuestos en los cuales, sin necesidad de un acto formal de notificación, la parte conoce o se presume que ha podido conocer una resolución judicial[^22].
@@ -76,11 +117,23 @@ Dos supuestos están contemplados en el art. 134 del CPCCN: retiro del expedient
 
 Tiene carácter condicional, es decir, funciona siempre y cuando la notificación no haya operado anteriormente por alguno de los medios directos, v. gr., si una resolución ya se notificó por ministerio de la ley o por cédula no tendrá virtualidad de notificación tácita un posterior retiro del expediente.
 
+[^22]: CNCiv., Sala F, 22/8/96, LL, 1997-A-162; ED, 173-31; ídem, Sala A, 25/6/96, JA, 1997-11-29; ídem, Sala E, 28/5/98, ED, 179-516.
+
+[^23]: CNCiv., Sala E, 28/5/98, ED, 179-516; CACC 1ª Mar del Plata, Sala II, 6/2/96, Juba, B 1401554, CACC La Matanza, Sala II, 5/2/04, Juba, B3400465.
+
+[^24]: CNCiv., Sala E, 10/3/98, LL, 1998-D-64.
+
+[^25]: CNCiv., Sala C, 27/6/95, ED, 167-162.
+
 #### 29.3.1. RETIRO DEL EXPEDIENTE
 
 En el ordenamiento civil nacional el préstamo del expediente se realiza a las personas y en los casos contemplados en el art. 127 del CPCCN, que textualmente dice:
 
-"Los expedientes únicamente podrán ser retirados de la secretaría, bajo la responsabilidad de los abogados, apoderados, peritos o escribanos, en los casos siguientes: 1) Para alegar de bien probado, en el juicio ordinario. 2) Para practicar liquidaciones y pericias; partición de bienes sucesorios; operaciones de contabilidad; mensura y deslinde; división de bienes comunes; cotejo de documentos y redacción de escrituras públicas. 3) Cuando el juez lo dispusiere por resolución fundada. En los casos previstos en los dos últimos incisos, el juez fijará el plazo dentro del cual deberán ser devueltos. El Procurador General de la Nación, los Procuradores Fiscales de la Corte Suprema y los Procuradores Fiscales de Cámara podrán también retirar los expedientes, en los juicios en que actúen en representación del Estado Nacional, para presentar memoriales y expresar o contestar agravios". En igual sentido legisla el Código bonaerense, pero sin contemplar el retiro por los procuradores que actúen en representación del Estado, y adicionando la hipótesis: "Para expresar agravios o contestar los mismos en los términos de los arts. 254 y 260".
+"Los expedientes únicamente podrán ser retirados de la secretaría, bajo la responsabilidad de los abogados, apoderados, peritos o escribanos, en los casos siguientes:
+
+1) Para alegar de bien probado, en el juicio ordinario.
+2) Para practicar liquidaciones y pericias; partición de bienes sucesorios; operaciones de contabilidad; mensura y deslinde; división de bienes comunes; cotejo de documentos y redacción de escrituras públicas.
+3) Cuando el juez lo dispusiere por resolución fundada. En los casos previstos en los dos últimos incisos, el juez fijará el plazo dentro del cual deberán ser devueltos. El Procurador General de la Nación, los Procuradores Fiscales de la Corte Suprema y los Procuradores Fiscales de Cámara podrán también retirar los expedientes, en los juicios en que actúen en representación del Estado Nacional, para presentar memoriales y expresar o contestar agravios". En igual sentido legisla el Código bonaerense, pero sin contemplar el retiro por los procuradores que actúen en representación del Estado, y adicionando la hipótesis: "Para expresar agravios o contestar los mismos en los términos de los arts. 254 y 260".
 
 El retiro del expediente (dice el párr. 1° de los arts. 134 del CPCCN y del CPCCBA) de conformidad con lo establecido en el art. 127, importará la notificación de todas las resoluciones.
 
@@ -91,6 +144,14 @@ Algunos tribunales asientan en el libro de préstamos el retiro momentáneo del 
 También se polemiza acerca de si es válida la notificación cuando el expediente lo retira no la parte o su apoderado (únicos sujetos mencionados en el art. 127), sino el abogado mero patrocinante, aunque parece triunfar la que se inclina por la afirmativa[^28] Idéntica solución debe darse al caso de retiro del expediente por personas autorizadas por quienes están legitimados conforme al citado art. 127, pues, por un lado, se genera una sustitución no prohibida[^29], y, por otro, es acorde a la legitimación que estos sujetos tienen en otros actos notificadores: impedir la notificación automática dejando constancia en el libro de asistencia, y producir notificación tácita cuando retiran copias (arts. 133 y 134, CPCCN).
 
 En un futuro, cuando el expediente digital sea exactamente igual al expediente papel —o lo reemplace totalmente—, al tenerse acceso irrestricto al mismo vía web, esta forma de notificación caerá en desuso.
+
+[^26]: Colombo, Código Procesal Civil y Comercial de la Nación. Anotado y comentado, 4ºed., 1975, t. I, p. 643; Eisner, Notificaciones fictas, tácitas y compulsivas, LL, 139-1202; Palacio, Derecho procesal civil, 2011, t. V, p. 355; Maurino, Notificaciones procesales, 2ª ed., 2000, p. 163; CACC2ª La Plata, Sala 1,19/12/95, Juba, B252063; CACC Dolores, 2/3/93, Juba, B950130. En contra de la exégesis extensa, Fassi, Código Procesal Civil y Comercial de la Nación y demás normas procesales vigentes. Comentado, anotado y concordado, 3ª ed., 1978, t. I, p. 395; CNCiv., Sala B, 13/5/77, ED, 75-457; CACC Azul, 2/7192, Juba, B1050109.
+
+[^27]: Debe tenerse por notificada de todas las resoluciones del expediente a la parte que lo retira en préstamo para sacar fotocopias, pues no hay razones válidas para impedir que la notificación tácita se tenga por verificada cuando las actuaciones de dieron en préstamo por circunstancias no contempladas en los supuestos del art. 127 del CPCCN (CNCiv., Sala A, 6/5/03, DJ, 2003-2-721).
+
+[^28]: SCBA, 15/3/94, ED, 163-100; JA, 1996-1-534; Maurino, Notificaciones procesales, 2° ed., 2000, p. 165, y doctrina y jurisprudencia que allí se mencionan.
+
+[^29]: CNCiv., Sala H, 22/3/99, LL, 1999-E-474.
 
 #### 29.3.2. RETIRO DE COPIAS DE ESCRITOS Y DOCUMENTOS
 
@@ -106,6 +167,12 @@ La llegada del expediente electrónico, más concretamente la sanción de las Ac
 
 Si bien, en teoría, se nos ocurre que podría aún darse alguna situación extraordinaria que lleve a esta forma de notificación tácita, el día que el expediente esté totalmente despapelizado (o que ambos, papel y digital sean idénticos), la misma perderá totalmente significación.
 
+[^30]: La notificación tácita es aquella que se produce sin necesidad de un acto formal de transmisión, que puede producirse por el retiro del expediente, de copias y, en general, por el cumplimiento de actos procesales que no se justificarían si se desconociera la resolución o actuación que es su necesario e inmediato antecedente (SCBA, 9/12/04, Juba, B856952). El retiro de copias del traslado del memorial por el letrado apoderado de la actora, dejando nota asentada en los autos con posterioridad y a renglón seguido de aquella resolución que ordena la sustanciación, ha implicado el conocimiento de la providencia recaída y del escrito que presentara la contraria (CACC San Nicolás, Sala I,26/8/04, Juba, B27665).
+
+[^31]: Fenochietto — Arazi, Código Procesal Civil y Comercial de la Nación. Comentado y concordado con el Código Procesal Civil y Comercial de la Provincia de Buenos Aires, 2ª ed., 1993, t. Il, p. 557; CNCiv., Sala D, 27/4/10, elDial, AA5E8B.
+
+[^32]: En sentido contrario a lo que sostenemos en el texto, se ha decidido: "... al no haber existido una resolución que ordenara el traslado de la presentación de fs. 80/84, al momento de proceder al retiro de las copias de la contestación en cuestión, hace presumir que el actuar del hoy apelante —quien procedió al retiro de las mismas-, ha tenido el deseo de tomar conocimiento y así anoticiarse de los términos de la contestación de demanda de su adversario, resultando a partir de dicha fecha el comienzo del cómputo del plazo para agotar su derecho de respuesta, como bien lo estableciera el a quo a fs. 166. Una solución contraria a la presente, trastocaría el equilibrio entre las partes, pues se estaría avalando una ventaja procesal en favor de quien, a su vez, tenía la carga de acompañar la cédula correspondiente, quedando a su exclusivo arbitrio el arranque del cómputo del plazo y la continuidad del proceso, en franca violación con los principios de defensa en juicio e igualdad ante la ley" (CACC Lomas de Zamora, Sala I, 14/5/09, Juba, B2551364).
+
 #### 29.3.3. ENTREGA DE CÉDULA EN EL TRIBUNAL. ENVÍO DE NOTIFICACIÓN ELECTRÓNICA
 
 La presentación de una cédula papel —en los casos que corresponda su utilización–- en el tribunal de la causa o mesa receptora de escritos, a fin de notificar una resolución a otro sujeto del proceso importa, para la parte patrocinada o representada por el letrado que suscribe la pieza, la notificación de la resolución contenida en dicha cédula (art. 137, párr. 1°, CPCCN y CPCCBA).
@@ -116,11 +183,19 @@ Pese a que el art. 137 pone como hito de notificación "la presentación" de la 
 
 En cuanto a la notificación electrónica, en el orden nacional (véase infra, 35.4.), entendemos que su envío desde el ordenador implica notificación para el remitente (arg. arts. 137 y 149, CPCCN). En la provincia de Buenos Aires, el Código Procesal directamente establece en su art. 143 bis (incorporado por la ley 14.142 sobre Notificaciones Electrónicas): "…El envío de un correo electrónico importará la notificación de la parte que lo emita".
 
+[^33]: El art. 137 determina en forma clara la obligación del letrado patrocinante de suscribir y por consiguiente librar la correspondiente cédula, salvo en los casos que exista alguna norma legal especial que determine expresamente la notificación de oficio (CNCiv., Sala K, 28/4/89, LL, 1990-A-659).
+
+[^34]: CACC 1ª Mar del Plata, Sala Il, 26/3/96, Juba, B1401589; CACC San Nicolás, Sala I, 1/4/05, Ju-ba, B857074.
+
 #### 29.3.4. CONSTANCIAS DEL EXPEDIENTE QUE EVIDENCIEN CONOCIMIENTO DE LA RESOLUCIÓN
 
 La notificación se produce cuando de las actuaciones surge claramente que la parte conoce el contenido de la resolución. Este conocimiento debe resultar de manera inequívoca, directa; ante la menor duda sobre su existencia, y en atención al criterio imperante de interpretación estricta de este medio, habrá de estimarse no configurada la notificación.
 
 Habrá notificación, v. gr., si se presenta un escrito recurriendo una providencia que aún no fue legalmente notificada, o si en su presentación el litigante manifiesta expresamente que se notifica de alguna resolución; con el pedido de retiro del expediente para fundamentar la expresión de agravios del recurso de apelación interpuesto, pues surge evidente el conocimiento de esa decisión, y la notificación surte efectos a partir del cargo de dicho escrito[^35]; si se retira copia de una sentencia dejándose expresa constancia de ello en el expediente[^36]; si se envía una notificación electrónica.
+
+[^35]: SCBA, 5/5/92, Juba, B 10200.
+
+[^36]: CACC 2ª San Isidro, 11/5/04, Juba, B 1750906.
 
 ### 29.4. NOTIFICACIÓN ELECTRÓNICA
 
@@ -129,6 +204,16 @@ Es público y notorio en el ámbito forense que las notificaciones, especialment
 Según informaciones oficiales, una cédula papel implica diez días del proceso y entre tres y cuatro meses en la provincia de Buenos Aires, "lo que hace que el 70% en promedio del tiempo judicial, sea consumido por esas comunicaciones"[^37].
 
 Esta es una de las razones —quizá la principal— de la implementación de las notificaciones electrónicas: reducir el tiempo del proceso. Si bien este nuevo medio de comunicación puede verse como una variante o especie de la notificación por cédula papel —pues "el mecanismo electrónico propuesto reproduce al actual sobre el papel"[^38], y como se advertirá de las próximas páginas lo que se envía por medio electrónico es un documento en formato digital al que también se lo denomina "cédula"—, nosotros lo consideramos un mecanismo distinto, y así lo trataremos[^39]. Por eso, cuando nos refiramos a la notificación por cédula, así, a secas, lo será al modo tradicional de soporte en papel[^40].
+
+[^37]: Véase [https://www.cij.gov.ar/nota-249-Arranco-el-sistema-judicial-de-notificaciones-electroni-cas.html](https://www.cij.gov.ar/nota-249-Arranco-el-sistema-judicial-de-notificaciones-electroni-cas.html).
+
+[^38]: Véase [www.scba.gov.ar/servicios/notificaciones.asp](http://www.scba.gov.ar/servicios/notificaciones.asp).
+
+[^39]: Art. 94, ACPCCN: "Notificación electrónica. Procederá la notificación de oficio al domicilio electrónico solo de las siguientes resoluciones: a\. El traslado de la demanda cuando se hubiere constituido domicilio electrónico o hubiere incumplido la carga de hacerlo; b\. El traslado de la reconvención y de la contestación de la demanda; c\. La que dispone correr traslado de las excepciones; d\. La que fije la celebración de una audiencia; e\. Las que se dicten con posterioridad a la finalización de la audiencia de vista de causa; f\. Las que ordenan intimaciones o apercibimientos, hacen saber medidas cautelares, su modificación o levantamiento, dispongan la reanudación de plazos suspendidos por tiempo indeterminado o apliquen sanciones disciplinarias; g\. La primera resolución que se dicte luego de haberse hallado inactivo el proceso por más de seis meses; h\. Cuando se reanuden plazos suspendidos por tiempo indeterminado; i\. La que dispone el traslado de una liquidación o de su impugnación; j\. La que ordena el traslado del pedido de levantamiento de embargo sin tercería; k\. Las que se dicten como consecuencia de un acto procesal realizado antes de la oportunidad que la ley señala para su cumplimiento; l\. Las sentencias definitivas, las interlocutorias y sus aclaratorias excepto las que se dicten en audiencia; m\. La que deniega el recurso extraordinario; n\. La providencia que hace saber el juez o tribunal que va a conocer en caso de recusación, excusación o admisión de la excepción de incompetencia; ñ\. La que dispone el traslado del pedido de caducidad de la instancia; o\. Las dirigidas a los Ministerios Públicos de todas las instancias y a los representantes del Fisco; p\. Las demás resoluciones mencionadas en la ley o las que determine el juez por resolución fundada.
+Quedan exceptuadas de esta notificación las decisiones dictadas en audiencia para quienes estuvieron presentes o debieron estarlo, que se consideran notificadas en ese acto".
+
+[^40]: "Se debe optar entre dirigir el esfuerzo tecnológico y normativo para replicar las mismas normas de procedimiento que se utilizan con el medio de papel, o someter a la Administración de Justicia a un proceso de reingeniería integral, lo cual implicará el rediseño de procesos desde una perspectiva de las tecnologías del siglo XXI.
+Consideramos que el proceso judicial electrónico está produciendo un cambio sustancial en el servicio de justicia. El reto está en que la implementación del proceso judicial electrónico no se reduzca a un mero expediente judicial escaneado, sino que la modernización judicial permita dar al ciudadano un servicio de justicia más accesible y eficiente, aplicando tanto las nuevas tecnologías como nuevas modalidades procedimentales" (Pagés, Los procesos judiciales y las TICs en el siglo XXI, elDial-DC1B13).
 
 #### 29.4.1. JUSTICIA NACIONAL[^41]
 
@@ -150,9 +235,19 @@ Estos muchos otros hechos son los que están determinando el nuevo contexto, la 
 
 Pues bien, podemos hoy afirmar que la gran mayoría de esas predicciones se hizo realidad. Entendemos que aún quedan cosas por hacer, como por ejemplo implementar la firma digital a fin de liberar al letrado, en forma definitiva, de la necesidad de presentar escritos en el juzgado en soporte papel. Luego vendrán otras cosas: inicio de expedientes de manera remota, audiencias a distancia, decisiones judiciales adoptadas mediante sistemas que utilicen inteligencia artificial. Esperemos que en próximas ediciones de esta obra podamos verificar el cumplimiento de estas cuestiones.
 
+[^41]: Apartado elaborado por Pablo Langholz.
+
+[^42]: Se aclara que, algunas de las cuestiones que se mencionan en este apartado como "futuras", ya se encuentran implementadas y, en algunos casos, en funcionamiento.
+
+[^43]: Frase adaptada de Charles Darwin.
+
 ##### 29.4.1.1. ALCANCE DEL SISTEMA
 
 El punto de partida fue la ley 26.685 que autorizó el uso de las nuevas tecnologías "…en todos los procesos judiciales y administrativos que tramitan ante el Poder Judicial de la Nación, con idéntica eficacia jurídica y valor probatorio que sus equivalentes convencionales" (art. 1º), y determinó que la Corte Suprema de Justicia de la Nación y el Consejo de la Magistratura, de manera conjunta, reglamentaran su uso y gradual implementación (art. 2º). En función de ello, en el marco del denominado Plan Estratégico de Modernización de la Justicia, la Corte Suprema dictó varias acordadas sobre la puesta en marcha del SNE[^44] siendo la primigenia la 31/11, cuyo art. 1° dispuso que "toda persona que litigue por propio derecho o en ejercicio de una representación legal o convencional deberá constituir domicilio electrónico, para las causas judiciales que tramiten ante la Corte Suprema de Justicia de la Nación", caso contrario "…será de aplicación lo dispuesto en el art. 41, párr. 1° del CPCCN"; y en el art. 4° fijó su operatividad: "Todas las notificaciones de providencias, resoluciones y sentencias que deban practicarse personalmente o por cédula se realizarán en el código de usuario que el beneficiario deberá haber constituido como domicilio electrónico. La notificación se considerará perfeccionada cuando esté disponible en la cuenta de destino; los plazos se computarán según la normativa procesal que corresponda. A fin de establecer el comienzo del plazo de la notificación, su fecha y hora será la del servidor y quedará registrada en la transacción. En los casos en que se registre más de un letrado por parte, se considerarán notificados todos en el código de usuario del que se instituya como principal". Por Acordada 38/13 se extendió la aplicación del SNE a todo el Poder Judicial de la Nación, a partir de la entrada en vigencia de dicha Acordada y de modo gradual, y se dispuso que a partir del 1°de abril de 2014 las notificaciones electrónicas son obligatorias para todas las causas que se promuevan en todos los juzgados y tribunales de las cámaras nacionales y federales[^45]. La Acordada 3/15, cuya entrada en vigencia se produjo el primer día hábil del mes de mayo de 2016, estableció que las notificaciones electrónicas deben utilizarse en todos los procesos judiciales, independientemente de la fecha de inicio del mismo y del estado procesal en el que se encuentre, como así también de la instancia en la que tramite.
+
+[^44]: Acordadas CSJN 31/11, 3/12, 29/12, 35/13, 36/13, 38/13, 43/13, 2/14, 7/14, 11/14.
+
+[^45]: Por Acordada CSJN 7/14 la Corte postergó hasta el 19 de mayo del mismo año la implementación del Sistema de Notificaciones Electrónicas en los juzgados de primera instancia nacionales y federales conforme lo dispuesto por la Acordada CSJN 38/13. Al momento de escribir estas líneas se encuentra pendiente el funcionamiento del SNE en las causas que tramitan ante la Cámara Comercial, la Cámara de la Seguridad Social y la Cámara del Trabajo, y en las que sí opera, v. gr. fuero civil, recién ha comenzado su aplicación a nivel general, razón por la cual no tenemos aún vivencias, experiencias, acerca de su buen o no tan buen funcionamiento, de los reales y concretos problemas o soluciones que brinda, los cuales irán surgiendo con el paso del tiempo.
 
 ##### 29.4.1.2. ENROLAMIENTO. IEJ. CONSTITUCIÓN DE DOMICILIO
 
@@ -160,7 +255,9 @@ Para poder acceder y utilizar el SNE es necesario, como paso previo, enrolarse e
 
 Dicha actividad se puede llevar a cabo en el Colegio Público de Abogados de la Capital Federal, de forma personal, acompañando la credencial de abogado y una constancia de CUIT/CUIL. El trámite se realiza por única vez, y a partir de ese momento el letrado quedará habilitado para operar con notificaciones electrónicas —y demás servicios habilitados— en todos los tribunales de la justicia nacional y federal. La registración también puede hacerse a través de la página web del Poder Judicial de la Nación, pero luego de efectuado el trámite se debe concurrir a cualquier dependencia judicial a validar la inscripción, hasta tanto ello ocurra los servicios no estarán habilitados y no podrá constituir domicilio electrónico[^46].
 
-Cabe destacar que el domicilio electrónico será el CUIT/CUIL de la persona (no la dirección de correo electrónico que denunció en el trámite de registración, la que solo sirve para el "mail de cortesía" (véase infra, 29.4.1.3.) una vez llevado a cabo el enrolamiento.
+Cabe destacar que el domicilio electrónico será el CUIT/CUIL de la persona (no la dirección de correo electrónico que denunció en el trámite de registración, la que solo sirve para el "mail de cortesía", véase infra, 29.4.1.3.) una vez llevado a cabo el enrolamiento.
+
+[^46]: Ver video tutorial en [www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be](http://www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be).
 
 ##### 29.4.1.3. LOS USUARIOS: CATEGORÍAS, FUNCIONES, VINCULACIÓN CON EL EXPEDIENTE
 
@@ -174,6 +271,8 @@ El usuario principal se vincula con un expediente por medio de una acción que r
 
 La administración de los usuarios de tipo Autorizado (agregar o quitarlos) solo puede efectuarla un usuario Principal respecto de los expedientes con los cuales se encuentra vinculado. Para acceder a la ventana de administración se debe acceder a la aplicación Notificaciones y hacer clic en el botón Por Persona que se encuentra en el cuadro Autorizados —arriba a la izquierda, en la pantalla—. Luego se debe hacer clic en el botón Nuevo, escribir el número de CUIT/CUIL de la persona a autorizar, hacer clic en el botón Validar y, finalmente, hacer clic en el botón Aceptar. Para quitar la autorización otorgada a un usuario se debe hacer clic en el icono que muestra una cruz roja que se encuentra del lado derecho de la lista de usuarios autorizados.
 
+[^47]: En la práctica se utilizan, indistintamente, los términos "notificación electrónica" y "cédula electrónica".
+
 ##### 29.4.1.4. ACCESO AL SISTEMA DE NOTIFICACIONES
 
 La secuencia de pasos a seguir para acceder al SNE es similar a la que se realiza para acceder, por ejemplo, a una casilla de correo electrónico[^48] primeramente se debe ingresar al sitio web del Poder Judicial de la Nación —[www.pjn.gov.ar](http://www.pjn.gov.ar)— y hacer dicen el link Acceso al sistema.
@@ -181,6 +280,8 @@ La secuencia de pasos a seguir para acceder al SNE es similar a la que se realiz
 Luego, en la pantalla de autenticación de usuario se debe ingresar el usuario, la contraseña. El usuario siempre es el número de CUIT o CUIL de la persona. La primera vez que se ingresa al sistema la contraseña es el mismo número de CUIT o CUIL luego, por cuestiones de seguridad, se debe cambiar la contraseña.
 
 Se podrá acceder y realizar trámites durante 24 horas los 365 días del año. Pero es importante señalar que el SNE no modifica los plazos procesales.
+
+[^48]: Nos referimos a las cuentas de web mail, tales como Gmail, Yahoo, Hotmail, etcétera.
 
 ###### 29.4.1.4.1. CONSULTA DE NOTIFICACIONES ELECTRÓNICAS
 
@@ -191,6 +292,8 @@ La pantalla principal se encuentra dividida en secciones: en la sección superio
 Al hacer clic en el botón Búsqueda avanzada se visualizan más opciones para aplicar filtros de búsqueda.
 
 Para visualizar una notificación se debe hacer clic en el ícono identificado con una lupa que se encuentra sobre el lado derecho —en la sección inferior, en la lista de notificaciones filtradas—. Este ícono solo se visualiza cuando la lista de notificaciones filtradas contiene al menos un resultado.
+
+[^49]: Consultar notificaciones, desde esta misma pantalla. Confeccionar borradores, haciendo clic en el botón Nueva (parte inferior derecha). Consultar borradores y Notificar cédulas, haciendo clic en el botón Borradores. Agregar y quitar usuarios de tipo autorizado, haciendo clic en el botón Autorizados. Agregar y quitar usuarios de tipo Visualizador, haciendo clic en el botón Listas visualización.
 
 ###### 29.4.1.4.2. CONFECCIÓN DE CÉDULAS ELECTRÓNICAS
 
@@ -232,6 +335,8 @@ En el mismo momento en que se hace clic en el botón Notificar el SNE desencaden
 
   Es importante destacar que la falta de recepción del correo electrónico de cortesía no impide que opere la notificación, por lo tanto, los plazos correrán, se reciba o no el correo electrónico de cortesía.
 
+[^50]: El correo electrónico de cortesía es un aviso automático que se puede recibir en la cuenta.
+
 ##### 29.4.1.5. MOMENTO EN QUE OPERA LA NOTIFICACIÓN
 
 Sin entrar en los casos de excepción (como podría ser la notificación con habilitación de día y hora inhábil), las cédulas papel pueden ser entregadas por el oficial notificador de lunes a viernes entre las 7 y las 20 horas.
@@ -264,6 +369,8 @@ Por último, se debe contar con un software que permita convertir archivos en fo
 
 El SNE solo permite adjuntar aquellos archivos que hayan sido incorporados previamente al sistema por medio de la aplicación Escritos, esta aplicación solo permite adjuntar archivos pdf. Se trata de archivos que no es posible modificar[^51], de esta manera se intenta asegurar la integridad de los datos en ellos contenidos. Los archivos pdf se deben utilizar para adjuntar los escritos de las partes y los documentos que con dichos escritos se acompañen.
 
+[^51]: Al menos para un usuario común.
+
 ###### 29.4.1.6.3. CÓMO ELEGIR UNA CONTRASEÑA SEGURA
 
 La adecuada elección de una contraseña es el punto clave para "cuidar" nuestro domicilio electrónico y, consecuentemente, la responsabilidad profesional derivada del incorrecto o mal uso del SNE.
@@ -285,29 +392,17 @@ Art. 40 — Domicilio. Toda persona que litigue por su propio derecho o en repre
 Art. 143 — Medios de notificación. En el caso que este Código, en los procesos que regula, establezca la notificación por cédula, ella también podrá realizarse por los siguientes medios:
 
 1) Correo electrónico oficial.
-
 2) Acta notarial.
-
 3) Telegrama colacionado con copia certificada y aviso de entrega.
-
 4) Carta documento con aviso de entrega.
-
    Se tendrá por cumplimentada la entrega de copias si se transcribe su contenido.
-
    En caso que ello resulte imposible o inconveniente las copias quedarán a disposición del notificado en el juzgado, lo que así se le hará saber.
-
    Se tomará como fecha de notificación el día de labrada el acta o entrega del telegrama o carta documento, salvo que hubiera quedado pendiente el retiro de copias, en cuyo caso se computará el día de nota inmediato posterior.
-
    Esta última fecha se tomará en cuenta en los supuestos que la notificación fuera por medio de correo electrónico, independientemente que se transcriba o no el contenido de las copias en traslado.
-
-   Los medios mencionados en los aps. 1), 3) y 4) no podrán utilizarse en los supuestos de notificaciones previstas en los aps. 1), 10) y 12) del art. 135.
-
-   El juzgado o tribunal deberá realizar de oficio, por medio de correo electrónico o por cédula, las notificaciones previstas en los aps. 3), 4) y 11) del art. 135; la providencia que cita a audiencia preliminar y la que provee a la prueba ofrecida ...
-
+   Los medios mencionados en los aps. 1\), 3\) y 4\) no podrán utilizarse en los supuestos de notificaciones previstas en los aps. 1\), 10\) y 12\) del art. 135.
+   El juzgado o tribunal deberá realizar de oficio, por medio de correo electrónico o por cédula, las notificaciones previstas en los aps. 3\), 4\) y 11\) del art. 135; la providencia que cita a audiencia preliminar y la que provee a la prueba ofrecida ...
    Art. 143 bis — Notificación por correo electrónico. El letrado patrocinante o apoderado de la parte que tenga interés en la notificación, el síndico, tutor o curador "ad litem", en su caso, enviará las notificaciones utilizando el sistema de correo electrónico habilitado al efecto por el Poder Judicial, conforme determine la reglamentación.
-
    La oficina de notificaciones encargada de la base de datos del sistema de comunicaciones electrónicas del Poder Judicial emitirá avisos de fecha de emisión y de recepción a las casillas de correo electrónico de las partes y del tribunal o juzgado.
-
    El envío de un correo electrónico importará la notificación de la parte que lo emita.
 
 Por su lado, el art. 1° del Reglamento establece la obligatoriedad de la notificación electrónica en estos términos:
@@ -321,32 +416,36 @@ Los organismos encargados de practicar las notificaciones no diligenciarán céd
 Conforme a las disposiciones del Código, y a las de la reglamentación, el funcionamiento básico del sistema puede resumirse así:
 
 1. La parte tiene la carga de constituir domicilio electrónico único, que será el de un letrado (el de quien lo asiste o de cualquier otro), o el propio del litigante si tiene certificado digital. Pero persiste también la carga de constituir domicilio físico (algunas notificaciones aún son en soporte papel), es necesario constituir ambos. (arts. 40, CPCCBA, 3º del Reglamento)[^54]. El domicilio electrónico no es la dirección de mail que el interesado tenga con un servidor comercial o privado, es un casillero virtual asignado oficialmente al letrado en la base de datos del sitio web de notificaciones, contando con certificado de firma digital que avalará la autenticidad e intangibilidad de la operatoria. Allí se cursarán todas las notificaciones por cédula que no requieran soporte papel y la intervención del oficial notificador. Entendemos que si no se cumple esta carga, y no habiendo sido modificado el art. 42 del CPCCBA, "quedará automáticamente constituido el domicilio legal en los estrados del juzgado o tribunal"[^55]. Si la parte fuese asistida o representada por varios profesionales del derecho, deberá precisar cuál de los casilleros virtuales asignados a estos será su domicilio electrónico.
-
 2. El letrado de la parte interesada en la notificación confecciona la cédula con tecnología de firma digital, de acuerdo a los modelos aprobados por la Suprema Corte. La ingresarán en el sistema de Presentaciones y Notificaciones Electrónicas.
-
    Si la notificación es con copias, solo se tendrán cargadas cuando se acompañen en soporte digital junto con la cédula. Esta adjunción importa una declaración jurada sobre su autenticidad. Si la digitalización fuere de difícil cumplimiento, se aplicará el art. 121 del CPCCBA (art. 4° del Reglamento).
-
    Sin perjuicio de lo anterior, pensamos que no hay obstáculo para que se tenga por cumplida la entrega de las copias si se transcribe su contenido en el cuerpo de la cédula electrónica, conforme lo habilita el art. 143 del CPCCBA. También se cumpliría si no se acompaña la copia pero se identifica claramente la pieza del expediente a la que corresponde y el letrado puede acceder a ella fácilmente[^56].
-
 3. Ingresada la cédula electrónica al sistema, quedará a disposición del tribunal para que su personal proceda a confrontarla, para luego remitirla —siempre por el Sistema de Presentaciones y Notificaciones Electrónicas— a su destinatario al domicilio electrónico constituido en el proceso, u observarla si no cumple sus requisitos de validez. Este confronte ha de llevarse a cabo dentro del día hábil posterior al ingreso de la cédula al Sistema (art. 5° del Reglamento).
-
 4. En el sistema se registrará, al menos:
-
    1) fecha y hora en que la notificación quedó disponible para su destinatario, dato que se encontrará visible en todo momento;
-
    2) fecha y hora en las que el destinatario compulsó la notificación;
-
    3) fecha y hora en la que la cédula quedó a disposición del órgano jurisdiccional para su confronte.
-
 5. Para el destinatario, la notificación se tendrá por cumplida el día martes o viernes inmediato posterior —o el siguiente día hábil si alguno de ellos fuera feriado— a aquel en el que la cédula hubiere quedado disponible en el Sistema de Presentaciones y Notificaciones Electrónicas. En los casos de urgencia —que tendrán que ser debidamente justificados en la providencia respectiva- la notificación se producirá en el momento en que la cédula se encuentre disponible para su destinatario en el sistema de Notificaciones y Presentaciones Electrónicas (arts. 143, CPCCBA, y 7º del Reglamento).
-
    Para quien emita la cédula, la notificación ocurrirá al ingresar la cédula al sistema (arg. art. 143 bis, último párrafo, CPCCBA).
-
 6. Conforme al art. 143 del CPCCBA, no puede utilizarse la notificación electrónica en los siguientes supuestos previstos en el art. 135 del CPCCBA: aps. 1° (resolución que dispone el traslado de la demanda, de la reconvención y de los documentos que se acompañen con sus contestaciones), 10 (resolución que dispone la citación de personas extrañas al proceso), y 12 (sentencia definitiva e interlocutorias con fuerza de tales, con excepción de las que resuelvan negligencias en la producción de la prueba). Estas notificaciones —y otras no previstas en este dispositivo[^57]— deben cumplirse en un domicilio físico, por lo tanto, mediante cédula papel. Pero si la comunicación no lleva copias, la generación y remisión de la cédula a los organismos encargados de practicar las notificaciones se hará por medios electrónicos, siguiéndose las pautas previstas en los arts. 4°, párr. 1° y 5° de este reglamento. Las Oficinas de Mandamientos y Notificaciones se encargarán de imprimir los instrumentos para su diligenciamiento (art. 8° del Reglamento).
 
 El PRCPCCBA mantiene estas pautas operativas de las notificaciones electrónicas[^58].
 
-La actividad que cabe al letrado respecto de la notificación de una resolución es la siguiente: 1) determinar de qué modo se notifica, esto es, cuál de las formas previstas legalmente rige en el caso particular; 2) corroborar si se cumplió la notificación respecto de todos los interesados, y cuándo ocurrió; 3) cumplir con las cargas que el instituto "notificación" le impone; 4) impugnar las notificaciones irregulares que perjudiquen a su parte.
+La actividad que cabe al letrado respecto de la notificación de una resolución es la siguiente: 1\. determinar de qué modo se notifica, esto es, cuál de las formas previstas legalmente rige en el caso particular; 2\. corroborar si se cumplió la notificación respecto de todos los interesados, y cuándo ocurrió; 3\. cumplir con las cargas que el instituto "notificación" le impone; 4\. impugnar las notificaciones irregulares que perjudiquen a su parte.
+
+[^52]: Esta reforma se introdujo para los procesos civiles y comerciales, con expresa aclaración de que se aplica también en los procesos previstos en la Ley de Concursos Quiebras (art.7°, ley 14.142). Asimismo, rige en el procedimiento laboral (arts. 6°, ley 14.142, y 16, ley 11.653).
+
+[^53]: "Esta Cámara, por su parte, ha expresado que resulta conveniente ante el caso particular de un abogado jubilado que actúe por su propio derecho y frente al pedido concreto del interesado, excepcionar la aplicación del sistema de presentaciones electrónicas (véase Sala II, causa n° 149.646 R402791, del 11/9/18; Sala I, causa n° 162.936, R 375 493, del 11/9/18). Considerando que la Acordada 3845/17 prevé la facultad de los magistrados de exceptuar la aplicación del régimen de notificaciones electrónicas y disponer la comunicación en formato papel si existen graves razones que así lo impongan (véase art. 1° del Anexo I Reglamento para la notificación por medios electrónicos), entendemos que corresponde extender dicho criterio interpretativo al caso bajo análisis, relativo al régimen de presentaciones electrónicas en el marco de la Acordada 3886/18. Sin perjuicio de no encontrarse previsto expresamente el supuesto de los abogados jubilados en el sistema normativo de los escritos electrónicos, en el caso de autos existen razones debidamente fundadas para excepcionar al apelante de la aplicación del régimen (...) entendemos que exigir la tramitación de un certificado digital de su titularidad para informatizar los escritos que en lo sucesivo presente implica incurrir en un excesivo rigor formal (arg. art. 1° del Anexo I Ac. 3845/17; Ac. 3886/18)" (CACC Mar del Plata, Sala II, 8/11/18, elDial-AAB29D).
+
+[^54]: Conforme el art. 40 del CPCC (t.o. ley 14.142) quien litigue por sí o en representación de un tercero deberá constituir domicilio dentro del perímetro de la ciudad asiento del Juzgado o Tribunal conjuntamente con una casilla de correo electrónico que será asignada oficialmente al letrado que lo asista, donde se le cursarán las notificaciones que no requieran soporte papel y la intervención del oficial notificador. En consecuencia, para dar cumplimiento con dicho artículo se prevé la constitución de dos domicilios, el constituido físico como el constituido electrónico, y ambos de forma obligatoria (conforme Res. SCBA 582/16, consid. 1.1, párr. 3°, consid. Il, y art. 2°, de la misma). Por lo tanto, será necesario la constitución en conjunto de ellos, bajo apercibimiento de aplicarse la sanción de lo dispuesto por el art. 41 del CPCC (CACC 1ªSan Nicolás, 7/12/17, Juba, B861550, entre otros).
+
+[^55]: CACC2ª La Plata, 23/2/17, Juba, B5027366.
+
+[^56]: "Si bien podría sostenerse que la falta de adjudicación de copias a la cédula electrónica no conforma una directa afectación al derecho de defensa cuando los documentos digitales se encuentran digitalizados y subidos a la web, por ser de libre acceso a las partes presentadas en el expediente y dado que la omisión podía ser subsanada recurriendo a la copia digital obrante en el expediente digital; deviene relevante en el caso concreto de autos que en las cédulas libradas al domicilio electrónico tampoco se precisaron las fojas de la presentación de la cual se estaba disponiendo su sustanciación" (CNCiv., Sala J, 8/5/17, "Valverde, Javier c. Trenes de Buenos Aires S.A. y otros s/Beneficio de litigar sin gastos", Microjuris, MJ-JU-M-105545-AR/MJJ105545; disponible en [www.calz.org.ar/wp-content/uploads/2017103/CABA-Sumario-Fallo-Cedula-electronica-sin-co-pias.pdf](http://www.calz.org.ar/wp-content/uploads/2017103/CABA-Sumario-Fallo-Cedula-electronica-sin-co-pias.pdf)).
+
+[^57]: Las que deban cumplirse en el domicilio real de la persona, v. gr. citación para absolver posiciones cuando se actúa por apoderado. declaración de rebeldía. O cuando los magistrados dispongan la comunicación en formato papel si existen graves razones que así lo impongan (art. 1º del Reglamento).
+
+[^58]: Art. 130: "Confección de la cédula. La cédula será suscripta en forma electrónica utilizando el sistema informático que instrumente la Suprema Corte de Justicia. En este supuesto no se adjuntarán copias para traslado, siendo suficiente su individualización en el cuerpo del instrumento a fin de posibilitar que los destinatarios compulsen las constancias digitales en dicho sistema.
+Solo cuando la cédula tenga que ser cursada a un domicilio real se diligenciará en formato papel. Si no deben acompañarse copias con ella, su generación y remisión a los organismos encargados de practicar las notificaciones se hará por medios electrónicos, quienes la imprimirán a tales efectos. Cuando, en cambio, se requiera la adjunción de copias, los interesados en la notificación deberán presentar en Secretaría tanto la cédula como sus copias en papel, aclarándose rúbrica con el sello correspondiente. Las cédulas serán confeccionadas y firmadas por los letrados o letradas de las partes o los mediadores o mediadoras o los auxiliares de justicia, que tengan interés en la notificación. Por Secretaría se rubricarán las que notifiquen embargos, medidas precautorias, entrega de bienes o modificaciones de derechos, y cuando los tribunales así lo ordenen por el objeto de la providencia. Los órganos judiciales realizarán de oficio la notificación electrónica de las resoluciones previstas en los aps. 39,4º, 10 y 11 del art. 128, la que convoca a la audiencia preliminar y cualquier otra que por razones de urgencia u otro motivo se disponga por resolución fundada. Tanto el ingreso de la cédula electrónica en el sistema informático como la presentación en Secretaría de una cédula en formato papel importará la notificación de la parte patrocinada o representada. Art. 132: "Diligenciamiento. Los funcionarios de los órganos judiciales confrontarán las cédulas electrónicas dentro del día hábil posterior de su ingreso al sistema informático por los interesados, remitiéndolas electrónicamente a sus destinatarios u observándolas cuando no cumplan los recaudos previstos para su validez. En las cédulas que deban cursarse en formato papel la reglamentación establecerá lo relativo a su diligenciamiento, así como los supuestos en los cuales se admitirá su generación y envío electró-nicos, procurando que los oficiales diligenciadores informen electrónicamente al expediente el resultado de la diligencia".
 
 ## 30. DETERMINAR EL MODO EN QUE SE NOTIFICA LA RESOLUCIÓN
 
@@ -360,6 +459,8 @@ Conviene, dentro de lo posible, conocer de antemano (antes de que salga la resol
 
 Así, utilizaremos correctamente nuestro tiempo, habilidad que es muy importante adquirir para un mejor ejercicio de la profesión[^59].
 
+[^59]: Antes se perdía bastante tiempo yendo al tribunal con frecuencia inapropiada, a buscar resoluciones que, por su extenso plazo de emisión —v. gr., interlocutorias, definitivas—, o por su modo de notificación —v. gr., por cédula—, no justifican dicho temperamento. Hoy, la consulta web de las actuaciones más la nota electrónica ayudan grandemente a evitar ese desgaste.
+
 ## 31. VERIFICAR EL CUMPLIMIENTO DE LA NOTIFICACIÓN Y SU FECHA RESPECTO DE TODOS LOS INTERESADOS
 
 Esta actividad importa porque, como ya dijéramos, hasta tanto no estén notificados todos los sujetos involucrados en una resolución (partes principales y/o partes accesorias y/o terceros propiamente dichos, según el alcance de aquella), esta no podrá quedar firme, con lo cual sus efectos no serán definitivos, y esto, en más de una ocasión, impedirá que se pueda continuar con el procedimiento[^60].
@@ -368,16 +469,15 @@ Por ejemplo, hasta que no esté firme la providencia que declara la cuestión de
 
 Vista la misma situación desde otro lugar interesa controlar la notificación de todos los sujetos alcanzados por ella debido a que nos permitirá saber durante cuánto tiempo estaremos pendientes de una posible actividad de aquellos derivada de la resolución notificada, v. gr. recurrirla, contestar un traslado, para a su vez actuar nosotros en consecuencia, v. gr. plantear su inadmisibilidad por haber sido deducido una vez vencido el plazo legal, contestar el recurso interpuesto.
 
+[^60]: La adecuada notificación de las distintas etapas fundamentales del proceso y lo atinente al trámite previsto en el art. 257 del CPCCN, tiene por objeto dar a los litigantes la oportunidad de ejercer sus defensas con la amplitud que exige el debido proceso y plantear las cuestiones conducentes para la correcta solución del litigio. Corresponde dejar sin efecto el auto de concesión del recurso extraordinario y devolver las actuaciones al tribunal de origen a fin de que, antes de dictar uno nuevo, proceda a notificar sus decisiones a todas las partes, terceros y profesionales que intervinieron en la causa, a quienes tampoco confirió el traslado de los recursos extraordinarios deducidos ni se les hizo saber el auto de concesión de dichos remedios (CSJN, 24/8/99, CSJN-Fallos, 322:1886).
+
 ## 32. CUMPLIR LAS CARGAS NATURALES QUE IMPONE A LAS PARTES EL INSTITUTO «NOTIFICACIÓN»
 
 Podemos decir que son cuatro las cargas que naturalmente impone a las partes el instituto notificación, a saber:
 
 1. Constituir domicilio procesal (físico o electrónico), y denunciar el real.
-
 2. Examinar las actuaciones los días de notificación automática y, eventualmente, dejar nota.
-
 3. Constatar la recepción de cédulas papel o notificaciones electrónicas.
-
 4. En ciertos casos, impulsar la notificación.
 
 ### 32.1. CONSTITUCIÓN DE DOMICILIO PROCESAL (FÍSICO O ELECTRÓNICO) Y DENUNCIA DEL REAL
@@ -412,11 +512,37 @@ Para el caso de las notificaciones electrónicas, en la justicia nacional vimos 
 
 Si no se cumpliere con ello, quedará automáticamente constituido el domicilio en los estrados del juzgado o tribunal, salvo el caso del segundo párrafo del art. 59, y allí se practicarán las notificaciones de los actos procesales que correspondan, en la forma y oportunidad determinadas por el art. 133 (art. 41, CPCCBA).
 
+[^61]: Quizá por poco tiempo: el PRCPCCBA sólo impone la carga de constituir domicilio electrónico.
+
+[^62]: "La omisión del domicilio real en el escrito de demanda, autoriza la interposición de la excepción de defecto legal" —Benincasa – Espinosa, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2004, t. 1, p. 685—.
+
+[^63]: Sobre este punto no hay uniformidad. Suele distinguirse según el tipo de incidente. Si es una incidencia, o un incidente procedimental, v. gr., caducidad de instancia, nulidad procesal, generalmente se admite la notificación en el domicilio constituido en el principal. Distinta es la solución si se trata de un juicio incidental, o de un incidente iniciado por o contra quien no es parte en el juicio. Recomendamos ver la casuística jurisprudencial.
+
+[^64]: La expresión que se tendrá por constituido el domicilio "en los estrados del juzgado" ha generado alguna discrepancia en la práctica. En la gran mayoría de los casos se la entiende en el sentido que para todas las resoluciones rige la notificación automática o ministerio legis (CACC 1ª Mar del Plata, Sala Il, 29/9/87, Juba, B1400754; ídem, Sala I, 23/8/94, Juba, B 1400962; CACC San Nicolás, Sala l, 17/3/98, Juba, B855314; CACC San Martín, Sala II, 8/9/98, Juba, B2001204); pero también se la ha interpretado de esta otra manera: en los casos de notificaciones por cédula corresponde confeccionar una y fijarla en la tablilla del juzgado (JP Villa Gesell, 9/2/96; JP Tordillo, 3/3/98, para ambos Juba, B9990181).
+
+[^65]: Si bien es cierto que declarada la rebeldía de los citados corresponde tener por constituido el domicilio legal de los mismos en los estrados del juzgado (art. 59, CPCCBA), ello no significa que la sentencia se deba tener por notificada por ministerio de la ley porque el art. 62 del Código de forma expresamente dispone que la sentencia se hará saber al rebelde en la forma prescripta para la notificación de la providencia que declara la rebeldía, esto es, por cédula (SCBA, 2714/93, Juba, B22431).
+
+[^66]: Si bien los domicilios a que se refieren los arts. 40 y 41 del CPCCN subsisten hasta la terminación del juicio o su archivo mientras no se constituyan o denuncien otros, si el trámite estuvo paralizado durante un tiempo prolongado, esa inactividad es razón suficiente para considerar extinguido el domicilio oportunamente constituido por la demandada, pues no cabe extender la ficción legal más allá de lo razonable (CNCiv., Sala E, 30/4/96, LL, 1997-B-90). La paralización del expediente durante años resulta equiparable a la del archivo del mismo, por cuanto la continuidad del domicilio legal ha sido establecida para la generalidad de los casos en que el desarrollo del trámite procedimental se operó en forma regular, pero no sucede lo mismo si la inactividad dura muchos años, en cuyo caso el domicilio que se hubiera constituido ya no subsiste (CACC1ªLa Plata, Sala II, 14/11/89, Juba, B150251).
+
+[^67]: Todo cambio de domicilio debe notificarse por cédula a la otra parte, debiendo mientras esta diligencia no se hubiese cumplido, tenerse por subsistente el anterior, resultando eficaces las notificaciones allí practicadas (CACC 1ª Mar del Plata, Sala l, 30/8/94, Juba, B1351104; CACC Trenque Lauquen, 11/7/91, Juba, B2200581). Antes de verificarse la notificación expresa o tácita del nuevo domicilio procesal a la contraparte, este no resulta oponible a ella (CNCiv., Sala A, 8/2/95, JA, 19981, síntesis).
+
+[^68]: CNCom., Sala A, 31/5/99, LL, 1999-E-448.
+
+[^69]: CNCiv., Sala A, 8/2/95, JA, 1998 l, síntesis; CACC Lomas de Zamora, Sala I, 10/4/97, Juba, B2550091. En contra, la subsistencia del domicilio anterior por falta de notificación de su cambio a la contraparte debe aplicarse tanto para las notificaciones efectuadas por las partes como para las del tribunal al no haberse hecho distingo alguno en el art. 42 del CPCCBA (CACC 1ª La Plata, Sala II, 23/3/93, Juba, B150810).
+
+[^70]: CACC Trenque Lauquen, 11/7/91, Juba, B2200581; CNCiv., Sala A, 8/2/95, JA, 1998l, síntesis. Basta el conocimiento de la contraparte, por cualquier medio, del escrito de cambio de domicilio, para que surta efecto respecto de quien lo tuvo, pues de la redacción de la norma surge que el objeto perseguido es que se haga saber dicha modificación a la contraria y no la providencia que recaiga (CNCiv., Sala l,27/7/89, Lexis, n° 10/4670). Mantener la subsistencia del domicilio procesal constituido, no obstante el conocimiento que el actor tenía del nuevo domicilio legal constituido por la contraria en otro proceso sustanciado entre las mismas partes y ante el mismo tribunal, constituye un excesivo rigor formal contrario a la garantía de la defensa en juicio (CSJN, 30/4/87, CSJN-Fallos, 310:870). En contra, el domicilio legal constituido oportunamente en el expediente subsistirá para todos los efectos legales, aunque la contraria se haya anoticiado espontáneamente del contenido del escrito de cambio, porque lo que se notifica en un juicio son resoluciones o providencias simples emanadas del órgano jurisdiccional y no escritos, por lo que no se puede hablar, entonces, de notificación tácita (CACC 1ª Mar del Plata, Sala I, 8/8/96, Juba, B1351416).
+
+[^71]: CACC 2ª La Plata, Sala II, 8/10/96, Juba, B300440. En contra, por la validez de la notificación tácita, aun cuando no se haya dictado providencia teniendo por constituido el nuevo domicilio (CN-CAF, Sala IV, 26/4/94, elDial-AH7F5; CSJN, 23/9/99, CSJN-Fallos, 322:179).
+
+[^72]: Sobre las características de esta "casilla de correo electrónico", véase supra, 29.4.2.
+
 ### 32.2. CONSULTAR EL EXPEDIENTE LOS DÍAS DE NOTIFICACIÓN AUTOMÁTICA. DEJAR NOTA
 
 Lo que en varios pasajes ya dijimos sobre la trascendencia y efectos de esta conducta nos releva de más. No obstante, regresaremos sobre el tema cuando hablemos de su gestión.
 
 Solo recordaremos que el fundamento de la notificación automática radica en la carga que tienen las partes de consultar las actuaciones durante la tramitación del proceso, a partir de la cual cabe suponer que los justiciables toman conocimiento de los actos procesales cumplidos en el expediente, lo que torna innecesaria la notificación por cédula, satisfaciendo de tal manera los principios de economía y celeridad procesal[^73]. Aunque hoy día, parece más económico y rápido notificar todas las resoluciones electrónicamente, v. gr. una providencia fechada el martes podría quedar notificada el mismo día, sin tener que esperar hasta el viernes siguiente. Hay voces y proyectos en este sentido.
+
+[^73]: CNCCF, Sala l, 16/3/99, LL, 1999-D-616.
 
 ### 32.3. CONSTATAR LA RECEPCIÓN DE CÉDULAS O NOTIFICACIONES ELECTRÓNICAS
 
@@ -427,6 +553,8 @@ Del mismo modo en que los abogados concurríamos todos los días a nuestras ofic
 En el orden provincial pasa algo semejante: el sistema emite un aviso de recepción de cédula, y la parte tiene la carga de acceder al servidor del Poder Judicial para enterarse de la resolución notificada. Se tomará como fecha de notificación del destinatario el día de nota inmediato posterior al de la recepción del correo en su casilla.
 
 Respecto del cumplimiento de este tipo de notificaciones dirigidas a las otras partes del proceso, las libradas en formato papel se constatan examinando el expediente papel (diligenciada la cédula, el oficial notificador deja en ella constancia de lo actuado, la devuelve así al tribunal, y se agrega a los autos). Lo sucedido con la cédula electrónica queda reflejado en el sistema de gestión judicial, y además el tribunal deja constancia escrita en el expediente papel (nota en la que se indica el número de la cédula librada, destinatario, fecha y hora).
+
+[^74]: Recuérdese lo dicho sobre la posibilidad de marcar "expedientes favoritos" (el sistema nos avisa novedades en los mismos, entre ellas, notificaciones recibidas), y la función del mail de cortesía (su falta de envío no enerva los efectos de la notificación).
 
 ### 32.4. IMPULSAR LA NOTIFICACIÓN
 
@@ -440,6 +568,14 @@ La otra gran razón para actuar en pos de la notificación es el simple deseo de
 
 Una manera habitual de impulsar una notificación es adelantarla, no esperar a que se cumpla —a nuestro respecto— por el modo establecido sino que lo hacemos anticipadamente por otro, por ejemplo se dictó una resolución y en lugar de aguardar que nos llegue la cédula correspondiente nos apersonamos en el tribunal y nos notificamos de forma personal; otro: la contraparte efectúa un planteo del cual, por resolución fechada un martes, se nos corre traslado que se notifica por ministerio de la ley el próximo viernes, y nosotros, para acelerar la cuestión, no esperamos a que llegue el día de nota sino que contestamos el traslado antes, el miércoles (notificación tácita, véase infra, 34.4.).
 
+[^75]: Si la resolución reviste el carácter de una sentencia interlocutoria y no definitiva, no se imponía el deber de la notificación de oficio como pretende la recurrente, sino que, por el contrario, era la actora quien debía confeccionar la cédula porque hacía a su propio interés que quedara firme el auto que declaró la acumulación de procesos que fuera solicitada a su pedido (art. 137, parte 1ª, CPCCBA). Si un auto debía ser notificado personalmente o por cédula y no se trataba del supuesto contemplado en el art. 483 de la legislación adjetiva, dicha carga no incumbía al órgano, siendo en cambio un deber de la actora, en su carácter de titular de la acción, procurar el anoticiamiento de la providencia dictada y si no se instó la notificación en tiempo propio, sobreviene la caducidad de instancia (CACC2ª La Plata, Sala I, 30/3/00, Juba, B253670).
+
+[^76]: La notificación de la demanda a un codemandado impulsa el procedimiento respecto de los litisconsortes (CSJN, 13/6/95, JA, 1996-I-86; LL, 1996-A-362). Opera la caducidad de la instancia del recurso de apelación interpuesto por el perito, si este no impulsó las actuaciones notificando la regulación recurrida para posibilitar la elevación del expediente (CNCiv., Sala E, 15/3/00, JA, 2001-1-80). Corresponde declarar de oficio la caducidad de la instancia si han vencido los plazos establecidos por el art. 310, inc. 2º del CPCC sin que el interesado notificara el traslado del recurso extraordinario interpuesto, lo cual está su cargo a partir de la Res. 1/00 de superintendencia de la Cámara Nacional de Apelaciones en lo Contencioso Administrativo Federal (CNCAF, Sala I, 16/8/01, LL, 2002-A-1007).
+
+[^77]: No corresponde declarar la caducidad de instancia —en el caso, en un proceso por desalojo— si del expediente surge que antes del transcurso del plazo el actor presentó un mandamiento, pues tal actividad de la parte en confeccionar el instrumento respectivo dejándolo en secretaría para su posterior diligenciamiento por la oficina respectiva, en sí misma constituye un acto impulsor del trámite, aunque no logre su finalidad específica o sea observado por el tribunal (CNCiv., Sala K, 9/9/02, LL, 2003-A-701). El libramiento de una cédula citando al demandado a reconocer firma trasunta la inequívoca intención del actor de mantener viva la instancia, resultando, por lo demás, de trámite indispensable para su prosecución (CNCom., Sala A, 29/4/99, LL, 1999-E-131). El plazo de caducidad de la instancia debe computarse desde que se ordenó la notificación en extraña jurisdicción y no desde la fecha de libramiento de la cédula, si no existe constancia alguna de dicho libramiento, habiéndose incorporado la diligencia con posterioridad al dictado de la resolución que decretó la perención. La contratación de una empresa para la gestión de una notificación en extraña jurisdicción no configura acto interruptivo de la prescripción (CNCiv., Sala K, 11/6/02, LL, 2002-D-360).
+
+[^78]: El plazo de perención de la instancia en el trámite de la queja corre desde la fecha del acto interruptivo, no desde su notificación por ministerio de ley (CSJN, 3/3/05, JA, ejemplar del 29/6/05).
+
 ## 33. IMPUGNAR LA NOTIFICACIÓN IRREGULAR
 
 Vimos ya la trascendencia de las notificaciones procesales: asegurar el derecho de defensa de los litigantes permitiéndoles conocer y, eventualmente, atacar resoluciones judiciales (y a través de ellas, los actos de otros sujetos del proceso), y ser el hito del cómputo de los plazos procesales.
@@ -451,6 +587,10 @@ Por regla, si la parte no impugna, el vicio se consiente y el acto anormal será
 Si bien se puede refutar cualquier tipo de notificación, los casos usuales —reflejados en la jurisprudencia— corresponden a la que se hace por cédula papel, quizá por ser este el medio más propenso a generar defectos de esta índole, habida cuenta que su tramitación es compleja (dilatada en el tiempo, intervienen varios sujetos, se lleva a cabo fuera del tribunal, su formalidad está rigurosamente legislada en los códigos y en normas reglamentarias, etcétera)[^79], aunque como veremos, sus irregularidades y soluciones son extensibles —en lo pertinente— a la cédula electrónica[^80], Habida cuenta este fenómeno mayoritario, a él nos referiremos.
 
 Se pueden usar tres institutos distintos para atacar el acto notificatorio írrito, según la irregularidad que este presente. Dichas vías de impugnación son: el incidente de nulidad; en algunos supuestos corresponde deducir redargución de falsedad; y en otros, basta con el mero pedido de interrupción o suspensión del plazo para llevar a cabo el acto consecuente a la resolución notificada.
+
+[^79]: La complejidad de la notificación por cédula se extiende a los medios sucedáneos: acta notarial, carta documento con aviso de entrega, y telegrama con copia certificada y aviso de entrega; pero estos no son de uso frecuente.
+
+[^80]: "Es indiscutible que, en relación a las cédulas electrónicas de notificación, resultan plenamente aplicables los principios generales propios del régimen de nulidades de notificación" Bielli-Nizzo, Notificaciones electrónicas y nulidades en el proceso judicial bonaerense, disponible en [www.iad-pi.com.ar/index.php/2018/05/07/notificaciones-electronicas-y-nulidades-en-el-proceso-judicial-bonaerense](www.iad-pi.com.ar/index.php/2018/05/07/notificaciones-electronicas-y-nulidades-en-el-proceso-judicial-bonaerense). "…[L\]as cuestiones vinculadas con el proceso electrónico han de interpretarse en el contexto general del derecho procesal y especialmente haciendo aplicación de los principios esenciales de nuestro derecho de forma entre los cuales se encuentra el carácter relativo de las nulidades procesales…" (CACC Morón, 26/3/19, «Alvez, Nicolás Fabricio y otro/a c. Peidón, Rodrigo Fernando", elDial-AAB496).
 
 ### 33.1. INCIDENTE DE NULIDAD
 
@@ -464,6 +604,34 @@ De este régimen legal, doctrina y jurisprudencia concluyen que, por regla, el a
 
 La casuística jurisprudencial es copiosa, y no siempre concordante, razones por las que sugerimos al lector su conocimiento acabado. Aquí reproduciremos algunas decisiones judiciales a modo de ejemplo. Así, se sostiene que las irregularidades en las notificaciones están sometidas a los principios que rigen las nulidades en el proceso[^82]; es nula la notificación realizada en la persona de un demente no declarado tal en juicio, pero cuya falta de discernimiento era notoria[^83]; causa nulidad de la notificación del traslado de la demanda la omisión de dejar el aviso de ley previsto en el art. 339 del CPCCN[^84]; lo mismo si la cédula de notificación del traslado de la demanda no fue diligenciada en el domicilio real del demandado, si se acreditó que este denunció su cambio de domicilio en el Registro de las Personas[^85], si la sentencia definitiva no se notificó en el nuevo domicilio constituido, procede la nulidad de su notificación[^86], o si se notificó en un domicilio electrónico equivocado[^87]; es nula la notificación si la cédula consignaba un número incorrecto de piso y se diligenció en la persona del encargado del edificio[^88]; idéntica solución corresponde si el oficial notificador no cumplió con los requisitos exigidos por el art. 684 del ritual para los casos en que el traslado de la demanda debe cumplirse en el inmueble que se intenta desalojar[^89]; no es válida la notificación si en la copia de la cédula que se fijó en la puerta de entrada del domicilio del demandado no se asentó el día y hora de la diligencia ni la firma del oficial notificador[^90]; no se cumple en debida forma la notificación si no solo se acompañó copia de un despacho que no corresponde al traslado que se quiere notificar sino que se omitió agregar copia de la pericia que intentaba anoticiarse, consecuentemente, la notificación electrónica no ha cumplido su finalidad por haberse efectuado en forma deficiente[^91]. Pero no corresponde la declaración de nulidad de la notificación electrónica por falta de recepción del "aviso de cortesía"[^92], tampoco, si la notificación se impugna porque fue cursada al domicilio electrónico del ex letrado, por cuanto el domicilio constituido por la parte subsiste con independencia del patrocinio que dejó de intervenir[^93]; es improcedente la nulidad fundada en que correspondía la notificación por cédula papel pues el uso del sistema de notificaciones electrónicas es obligatorio[^94].
 
+[^81]: Para obtener la nulidad de una notificación deben concurrir los presupuestos propios de toda nulidad, a saber, de trascendencia de la nulidad, falta de convalidación, interés en su declaración. El tema "nulidad de los actos procesales", de por sí profuso, excede el marco de esta obra, razón por la cual remitimos al lector a la literatura especializada.
+
+[^82]: CNCiv., Sala E, 29/2/96, LL, 1996-C-608; DJ, 1996-2-437.
+
+[^83]: CACC San Isidro, Sala I, 29/4/97, LLBA, 1997-903.
+
+[^84]: CNCiv., Sala C, 15/4/93, LL, 1994-E-690.
+
+[^85]: CNCiv., Sala A, 23/5/96, LL, 1996-E-11; DJ, 1996-2-1132.
+
+[^86]: CNCAF, Sala l, 6/4/00, LL, 2000-D-355; DJ, 2000-3-604.
+
+[^87]: CFSS, Sala 1par, 12/6/17, "Quintana, Teresa de Jesús c. ANSES s/Pensiones", disponible en [www.public.diariojudicial.com/documentos/000/074/740/000074740.pdf](http://www.public.diariojudicial.com/documentos/000/074/740/000074740.pdf);CNAT, Sala III, 14/8/17, "Ruiz, Walter Daniel c. Mapfre Argentina A.R.T. S.A. (Hoy Galeno Art S.A.) y otro s/Accidente – Ley especial", elDial-AAA14F; CNCAF, Sala III, 6/10/15, "Telefónica Móviles Argentina S.A. c. DNCI s/Lealtad comercial — Ley 22.802-Art. 22", elDial-AA9290.
+
+[^88]: CNCiv., Sala C, 5/11/91, LL, 1992-D-630.
+
+[^89]: CNCAF, Sala II, 13/3/98, elDial-AFF23.
+
+[^90]: CACC2ª La Plata, Sala I, 11/11/03, elDial-W17255.
+
+[^91]: CNCiv., Sala M, 29/11/17, "Ríos Díaz, Manuel c. Ríos Díaz, María Silvina s/Nulidad de acto jurídico", disponible en [www.abogados.com.ar/archivos/2017-11-30-075648-r-d-m-c-r-d-m-s-s-nuli-dad-de-acto-juridico.pdf](www.abogados.com.ar/archivos/2017-11-30-075648-r-d-m-c-r-d-m-s-s-nuli-dad-de-acto-juridico.pdf).
+
+[^92]: CNCAF, Sala V, 30/12/14, "Bula, Mariano c. Estado Nacional", Microjuris, MJ-JU-M-90692-AR/MJJ90692 / MJJ90692; ídem, Sala IV, 30/6/15, "Desler S,A. c. Dirección General Impositiva s/Recurso directo de organismo externo", elDial-AA90BF.
+
+[^93]: CNCiv., Sala M, 31/10/17, "Carali, Sonia Roxana c. Herrera, Pablo Ramón y otro s/Prescripción adquisitiva", elDial-AAA87C.
+
+[^94]: CACC Mar del Plata, Sala III, 22/6/17, "Municipalidad de General Pueyrredón c. Fasciglioni, Julio César s/Reivindicación", elDial-AAA02C.
+
 ### 33.2. REDARGUCIÓN DE FALSEDAD
 
 Opinamos que este medio de impugnación solo es aplicable a la notificación por cédula papel (o a sus sucedáneas, v. gr. el acta notarial), no a la electrónica. Al finalizar el apartado damos nuestras razones.
@@ -476,6 +644,16 @@ Para nosotros, la redargución de falsedad no es aplicable a la notificación po
 
 Pensamos que si quiere atribuirse tal carácter a los datos que emanan del sistema sería menester una disposición legal que así lo estableciera.
 
+[^95]: CNCom., Sala C, 31/3/98, LL, 1998-E-1; CNCiv., Sala K, 29/8/03, LL, 2004-B-794. La eficacia de instrumento público se extiende a la copia dejada al interesado, desde que en esta también hay actuaciones cumplidas por el oficial (CNCiv., Sala F, 21/7/76, ED, 69-433).
+
+[^96]: Siguiendo a Falcón, puede decirse que la falsedad de los instrumentos públicos es de tres clases. Falsedad material: adulteración de la firma, alteraciones, supresiones, modificaciones o agregados; falsedad intelectual: la que ocurre sobre los hechos que el oficial público dice por él realizados o cumplidos en su presencia, como asimismo la fecha que impone al acto, la constatación de la identidad de las partes, etcétera; falsedad ideológica, la concerniente a la autenticidad de los actos, convenciones, pagos, reconocimientos, es decir, todos los elementos que el oficial público no puede avalar. En los dos primeros casos corresponde atacar el instrumento por incidente de redargución de falsedad, y en el tercero basta con la prueba en contrario (Código Procesal Civil y Comercial de la Nación. Anotado, concordado, comentado, 1997, t. III, p. 395).
+
+[^97]: Si la incidentista sostuvo que en el domicilio de su parte, nunca fue dejada una cédula del tenor de la que impugna, ello debió canalizarse a través de la pertinente redargución de falsedad, dada la calidad de instrumento público que reviste la constancia de diligenciamiento asentada en el reverso de la cédula (CACC 2ª La Plata, Sala I, 24/8/00, Juba, B253890). Análogamente, CNCiv., Sala E, 21/4/97, LL, 1997-D-781; ídem, Sala A, 23/5/96, LL, 1996-E-11, JA, 1998-lI, síntesis; CNCCF, Sala III, 19/7/95, elDial-AF1FC; CACC Mar del Plata, Sala I, 9/4/96, Lexis, n° 14/21132; CACC2ª La Plata, Sala I, 25/2/92, Lexis, n° 14/38196. Lo atinente a la vía procesal adecuada para alcanzar la nulidad de una notificación, en cuanto se imputa falsedad intelectual al informe efectuado por el funcionario interviniente en su diligenciamiento, dista de ser una cuestión zanjada, tanto en la doctrina como en la jurisprudencia. Una corriente de opinión estima que se debe utilizar la vía autónoma de la redargución de falsedad, Pero parece que la vía incidental es la que admite más adeptos (Falcón, Redargución de falsedad de instrumento público en el nuevo Código Civil y Comercial, en "Revista de Derecho Procesal", n° 2016/2, "La prueba en el Código Civil y Comercial de la Nación", p. 171 y ss.).
+
+[^98]: Rivas, De las notificaciones y la redargución de falsedad, LL, 1993-A-518; Maurino, Nulidades procesales, 1991, ps. 125 y 126; CACC 1ª Mar del Plata, Sala Il, 27/6/95, elDial-WAC58.
+
+[^99]: En cambio, sí podría utilizarse en los supuestos de notificación personal (art. 142, CPCCN) y por examen del expediente (art. 143, párr. 2º, CPCCN).
+
 ### 33.3. MERO PEDIDO DE INTERRUPCIÓN O SUSPENSIÓN DE PLAZO
 
 Un caso frecuente de irregularidad en la notificación consiste en no acompañarse a las cédulas papel y electrónicas las copias previstas por el art. 120 del CPCCN. Hay que contestar un traslado (v. gr., de una presentación de la contraparte, de una pericia, de un documento agregado al expediente), y no se adjunta a la cédula que notifica dicho traslado el escrito o documento pertinente. En esta situación es prácticamente unánime la línea que sostiene que no corresponde decretar la nulidad del acto notificador, sino que procede únicamente interrumpir o suspender, a pedido de parte, el plazo para cumplir la carga de evacuar el traslado (con salvedades para la notificación electrónica, véase infra último párrafo de este apartado), hasta tanto se subsane la omisión, solución que encuentra su fundamento en los arts. 157 del CPCCN y del CPCCBA, en cuanto autorizan a los jueces a "declarar la interrupción o suspensión de los plazos cuando circunstancias de fuerza mayor o causas graves hicieren imposible la realización del acto pendiente".
@@ -485,6 +663,10 @@ Si bien para nosotros correspondería la interrupción del plazo, en general los
 Deben distinguirse dos situaciones parecidas, pero no iguales, en el caso de la cédula papel. Una es cuando en la cédula no se indica que se acompañan copias de escritos o documentos; ésta es la hipótesis en que solicitaremos suspensión del plazo para contestar. La otra es aquella en la que, si bien faltan las copias, en la cédula figura lo contrario, esto es, se menciona que sí acompañan copias, y en el acta de la diligencia el oficial notificador deja constancia de que "la cédula se entregó con copias". Ante esta circunstancia, y considerando que lo manifestado por el funcionario es instrumento público, un pedido de interrupción o suspensión del plazo no será acogido por el tribunal; no le quedará otra al abogado que deducir una redargución de falsedad o, más práctico y menos peligroso, ver directamente en el expediente las piezas que no llegaron a sus manos.
 
 Esta solución "suspensión o interrupción del plazo" por no acompañarse copias no se está aplicando cuando se trata de notificación electrónica, siempre que se identifique de alguna manera en el cuerpo de la cédula a qué piezas del expediente se refieren las copias omitidas y se hallan subido éstas al sistema de gestión judicial, pues "…bien podría sostenerse que la falta de adjudicación de copias a la cédula electrónica no conforma una directa afectación al derecho de defensa cuando los documentos digitales se encuentran digitalizados y subidos a la web, por ser de libre acceso a las partes presentadas en el expediente y dado que la omisión podía ser subsanada recurriendo a la copia digital obrante en el expediente digital"[^101].
+
+[^100]: CNCiv., Sala H, 17/4/97, LL, 1997-E-605; CNCAF, Sala IV, 16/3/93, elDial-AH42C; CACC San Martín, Sala II, 8/3/01, Lexis, n° 14/95138.
+
+[^101]: CNCiv., Sala J, 8/5/17, "Valverde, Javier c. Trenes de Buenos Aires S.A. y otros s/Beneficio de litigar sin gastos", elDial-AAAOZA; aunque en este caso se ordenó nueva notificación con suspensión de plazos porque fue relevante que no se precisaron las fojas de la presentación de la cual se estaba disponiendo la sustanciación. "…[E]s práctica judicial aquella por la cual la cédula electrónica no viene acompañada del escrito cuyo traslado se ha ordenado toda vez que este se encuentra disponible en el expediente electrónico, obligando al destinatario a acceder a las actuaciones digitales para visualizar el escrito en traslado. Entendemos que esta práctica, algo irregular, no afecta la eficacia de la notificación siempre y cuando el escrito en traslado se encuentre cargado al Sistema Lex 100 y sea identificable. Ello así porque la cédula electrónica —a pesar de no estar acompañada de las copias digitales— cumple su finalidad ya que remita —expresa o tácitamente— al expediente electrónico en donde se encuentra el escrito en traslado y al letrado solo le basta hacer un par de clics para accede a él" (Manterola, La notificación procesal en el expediente digital, Microjuris, MJ-DOC-12304-AR /MJD 12304). "…[S]i en la cédula de notificación electrónica no se acompañó la copia digital, pero se encuentra cargada en el sistema, daría lugar a una tercera solución, y contraria a las dos anteriores, esto es, al rechazo del pedido de nulidad o suspensión" (Marturano, Las notificaciones electrónicas y algunos de sus corolarios procesales, elDial-DC2521). Art. 130 del PRCPCCBA: "Confección de la cédula. La cédula será suscripta en forma electrónica utilizando el sistema informático que instrumente la Suprema Corte de Justicia. En este supuesto no se adjuntarán copias para traslado, siendo suficiente su individualización en el cuerpo del instrumento a fin de posibilitar que los destinatarios compulsen las constancias digitales en dicho Sistema".
 
 ## 34. CÓMO DETERMINAR SI LA RESOLUCIÓN SE NOTIFICA AUTOMÁTICAMENTE O POR CÉDULA
 
@@ -504,6 +686,8 @@ Dijimos que según el art. 135, inc. 18 del CPCCN el magistrado puede, con cará
 
 Sin embargo, con frecuencia sucede que una resolución no tiene fundamentos que legitiman el cambio de sistema notificador, sino que solo lleva al final de su texto un escueto "Notifíquese por cédula" o menos aún, simplemente "Notifíquese", por ejemplo, "De lo solicitado, traslado a la contraparte. Notifíquese". Cabe analizar, entonces, qué alcance tiene la expresión "notifíquese" puesta en una resolución.
 
+[^102]: "Si el auto es de los que se notifican ministerio legis, aunque el juez hava puesto 'notifiquese' queda notificado por nota, ya que la enumeración del art. 135 del CPCCBA es taxativa, no estando habilitado el magistrado a ordenar otras ni para disponer la supresión de las expresamente contempladas" (CACC 1ª Mar del Plata, Sala I, 6/6/02, Juba, B1400755). "La expresión 'notifíquese con entrega de copias respectivas' no enerva la notificación ministerio legis de la respectiva providencia a la parte, cuyo domicilio se tuviera oportunamente por constituido en los estrados del juz-gado, ya que ante esa circunstancia el dispositivo de transmisión que operó de pleno derecho, no es susceptible de ser suprimido o dejado de lado, ya que de lo contrario se estaría afectando el régimen general de notificaciones consagrado por la ley adjetiva" (CACC San Martín, Sala II, 8/9/98, Juba, B2001191). En igual sentido, SCBA, 12/9/01, Juba, B25830. En contra, por la preeminencia del medio cédula en caso de que la resolución diga "Notifíquese", CACC Azul, Sala I, 28/12/00, Juba, B1050499; CACC San Nicolás, Sala I, 3/10/96, Juba, B854646.
+
 #### 34.1.1. DISTINTAS INTERPRETACIONES SOBRE EL ALCANCE DE LA EXPRESIÓN «NOTIFÍQUESE»
 
 Una primera postura —que creemos mayoritaria en el orden nacional— sostiene que cuando en una providencia el último vocablo es "notifíquese", significa que la notificación ha de ser personal o por cédula[^103].
@@ -513,6 +697,12 @@ Desde la teoría, esta lacónica orden de notificar por cédula puede deberse a 
 ¿Cómo procede el abogado ante una situación como la descripta, si considera equivocada la orden de notificar por cédula? Tratándose de una providencia simple, cabe el recurso de reposición, tanto para plantear la nulidad por falta de fundamentos como para impugnar la existencia de un posible "vacío legal" que autorice al juez a disponer él el modo de notificación. La apelación subsidiaria sería dudosa, pues no se ve claramente el gravamen irreparable que justificaría la deducción de este recurso[^104]. La falta de impugnación conllevaría preclusión, y quedaría firme y eficaz la orden —aún viciada o equivocada— de notificar por cédula.
 
 Otra corriente promulga que incluir la expresión "notifíquese" en una resolución que debe notificarse por ministerio de la ley, no implica que la notificación deba cumplirse en forma personal o por cédula, sino que "no cabe otorgarle otro alcance que el que resulta de disponer su anoticiamiento. La forma o mecanismo por el cual este último debía tener lugar no queda exteriorizado en modo alguno, no surgiendo de dicho pasaje que se haya ordenado cédula. Por lo tanto, 'notifíquese significa hacer saber lo decidido por el camino que la propia ley contempla, esto es, por ministerio de la ley"[^105].
+
+[^103]: CNCiv., Sala C, 17/8/95, LL, 1996-A-252; ídem, Sala A, 27/8/96, LL, 1996-E-653.
+
+[^104]: "La providencia simple que ordena una notificación no causa gravamen irreparable, toda vez que nada decide sobre el fondo de la cuestión" (CACC 1ª Mar del Plata, Sala I1, 4/5/00, Juba, B1401125).
+
+[^105]: SCBA, 12/9/01, Juba, B25830, voto del doctor De Lázzari.
 
 #### 34.1.2. EL «NOTIFÍQUESE» DEBE ENTENDERSE COMO NOTIFICACIÓN PERSONAL O POR CÉDULA
 
@@ -530,9 +720,23 @@ Este vocablo querrá decir algo más, no puede tener tan solo el alcance de disp
 
 En conclusión, la frase "Notifíquese por cédula" o solo la palabra "Notifíquese" significa que la notificación es por cédula, pero la ausencia de ellos no es determinante para concluir que no rige el medio "cédula": si el proveído es de los enumerados en el art. 135 u otra disposición, la cédula será la forma necesaria, aunque falte la expresa orden judicial en tal sentido[^109].
 
+[^106]: SCBA, 12/9/01, Juba, B25830, voto del doctor Pettigiani; CACC 2ª La Plata, Sala I, 18/8/15, Juba, B126895.
+
+[^107]: Condomi, Apostillas procesales: "notifíquese", DJ, 1999-3-160 y 161.
+
+[^108]: En igual sentido véase, Condomi, Apostillas procesales: "notifíquese", DJ, 1999-3-160 y 161.
+
+[^109]: La notificación por cédula de la sentencia interlocutoria viene ordenada por el art. 135, inc. 12 del CPCCBA, independientemente de que en ella no se hubiere dispuesto, en consecuencia no puede considerársela notificada ministerio legis (CACC San Isidro, Sala II, 30/11/93, LLBA, 1994-619).
+
 ### 34.2. SENTENCIAS POR CÉDULA. PROVIDENCIAS SIMPLES, RÉGIMEN VARIADO, CON PREPONDERANCIA DE LA NOTIFICACIÓN POR MINISTERIO DE LA LEY
 
 Conforme los arts. 135, inc. 13 del CPCCN, y 135, inc. 12 del CPCCBA, las sentencias interlocutorias se notifican por cédula[^110], salvo la que resuelve la caducidad de la prueba por negligencia. Dichos dispositivos también prevén este medio para las sentencias definitivas[^111]. Las providencias simples están sometidas a un régimen variado, aunque la directriz genérica es que se notifican por ministerio de la ley[^112].
+
+[^110]: CNCom., Sala D, 16/6/01, JA, 2001-IV-14; CNCiv., Sala F, 29/12/94, JA, 1998-II, síntesis; CACC 2ª La Plata, Sala III, 26/9/89, Juba, B350270; CACC Quilmes, Sala l, 21/10/97, Juba, B2900417. Aunque con un criterio estricto de interpretación del dispositivo legal, se ha dicho que si la resolución dictada por el tribunal de alzada es un auto "interlocutorio", y —por lo tanto— carente de fuerza "definitiva", quedará notificado de acuerdo al principio general del art. 133 del CPCCN, es decir, por ministerio de la ley —art. 135, inc. 12, CPCCBA, a contrario— (CACC 1ª Mar del Plata, Sala II, 17/5/01, Juba, B1402615).
+
+[^111]: Afecta la garantía de defensa en juicio considerar notificada ministerio legis una sentencia definitiva (CSJN, 4/8/81, LL, 1981-D-700). La notificación de una sentencia definitiva debe efectuarse personalmente o por cédula y la misma se cumple adecuadamente con la transcripción de su parte pertinente (CACC 1ª Mar del Plata, Sala II, 14/12/95, Juba, B1401523). El auto que regula honorarios es asimilable a la sentencia definitiva respecto del monto de la retribución fijada y, por lo tanto, corresponde su notificación por cédula o personalmente a los interesados (CACC2ª La Plata, Sala I, 7/7/88, Juba, B250839). La sentencia definitiva pronunciada en juicio ejecutivo debe ser notificada por cédula, conforme a la regla general contenida en el art. 135, inc. 12 del CPCCBA (CACC Trenque Lauquen, 3/3/92, Juba, B2202618).
+
+[^112]: CACC Quilmes, Sala II, 2/3/99, Juba, B2950728. El art. 257, párr. 3º del CPCCN, en cuanto rige la notificación por ministerio de la ley ante la omisión de constituir domicilio en la Capital Federal, resulta una excepción a la regla del art. 135, inc. 13, por cuanto no tendría razón de ser para las providencias simples, regidas por el art. 133 (CSJN, 5/10/95, LL, 1996-C-126).
 
 ### 34.3. NOTIFICACIÓN AUTOMÁTICA DEL PROVEÍDO A LA PARTE QUE EFECTUÓ UNA PETICIÓN
 
@@ -550,6 +754,14 @@ En contra de tales tesituras, se alza otra doctrina —minoritaria—, que defie
 
 Concluimos de lo expuesto que el abogado, ante la incertidumbre de no saber la posición del tribunal sobre el tema, deberá ser cuidadoso y, para evitar sorpresas (al menos hasta que adquiera experiencia sobre cómo funciona esta práctica), considerar que de la resolución que se dicte como consecuencia de un escrito suyo quedará notificado automáticamente, sobre todo si el decreto en cierne es una providencia simple.
 
+[^113]: CNCiv., Sala C, 16/2/82, LL, 1982-B-477; ídem, Sala F, 17/5/84, ED, 115-486; ídem, Sala A, 17/2/97, LL, 1997-D-355; CNCom., Sala A, 22/4/80, ED, 88-452.
+
+[^114]: CNCiv., Sala C, 28/7/87, RepJA, 1988-700, n° 17; CACC Quilmes, Sala Il, 23/5/00, Juba, B2950812; CACC 2ª La Plata, Sala I, 25/4/96, Juba, B252239. La notificación por nota se opera aunque en la providencia se ordene "notifíquese", cuando el proveído guarda razonable relación con la petición que se formula, estos es, acogiéndola, desestimándola o disponiendo el cumplimiento de algún requisito previo (CNCiv., Sala F; 17/6/98, LL, 1998-F-159).
+
+[^115]: CNCiv., Sala E, 5/10/95, LL, 1996-C-780; ídem, 19/2/96, LL, 1996-D-277.
+
+[^116]: Eisner, Las notificaciones judiciales en el debido proceso, LL, 1981-D-948; ídem, Una reacción saludable en tema de notificaciones judiciales y seguridad jurídica, LL, 1989-C-144. El art. 133 del CPCCN es imperativo en cuanto a que las resoluciones allí indicadas deben notificarse por cédula, sin distinción en cuanto a la parte que peticionó el pronunciamiento. Por lo tanto, la carga establecida en el art. 133 no rige en dichos supuestos (CNCiv., Sala D, 8/9/95, LL, 1996-A-491).
+
 ### 34.4. DISTINTO RÉGIMEN DE NOTIFICACIÓN PARA DIFERENTES FRAGMENTOS DE UNA RESOLUCIÓN
 
 Otra modalidad que debe advertir el letrado, en tren de determinar la forma de notificación, es que existen resoluciones "compuestas", es decir, con diferentes partes, y que éstas pueden tener distinto medio de comunicación.
@@ -558,6 +770,14 @@ Esto ocurre cuando el proveído versa sobre varias cuestiones independientes ent
 
 Se ha dicho que las notificaciones de las resoluciones judiciales deben efectuarse de conformidad con las normativas establecidas en los arts. 133 y 135 del CPCCN; por lo tanto, el hecho que una parte de la providencia deba notificarse por cédula no implica que el resto deba efectuarse de la misma forma[^118]; que si de acuerdo con las normas procesales el auto contiene una parte que debe notificarse por nota, y otra personalmente o por cédula, esta circunstancia debe ser expresamente aclarada por el juez, pues de otra forma se puede afectar el derecho de defensa en juicio[^119]; y que si por error en la redacción del auto, a raíz de la puntuación utilizada, cabe considerar que ambas partes debían notificarse personalmente o por cédula, no se produce la notificación por nota mientras la cédula no se diligencie o se revoque el auto equivocado[^120].
 
+[^117]: No media obstáculo para aplicar conjuntamente los regímenes de notificación automática y por cédula respecto de la misma providencia, si esta consta de dos partes escindibles. En consecuencia, la resolución que por un lado ha incluido la fórmula "notifíquese" respecto del traslado de la documentación acompañada, a la actora (art. 135, inc. 1°, CPCCBA) y por otro, sin aditamento alguno, aplicando el art. 133 del CPCCBA, se le corre traslado de la excepción interpuesta, cumple adecuadamente con el criterio precedente y con las normas adjetivas de aplicación (CACC San Nicolás, Sala l, 3/10/96, Juba, B854646).
+
+[^118]: CACC1ª Mar del Plata, Sala Il, 12/2/88, Juba, B 1400758.
+
+[^119]: CACC Azul, Sala l, 28/12/00, Juba, B1050499; CNCiv., Sala C, 24/6/80, ED, 89-661.
+
+[^120]: CNCiv., Sala C, 24/6/80, ED, 89-661.
+
 ### 34.5. CONVERGENCIA DE DISTINTOS MEDIOS DE NOTIFICACIÓN
 
 Si la notificación automática o la notificación por cédula convergen con el modo tácito, prevalece el primero que haya ocurrido.
@@ -565,6 +785,8 @@ Si la notificación automática o la notificación por cédula convergen con el 
 Por ejemplo, si una providencia quedará notificada por ministerio de la ley el viernes, y el jueves anterior retiramos el expediente en préstamo, la notificación que vale es esta última. Por el contrario, el retiro del expediente hecho el lunes posterior al día de nota no enervará los efectos de la notificación ministerio legis ya consumada.
 
 Si rige la forma automática, el posterior diligenciamiento de una cédula resulta irrelevante y carente de virtualidad[^121].
+
+[^121]: CACC2ª La Plata, Sala l, 27/10/99, Juba, B253555; JP Villa Gesell, 20/9/95, Juba, B9990130.
 
 ## 35. MANERA DE COMPROBAR SI SE CUMPLIÓ LA NOTIFICACIÓN Y CUÁNDO OCURRIÓ
 
@@ -575,6 +797,8 @@ Debido a que la notificación automática se cumple espontáneamente por la lleg
 Sin embargo, recordemos que la nota dejada en el expediente electrónico (Justicia nacional), o en el libro de asistencia papel (Justicia de la provincia de Buenos Aires) de que el expediente no está en letra (o, para una postura, si tal circunstancia resulta de cualquier otro medio objetivo distinto del libro de asistencia), posterga la notificación para el subsiguiente martes o viernes.
 
 Entonces, para determinar si las partes del proceso quedaron notificadas ministerio legis resulta al menos indispensable consultar, según el caso, el expediente electrónico o el libro de asistencia (para saber si esas partes dejaron nota[^122]).
+
+[^122]: Recordamos que, para algunos, solo quien dejó la nota no queda notificado, en cambio para otros, la nota de cualquiera de las partes beneficia a las demás.
 
 ### 35.2. NOTIFICACIÓN POR CÉDULA PAPEL
 
@@ -601,17 +825,26 @@ Ante esta última posibilidad puede presentarse el problema de no saberse la fec
 Para evitar esta anomalía, el letrado debe exigir que quede alguna constancia de la presentación de la cédula, que bien puede ser:
 
 1. Que se anote el hecho en el expediente, mediante nota efectuada por el mismo empleado que recibe la cédula, v. gr., "en la fecha la actora deja cédula notificando resolución de fs. 50".
-
 2. Que el letrado se haga sellar, datar y firmar una copia de la cédula, que conservará para sí; de surgir alguna divergencia, presentará dicha copia como prueba. Si por alguna razón el profesional encuentra resistencia en el tribunal a dichos procedimientos[^128], y no quiere elevar una protesta formal, tiene a su alcance otro mecanismo para lograr su objetivo, indirecto pero eficaz: acompañar la cédula con un escrito, cuyo contenido será, por ejemplo, "Acompaño cédula para notificar el traslado de la demanda" escrito del cual sí o sí el juzgado tiene deber, si el letrado lo pide, de entregar una copia con las circunstancias de su entrega en el tribunal.
+
+[^123]: Art. 138, CPCCN: "Las cédulas se enviarán directamente a la oficina de notificaciones, dentro de las veinticuatro horas, debiendo ser diligenciadas y devueltas en la forma y en los plazos que disponga la reglamentación de superintendencia. La demora en la agregación de las cédulas se considerará falta grave del prosecretario administrativo."; y la reglamentación dispone: "La agregación de las cédulas diligenciadas deberá realizarse dentro de las cuarenta y ocho horas, siempre que el expediente se encontrare en el juzgado" (art. 234, RJNC). A su vez, en el régimen nacional, el art. 131 del Reglamento de la Oficina de Notificaciones (Acordada CSJN 19/80) establece: "Los términos para el diligenciamiento de las cédulas, se contarán por días hábiles, y comenzarán a correr al día siguiente del indicado en el sello fechador de entrada estampado en aquellas"; y el art. 132: "El término de diligenciamiento de las cédulas es de cuarenta y ocho horas, prorrogándose este plazo por veinticuatro horas cuando por razones justificadas, el mejor diligenciamiento de una cédula así lo requiera, de lo cual deberá dejarse constancia en el acta que se labre. Se observará una tolerancia de veinticuatro horas de atraso para los casos excepcionales en que un notificador preste servicio en dos zonas". A veces, por distintos motivos, una cédula que ya regresó al tribunal no se agrega al expediente, sino que queda en una "carpeta de cédulas para agregar", tal como se la denomina usualmente. Entonces, si transcurrido el plazo estimado de ida y vuelta, la cédula no luce anexada en los au-tos, conviene revisar y buscar la pieza en dicha carpeta.
+
+[^124]: Art. 339, CPCCN: "La citación se hará por medio de cédula que se entregará al demandado en su domicilio real, si aquel fuere habido, juntamente con las copias a que se refiere el art. 120. Si no se le encontrare, se le dejará aviso para que espere al día siguiente y si tampoco entonces se le hallare, se procederá según se prescribe en el art. 141...".
+
+[^125]: Aunque recordamos que ante una divergencia entre la fecha que figura escrita en la cédula como de su confección, y la de su presentación en el tribunal, cierta jurisprudencia otorga preeminencia a la primera.
+
+[^126]: El libramiento de una cédula citando al demandado a reconocer firma trasunta la inequívoca intención del actor de mantener viva la instancia, resultando, por lo demás, de trámite indispensable para su prosecución (CNCom., Sala A, 29/4/99, LL, 1999-E-131).
+
+[^127]: Luego de la reforma al Código Procesal Civil y Comercial de la Nación, hecha por ley 25.488, se subsanó parcialmente esta anomalía, solo para las cédulas que deban diligenciarse fuera de la ciudad asiento del tribunal (ley 22.172). Al respecto, dice el nuevo art. 138, en la parte pertinente: "Cuando la diligencia deba cumplirse fuera de la ciudad asiento del tribunal, una vez selladas, se devolverán en el acto y previa constancia en el expediente, al letrado o apoderado". Es una lástima que no se haya adoptado igual temperamento para todas las cédulas. En la provincia de Buenos Aires, en los casos en que corresponde notificar por cédula papel al domicilio físico constituido, v. gr. la sentencia definitiva, el libramiento del documento se hace a través del Sistema de Presentaciones y Notificaciones Electrónicas, lo que excluye la posibilidad de que se presente la situación descripta en el texto (véase infra, 36.3.1.).
+
+[^128]: Una razón de la negativa que suele escucharse en las mesas de entradas es la siguiente: una cédula —o un mandamiento, o testimonio, en general cualquier pieza que vaya a confronte o necesite de un control judicial para salir del tribunal— hasta tanto no esté integrada con la conformidad del órgano judicial derivada de dicho control, no es una cédula, sino un mero "proyecto" de ella. No es aceptable este "argumento": más allá de cualquier defecto formal de la pieza, el hecho de presentarla es un acto independiente, que produce efectos por sí solo, v. gr., rechazar el "proyecto" porque carece de las copias mencionadas por los arts. 120 y 136 del CPCCN y del CPCCBA no tiene por qué enervar la notificación tácita que dicha presentación implica, pues el conocimiento del proveído por la parte presentante igualmente se produjo. También el proyecto, aun "observado" por el tribunal, puede producir efectos sobre la caducidad de instancia: no corresponde declarar la caducidad de instancia —en el caso, en un proceso por desalojo— si del expediente surge que antes del transcurso del plazo el actor presentó un mandamiento, pues tal actividad de la parte en confeccionar el instrumento respectivo dejándolo en Secretaría para su posterior diligenciamiento por la oficina respectiva, en sí misma constituye un acto impulsor del trámite, aunque no logre su finalidad específica o sea observado por el tribunal (CNCiv., Sala K, 9/9/02, LL, 2003-A-701).
 
 ### 35.3. NOTIFICACIÓN TÁCITA E IMPLÍCITA
 
 El cumplimiento de los modos tácitos de notificación se corrobora de la siguiente manera:
 
 1) El retiro del expediente, consultando el asiento de dicha circunstancia en el libro de préstamos. En este se asientan los datos de la persona que retira las actuaciones (nombre, domicilio, teléfono, conf. art. 251, RJNC) y la fecha en que lo hace. Al devolverse el expediente se da de baja el préstamo, anotando la fecha de reintegro o simplemente testando la nota hecha en oportunidad de la entrega. También queda asentado en el sistema de gestión judicial Lex 100, concretamente en el historial del expediente al que se accede a través del link "Consulta de causas".
-
 2) El retiro de copias de escritos o documentos, verificando la anotación que de ellohacen en el expediente los empleados judiciales, conocida como nota de retiro, cuyo texto puede ser el siguiente: "El 8 de setiembre de 2018 el doctor Juan Pérez retiró copias del escrito de fs. 40".
-
 3) La notificación mediante escritos —v. gr., "Apelo la sentencia"— no hay otra forma de saberla, sino leyendo las piezas partidarias. El "título" de ellas —si está bien expresado— puede ser de gran ayuda en la tarea.
 
 ### 35.4. NOTIFICACIÓN ELECTRÓNICA
@@ -621,9 +854,7 @@ El sistema de gestión de la justicia nacional permite consultar el resultado de
 En el régimen de la provincia de Buenos Aires, el sistema registrará, al menos:
 
 1) fecha y hora en que la notificación quedó disponible para su destinatario, dato que se encontrará visible en todo momento;
-
 2) fecha y hora en las que el destinatario compulsó la notificación;
-
 3) fecha y hora en la que la cédula quedó a disposición del órgano jurisdiccional para su confronte. En ningún supuesto se imprimirán comprobantes para ser agregados al expediente, pudiendo los interesados verificar en el sistema de Notificaciones y Presentaciones Electrónicas si la comunicación efectivamente se llevó a cabo (art. 6°, Reglamento para la notificación por medios electrónicos, Acuerdo SCBA 3845/17).
 
 ## 36. CUMPLIMIENTO DE LAS CARGAS
@@ -632,7 +863,7 @@ En el régimen de la provincia de Buenos Aires, el sistema registrará, al menos
 
 El domicilio procesal —físico y/o electrónico— se constituye, y el real se denuncia, mediante una presentación escrita dando cuenta de ello: "Constituyo domicilio en…", "Denuncio mi domicilio real en…". Si ocurre en una audiencia se hará verbalmente y se asentará en el acta. Cuando hablamos de las presentaciones de parte, mencionamos los modos de expresar este dato en los escritos (supra, 12.1.1.2.2.). El magistrado homologa la voluntad de la parte, v. gr., "por constituido el domicilio" o "téngase presente".
 
-La parte tiene la carga de notificar por cédula a los demás litigantes el cambio del domicilio constituido (arts. 42, último párrafo, CPCCN y CPCCBA), regla esta que suele morigerarse en la práctica conforme vimos supra, 32.1.).
+La parte tiene la carga de notificar por cédula a los demás litigantes el cambio del domicilio constituido (arts. 42, último párrafo, CPCCN y CPCCBA), regla esta que suele morigerarse en la práctica conforme vimos supra, 32.1.
 
 ### 36.2. PROCEDIMIENTO PARA LOCALIZAR Y CONSULTAR EL EXPEDIENTE. EL «LIBRO DE ASISTENCIA» Y LA «NOTA»
 
@@ -641,9 +872,7 @@ Tratándose de la consulta del expediente papel en la mesa de entradas del tribu
 Las separaciones más comunes, según el fuero o uso de cada tribunal, son:
 
 1. Por tema, v. gr., por un lado los procesos de conocimiento, por otro los ejecutivos, las sucesiones, etcétera.
-
 2. Por situación procesal, v. gr., para contestar demanda, en prueba, para alegar, en ejecución (utilizado, por ejemplo, en el fuero laboral nacional).
-
 3. Por nombre del apoderado de la parte actora, en los casos de ejecuciones fiscales.
 
 Tanto en 1. como en 2. se mantiene, dentro de cada división, la agrupación alfabética señalada al inicio. Conviene, entonces, para evitar desencuentros, que al solicitar el expediente el letrado mencione su denominación completa, esto es, partes y objeto, y eventualmente la situación procesal de la causa y el número de expediente[^129]. Si se trata de expedientes reservados, normalmente no se encasillan en la mesa de entradas sino en una oficina interna.
@@ -655,6 +884,12 @@ En jurisdicción bonaerense, en cambio, la situación "no en letra" del expedien
 en el casillero correspondiente[^130]. La anotación que en él se hace es simple: fecha, carátula del expediente y firma aclarada de quien suscribe, aunque suele verse un texto como el siguiente: "El día 4/8/19 pedí los autos 'Pérez, José c. Frías, Pablo s/Desalojo' y se me informó que no estaban en letra", seguido de la firma aclarada del autor de la nota[^131]. La "persona autorizada en el expediente" para dejar nota —quien no tiene por qué ser abogado o procurador— surge de un escrito que la parte presenta a tal fin, cuyo texto puede ser el siguiente: "Autorizo a José Pérez a consultar el expediente, retirar copias y cualquier otra documentación que deba desglosarse o retirarse, dejar nota en el libro de asistencia; en general, llevar a cabo todo acto cuya realización no esté legalmente limitado a la parte, su letrado o apoderado". Hasta tanto esta presentación no esté despachada, los juzgados no admiten la intervención del autorizado en los actos pertinentes.
 
 En cuanto a la operatoria para consultar el expediente electrónico, el profesional tiene la carga de ingresar al Sistema de Consulta de Causas todos los martes y viernes (días de notas). Una vez allí, procederá a realizar la búsqueda de la causa que le interesa. Si en ella no encuentra la resolución esperada, v. gr., la pantalla indica "A Despacho", estará habilitada la opción "dejar nota". Ejecutada esa opción, el sistema asentará una constancia de ello: día, hora, y sujeto que dejó la nota (para ampliar, véase supra, 14.1.2.).
+
+[^129]: El número del expediente es análogo al DNI de las personas, el abogado debe siempre tenerlo presente al momento de "hacer tribunales. Sin perjuicio de ello, no es correcta la práctica judicial de exigir dicho conocimiento a quien pide las actuaciones para consultarlas, sin el cual no las buscan. Sobre esta mala costumbre puede verse Díaz, Más prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1784.
+
+[^130]: En el régimen nacional, si bien el libro de asistencia papel ha dejado de usarse en lo concerniente a la notificación automática, sigue cumpliendo su función en las otras situaciones para las que se previó su utilización: arts. 125, ap. 4°, y 360 del CPCCN.
+
+[^131]: En el régimen nacional, si bien el libro de asistencia papel ha dejado de usarse en lo concerniente a la notificación automática, sigue cumpliendo su función en las otras situaciones para las que se previó su utilización: arts. 125, ap. 4°, y 360 del CPCCN.
 
 ### 36.3. PASOS A SEGUIR PARA NOTIFICAR POR CÉDULA PAPEL
 
@@ -670,6 +905,8 @@ Dejada la pieza notificadora en la mesa de entradas del tribunal o lugar sucedá
 
 Una vez salida la cédula rumbo a la Oficina de Notificaciones, dejaremos transcurrir el tiempo estimado que insumirá su diligenciamiento, y volveremos al juzgado a constatar el resultado del trámite (la cédula diligenciada debe agregarse al expediente, arts. 138, CPCCN y CPCCBA[^132]); notificación o no. En la primera hipótesis, su fecha; en la segunda, las razones del fracaso (véase supra, 31 y 35.2.).
 
+[^132]: Existe la mala costumbre tribunalicia de no agregar al expediente, en tiempo oportuno, las cédulas diligenciadas, sino que las guardan en la carpeta "cédulas para agregar", y es el propio abogado quien, al advertir la ausencia del documento en los autos, pide dicha carpeta y termina haciendo el trabajo del empleado judicial. Sobre este vicio laboral puede verse Díaz, Algunas prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1641.
+
 #### 36.3.2. ENTREGA EN LA OFICINA DE NOTIFICACIONES CUANDO SE DILIGENCIE EN EXTRAÑA JURISDICCIÓN (LEY 22.172)
 
 Cuando la diligencia de notificación deba practicarse en extraña jurisdicción conforme las disposiciones de la ley 22.172, por ejemplo, el juicio tramita ante la Justicia Nacional de la Capital Federal, y hay que notificar en un domicilio de la provincia de Buenos Aires, la actividad del abogado se modifica en el último paso descrito en el apartado anterior.
@@ -680,6 +917,12 @@ Sellada la cédula, el abogado —o el autorizado, según el caso— la llevará
 
 Retirada la cédula de la oficina correspondiente, veremos en ella el resultado de la diligencia, y presentaremos el documento en el expediente adjuntando la cédula a un escrito que bien podría titularse "Acredita notificación en extraña jurisdicción" o "Acompaña cédula ley 22.172 diligenciada".
 
+[^133]: Sobre esta puntual cuestión puede verse Díaz, Algunas prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1641.
+
+[^134]: Actualmente el Poder Judicial provincial tiene Oficina de Notificaciones en las siguientes localidades: Almirante Brown, Avellaneda, Azul, Bahía Blanca, Berazategui, Berisso, Dolores, Ensenada, Escobar, Esteban Echeverría, Florencio Varela, Junín, La Matanza, Lanús, La Plata, Lomas de Zamora, Mar del Plata, Mercedes, Merlo, Morón, Moreno-Gral. Rodríguez, Necochea, Olavarría, Pergamino, Pilar, Quilmes, San Isidro, San Martín, San Miguel, San Nicolás, Tandil, Tres Arroyos, Tigre, Trenque Lauquen, Zárate – Campana.
+
+[^135]: Acerca de quién puede presentar las cédulas para su tramitación, la ley 22.172 dispone en su art. 8°: "Los oficios, cédulas, mandamientos y testimonios serán presentados para su tramitación por abogados o procuradores matriculados en la jurisdicción donde deba practicarse la medida. Cuando las personas autorizadas para intervenir en el trámite no revistiesen ese carácter, deberán sustituir la autorización a favor de profesionales matriculados…". Complementando esta disposición, el art. 6° establece que en oficios, cédulas y mandamientos debe "constar el nombre de las personas autorizadas para intervenir en el trámite. Estos recabarán directamente su diligenciamiento al funcionario que corresponda, y este, cumplida la diligencia, devolverá las actuaciones al tribunal de la causa por intermedio de aquellos". En la práctica, el criterio de aplicación de esta norma es disímil; mientras que en algunas oficinas de notificaciones exigen la presentación de credencial a quien realiza el trámite —para cotejar su identidad con la del "autorizado" que figuraen la cédula—, en otras no toman este recaudo (lo que lleva a que cualquier persona intervenga en la gestión).
+
 #### 36.3.3. LA CÉDULA «PAPELTRÓNICA» EN LA PROVINCIA DE BUENOS AIRES
 
 "Papeltrónica" es el nombre que la jerga tribunalicia bonaerense le ha dado a la cédula en soporte papel que, no debiendo llevar copias adjuntas, ha de diligenciarse en un domicilio físico (sea el real, v. gr. notificación de rebeldía, o se trate del constituido, v. gr. notificación de la sentencia definitiva). Tal denominación es el resultado de combinar las voces "papel" con "electrónica", términos que reflejan las características del documento: el soporte es papel, pero —a diferencia de la cédula papel tradicional— el abogado la libra electrónicamente.
@@ -689,20 +932,16 @@ El Reglamento para la notificación por medios electrónicos, suficientemente cl
 Art. 8°. – Cédulas en formato papel. En las cédulas que deban ser diligenciadas en soporte papel se aplicarán las siguientes reglas:
 
 1) Si no deben acompañarse copias con el instrumento, su generación y remisión a los organismos encargados de practicar las notificaciones se hará por medios electrónicos, siguiéndose las pautas previstas en los arts. 4° —primer párrafo— y 5° de este reglamento.
-
    Las Oficinas de Mandamientos y Notificaciones (o, en su caso, las Delegaciones de Mandamientos y Notificaciones o los Juzgados de Paz Letrados) se encargarán de imprimir los instrumentos para su diligenciamiento.
-
    Sin perjuicio de que para el órgano remitente constituye constancia de recepción suficiente del instrumento los datos que registra el sistema Augusta, las Oficinas de Mandamientos y Notificaciones (o, en su caso, las Delegaciones de Mandamientos y Notificaciones o los Juzgados de Paz Letrados) llevarán un registro separado en el que asentarán las cédulas recibidas en forma electrónica.
-
    La devolución de estas cédulas luego de practicada la diligencia se regirá por los mecanismos usuales (arts. 153, 154, 157, 158, 159 y concs. del Acuerdo n° 3397);
-
 2) Si tienen que adjuntarse copias a la cédula, no se permitirá su remisión por medios electrónicos a los organismos encargados de practicar las notificaciones.
-
    En esta hipótesis el interesado en practicar la comunicación presentará el instrumento ya impreso —así como las copias pertinentes en formato papel— en el órgano judicial a fin de cumplir las disposiciones previstas en los arts. 137 y 138 del CPCC y 152 y 154 y concs. del Acuerdo n° 3397.
-
    Del mismo modo, si la notificación se efectúa por Secretaría, será obligación de los funcionarios especialmente designados en cada órgano imprimir y rubricar ológrafamente el instrumento, adjuntar la documentación en soporte papel y, finalmente, enviarla físicamente a organismos encargados de practicar las notificaciones de conformidad a las pautas ordinarias (arts. 152, 154, 159 y concs. del Acuerdo n° 3397);
-
 3) La Subsecretaría de Tecnología Informática implementará medidas de seguridad adicionales de fácil acceso en las cédulas que, aun cuando deban diligenciarse en formato papel, se hayan generado electrónicamente. Y ello a efectos de que el sujeto pasivo de la comunicación pueda cotejar su correspondencia con el documento electrónico con el cual se vinculan"[^136].
+
+[^136]: Puedeverse el instructivo para la confección de estas cédulas en [www.iadpi.com.ar/wp-content/uploads/2017105/4-Cedula-papeltronica-a-domicilio-fisico.pdf](http://www.iadpi.com.ar/wp-content/uploads/2017105/4-Cedula-papeltronica-a-domicilio-fisico.pdf).
+Según informa "un joven profesional de la matrícula, que patea los pasillos de tribunales a diario", quien recabó información directamente de la Oficina de Notificaciones y Mandamientos "…si la cédula fue debidamente confrontada por el organismo y la pieza procesal (cédula o mandamiento) remitida a la Oficina de Mandamientos y Notificaciones, en el portal de NyPE nos aparece 'Diligenciada', pero ello no es garantía de que el oficial notificador haya concurrido físicamente al domicilio indicado (…) a través de la Mesa de Entradas Virtual (MEV) podía monitorear el estado de la cédula o mandamiento buscando los autos procesales y seleccionando el organismo judicial en el cual se encuentra la oficina notificadora (…) En el portal virtual (MEV) van a figurar los autos judiciales y debajo de esa leyenda, la siguiente sigla: C-NNN-2018 (cédulas) o M-NNN-2018 (mandamientos), y si la cédula o el mandamiento se encuentra en mano del oficial notificador estará 'A despacho'. Una vez practicado el diligenciamiento real, constará en la MEV, el resultado final: observación o la mera notificación" (Vero, Guía 1 para el seguimiento de cédulas y mandamientos "papeltrónicos", disponible en [www.pensamientocivil.com.ar/doctrina/3584-buenos-aires-guial-para-seguimiento-cedulas-y-mandamientos](www.pensamientocivil.com.ar/doctrina/3584-buenos-aires-guial-para-seguimiento-cedulas-y-mandamientos)).
 
 #### 36.3.4. PETICIONES TENDIENTES A EFECTIVIZAR LA NOTIFICACIÓN
 
@@ -710,7 +949,7 @@ Para cumplir acabadamente la carga de impulsar la notificación por cédula, a v
 
 ##### 36.3.4.1. PEDIDO DE NOTIFICACIÓN ESPECIAL: «BAJO RESPONSABILIDAD», «CON HABILITACIÓN DE DÍA Y HORA»
 
-Junto al diligenciamiento "común" de la cédula existen otros "especiales", algunos no tan infrecuentes, cuyas modalidades son: bajo responsabilidad (arts. 339, último párrafo, CPCCN; 338, último párrafo, CPCCBA; 156, ap. e, Acordada CSJN 19/80), con habilitación de día y hora (arts. 153, CPCCN y CPCCBA; 33, 131 y concs., Acordada 19/80 CSJN), urgente, notificar en el día (para ambas, arts. 33, 131 y concs., Acordada 19/80 (SJN), personal (arts. 147, 157, Acordada 19/80 CSJN), con copias de contenido reservado (arts. 139 CPCCN y CPCCBA; 127, Acordada CSJN 19/80). Todas se caracterizan por tener que ser solicitadas por la parte interesada en que se cumplan, ordenadas por el juez, y transcribirse dicha orden en la pieza notificadora. Sin la orden del juez, o sin su trascripción en la cédula, el oficial notificador, en cuanto "ejecutor de las órdenes judiciales" (arts. 56, Acordada CSJN 19/80), al no tener ante si dicha orden, no tomará en cuenta la condición especial de la notificación, y diligenciará la cédula como si fuera común[^137].
+Junto al diligenciamiento "común" de la cédula existen otros "especiales", algunos no tan infrecuentes, cuyas modalidades son: bajo responsabilidad (arts. 339, último párrafo, CPCCN; 338, último párrafo, CPCCBA; 156, ap. e, Acordada CSJN 19/80), con habilitación de día y hora (arts. 153, CPCCN y CPCCBA; 33, 131 y concs., Acordada 19/80 CSJN), urgente, notificar en el día (para ambas, arts. 33, 131 y concs., Acordada 19/80 CSJN), personal (arts. 147, 157, Acordada 19/80 CSJN), con copias de contenido reservado (arts. 139 CPCCN y CPCCBA; 127, Acordada CSJN 19/80). Todas se caracterizan por tener que ser solicitadas por la parte interesada en que se cumplan, ordenadas por el juez, y transcribirse dicha orden en la pieza notificadora. Sin la orden del juez, o sin su trascripción en la cédula, el oficial notificador, en cuanto "ejecutor de las órdenes judiciales" (arts. 56, Acordada CSJN 19/80), al no tener ante si dicha orden, no tomará en cuenta la condición especial de la notificación, y diligenciará la cédula como si fuera común[^137].
 
 Sin perjuicio de la importancia de cada una de estas modalidades según el caso, por pertinentes al objeto de esta obra solo nos referiremos a las dos primeras.
 
@@ -726,6 +965,20 @@ La notificación con habilitación de día y hora encuentra su fundamento legal 
 
 Se usa, entre otros casos, cuando devuelta una cédula sin notificar porque "nadie responde a los llamados" del oficial notificador, la parte presume o sabe que el requerido solo será ubicado en el domicilio fuera de las horas hábiles para practicar diligencias en el exterior del tribunal[^143], por ejemplo, por su horario de trabajo, o porque es viajante de comercio y regresa a su domicilio los días domingo. Puede solicitarse la habilitación de día y hora en forma genérica, o pedirse que la diligencia se lleve a cabo en un día o momento determinado; esto último, por ejemplo, en el caso del viajante, en el que debería solicitarse que la notificación se lleve a cabo específicamente un día domingo, fundamentando brevemente la petición.
 
+[^137]: Es la solución que consagra el art. 33 de la Acordada 19/80 CSJN para las cédulas con habilitación, urgentes, y notificar en el día, si su carácter "no figure concreta y debidamente expresado en el acto dictado por el señor juez"; y que puede extenderse analógicamente a los otros casos. Para la notificación bajo responsabilidad, dice Areán que: "Si se diligenciara de ese modo sin que una providencia lo haya ordenado, debe declararse la nulidad de la notificación" —en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2005, t. 3, p. 129—. Por su parte, el art. 177 del Reglamento de Mandamientos y Notificaciones del Poder Judicial de la provincia de Buenos Aires (Acuerdo SCBA 3397), dispone, como requisito de las cédulas a diligenciar, "transcripción del auto que ordena la habilitación de días y horas inhábiles, carácter urgente de la diligencia, bajo responsabilidad de la parte, o diligenciamiento en otro Partido". Sobre la notificación con copias de contenido reservado, tenemos dudas en cuanto a la necesidad de su previa petición por la parte y orden judicial, pues los artículos citados de los códigos procesales son imperativos: las copias "serán entregadas bajo sobre cerrado" expresión esta que nos da a entender que esta modalidad viene impuesta directamente por la ley. No obstante nuestra opinión, otras parecen llevar a una conclusión diversa, coincidente con lo que dijimos en el texto principal. Así, se ha dicho: "Aunque no lo exprese la norma, resulta claro que esta modalidad de cumplir con la entrega de copias, tanto puede ser peticionada por la parte, así como dispuesta de oficio por el tribunal" —Causse, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Arean (dirs.), 2005, t. 3, p. 102—.
+
+[^138]: CNCiv., Sala B, 3/3/95, JA, 1998-II, síntesis.
+
+[^139]: CACC2ª San Isidro, 7/10/03, Juba, B1750736.
+
+[^140]: Areán, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton — Areán (dirs.), 2005, t. 3, ps. 127 y 128.
+
+[^141]: CNCiv., Sala J, 8/4/97, JA, 1998-Il, síntesis; art. 156, ap. e, Acordada CSJN 19/80: "Las cédulas bajo responsabilidad de la parte actora se diligencian con abstracción de que el requerido viva o no viva en ese domicilio".
+
+[^142]: Si bien las diligencias procesales deben practicarse en días y horas hábiles, sólo pueden llevarse a cabo en otro momento si se ha autorizado su práctica en los términos del art. 153 del CPCC-BA (CACC 1ª Mar del Plata, Sala II, 3/8/00, Juba, B1403185).
+
+[^143]: Dicen los arts. 152 del CPCCN y del CPCCBA: "…respecto de las diligencias que los jueces, funcionarios o empleados deban practicar fuera de la oficina, son horas hábiles las que median entre las siete y las veinte".
+
 ##### 36.3.4.2. REQUERIMIENTO DE INFORMES SOBRE EL DOMICILIO DE LA PERSONA A NOTIFICAR
 
 La citación a juicio de una persona —generalmente del demandado, pero bien podría ser de un tercero[^144], v. gr., se pide su citación coactiva, o se lo llama a declarar como testigo— debe hacerse en su domicilio real. Quien tiene la carga de citarlo también tiene la de denunciar dicho domicilio, mas puede ignorar ese dato.
@@ -738,17 +991,32 @@ Estas gestiones consisten, en general, en pedir informes a distintas reparticion
 
 Entendemos que el pedido de informes lo puede realizar directamente el abogado, sin solicitarlo al juez de la causa, en virtud de lo establecido por el art. 8º de la ley 23.187[^147], y por el art. 57 de la ley provincial 5177[^148]. Algunas reparticiones públicas no brindan información sino mediante orden del juez interviniente; por ello, es costumbre hacer la petición de informes en el expediente, y que el juez lo ordene; mas en alguna oportunidad nos hemos encontrado con un despacho que decía más o menos lo siguiente: "Atento las facultades otorgadas al letrado por el art. 8° de la ley 23.187, no ha lugar a lo solicitado, debiendo ocurrir el letrado por la vía allí prevista". De suceder esto último, estimamos conveniente que la parte pida la suspensión del proceso por un plazo razonable (el que estime para contar con las respuestas de las entidades informantes), para quedar a cubierto de una posible caducidad de instancia.
 
+[^144]: La circunstancia de que el tercero no tenga la calidad de demandado, lejos de enervar la necesidad de notificar por medio de edictos cuando se desconoce su domicilio la reafirma, pues no se advierte por qué se admitiría la citación por edictos para hacer conocer nada menos que la promoción de la demanda, mientras que se la vedaría para el caso de que la citación sólo fuera en calidad de tercero (CNCiv., Sala F, 30/3/92, LL, 1992-D-301).
+
+[^145]: El actor debe efectuar todas las diligencias tendientes a localizar el domicilio del demandado, previo a la publicación de edictos, con el alcance que fija el art. 145 del CPCCN, que solo requiere la manifestación bajo juramento de que las ha realizado (CNCiv., Sala A, 23/12/97, LL, 1999-E-892; ED, 178 528; ídem, Sala G, 10/4/95, LL, 1995-D-56; CNCom., Sala E, 28/6/91, Lexis, n° 11/14523). En contra de exigir el mero juramento, se sostiene: "Sin embargo, consideramos que el juez no puede disponer la citación por edictos simplemente porque la parte preste el juramento exigido por la norma, pues su misión no es la de propiciar nulidades posteriores, sino tratar de evitarlas. Por ello, aun cuando la notificación por cédula hubiera dado resultado negativo, es absolutamente conveniente disponer el libramiento de oficios a entes oficiales que registran antecedentes de las personas (…) Por ello, si con el diligenciamiento de los informes no se logra determinar el domicilio, debe el peticionante prestar el juramento del art. 145 del CPCCN y recién entonces el juez ordenará la notificación por edictos" —Areán, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2005, t. 3, ps. 158 y 159—.
+
+[^146]: Para que proceda la notificación por edictos a personas inciertas o de domicilio ignorado debe justificarse previamente haber realizado sin éxito las gestiones tendientes a averiguar el domicilio (CACC 1ª La PLata, Sala II, 4/11/97, Juba, B1401690; CACC Trenque Lauquen, 19/12/89, Lexis, n°14/32402; CACC2ª La Plata, Sala I, 11/9/97, elDial-W1062B).
+
+[^147]: "Sin perjuicio de los demás derechos que les acuerdan las leyes, es facultad de los abogados en el ejercicio de su profesión requerir a las entidades públicas información concerniente a las cuestiones que se le hayan encomendado y, asimismo, tener libre acceso personal a archivos y demás dependencias administrativas en las que existan registros de antecedentes. Se exceptúan de esta disposición aquellas informaciones de carácter estrictamente privado y aquellos registros y archivos cuyas constancias se declaren reservadas por disposición legal. En estos casos el abogado deberá requerir el informe por intermedio del juez de la causa".
+
+[^148]: "Es facultad de los abogados y procuradores, en ejercicio de su función, recabar directamente de las oficinas públicas, bancos oficiales o particulares y empresas privadas o mixtas, informes y antecedentes, como así también solicitar certificados sobre hechos concretos atinentes a las causas en que intervengan. Estos pedidos deberán ser evacuados por las oficinas y entidades aludidas dentro del término de quince días. En las solicitudes el profesional hará constar su nombre, domicilio, carátula del juicio, juzgado y secretaría de actuación. Las contestaciones serán entregadas personalmente al profesional, o bien remitidas a su domicilio, según lo haya solicitado; no habiendo realizado ninguna solicitud en tal sentido, serán remitidas al juzgado de la causa…".
+
 ### 36.4. PASOS DE LA NOTIFICACIÓN ELECTRÓNICA
 
-El sitio del Poder Judicial de la Nación contiene un video tutorial sobre notificaciones electrónicas, en el cual se describe y muestra en sucesivas pantallas como crear una cédula [www.youtube.com/watch?v=HDMxhQy-4E&feature=youtu.be](http://www.youtube.com/watch?v=HDMxhQy-4E&feature=youtu.be)) [Este vídeo ya no está disponible].
+El sitio del Poder Judicial de la Nación contiene un video tutorial sobre notificaciones electrónicas, en el cual se describe y muestra en sucesivas pantallas como crear una cédula.
 
 También el sitio del Poder Judicial de la provincia de Buenos Aires tiene toda la información sobre las notificaciones electrónicas, incluidos un tutorial "Estudio de un caso", es decir, un ejemplo, paso por paso, con imágenes, de cómo es el procedimiento desde la adhesión del abogado, pasando por la confección y remisión de un escrito, hasta la notificación de la resolución que lo despacha ([www.scba.gov.ar/servicios/estudio_caso.pdf](http://www.scba.gov.ar/servicios/estudio_caso.pdf))[^149].
 
 Por su claridad, y para no cansar al lector con densas explicaciones, lo remitimos directamente a dichos lugares.
 
+[^149]: Para la confección de cédulas, también pueden verse los instructivos del Instituto Argentino de Derecho Procesal Informático (disponibles en [www.iadpi.com.ar/wp-content/uploads/2017105/Instructivo-Notificaciones-Electronicas.pdf](http://www.iadpi.com.ar/wp-content/uploads/2017105/Instructivo-Notificaciones-Electronicas.pdf)), y de la Asociación de Abogados de Tandil (disponibles en  
+[www.asociaciondeabogadostandil.org/instructivos-para-la-confeccion-de-cedulas-electronicas](http://www.asociaciondeabogadostandil.org/instructivos-para-la-confeccion-de-cedulas-electronicas)).
+
 ### 36.5. LA NOTIFICACIÓN «DE OFICIO». «NOTIFÍQUESE POR SECRETARÍA»
 
 Los pasos descriptos anteriormente no quedan a cargo del letrado, no necesitan actividad suya, cuando se trata de una notificación de oficio, que puede darse porque pesa sobre el tribunal el deber de notificar, v. gr., la sentencia definitiva del juicio ordinario (arts. 485, CPCCN, y 483, CPCCBA) y la del sumario en la provincia de Buenos Aires (art. 495, CPCCBA)[^150], o porque así lo dispone el juez por razones de celeridad y en uso de sus facultades instructorias y ordenatorias, por ejemplo, la notificación de una audiencia de conciliación fijada oficiosamente; en este último supuesto, la frase "Notifíquese por secretaría" en la resolución nos dará la pauta de que será el juzgado quien se encargará del libramiento de la cédula.
+
+[^150]: Si la resolución reviste el carácter de una sentencia interlocutoria y no definitiva, no se imponía el deber de la notificación de oficio como pretende la recurrente, sino que, por el contrario, era la actora quien debía confeccionar la cédula porque hacía a su propio interés que quedara firme el auto que declaró la acumulación de procesos que fuera solicitada a su pedido (art. 137, parte 1ª, CPCCBA). Si un auto debía ser notificado personalmente o por cédula y no se trataba del supuesto contemplado en el art. 483 de la legislación adjetiva, dicha carga no incumbía al órgano, siendo en cambio un deber de la actora, en su carácter de titular de la acción, procurar el anoticiamiento de la providencia dictada y si no se instó la notificación en tiempo propio, sobreviene la caducidad de instancia (CACC 2ª La Plata, Sala I, 30/3/00, Juba, B253670).
 
 ## 37. CONFECCIÓN DE LA CÉDULA
 
@@ -761,17 +1029,11 @@ Aquí diremos algo sobre la cédula papel. Se confecciona en original (que volve
 Su contenido esencial está determinado en los arts. 136 y 137 del CPCCN y CPCCBA, y es el siguiente:
 
 1. Nombre y apellido de la persona a notificar o designación que corresponda, y su domicilio, con indicación del carácter de este.
-
 2. Juicio en que se practica.
-
 3. Juzgado y secretaría en que tramita el juicio.
-
 4. Transcripción de la parte pertinente de la resolución que se notifica.
-
 5. El objeto, claramente expresado, si no resultare de la resolución transcripta.
-
 6. En caso de acompañarse copias de escritos o documentos, su detalle preciso.
-
 7. La firma del letrado patrocinante o apoderado de la parte que tenga interés en la notificación, salvo que se trate de los casos (minoritarios) en que corresponde signarla al síndico, tutor o curador ad litem, secretario o prosecretario.
 
 Estos preceptos de los códigos rituales se complementan con aquellos otros, reglamentarios, que imponen un formulario de cédula único para todos los fueros: Acordada CSJN 13/87 para la justicia nacional, Acuerdo SCBA 3397 para la bonaerense. Deben también tenerse en cuenta ciertas disposiciones de la ya citada acordada 19/80 CSJN (Oficina de Notificaciones de Capital Federal), y para la provincia de Buenos Aires el Acuerdo SCBA 3397 (Oficina de Mandamientos y Notificaciones provincial).
@@ -780,6 +1042,8 @@ Cualquier error material en la confección de la cédula que impida su correcto 
 
 Veremos ahora algunos aspectos de estos recaudos que debe tener la cédula, referidos a la que rige uniformemente en el fuero nacional, sin perjuicio de que mucho de lo que diremos también tiene vigencia en el ámbito bonaerense. Luego, mostraremos un ejemplar de cédula que se utiliza en la provincia de Buenos Aires, para que se puedan apreciar diferencias y semejanzas.
 
+[^151]: Hay tribunales que se resisten a entregar estas copias "acuse de recibo", con el argumento que se trata de un documento "a confronte". Criticamos este comportamiento, por equivocado, véase al respecto Díaz, Algunas prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1641.
+
 ### 37.1. MODELO PARA LA JUSTICIA NACIONAL
 
 Repetimos entonces que el contenido previsto para la cédula en el art. 137 del CPCCN se vuelca en un formulario predispuesto para todos los fueros por la Acordada CSJN 13/87, la que a su vez impone completar otros datos no requeridos por aquella norma, a saber, el número del expediente, de la zona correspondiente al domicilio en que se diligenciará, el "carácter" de la diligencia, y el rubro "observaciones especiales"
@@ -787,18 +1051,9 @@ Repetimos entonces que el contenido previsto para la cédula en el art. 137 del 
 Si bien recomendamos la lectura de la acordada, haremos una síntesis de sus "Ins-trucciones generales":
 
 1. Los diferentes fueros, cámaras y juzgados se identifican por un código de colores y letras que deberán estar impresos en el margen superior de las cédulas, por ejemplo, el fuero civil es una letra "C" mayúscula en color celeste. En la práctica, se ha dejado de cumplir el requisito del color (pensamos que por el alto costo de las impresiones color), sin que haya merecido reproche alguno de los tribunales ni de la oficina de notificaciones.
-
 2. No se admite la escritura manuscrita. Deberá llenarse con máquina de escribir o computadora. Esto último es lo frecuente, pues los abogados tenemos cargados en la PC un formulario de cédula que completamos en cada caso con los datos específicos del juicio en que debemos librarla.
-
 3. Cada dato cuenta con un lugar especial para su lectura sistemática, y se debe completar según las "instrucciones específicas" que trae la acordada.
-
 4. El incumplimiento de estas normas implicará la devolución inmediata de la cédula.
-
-He aquí el anverso y el reverso de la cédula, a completar por el abogado y el oficial notificador respectivamente. Lo que figura en negrilla son los ítems del anverso que corresponde integrar al letrado:
-
-Anverso
-
-Reverso
 
 Las personas a notificar pueden ser más de una, siempre que tengan el mismo domicilio[^152]. De darse esta pluralidad, deberán acompañarse tantas copias de la cédula y de las previstas por el art. 120 del ritual, como diferentes personas haya. Según la Acordada 13/87, este dato se completa en el formulario, dónde dice "Sr.".
 
@@ -844,6 +1099,18 @@ Salvo los supuestos en la práctica excepcionales- en que corresponde que la cé
 
 Si la cédula tramitará conforme ley 22.172, solo cambia la letra que la identifica, y además deberá mencionarse la persona autorizada a diligenciarla (art. 6°, ley 22.172).
 
+[^152]: Art. 145 de la Acordada CSJN 19/80: "En el diligenciamiento de una cédula dirigida a varias personas se debe requerir la presencia de todas ellas y: a\. Si de ese requerimiento resultase un diligenciamiento enteramente concordante para todas ellas, el acta será labrada en plural. b\. Los diligenciamientos cuyos resultados no sean concordantes se labrarán en actas separadas".
+
+[^153]: Actualmente, en el fuero nacional, el domicilio solo podría ser "denunciado" pues al "constituido" sólo se remiten cédulas electrónicas.
+
+[^154]: La Acordada CSJN 43/74 establece que en oficios, cédulas y mandamientos que se libren en la Capital Federal no es obligatorio consignar el nombre y apellido de los magistrados y funcionarios titulares o interinamente a cargo de ellos; asimismo, que en los oficios y en las cédulas de notificación del traslado de la demanda y en las de citación para absolver posiciones y para prestar declaración testimonial deberá consignarse la sede del juzgado o tribunal que entiende en la causa.
+
+[^155]: De las sentencias interlocutorias y definitivas sólo corresponde transcribir la parte dispositiva (CNCiv., Sala E, 12/4/96, LL, 1996-D-883).
+
+[^156]: Para la modalidad "bajo responsabilidad" no se ha fijado un lugar especial. Nosotros utilizamos este espacio "carácter" sin que hasta ahora nos hayan devuelto una cédula por ese motivo.
+
+[^157]: Se entiende que si la cédula que correspondía firmar al secretario lo fue por el abogado, y la misma ha cumplido su finalidad, queda subsanada la irregularidad —Causse, Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2005, t. 3, p. 94—.
+
 ## 38. FORMA Y CONTENIDO DE LA PRESENTACIÓN IMPUGNADORA DE LA NOTIFICACIÓN IRREGULAR
 
 Ya dijimos que las vías para impugnar la notificación irregular son, según el caso, el incidente de nulidad, el incidente de redargución de falsedad, y el simple pedido de suspensión de plazo. Veamos a continuación cómo se plantean dichas cuestiones.
@@ -866,6 +1133,24 @@ Para la nulidad rige el de cinco días subsiguientes al conocimiento del acto (a
 
 En tal sentido, se ha dicho que el sistema de redargución solo queda abierto cuando se han cumplido las condiciones previstas en la norma (art. 393, CPCCBA), a saber: previa impugnación de la autenticidad del instrumento público, que el interesado hade formular puntualmente (arts. 169, 175 y concs., CPCCN), es decir, dentro del plazo de cinco días de conocido el hecho (art. 170 y concs., CPCCN); y promoción del incidente de redargución dentro de los diez días de efectuada la impugnación[^166].
 
+[^158]: Si bien el Código Civil permite esgrimir la redargución por acción autónoma, doctrina y jurisprudencia mayoritaria entienden que en el caso de atacarse una cédula debe hacérselo por la vía incidental atento que así lo disponen los códigos rituales —cfr. Armella, en Código Civil y normas complementarias. Análisis doctrinal y jurisprudencial, Bueres (dir.) – Highton (coord.), 1999, t. 2 C, p. 62—. Una cédula de notificación es un instrumento público, y su nulidad sólo puede perseguirse en incidente de redargución de falsedad (CACC San Martín, Sala I, 23/11/95, Juba, B1950386).
+
+[^159]: Respecto de la redargución, pensamos que no se produce el efecto previsto en los arts. 395 del CPCCN y 393 del CPCCBA, que consiste en continuar el proceso hasta el momento de dictar sentencia, en el cual solo se suspenderá el dictado de esta última si el incidente no está aún resuelto, pues esta solución es pertinente en el supuesto de impugnarse un documento acompañado por la contraparte, no tratándose de una cédula de notificación, de cuya validez dependerá la de los actos posteriores.
+
+[^160]: No obstante que estos requisitos figuran en los códigos como propios del incidente de nulidad, no debe olvidarse que a través de la redargución de falsedad se persigue el mismo efecto: que el acto pierda validez. Corresponde desestimar la redargución de falsedad —en el caso, del mandamiento de intimación de pago— si el peticionante no hizo referencia concreta a los perjuicios que el procedimiento cuestionado le ocasionó, pues las formas procesales no constituyen un fin en sí mismas sino instrumentos que tienden a asegurar el derecho de defensa y enmendar perjuicios efectivos (CNCom., Sala A, 23/10/00, LL, 2001-A-585).
+
+[^161]: La carga de la prueba recae en quien esgrime la pretensión (CNCiv., Sala l, 8/9/98, LL, 1999-C-60). La prueba que tiende a demostrar la falsedad del instrumento —en el caso, una cédula— debe tener entidad tal que produzca la convicción necesaria para revertir la presunción de legitimidad y veracidad que emana del mismo. Si bien la prueba testimonial no está prohibida en el juicio de redargución de falsedad de un instrumento, la rendida debe tener tal certidumbre que lleve a quien se pronuncia a la convicción de la insinceridad de las constancias asentadas en el instrumento que se impugna (CNCiv., Sala K, 29/8/03, LL, 2004-B-794).
+
+[^162]: Si el incidentista controvierte lo afirmado por el oficial notificador interviniente, sin utilizar el carril procesal idóneo, es decir, pretiriendo articular en forma expresa y en términos precisos la pertinente redargución de falsedad, no resulta viable el pedido de nulidad (CACC2ª La Plata, Sala l, 19/8/03, Juba, B254957).
+
+[^163]: CNCiv., Sala F, 16/12/97, LL, 1998-E-555.
+
+[^164]: CNCom., Sala B, 12/8/05, LL, ejemplar del 24/11/05, p. 6, [www.scba.gov.ar/fana](http://www.scba.gov.ar/fana), 26032. "Será parte el oficial público que extendió el instrumento" (art. 395, último párrafo, CPCCN).
+
+[^165]: Si bien es cierto que en el caso de una redargución de falsedad debe necesariamente oírse al oficial público que suscribió el acto impugnado, no lo es menos que en el caso de autos no se justifica su intervención, pues no se ha atacado de falsa la cédula, sino que solo se ha pedido su nulidad (CACC San Isidro, Sala II, 26/11/91, Juba, B1750111).
+
+[^166]: Juzg. Paz Tordillo, 15/9/04, confirmada por CACC Dolores el 19/11/04, Juba, B9991078. Una cédula de notificación es un instrumento público, y su nulidad sólo puede perseguirse en incidente de redargución de falsedad que deberá promoverse dentro del plazo de diez días de efectuada la impugnación (CACC San Martín, Sala I, 23/11/95, Juba, B 1950386).
+
 ### 38.2. PEDIDO DE TRÁMITE DE SUSPENSIÓN DE PLAZO
 
 Esta petición no generará una instancia, sino una actuación simple, de mero trámite, pues el juez la resolverá sin sustanciación mediante el dictado de una providencia simple que haga lugar o no al pedido de suspensión del plazo que pudiere estar corriendo a consecuencia de la notificación que se ataca. Por ello, la presentación no lleva copias del art. 120 del CPCCN, pero sí firma de letrado.
@@ -873,364 +1158,3 @@ Esta petición no generará una instancia, sino una actuación simple, de mero t
 Deberá indicarse claramente el hecho determinante de la solicitud: la falta de copias adjuntas a la cédula, y acompañarse el original del cedulón para acreditar dicho extremo (con una copia del documento para solicitar oportunamente el desglose y devolución de dicho original).
 
 Resta recordar la premura de presentar este escrito, habida cuenta que se trata de la suspensión —y no de la interrupción— de un plazo procesal: son válidos, se cuentan como cumplidos, los días del plazo que hayan transcurrido hasta que se efectúe la presentación en el juzgado.
-
-[^1]:  "La situación descripta, de las notificaciones tácitas, se ha potenciado (en la actualidad) dada la vigencia del servicio MEV en el sitio web oficial de la Suprema Corte de Justicia. Es que —por tal vía— partes y letrados pueden acceder al conocimiento de la información relativa a los expedientes, sin que ello quede registrado —al menos formalmente— en el ámbito de la causa y dentro del sistema Augusta. Con lo cual, es harto frecuente que (aun sin mediar notificación formal en el expediente) las partes y sus asistentes técnicos conozcan las resoluciones" (CACC Morón, Sala II, 11/9/18, "Medina, Cecilia Noelia c. Fleitas, José Eduardo y otro/a s/Daños y perj.", disponible en [e-procesal.com/fallo-medina-notificaciones-notificacion-tacita-mesa-virtual-1727](e-procesal.com/fallo-medina-notificaciones-notificacion-tacita-mesa-virtual-1727)).
-
-[^2]:  Eisner, en el Seminario de Posgrado "Constitución y contingencias del proceso civil", diciembre de 1992, Departamento de Derecho Procesal, Facultad de Derecho, UBA.
-
-[^3]:  Se presume iuris et de jure el conocimiento del inicio del proceso colectivo a partir del día siguiente a la última publicación de edictos, de suerte que cualquier plazo consecuente se encadena inexorablemente desde esa fecha (CNCom., Sala B, 11/8/97, JA, 1998-1-121; LL, 1998-B-735). La notificación por ministerio de la ley se verifica en los días expresamente determinados por el art. 133 del CPCCN aun en el supuesto en que a raíz de la incomparecencia de la parte a la sede del órgano judicial no haya tomado conocimiento de la resolución correspondiente (CNCiv., Sala G, 10/2/98, LL, 1999-C-58). En la notificación automática no hay un acto de comunicación real, y solo se la tiene por ocurrida por una ficción de la ley (ST Chubut, 14/11/96, DJ, 1997-2-851). Las notificaciones se regulan en el proceso civil por el principio de la recepción y no del conocimiento que de las mismas puede tener el litigante, lo que resulta congruente con el sistema procesal preponderantemente dispositivo que impera en nuestra ley procesal; de esta forma se descartan notificaciones fictas que resultan extralegales (CACCL Venado Tuerto, 24/5/96, JA, 1998-II, síntesis). Si la notificación fue dirigida correctamente al domicilio constituido por el accionado resulta totalmente irrelevante a los fines de la notificación efectivamente cumplida la circunstancia alegada por su destinataria —y no probada— de que la cédula haya sido pasada por la parte inferior de la puerta de la oficina, yendo a ocultarse debajo de un alfombra, "descubriéndola" más de un mes y medio después, por intermedio de la limpieza que habría realizado en ese sector una mucama. De seguirse tal criterio, podría llegarse a entender que, aun en los supuestos del domicilio constituido, el real conocimiento de la cédula siempre quedaría sujeto a la sola voluntad del receptor, cuando en nuestro sistema y, por el contrario, la notificación por este medio no constituye un acto personal del destinatario (CNCiv., Sala A, 16/12/99, ED, 186-539). La ley requiere en materia de notificación no la solemnidad de actos rituales, sino la verosimilitud, o tan solo la presunción de que el interesado se haya impuesto de su contenido (CACC La Matanza, Sala II, 5/2/04, Juba, B3400465; CACC Dolores, 29/4/94, Juba, B950260).
-
-[^4]:  El texto anterior a esta reforma era ambiguo al referirse a cuál día quedaba como día de nota cuando un martes o viernes era feriado. Decía en la parte pertinente: "…los días martes y viernes, o el siguiente hábil, si alguno de ellos fuere feriado". La expresión "el siguiente hábil" podía entenderse como "cualquier día, mientras sea hábil", o como "el siguiente martes o viernes hábil" En general, los tribunales nacionales admitieron la primer interpretación: "Si el día de nota es inhábil, la notificación tiene lugar el día hábil siguiente, según el art. 133 del CPCCN no se refiere únicamente al martes o viernes siguientes, pues los días hábiles son todos los del año, con excepción de los que determine el Reglamento para la Justicia Nacional" (CNCCF, Sala I, 20/3/97, LL, 1997-C-642). Mas no por ello deja de ser cierto que la expresión no era clara.
-
-[^5]:  En la provincia de Buenos Aires, cuyo art. 133 del CPCCBA es similar al antiguo nacional, la ambigüedad descripta en la nota anterior sigue en pie, pero en general se comulga con la siguiente solución: "Cuando el primer día de nota a que se refiere el art. 133 del CPCCBA es inhábil, este pasa automáticamente al día siguiente hábil posterior al feriado, o sea que si los días de nota son martes y viernes y si alguno de ellos fuere feriado se computaría como día de nota el miércoles o lunes posterior al mismo" (CACC 1ª Mar del Plata, Sala Il, 19/6/79, Juba, B1400756; CACC 2ª La Plata, Sala 1II, 29/3/16, Juba, B356121). Otra cuestión es determinar si el "feriado" —día en el cual no se cumple la notificación automática- abarca a las ferias judiciales de invierno y verano, pues de que sea así ono dependerá que luego de ellas el día de nota pase al lunes o al martes posterior a la feria. En el ámbito nacional, el asunto ha perdido vigencia luego de la reforma, pues ahora siempre el día de nota pasa al martes o viernes posterior, pero no sucede lo mismo en jurisdicción bonaerense, a raíz del texto de su art. 133 del CPCCBA. La jurisprudencia provincial se inclina por la afirmativa: "Los términos 'inhábil' y 'feriado' no revisten diferencia desde el punto de vista procesal, sino que aparecen como sinónimos. Días hábiles son los del funcionamiento del tribunal y su enumeración resulta por exclusión de los días inhábiles señalados por la reglamentación respectiva. A fin de determinar cuándo se produce la notificación automática, no importa si la inhabilidad afecta a una sola jornada, a varias o a todo el mes como ocurre con el de enero, pues dicha notificación se produce el primer día hábil siguiente a los días incluidos en el mes de feria" (CACC Dolores, 27/11/93, Juba, B950222; CACC 1ª Mar del Plata, Sala lI, 18/9/01, Juba, B1402867). Al aludir el art. 133 del CPCCBA a que los días de nota fueren "feriado", se está refiriendo al día inhábil, hipótesis asimilable al caso en que se encontraren suspendidos los términos procesales por resolución de la Suprema Corte de Justicia, actuando ambos supuestos como sinónimos (CACC San Nicolás, Sala I, 26/2/02, Juba, B856324; CACC San Nicolás, Sala I, 19/5/16, Juba, B657349).
-
-[^6]:  Art. 93, ACPCCN: "Principio general. Notificación automática. Las resoluciones judiciales dictadas en primera instancia quedarán notificadas automáticamente los días martes y viernes. Si uno de ellos fuere feriado, la notificación tendrá lugar el siguiente martes o viernes hábil. No se producirá el efecto previsto en el párrafo anterior cuando el expediente electrónico no estuviere disponible para la consulta en línea. Cuando la parte estuviere debidamente citada y no compareciere en el plazo previsto, abandonare el juicio o habiendo comparecido no constituyere domicilio, quedará notificado según lo previsto en el párrafo primero de este artículo. Se exceptúa de este principio a los supuestos mencionados en el art. 94".
-
-[^7]:  Art. 127, PRCPCCBA: "Principio general. Salvo los casos en que procede la notificación a un domicilio, las resoluciones judiciales quedarán notificadas por ministerio de la ley en todas las ins-tancias, el día martes o viernes posterior a la fecha en que ellas se encuentren disponibles para su consulta virtual en el sistema informático de la Suprema Corte, o el siguiente martes o viernes, si fuera inhábil. La reglamentación de la Suprema Corte establecerá el modo en que la fecha en que cada resolución se encontró disponible sea claramente visible en los sistemas de consulta".
-
-[^8]:  CNCiv., Sala C, 5/9/79, LL, 1980-A-452.
-
-[^9]:  Sobre quienes podían dejar nota en el libro de asistencia papel, el art. 133 del CPCCN remite "a las personas indicadas en el artículo siguiente", y el art. 134 menciona a la parte, su apoderado, su letrado, y personas autorizadas en el expediente. Como se verá en el texto, hoy día, la nota en el expediente es electrónica, y solo puede dejarla el letrado enrolado en el sistema y que actúa en la causa u otro usuario autorizado por él a través del sistema de gestión.
-
-[^10]:  Recordamos una antigua dicotomía jurisprudencial acerca de si la constancia en el libro de asistencia es el único medio de enervar la notificación automática o si puede prescindirse de ella si por otro medio serio y objetivo se comprueba que el expediente no está en letra. Una línea sostiene que para que no se tenga por cumplida la notificación por ministerio de la ley "es insuficiente tratar de demostrar que el expediente no se encontraba en secretaría a disposición de las partes, pues la conjunción 'y' contenida en el art. 133 del CPCCN exige el cumplimiento del otro recaudo, esto es, dejar nota en el libro de asistencia" (CNCiv., Sala A, 19/9/95, LL, 1996-B-295, comentado por Alvarez Juliá; CNCCF, Sala Il, 31/5/91, LL, 1992-D-613; CNCiv., Sala C, 16/1 1/99, JA, 2000-IV-27; el fallo contiene votos en disidencia; CACC 1ª Mar del Plata, Sala III, 5/4/17, Juba, B5059188; CACC2ª La Plata, Sala II, 23/11/16, Juba, B5028026, entre otros). Otra postura, menos rigurosa, sobre la base del principio de instrumentalidad de las formas, admite prescindir de la nota en el libro de asistencia "si se acredita por otro medio serio y objetivo que las actuaciones no se encuentran en secretaría" (CNCCF, Sala III, 14/11/00, JA, 2001-11-14; CNCiv., Sala I, 21/5/98, LL, 1998-E-285; CNCom., Sala B, 30/11/94, LL, 1995-C-599; DJ, 1995-2-802; CNCiv., Sala F, 22/9/92, LL, 1994-E-690), v. gr., si pasaron a Cámara y ello consta en el libro de pases (CNCiv., Sala l, 14/5/98, LL, 1998-E-286), o si de las propias constancias del expediente se desprende que con motivo de presentaciones posteriores a la resolución que deba notificarse las actuaciones han permanecido a despacho (CACC 1ª La Plata, Sala II, 21/9/93, Juba, B150943), v. gr., el caso de la "seguidilla de escritos"; "la interpretación restrictiva (…) constituye un exceso ritual manifiesto." (CACC Quilmes, Sala Il, 6/2/17, Juba, B2953225) Si bien compartimos esta última doctrina, nos reservaremos usar sus postulados únicamente para casos de emergencia, de excepción. Como ya advertimos al tratar otros temas, la regla es asegurar de la mejor manera una actuación eficaz, por lo tanto, cumpliremos debidamente en cada oportunidad la carga de dejar nota en el libro de asistencia.
-
-[^11]:  "A partir del primer día hábil del mes de mayo de 2015, en todas las Cámaras, Tribunales y Juzgados del Poder Judicial de la Nación, el Libro de Asistencia en papel se remplazará por un registro digital dentro del Sistema de Gestión Judicial y la oficina judicial deberá asentarlo en el expediente en soporte papel conforme lo dispuesto en el Anexo II" (art. 11, Acordada 3/15 CSJN).
-
-[^12]:  Puede verse el procedimiento en el video tutorial de función de registración del Poder Judicial, en [www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be](http://www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be).
-
-[^13]:  Esta autorización el letrado la hace a través del módulo "Gestión de autorizados" que se encuentra tanto en el módulo de notificaciones electrónicas como en el de copia de escritos. Sobre el procedimiento de esta gestión, véase infra 29.4.1.3 y/o video tutorial en [www.youtube.com/watch?v=XB5p6wp_cXA](http://www.youtube.com/watch?v=XB5p6wp_cXA).
-
-[^14]:  Por la necesidad, llegado el caso, de dejar nota electrónica, es que la consulta del expediente ha de hacerse vía web. Nada impide que el letrado, si quiere, vaya al juzgado el día de notificación automática, pida el expediente papel, y lo consulte ahí, pero si no puede verlo porque "no está en letra" solo podrá dejar nota —y evitar así la posible notificación ministerio legis— ingresando en el sistema de consulta de causas. Hay quienes sostienen que, en estos casos de intento de consulta en el tribunal de un expediente que no está en letra, a requerimiento del letrado el empleado judicial debería dejar una constancia electrónica de dicha circunstancia, pero no es esta una posibilidad segura, conocemos juzgados en los que niegan hacerlo.
-
-[^15]:  El Código Procesal local —a diferencia del nacional— no menciona, entre los legitimados a dejar la constancia en el expediente papel, a "personas autorizadas", sino que solo habla en su art. 133 de "litigantes o profesionales". Esta alusión normativa a los "profesionales" ¿se referirá solo a los que actúen patrocinando o representado a las partes o a cualquier otro, v. gr. un abogado designado en el pleito como simple "autorizado"? Creemos que esta última es la respuesta correcta. De ser así, entendemos que el profesional mero "autorizado" podría dejar nota en el expediente. En este sentido, se ha decidido que la autorización a un letrado para que consulte el expediente, presente escritos, retire copias "y cuantos actos más conlleven al desarrollo de estos actuados" comprende la de dejar nota cuando los autos no están en letra, y lo contrario importaría un excesivo rigor formal con menoscabo para el derecho de defensa en juicio (CNCiv., Sala K, 7/3/03, LL, 2003-В-936).
-No obstante nuestra opinión, nos encontramos, muchas veces, con obstáculos a la hora de dejar nota un "autorizado", se trate de profesional o no (es decir, alguien que no es la parte o alguno de sus asistentes), solución que no compartimos: la realidad manda, y hoy es casi imposible que el letrado, personalmente, pueda ir a consultar todos sus expedientes los días de notificación automática, de ahí la ventaja de designar a un colaborador del Estudio para que cumpla dicha tarea meramente material.
-
-[^16]:  CNCiv., Sala E, ED, 176-90; LL, 1998-C-71; CNCom., Sala C, 14/2/85, LL, 1985-D-6. En contra, Álvarez Juliá, Notificación por ministerio de la ley, LL, 1996-B-295; Leguisamón, Dos aspectos interesantes sobre la notificación "ministerio legis", LL, 1998-D-100. La nota del libro de asistencia beneficia únicamente a la parte que la deja, toda vez que ello no significa que los demás interesados no hubiesen podido ver el expediente (CNCom., Sala B, 29/11/99, Lexis, n° 1/505491).
-
-[^17]:  "La tradicional cédula en soporte papel quedó relegada a casos puntuales, ya no es más la reina del proceso, sino que tuvo que ceder su corona a la cédula electrónica y en menor medida a la cédula papeltrónica. La cédula electrónica vino a convertirse en el estandarte de las notificaciones en la jurisdicción" (Ordoñez, La nulidad de la notificación electrónica. Peculiaridades generales y particulares de aquellos supuestos excluidos del régimen por el art. 143 CPCCBA, disponible en [http://iadpi.com.ar/2018/08/31/la-nulidad-de-la-notificacion-electronicas-y-sus-peculiaridades/](http://iadpi.com.ar/2018/08/31/la-nulidad-de-la-notificacion-electronicas-y-sus-peculiaridades/)).
-
-[^18]:  Art. 95 del ACPCCN: "Notificación por cédula en formato papel. Solo se notificarán por cédula papel las siguientes resoluciones: 1. La primera notificación con respecto al sujeto a notificar; 2. La citación de terceros y de aquellas personas que no han sido tenidas como partes. Las copias acompañadas deberán ser firmadas por quien suscribe la cédula".
-
-[^19]:  No es así en la provincia de Buenos Aires, cuando se trata de cédulas que no llevan copias de escritos o documentos, pues" …su generación y remisión a los organismos encargados de practicar las notificaciones se hará por medios electrónicos (...) Las Oficinas de Mandamientos y Notificaciones (…) se encargarán de imprimir los instrumentos para su diligenciamiento" (art. 8°, inc. a, Acuerdo SCBA 3845/17): es la llamada "cédula papeltrónica". Si la cédula lleva copias, "…el interesado en practicar la comunicación presentará el instrumento ya impreso —así como las copias en formato papel— en el órgano judicial…" (art. 8°, inc. b, Acuerdo SCBA 3845/17).
-
-[^20]:  Véanse arts. 137 a 141 del CPCCN y del CPCCBA Acerca del oficial notificador y el régimen de la Oficina de Notificaciones, véase el "Reglamento para la Organización y Funcionamiento de la Oficina de Notificaciones para la Justicia Nacional y Federal" (Acordada CSJN 19/80, del 9/9/80); y Acuerdo SCBA 3397, "Reglamento sobre el régimen de Receptorías de Expedientes, Archivos del Poder Judicial y Mandamientos y Notificaciones. Funcionamiento del Registro Público de Juicios Universales y Mesas Receptoras de Escritos", especialmente sección quinta.
-
-[^21]:  Las principales resoluciones que se notifican en el domicilio real son: el traslado de la demanda (arts. 339, CPCCN y 338, CPCCBA), la citación a absolver posiciones cuando se actúa por apoderado (art. 409, párr. 3°, a contrario sensu, CPCCN), la declaración de rebeldía y la sentencia al rebelde (arts. 59 y 62, CPCCN y CPCCBA), la citación a absolver posiciones y la sentencia a quien no constituyó domicilio (art. 41, CPCCN). Un supuesto dudoso podría ser el del traslado de la reconvención, atento la similitud de esta con la demanda, lo que llevaría a sostener su notificación al domicilio real, pero la opinión que creemos prevaleciente es que debe hacérselo en el domicilio constituido por el actor.
-
-[^22]:  CNCiv., Sala F, 22/8/96, LL, 1997-A-162; ED, 173-31; ídem, Sala A, 25/6/96, JA, 1997-11-29; ídem, Sala E, 28/5/98, ED, 179-516.
-
-[^23]:  CNCiv., Sala E, 28/5/98, ED, 179-516; CACC 1ª Mar del Plata, Sala II, 6/2/96, Juba, B 1401554, CACC La Matanza, Sala II, 5/2/04, Juba, B3400465.
-
-[^24]:  CNCiv., Sala E, 10/3/98, LL, 1998-D-64.
-
-[^25]:  CNCiv., Sala C, 27/6/95, ED, 167-162.
-
-[^26]:  Colombo, Código Procesal Civil y Comercial de la Nación. Anotado y comentado, 4ºed., 1975, t. I, p. 643; Eisner, Notificaciones fictas, tácitas y compulsivas, LL, 139-1202; Palacio, Derecho procesal civil, 2011, t. V, p. 355; Maurino, Notificaciones procesales, 2ª ed., 2000, p. 163; CACC2ª La Plata, Sala 1,19/12/95, Juba, B252063; CACC Dolores, 2/3/93, Juba, B950130. En contra de la exégesis extensa, Fassi, Código Procesal Civil y Comercial de la Nación y demás normas procesales vigentes. Comentado, anotado y concordado, 3ª ed., 1978, t. I, p. 395; CNCiv., Sala B, 13/5/77, ED, 75-457; CACC Azul, 2/7192, Juba, B1050109.
-
-[^27]:  Debe tenerse por notificada de todas las resoluciones del expediente a la parte que lo retira en préstamo para sacar fotocopias, pues no hay razones válidas para impedir que la notificación tácita se tenga por verificada cuando las actuaciones de dieron en préstamo por circunstancias no contempladas en los supuestos del art. 127 del CPCCN (CNCiv., Sala A, 6/5/03, DJ, 2003-2-721).
-
-[^28]:  SCBA, 15/3/94, ED, 163-100; JA, 1996-1-534; Maurino, Notificaciones procesales, 2° ed., 2000, p. 165, y doctrina y jurisprudencia que allí se mencionan.
-
-[^29]:  CNCiv., Sala H, 22/3/99, LL, 1999-E-474.
-
-[^30]:  La notificación tácita es aquella que se produce sin necesidad de un acto formal de transmisión, que puede producirse por el retiro del expediente, de copias y, en general, por el cumplimiento de actos procesales que no se justificarían si se desconociera la resolución o actuación que es su necesario e inmediato antecedente (SCBA, 9/12/04, Juba, B856952). El retiro de copias del traslado del memorial por el letrado apoderado de la actora, dejando nota asentada en los autos con posterioridad y a renglón seguido de aquella resolución que ordena la sustanciación, ha implicado el conocimiento de la providencia recaída y del escrito que presentara la contraria (CACC San Nicolás, Sala I,26/8/04, Juba, B27665).
-
-[^31]:  Fenochietto — Arazi, Código Procesal Civil y Comercial de la Nación. Comentado y concordado con el Código Procesal Civil y Comercial de la Provincia de Buenos Aires, 2ª ed., 1993, t. Il, p. 557; CNCiv., Sala D, 27/4/10, elDial, AA5E8B.
-
-[^32]:  En sentido contrario a lo que sostenemos en el texto, se ha decidido: "... al no haber existido una resolución que ordenara el traslado de la presentación de fs. 80/84, al momento de proceder al retiro de las copias de la contestación en cuestión, hace presumir que el actuar del hoy apelante —quien procedió al retiro de las mismas-, ha tenido el deseo de tomar conocimiento y así anoticiarse de los términos de la contestación de demanda de su adversario, resultando a partir de dicha fecha el comienzo del cómputo del plazo para agotar su derecho de respuesta, como bien lo estableciera el a quo a fs. 166. Una solución contraria a la presente, trastocaría el equilibrio entre las partes, pues se estaría avalando una ventaja procesal en favor de quien, a su vez, tenía la carga de acompañar la cédula correspondiente, quedando a su exclusivo arbitrio el arranque del cómputo del plazo y la continuidad del proceso, en franca violación con los principios de defensa en juicio e igualdad ante la ley" (CACC Lomas de Zamora, Sala I, 14/5/09, Juba, B2551364).
-
-[^33]:  El art. 137 determina en forma clara la obligación del letrado patrocinante de suscribir y por consiguiente librar la correspondiente cédula, salvo en los casos que exista alguna norma legal especial que determine expresamente la notificación de oficio (CNCiv., Sala K, 28/4/89, LL, 1990-A-659).
-
-[^34]:  CACC 1ª Mar del Plata, Sala Il, 26/3/96, Juba, B1401589; CACC San Nicolás, Sala I, 1/4/05, Ju-ba, B857074.
-
-[^35]:  SCBA, 5/5/92, Juba, B 10200.
-
-[^36]:  CACC 2ª San Isidro, 11/5/04, Juba, B 1750906.
-
-[^37]:  Véase [https://www.cij.gov.ar/nota-249-Arranco-el-sistema-judicial-de-notificaciones-electroni-cas.html](https://www.cij.gov.ar/nota-249-Arranco-el-sistema-judicial-de-notificaciones-electroni-cas.html).
-
-[^38]:  Véase [www.scba.gov.ar/servicios/notificaciones.asp](http://www.scba.gov.ar/servicios/notificaciones.asp).
-
-[^39]:   Art. 94, ACPCCN: "Notificación electrónica. Procederá la notificación de oficio al domicilio electrónico solo de las siguientes resoluciones:
-a) El traslado de la demanda cuando se hubiere constituido domicilio electrónico o hubiere incumplido la carga de hacerlo;
-b) El traslado de la reconvención y de la contestación de la demanda;
-c) La que dispone correr traslado de las excepciones;
-d) La que fije la celebración de una audiencia;
-e) Las que se dicten con posterioridad a la finalización de la audiencia de vista de causa;
-f) Las que ordenan intimaciones o apercibimientos, hacen saber medidas cautelares, su modificación o levantamiento, dispongan la reanudación de plazos suspendidos por tiempo indeterminado o apliquen sanciones disciplinarias;
-g) La primera resolución que se dicte luego de haberse hallado inactivo el proceso por más de seis meses;
-h) Cuando se reanuden plazos suspendidos por tiempo indeterminado;
-i) La que dispone el traslado de una liquidación o de su impugnación;
-j) La que ordena el traslado del pedido de levantamiento de embargo sin tercería;
-k) Las que se dicten como consecuencia de un acto procesal realizado antes de la oportunidad que la ley señala para su cumplimiento;
-l) Las sentencias definitivas, las interlocutorias y sus aclaratorias excepto las que se dicten en audiencia;
-m) La que deniega el recurso extraordinario;
-n) La providencia que hace saber el juez o tribunal que va a conocer en caso de recusación, excusación o admisión de la excepción de incompetencia;
-ñ) La que dispone el traslado del pedido de caducidad de la instancia;
-o) Las dirigidas a los Ministerios Públicos de todas las instancias y a los representantes del Fisco;
-p) Las demás resoluciones mencionadas en la ley o las que determine el juez por resolución fundada.
-Quedan exceptuadas de esta notificación las decisiones dictadas en audiencia para quienes estuvieron presentes o debieron estarlo, que se consideran notificadas en ese acto".
-
-[^40]:  "Se debe optar entre dirigir el esfuerzo tecnológico y normativo para replicar las mismas normas de procedimiento que se utilizan con el medio de papel, o someter a la Administración de Justicia a un proceso de reingeniería integral, lo cual implicará el rediseño de procesos desde una perspectiva de las tecnologías del siglo XXI.
-Consideramos que el proceso judicial electrónico está produciendo un cambio sustancial en el servicio de justicia. El reto está en que la implementación del proceso judicial electrónico no se reduzca a un mero expediente judicial escaneado, sino que la modernización judicial permita dar al ciudadano un servicio de justicia más accesible y eficiente, aplicando tanto las nuevas tecnologías como nuevas modalidades procedimentales" (Pagés, Los procesos judiciales y las TICs en el siglo XXI, elDial-DC1B13).
-
-[^41]:  Apartado elaborado por Pablo Langholz.
-
-[^42]:  Se aclara que, algunas de las cuestiones que se mencionan en este apartado como "futuras", ya se encuentran implementadas y, en algunos casos, en funcionamiento.
-
-[^43]:  Frase adaptada de Charles Darwin.
-
-[^44]:  Acordadas CSJN 31/11, 3/12, 29/12, 35/13, 36/13, 38/13, 43/13, 2/14, 7/14, 11/14.
-
-[^45]:  Por Acordada CSJN 7/14 la Corte postergó hasta el 19 de mayo del mismo año la implementación del Sistema de Notificaciones Electrónicas en los juzgados de primera instancia nacionales y federales conforme lo dispuesto por la Acordada CSJN 38/13. Al momento de escribir estas líneas se encuentra pendiente el funcionamiento del SNE en las causas que tramitan ante la Cámara Comercial, la Cámara de la Seguridad Social y la Cámara del Trabajo, y en las que sí opera, v. gr. fuero civil, recién ha comenzado su aplicación a nivel general, razón por la cual no tenemos aún vivencias, experiencias, acerca de su buen o no tan buen funcionamiento, de los reales y concretos problemas o soluciones que brinda, los cuales irán surgiendo con el paso del tiempo.
-
-[^46]:  Ver video tutorial en [www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be](http://www.youtube.com/watch?v=xc7YRYGqzuk&feature=youtu.be).
-
-[^47]:  En la práctica se utilizan, indistintamente, los términos "notificación electrónica" y "cédula electrónica".
-
-[^48]:  Nos referimos a las cuentas de web mail, tales como Gmail, Yahoo, Hotmail, etcétera.
-
-[^49]:  Consultar notificaciones, desde esta misma pantalla. Confeccionar borradores, haciendo clic en el botón Nueva (parte inferior derecha). Consultar borradores y Notificar cédulas, haciendo clic en el botón Borradores. Agregar y quitar usuarios de tipo autorizado, haciendo clic en el botón Autorizados. Agregar y quitar usuarios de tipo Visualizador, haciendo clic en el botón Listas visualización.
-
-[^50]:  El correo electrónico de cortesía es un aviso automático que se puede recibir en la cuenta
-
-[^51]:  Al menos para un usuario común.
-
-[^52]:  Esta reforma se introdujo para los procesos civiles y comerciales, con expresa aclaración de que se aplica también en los procesos previstos en la Ley de Concursos Quiebras (art.7°, ley 14.142). Asimismo, rige en el procedimiento laboral (arts. 6°, ley 14.142, y 16, ley 11.653).
-
-[^53]:  "Esta Cámara, por su parte, ha expresado que resulta conveniente ante el caso particular de un abogado jubilado que actúe por su propio derecho y frente al pedido concreto del interesado, excepcionar la aplicación del sistema de presentaciones electrónicas (véase Sala II, causa n° 149.646 R402791, del 11/9/18; Sala I, causa n° 162.936, R 375 493, del 11/9/18). Considerando que la Acordada 3845/17 prevé la facultad de los magistrados de exceptuar la aplicación del régimen de notificaciones electrónicas y disponer la comunicación en formato papel si existen graves razones que así lo impongan (véase art. 1° del Anexo I Reglamento para la notificación por medios electrónicos), entendemos que corresponde extender dicho criterio interpretativo al caso bajo análisis, relativo al régimen de presentaciones electrónicas en el marco de la Acordada 3886/18. Sin perjuicio de no encontrarse previsto expresamente el supuesto de los abogados jubilados en el sistema normativo de los escritos electrónicos, en el caso de autos existen razones debidamente fundadas para excepcionar al apelante de la aplicación del régimen (...) entendemos que exigir la tramitación de un certificado digital de su titularidad para informatizar los escritos que en lo sucesivo presente implica incurrir en un excesivo rigor formal (arg. art. 1° del Anexo I Ac. 3845/17; Ac. 3886/18)" (CACC Mar del Plata, Sala II, 8/11/18, elDial-AAB29D).
-
-[^54]:  Conforme el art. 40 del CPCC (t.o. ley 14.142) quien litigue por sí o en representación de un tercero deberá constituir domicilio dentro del perímetro de la ciudad asiento del Juzgado o Tribunal conjuntamente con una casilla de correo electrónico que será asignada oficialmente al letrado que lo asista, donde se le cursarán las notificaciones que no requieran soporte papel y la intervención del oficial notificador. En consecuencia, para dar cumplimiento con dicho artículo se prevé la constitución de dos domicilios, el constituido físico como el constituido electrónico, y ambos de forma obligatoria (conforme Res. SCBA 582/16, consid. 1.1, párr. 3°, consid. Il, y art. 2°, de la misma). Por lo tanto, será necesario la constitución en conjunto de ellos, bajo apercibimiento de aplicarse la sanción de lo dispuesto por el art. 41 del CPCC (CACC 1ªSan Nicolás, 7/12/17, Juba, B861550, entre otros).
-
-[^55]:  CACC2ª La Plata, 23/2/17, Juba, B5027366.
-
-[^56]:  "Si bien podría sostenerse que la falta de adjudicación de copias a la cédula electrónica no conforma una directa afectación al derecho de defensa cuando los documentos digitales se encuentran digitalizados y subidos a la web, por ser de libre acceso a las partes presentadas en el expediente y dado que la omisión podía ser subsanada recurriendo a la copia digital obrante en el expediente digital; deviene relevante en el caso concreto de autos que en las cédulas libradas al domicilio electrónico tampoco se precisaron las fojas de la presentación de la cual se estaba disponiendo su sustanciación" (CNCiv., Sala J, 8/5/17, "Valverde, Javier c. Trenes de Buenos Aires S.A. y otros s/Beneficio de litigar sin gastos", Microjuris, MJ-JU-M-105545-AR/MJJ105545; disponible en [www.calz.org.ar/wp-content/uploads/2017103/CABA-Sumario-Fallo-Cedula-electronica-sin-co-pias.pdf](http://www.calz.org.ar/wp-content/uploads/2017103/CABA-Sumario-Fallo-Cedula-electronica-sin-co-pias.pdf)).
-
-[^57]:  Las que deban cumplirse en el domicilio real de la persona, v. gr. citación para absolver posiciones cuando se actúa por apoderado. declaración de rebeldía. O cuando los magistrados dispongan la comunicación en formato papel si existen graves razones que así lo impongan (art. 1º del Reglamento).
-
-[^58]:  Art. 130: "Confección de la cédula. La cédula será suscripta en forma electrónica utilizando el sistema informático que instrumente la Suprema Corte de Justicia. En este supuesto no se adjuntarán copias para traslado, siendo suficiente su individualización en el cuerpo del instrumento a fin de posibilitar que los destinatarios compulsen las constancias digitales en dicho sistema.
-Solo cuando la cédula tenga que ser cursada a un domicilio real se diligenciará en formato papel. Si no deben acompañarse copias con ella, su generación y remisión a los organismos encargados de practicar las notificaciones se hará por medios electrónicos, quienes la imprimirán a tales efectos. Cuando, en cambio, se requiera la adjunción de copias, los interesados en la notificación deberán presentar en Secretaría tanto la cédula como sus copias en papel, aclarándose rúbrica con el sello correspondiente.
-Las cédulas serán confeccionadas y firmadas por los letrados o letradas de las partes o los mediadores o mediadoras o los auxiliares de justicia, que tengan interés en la notificación. Por Secretaría se rubricarán las que notifiquen embargos, medidas precautorias, entrega de bienes o modificaciones de derechos, y cuando los tribunales así lo ordenen por el objeto de la providencia. Los órganos judiciales realizarán de oficio la notificación electrónica de las resoluciones previstas en los aps. 39,4º, 10 y 11 del art. 128, la que convoca a la audiencia preliminar y cualquier otra que por razones de urgencia u otro motivo se disponga por resolución fundada. Tanto el ingreso de la cédula electrónica en el sistema informático como la presentación en Secretaría de una cédula en formato papel importará la notificación de la parte patrocinada o representada.
-Art. 132: "Diligenciamiento. Los funcionarios de los órganos judiciales confrontarán las cédulas electrónicas dentro del día hábil posterior de su ingreso al sistema informático por los interesados, remitiéndolas electrónicamente a sus destinatarios u observándolas cuando no cumplan los recaudos previstos para su validez.
-En las cédulas que deban cursarse en formato papel la reglamentación establecerá lo relativo a su diligenciamiento, así como los supuestos en los cuales se admitirá su generación y envío electró-nicos, procurando que los oficiales diligenciadores informen electrónicamente al expediente el resultado de la diligencia".
-
-[^59]:  Antes se perdía bastante tiempo yendo al tribunal con frecuencia inapropiada, a buscar resoluciones que, por su extenso plazo de emisión —v. gr., interlocutorias, definitivas—, o por su modo de notificación —v. gr., por cédula—, no justifican dicho temperamento. Hoy, la consulta web de las actuaciones más la nota electrónica ayudan grandemente a evitar ese desgaste.
-
-[^60]:  La adecuada notificación de las distintas etapas fundamentales del proceso y lo atinente al trámite previsto en el art. 257 del CPCCN, tiene por objeto dar a los litigantes la oportunidad de ejercer sus defensas con la amplitud que exige el debido proceso y plantear las cuestiones conducentes para la correcta solución del litigio. Corresponde dejar sin efecto el auto de concesión del recurso extraordinario y devolver las actuaciones al tribunal de origen a fin de que, antes de dictar uno nuevo, proceda a notificar sus decisiones a todas las partes, terceros y profesionales que intervinieron en la causa, a quienes tampoco confirió el traslado de los recursos extraordinarios deducidos ni se les hizo saber el auto de concesión de dichos remedios (CSJN, 24/8/99, CSJN-Fallos, 322:1886).
-
-[^61]:  Quizá por poco tiempo: el PRCPCCBA sólo impone la carga de constituir domicilio electrónico.
-
-[^62]:  "La omisión del domicilio real en el escrito de demanda, autoriza la interposición de la excepción de defecto legal" —Benincasa – Espinosa, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2004, t. 1, p. 685—.
-
-[^63]:  Sobre este punto no hay uniformidad. Suele distinguirse según el tipo de incidente. Si es una incidencia, o un incidente procedimental, v. gr., caducidad de instancia, nulidad procesal, generalmente se admite la notificación en el domicilio constituido en el principal. Distinta es la solución si se trata de un juicio incidental, o de un incidente iniciado por o contra quien no es parte en el juicio. Recomendamos ver la casuística jurisprudencial.
-
-[^64]:  La expresión que se tendrá por constituido el domicilio "en los estrados del juzgado" ha generado alguna discrepancia en la práctica. En la gran mayoría de los casos se la entiende en el sentido que para todas las resoluciones rige la notificación automática o ministerio legis (CACC 1ª Mar del Plata, Sala Il, 29/9/87, Juba, B1400754; ídem, Sala I, 23/8/94, Juba, B 1400962; CACC San Nicolás, Sala l, 17/3/98, Juba, B855314; CACC San Martín, Sala II, 8/9/98, Juba, B2001204); pero también se la ha interpretado de esta otra manera: en los casos de notificaciones por cédula corresponde confeccionar una y fijarla en la tablilla del juzgado (JP Villa Gesell, 9/2/96; JP Tordillo, 3/3/98, para ambos Juba, B9990181).
-
-[^65]:  Si bien es cierto que declarada la rebeldía de los citados corresponde tener por constituido el domicilio legal de los mismos en los estrados del juzgado (art. 59, CPCCBA), ello no significa que la sentencia se deba tener por notificada por ministerio de la ley porque el art. 62 del Código de forma expresamente dispone que la sentencia se hará saber al rebelde en la forma prescripta para la notificación de la providencia que declara la rebeldía, esto es, por cédula (SCBA, 2714/93, Juba, B22431).
-
-[^66]:  Si bien los domicilios a que se refieren los arts. 40 y 41 del CPCCN subsisten hasta la terminación del juicio o su archivo mientras no se constituyan o denuncien otros, si el trámite estuvo paralizado durante un tiempo prolongado, esa inactividad es razón suficiente para considerar extinguido el domicilio oportunamente constituido por la demandada, pues no cabe extender la ficción legal más allá de lo razonable (CNCiv., Sala E, 30/4/96, LL, 1997-B-90). La paralización del expediente durante años resulta equiparable a la del archivo del mismo, por cuanto la continuidad del domicilio legal ha sido establecida para la generalidad de los casos en que el desarrollo del trámite procedimental se operó en forma regular, pero no sucede lo mismo si la inactividad dura muchos años, en cuyo caso el domicilio que se hubiera constituido ya no subsiste (CACC1ªLa Plata, Sala II, 14/11/89, Juba, B150251).
-
-[^67]:  Todo cambio de domicilio debe notificarse por cédula a la otra parte, debiendo mientras esta diligencia no se hubiese cumplido, tenerse por subsistente el anterior, resultando eficaces las notificaciones allí practicadas (CACC 1ª Mar del Plata, Sala l, 30/8/94, Juba, B1351104; CACC Trenque Lauquen, 11/7/91, Juba, B2200581). Antes de verificarse la notificación expresa o tácita del nuevo domicilio procesal a la contraparte, este no resulta oponible a ella (CNCiv., Sala A, 8/2/95, JA, 19981, síntesis).
-
-[^68]:  CNCom., Sala A, 31/5/99, LL, 1999-E-448.
-
-[^69]:  CNCiv., Sala A, 8/2/95, JA, 1998 l, síntesis; CACC Lomas de Zamora, Sala I, 10/4/97, Juba, B2550091. En contra, la subsistencia del domicilio anterior por falta de notificación de su cambio a la contraparte debe aplicarse tanto para las notificaciones efectuadas por las partes como para las del tribunal al no haberse hecho distingo alguno en el art. 42 del CPCCBA (CACC 1ª La Plata, Sala II, 23/3/93, Juba, B150810).
-
-[^70]:  CACC Trenque Lauquen, 11/7/91, Juba, B2200581; CNCiv., Sala A, 8/2/95, JA, 1998l, síntesis. Basta el conocimiento de la contraparte, por cualquier medio, del escrito de cambio de domicilio, para que surta efecto respecto de quien lo tuvo, pues de la redacción de la norma surge que el objeto perseguido es que se haga saber dicha modificación a la contraria y no la providencia que recaiga (CNCiv., Sala l,27/7/89, Lexis, n° 10/4670). Mantener la subsistencia del domicilio procesal constituido, no obstante el conocimiento que el actor tenía del nuevo domicilio legal constituido por la contraria en otro proceso sustanciado entre las mismas partes y ante el mismo tribunal, constituye un excesivo rigor formal contrario a la garantía de la defensa en juicio (CSJN, 30/4/87, CSJN-Fallos, 310:870). En contra, el domicilio legal constituido oportunamente en el expediente subsistirá para todos los efectos legales, aunque la contraria se haya anoticiado espontáneamente del contenido del escrito de cambio, porque lo que se notifica en un juicio son resoluciones o providencias simples emanadas del órgano jurisdiccional y no escritos, por lo que no se puede hablar, entonces, de notificación tácita (CACC 1ª Mar del Plata, Sala I, 8/8/96, Juba, B1351416).
-
-[^71]:  CACC 2ª La Plata, Sala II, 8/10/96, Juba, B300440. En contra, por la validez de la notificación tácita, aun cuando no se haya dictado providencia teniendo por constituido el nuevo domicilio (CN-CAF, Sala IV, 26/4/94, elDial-AH7F5; CSJN, 23/9/99, CSJN-Fallos, 322:179).
-
-[^72]:  Sobre las características de esta "casilla de correo electrónico", véase supra, 29.4.2.
-
-[^73]:  CNCCF, Sala l, 16/3/99, LL, 1999-D-616.
-
-[^74]:  Recuérdese lo dicho sobre la posibilidad de marcar "expedientes favoritos" (el sistema nos avisa novedades en los mismos, entre ellas, notificaciones recibidas), y la función del mail de cortesía (su falta de envío no enerva los efectos de la notificación).
-
-[^75]:  Si la resolución reviste el carácter de una sentencia interlocutoria y no definitiva, no se imponía el deber de la notificación de oficio como pretende la recurrente, sino que, por el contrario, era la actora quien debía confeccionar la cédula porque hacía a su propio interés que quedara firme el auto que declaró la acumulación de procesos que fuera solicitada a su pedido (art. 137, parte 1ª, CPCCBA). Si un auto debía ser notificado personalmente o por cédula y no se trataba del supuesto contemplado en el art. 483 de la legislación adjetiva, dicha carga no incumbía al órgano, siendo en cambio un deber de la actora, en su carácter de titular de la acción, procurar el anoticiamiento de la providencia dictada y si no se instó la notificación en tiempo propio, sobreviene la caducidad de instancia (CACC2ª La Plata, Sala I, 30/3/00, Juba, B253670).
-
-[^76]:  La notificación de la demanda a un codemandado impulsa el procedimiento respecto de los litisconsortes (CSJN, 13/6/95, JA, 1996-I-86; LL, 1996-A-362). Opera la caducidad de la instancia del recurso de apelación interpuesto por el perito, si este no impulsó las actuaciones notificando la regulación recurrida para posibilitar la elevación del expediente (CNCiv., Sala E, 15/3/00, JA, 2001-1-80). Corresponde declarar de oficio la caducidad de la instancia si han vencido los plazos establecidos por el art. 310, inc. 2º del CPCC sin que el interesado notificara el traslado del recurso extraordinario interpuesto, lo cual está su cargo a partir de la Res. 1/00 de superintendencia de la Cámara Nacional de Apelaciones en lo Contencioso Administrativo Federal (CNCAF, Sala I, 16/8/01, LL, 2002-A-1007).
-
-[^77]:  No corresponde declarar la caducidad de instancia —en el caso, en un proceso por desalojo— si del expediente surge que antes del transcurso del plazo el actor presentó un mandamiento, pues tal actividad de la parte en confeccionar el instrumento respectivo dejándolo en secretaría para su posterior diligenciamiento por la oficina respectiva, en sí misma constituye un acto impulsor del trámite, aunque no logre su finalidad específica o sea observado por el tribunal (CNCiv., Sala K, 9/9/02, LL, 2003-A-701). El libramiento de una cédula citando al demandado a reconocer firma trasunta la inequívoca intención del actor de mantener viva la instancia, resultando, por lo demás, de trámite indispensable para su prosecución (CNCom., Sala A, 29/4/99, LL, 1999-E-131). El plazo de caducidad de la instancia debe computarse desde que se ordenó la notificación en extraña jurisdicción y no desde la fecha de libramiento de la cédula, si no existe constancia alguna de dicho libramiento, habiéndose incorporado la diligencia con posterioridad al dictado de la resolución que decretó la perención. La contratación de una empresa para la gestión de una notificación en extraña jurisdicción no configura acto interruptivo de la prescripción (CNCiv., Sala K, 11/6/02, LL, 2002-D-360).
-
-[^78]:  El plazo de perención de la instancia en el trámite de la queja corre desde la fecha del acto interruptivo, no desde su notificación por ministerio de ley (CSJN, 3/3/05, JA, ejemplar del 29/6/05)
-
-[^79]:  La complejidad de la notificación por cédula se extiende a los medios sucedáneos: acta notarial, carta documento con aviso de entrega, y telegrama con copia certificada y aviso de entrega; pero estos no son de uso frecuente.
-
-[^80]:  "Es indiscutible que, en relación a las cédulas electrónicas de notificación, resultan plenamente aplicables los principios generales propios del régimen de nulidades de notificación" Bielli-Nizzo, Notificaciones electrónicas y nulidades en el proceso judicial bonaerense, disponible en [www.iad-pi.com.ar/index.php/2018/05/07/notificaciones-electronicas-y-nulidades-en-el-proceso-judicial-bonaerense](www.iad-pi.com.ar/index.php/2018/05/07/notificaciones-electronicas-y-nulidades-en-el-proceso-judicial-bonaerense). "…[L]as cuestiones vinculadas con el proceso electrónico han de interpretarse en el contexto general del derecho procesal y especialmente haciendo aplicación de los principios esenciales de nuestro derecho de forma entre los cuales se encuentra el carácter relativo de las nulidades procesales…" (CACC Morón, 26/3/19, «Alvez, Nicolás Fabricio y otro/a c. Peidón, Rodrigo Fernando", elDial-AAB496).
-
-[^81]:  Para obtener la nulidad de una notificación deben concurrir los presupuestos propios de toda nulidad, a saber, de trascendencia de la nulidad, falta de convalidación, interés en su declaración. El tema "nulidad de los actos procesales", de por sí profuso, excede el marco de esta obra, razón por la cual remitimos al lector a la literatura especializada.
-
-[^82]:  CNCiv., Sala E, 29/2/96, LL, 1996-C-608; DJ, 1996-2-437.
-
-[^83]:  CACC San Isidro, Sala I, 29/4/97, LLBA, 1997-903.
-
-[^84]:  CNCiv., Sala C, 15/4/93, LL, 1994-E-690.
-
-[^85]:  CNCiv., Sala A, 23/5/96, LL, 1996-E-11; DJ, 1996-2-1132.
-
-[^86]:  CNCAF, Sala l, 6/4/00, LL, 2000-D-355; DJ, 2000-3-604.
-
-[^87]:  CFSS, Sala 1par, 12/6/17, "Quintana, Teresa de Jesús c. ANSES s/Pensiones", disponible en [www.public.diariojudicial.com/documentos/000/074/740/000074740.pdf](http://www.public.diariojudicial.com/documentos/000/074/740/000074740.pdf);CNAT, Sala III, 14/8/17, "Ruiz, Walter Daniel c. Mapfre Argentina A.R.T. S.A. (Hoy Galeno Art S.A.) y otro s/Accidente – Ley especial", elDial-AAA14F; CNCAF, Sala III, 6/10/15, "Telefónica Móviles Argentina S.A. c. DNCI s/Lealtad comercial — Ley 22.802-Art. 22", elDial-AA9290.
-
-[^88]:  CNCiv., Sala C, 5/11/91, LL, 1992-D-630.
-
-[^89]:  CNCAF, Sala II, 13/3/98, elDial-AFF23.
-
-[^90]:  CACC2ª La Plata, Sala I, 11/11/03, elDial-W17255.
-
-[^91]:  CNCiv., Sala M, 29/11/17, "Ríos Díaz, Manuel c. Ríos Díaz, María Silvina s/Nulidad de acto jurídico", disponible en [www.abogados.com.ar/archivos/2017-11-30-075648-r-d-m-c-r-d-m-s-s-nuli-dad-de-acto-juridico.pdf](www.abogados.com.ar/archivos/2017-11-30-075648-r-d-m-c-r-d-m-s-s-nuli-dad-de-acto-juridico.pdf).
-
-[^92]:  CNCAF, Sala V, 30/12/14, "Bula, Mariano c. Estado Nacional", Microjuris, MJ-JU-M-90692-AR/MJJ90692 / MJJ90692; ídem, Sala IV, 30/6/15, "Desler S,A. c. Dirección General Impositiva s/Recurso directo de organismo externo", elDial-AA90BF.
-
-[^93]:  CNCiv., Sala M, 31/10/17, "Carali, Sonia Roxana c. Herrera, Pablo Ramón y otro s/Prescripción adquisitiva", elDial-AAA87C.
-
-[^94]:  CACC Mar del Plata, Sala III, 22/6/17, "Municipalidad de General Pueyrredón c. Fasciglioni, Julio César s/Reivindicación", elDial-AAA02C.
-
-[^95]:  CNCom., Sala C, 31/3/98, LL, 1998-E-1; CNCiv., Sala K, 29/8/03, LL, 2004-B-794. La eficacia de instrumento público se extiende a la copia dejada al interesado, desde que en esta también hay actuaciones cumplidas por el oficial (CNCiv., Sala F, 21/7/76, ED, 69-433).
-
-[^96]:  Siguiendo a Falcón, puede decirse que la falsedad de los instrumentos públicos es de tres clases. Falsedad material: adulteración de la firma, alteraciones, supresiones, modificaciones o agregados; falsedad intelectual: la que ocurre sobre los hechos que el oficial público dice por él realizados o cumplidos en su presencia, como asimismo la fecha que impone al acto, la constatación de la identidad de las partes, etcétera; falsedad ideológica, la concerniente a la autenticidad de los actos, convenciones, pagos, reconocimientos, es decir, todos los elementos que el oficial público no puede avalar. En los dos primeros casos corresponde atacar el instrumento por incidente de redargución de falsedad, y en el tercero basta con la prueba en contrario (Código Procesal Civil y Comercial de la Nación. Anotado, concordado, comentado, 1997, t. III, p. 395).
-
-[^97]:  Si la incidentista sostuvo que en el domicilio de su parte, nunca fue dejada una cédula del tenor de la que impugna, ello debió canalizarse a través de la pertinente redargución de falsedad, dada la calidad de instrumento público que reviste la constancia de diligenciamiento asentada en el reverso de la cédula (CACC 2ª La Plata, Sala I, 24/8/00, Juba, B253890). Análogamente, CNCiv., Sala E, 21/4/97, LL, 1997-D-781; ídem, Sala A, 23/5/96, LL, 1996-E-11, JA, 1998-lI, síntesis; CNCCF, Sala III, 19/7/95, elDial-AF1FC; CACC Mar del Plata, Sala I, 9/4/96, Lexis, n° 14/21132; CACC2ª La Plata, Sala I, 25/2/92, Lexis, n° 14/38196.
-Lo atinente a la vía procesal adecuada para alcanzar la nulidad de una notificación, en cuanto se imputa falsedad intelectual al informe efectuado por el funcionario interviniente en su diligenciamiento, dista de ser una cuestión zanjada, tanto en la doctrina como en la jurisprudencia. Una corriente de opinión estima que se debe utilizar la vía autónoma de la redargución de falsedad, Pero parece que la vía incidental es la que admite más adeptos (Falcón, Redargución de falsedad de instrumento público en el nuevo Código Civil y Comercial, en "Revista de Derecho Procesal", n° 2016/2, "La prueba en el Código Civil y Comercial de la Nación", p. 171 y ss.).
-
-[^98]:  Rivas, De las notificaciones y la redargución de falsedad, LL, 1993-A-518; Maurino, Nulidades procesales, 1991, ps. 125 y 126; CACC 1ª Mar del Plata, Sala Il, 27/6/95, elDial-WAC58.
-
-[^99]:  En cambio, sí podría utilizarse en los supuestos de notificación personal (art. 142, CPCCN) y por examen del expediente (art. 143, párr. 2º, CPCCN).
-
-[^100]:  CNCiv., Sala H, 17/4/97, LL, 1997-E-605; CNCAF, Sala IV, 16/3/93, elDial-AH42C; CACC San Martín, Sala II, 8/3/01, Lexis, n° 14/95138.
-
-[^101]:  CNCiv., Sala J, 8/5/17, "Valverde, Javier c. Trenes de Buenos Aires S.A. y otros s/Beneficio de litigar sin gastos", elDial-AAAOZA; aunque en este caso se ordenó nueva notificación con suspensión de plazos porque fue relevante que no se precisaron las fojas de la presentación de la cual se estaba disponiendo la sustanciación. "…[E]s práctica judicial aquella por la cual la cédula electrónica no viene acompañada del escrito cuyo traslado se ha ordenado toda vez que este se encuentra disponible en el expediente electrónico, obligando al destinatario a acceder a las actuaciones digitales para visualizar el escrito en traslado. Entendemos que esta práctica, algo irregular, no afecta la eficacia de la notificación siempre y cuando el escrito en traslado se encuentre cargado al Sistema Lex 100 y sea identificable. Ello así porque la cédula electrónica —a pesar de no estar acompañada de las copias digitales— cumple su finalidad ya que remita —expresa o tácitamente— al expediente electrónico en donde se encuentra el escrito en traslado y al letrado solo le basta hacer un par de clics para accede a él" (Manterola, La notificación procesal en el expediente digital, Microjuris, MJ-DOC-12304-AR /MJD 12304). "…[S]i en la cédula de notificación electrónica no se acompañó la copia digital, pero se encuentra cargada en el sistema, daría lugar a una tercera solución, y contraria a las dos anteriores, esto es, al rechazo del pedido de nulidad o suspensión" (Marturano, Las notificaciones electrónicas y algunos de sus corolarios procesales, elDial-DC2521).
-Art. 130 del PRCPCCBA: "Confección de la cédula. La cédula será suscripta en forma electrónica utilizando el sistema informático que instrumente la Suprema Corte de Justicia. En este supuesto no se adjuntarán copias para traslado, siendo suficiente su individualización en el cuerpo del instrumento a fin de posibilitar que los destinatarios compulsen las constancias digitales en dicho Sistema".
-
-[^102]:  "Si el auto es de los que se notifican ministerio legis, aunque el juez hava puesto 'notifiquese' queda notificado por nota, ya que la enumeración del art. 135 del CPCCBA es taxativa, no estando habilitado el magistrado a ordenar otras ni para disponer la supresión de las expresamente contempladas" (CACC 1ª Mar del Plata, Sala I, 6/6/02, Juba, B1400755). "La expresión 'notifíquese con entrega de copias respectivas' no enerva la notificación ministerio legis de la respectiva providencia a la parte, cuyo domicilio se tuviera oportunamente por constituido en los estrados del juz-gado, ya que ante esa circunstancia el dispositivo de transmisión que operó de pleno derecho, no es susceptible de ser suprimido o dejado de lado, ya que de lo contrario se estaría afectando el régimen general de notificaciones consagrado por la ley adjetiva" (CACC San Martín, Sala II, 8/9/98, Juba, B2001191). En igual sentido, SCBA, 12/9/01, Juba, B25830. En contra, por la preeminencia del medio cédula en caso de que la resolución diga "Notifíquese", CACC Azul, Sala I, 28/12/00, Juba, B1050499; CACC San Nicolás, Sala I, 3/10/96, Juba, B854646.
-
-[^103]:  CNCiv., Sala C, 17/8/95, LL, 1996-A-252; ídem, Sala A, 27/8/96, LL, 1996-E-653.
-
-[^104]:  "La providencia simple que ordena una notificación no causa gravamen irreparable, toda vez que nada decide sobre el fondo de la cuestión" (CACC 1ª Mar del Plata, Sala I1, 4/5/00, Juba, B1401125).
-
-[^105]:  SCBA, 12/9/01, Juba, B25830, voto del doctor De Lázzari.
-
-[^106]:  SCBA, 12/9/01, Juba, B25830, voto del doctor Pettigiani; CACC 2ª La Plata, Sala I, 18/8/15, Juba, B126895.
-
-[^107]:  Condomi, Apostillas procesales: "notifíquese", DJ, 1999-3-160 y 161.
-
-[^108]:  En igual sentido véase, Condomi, Apostillas procesales: "notifíquese", DJ, 1999-3-160 y 161.
-
-[^109]:  La notificación por cédula de la sentencia interlocutoria viene ordenada por el art. 135, inc. 12 del CPCCBA, independientemente de que en ella no se hubiere dispuesto, en consecuencia no puede considerársela notificada ministerio legis (CACC San Isidro, Sala II, 30/11/93, LLBA, 1994-619).
-
-[^110]:  CNCom., Sala D, 16/6/01, JA, 2001-IV-14; CNCiv., Sala F, 29/12/94, JA, 1998-II, síntesis; CACC 2ª La Plata, Sala III, 26/9/89, Juba, B350270; CACC Quilmes, Sala l, 21/10/97, Juba, B2900417. Aunque con un criterio estricto de interpretación del dispositivo legal, se ha dicho que si la resolución dictada por el tribunal de alzada es un auto "interlocutorio", y —por lo tanto— carente de fuerza "definitiva", quedará notificado de acuerdo al principio general del art. 133 del CPCCN, es decir, por ministerio de la ley —art. 135, inc. 12, CPCCBA, a contrario— (CACC 1ª Mar del Plata, Sala II, 17/5/01, Juba, B1402615).
-
-[^111]:  Afecta la garantía de defensa en juicio considerar notificada ministerio legis una sentencia definitiva (CSJN, 4/8/81, LL, 1981-D-700). La notificación de una sentencia definitiva debe efectuarse personalmente o por cédula y la misma se cumple adecuadamente con la transcripción de su parte pertinente (CACC 1ª Mar del Plata, Sala II, 14/12/95, Juba, B1401523). El auto que regula honorarios es asimilable a la sentencia definitiva respecto del monto de la retribución fijada y, por lo tanto, corresponde su notificación por cédula o personalmente a los interesados (CACC2ª La Plata, Sala I, 7/7/88, Juba, B250839). La sentencia definitiva pronunciada en juicio ejecutivo debe ser notificada por cédula, conforme a la regla general contenida en el art. 135, inc. 12 del CPCCBA (CACC Trenque Lauquen, 3/3/92, Juba, B2202618).
-
-[^112]:  CACC Quilmes, Sala II, 2/3/99, Juba, B2950728. El art. 257, párr. 3º del CPCCN, en cuanto rige la notificación por ministerio de la ley ante la omisión de constituir domicilio en la Capital Federal, resulta una excepción a la regla del art. 135, inc. 13, por cuanto no tendría razón de ser para las providencias simples, regidas por el art. 133 (CSJN, 5/10/95, LL, 1996-C-126).
-
-[^113]:  CNCiv., Sala C, 16/2/82, LL, 1982-B-477; ídem, Sala F, 17/5/84, ED, 115-486; ídem, Sala A, 17/2/97, LL, 1997-D-355; CNCom., Sala A, 22/4/80, ED, 88-452.
-
-[^114]:  CNCiv., Sala C, 28/7/87, RepJA, 1988-700, n° 17; CACC Quilmes, Sala Il, 23/5/00, Juba, B2950812; CACC 2ª La Plata, Sala I, 25/4/96, Juba, B252239. La notificación por nota se opera aunque en la providencia se ordene "notifíquese", cuando el proveído guarda razonable relación con la petición que se formula, estos es, acogiéndola, desestimándola o disponiendo el cumplimiento de algún requisito previo (CNCiv., Sala F; 17/6/98, LL, 1998-F-159).
-
-[^115]:  CNCiv., Sala E, 5/10/95, LL, 1996-C-780; ídem, 19/2/96, LL, 1996-D-277.
-
-[^116]:  Eisner, Las notificaciones judiciales en el debido proceso, LL, 1981-D-948; ídem, Una reacción saludable en tema de notificaciones judiciales y seguridad jurídica, LL, 1989-C-144. El art. 133 del CPCCN es imperativo en cuanto a que las resoluciones allí indicadas deben notificarse por cédula, sin distinción en cuanto a la parte que peticionó el pronunciamiento. Por lo tanto, la carga establecida en el art. 133 no rige en dichos supuestos (CNCiv., Sala D, 8/9/95, LL, 1996-A-491).
-
-[^117]:  No media obstáculo para aplicar conjuntamente los regímenes de notificación automática y por cédula respecto de la misma providencia, si esta consta de dos partes escindibles. En consecuencia, la resolución que por un lado ha incluido la fórmula "notifíquese" respecto del traslado de la documentación acompañada, a la actora (art. 135, inc. 1°, CPCCBA) y por otro, sin aditamento alguno, aplicando el art. 133 del CPCCBA, se le corre traslado de la excepción interpuesta, cumple adecuadamente con el criterio precedente y con las normas adjetivas de aplicación (CACC San Nicolás, Sala l, 3/10/96, Juba, B854646).
-
-[^118]:  CACC1ª Mar del Plata, Sala Il, 12/2/88, Juba, B 1400758.
-
-[^119]:  CACC Azul, Sala l, 28/12/00, Juba, B1050499; CNCiv., Sala C, 24/6/80, ED, 89-661.
-
-[^120]:  CNCiv., Sala C, 24/6/80, ED, 89-661.
-
-[^121]:  CACC2ª La Plata, Sala l, 27/10/99, Juba, B253555; JP Villa Gesell, 20/9/95, Juba, B9990130.
-
-[^122]:  Recordamos que, para algunos, solo quien dejó la nota no queda notificado, en cambio para otros, la nota de cualquiera de las partes beneficia a las demás.
-
-[^123]:  Art. 138, CPCCN: "Las cédulas se enviarán directamente a la oficina de notificaciones, dentro de las veinticuatro horas, debiendo ser diligenciadas y devueltas en la forma y en los plazos que disponga la reglamentación de superintendencia. La demora en la agregación de las cédulas se considerará falta grave del prosecretario administrativo."; y la reglamentación dispone: "La agregación de las cédulas diligenciadas deberá realizarse dentro de las cuarenta y ocho horas, siempre que el expediente se encontrare en el juzgado" (art. 234, RJNC). A su vez, en el régimen nacional, el art. 131 del Reglamento de la Oficina de Notificaciones (Acordada CSJN 19/80) establece: "Los términos para el diligenciamiento de las cédulas, se contarán por días hábiles, y comenzarán a correr al día siguiente del indicado en el sello fechador de entrada estampado en aquellas"; y el art. 132: "El término de diligenciamiento de las cédulas es de cuarenta y ocho horas, prorrogándose este plazo por veinticuatro horas cuando por razones justificadas, el mejor diligenciamiento de una cédula así lo requiera, de lo cual deberá dejarse constancia en el acta que se labre. Se observará una tolerancia de veinticuatro horas de atraso para los casos excepcionales en que un notificador preste servicio en dos zonas". A veces, por distintos motivos, una cédula que ya regresó al tribunal no se agrega al expediente, sino que queda en una "carpeta de cédulas para agregar", tal como se la denomina usualmente. Entonces, si transcurrido el plazo estimado de ida y vuelta, la cédula no luce anexada en los au-tos, conviene revisar y buscar la pieza en dicha carpeta.
-
-[^124]:  Art. 339, CPCCN: "La citación se hará por medio de cédula que se entregará al demandado en su domicilio real, si aquel fuere habido, juntamente con las copias a que se refiere el art. 120. Si no se le encontrare, se le dejará aviso para que espere al día siguiente y si tampoco entonces se le hallare, se procederá según se prescribe en el art. 141...".
-
-[^125]:  Aunque recordamos que ante una divergencia entre la fecha que figura escrita en la cédula como de su confección, y la de su presentación en el tribunal, cierta jurisprudencia otorga preeminencia a la primera.
-
-[^126]:  El libramiento de una cédula citando al demandado a reconocer firma trasunta la inequívoca intención del actor de mantener viva la instancia, resultando, por lo demás, de trámite indispensable para su prosecución (CNCom., Sala A, 29/4/99, LL, 1999-E-131).
-
-[^127]:  Luego de la reforma al Código Procesal Civil y Comercial de la Nación, hecha por ley 25.488, se subsanó parcialmente esta anomalía, solo para las cédulas que deban diligenciarse fuera de la ciudad asiento del tribunal (ley 22.172). Al respecto, dice el nuevo art. 138, en la parte pertinente: "Cuando la diligencia deba cumplirse fuera de la ciudad asiento del tribunal, una vez selladas, se devolverán en el acto y previa constancia en el expediente, al letrado o apoderado". Es una lástima que no se haya adoptado igual temperamento para todas las cédulas.
-En la provincia de Buenos Aires, en los casos en que corresponde notificar por cédula papel al domicilio físico constituido, v. gr. la sentencia definitiva, el libramiento del documento se hace a través del Sistema de Presentaciones y Notificaciones Electrónicas, lo que excluye la posibilidad de que se presente la situación descripta en el texto (véase infra, 36.3.1.).
-
-[^128]:  Una razón de la negativa que suele escucharse en las mesas de entradas es la siguiente: una cédula —o un mandamiento, o testimonio, en general cualquier pieza que vaya a confronte o necesite de un control judicial para salir del tribunal— hasta tanto no esté integrada con la conformidad del órgano judicial derivada de dicho control, no es una cédula, sino un mero "proyecto" de ella. No es aceptable este "argumento": más allá de cualquier defecto formal de la pieza, el hecho de presentarla es un acto independiente, que produce efectos por sí solo, v. gr., rechazar el "proyecto" porque carece de las copias mencionadas por los arts. 120 y 136 del CPCCN y del CPCCBA no tiene por qué enervar la notificación tácita que dicha presentación implica, pues el conocimiento del proveído por la parte presentante igualmente se produjo. También el proyecto, aun "observado" por el tribunal, puede producir efectos sobre la caducidad de instancia: no corresponde declarar la caducidad de instancia —en el caso, en un proceso por desalojo— si del expediente surge que antes del transcurso del plazo el actor presentó un mandamiento, pues tal actividad de la parte en confeccionar el instrumento respectivo dejándolo en Secretaría para su posterior diligenciamiento por la oficina respectiva, en sí misma constituye un acto impulsor del trámite, aunque no logre su finalidad específica o sea observado por el tribunal (CNCiv., Sala K, 9/9/02, LL, 2003-A-701).
-
-[^129]:  El número del expediente es análogo al DNI de las personas, el abogado debe siempre tenerlo presente al momento de "hacer tribunales. Sin perjuicio de ello, no es correcta la práctica judicial de exigir dicho conocimiento a quien pide las actuaciones para consultarlas, sin el cual no las buscan. Sobre esta mala costumbre puede verse Díaz, Más prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1784.
-
-[^130]:  En el régimen nacional, si bien el libro de asistencia papel ha dejado de usarse en lo concerniente a la notificación automática, sigue cumpliendo su función en las otras situaciones para las que se previó su utilización: arts. 125, ap. 4°, y 360 del CPCCN.
-
-[^131]:  En el régimen nacional, si bien el libro de asistencia papel ha dejado de usarse en lo concerniente a la notificación automática, sigue cumpliendo su función en las otras situaciones para las que se previó su utilización: arts. 125, ap. 4°, y 360 del CPCCN.
-
-[^132]:  Existe la mala costumbre tribunalicia de no agregar al expediente, en tiempo oportuno, las cédulas diligenciadas, sino que las guardan en la carpeta "cédulas para agregar", y es el propio abogado quien, al advertir la ausencia del documento en los autos, pide dicha carpeta y termina haciendo el trabajo del empleado judicial. Sobre este vicio laboral puede verse Díaz, Algunas prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1641.
-
-[^133]:  Sobre esta puntual cuestión puede verse Díaz, Algunas prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1641.
-
-[^134]:  Actualmente el Poder Judicial provincial tiene Oficina de Notificaciones en las siguientes localidades: Almirante Brown, Avellaneda, Azul, Bahía Blanca, Berazategui, Berisso, Dolores, Ensenada, Escobar, Esteban Echeverría, Florencio Varela, Junín, La Matanza, Lanús, La Plata, Lomas de Zamora, Mar del Plata, Mercedes, Merlo, Morón, Moreno-Gral. Rodríguez, Necochea, Olavarría, Pergamino, Pilar, Quilmes, San Isidro, San Martín, San Miguel, San Nicolás, Tandil, Tres Arroyos, Tigre, Trenque Lauquen, Zárate – Campana.
-
-[^135]:  Acerca de quién puede presentar las cédulas para su tramitación, la ley 22.172 dispone en su art. 8°: "Los oficios, cédulas, mandamientos y testimonios serán presentados para su tramitación por abogados o procuradores matriculados en la jurisdicción donde deba practicarse la medida. Cuando las personas autorizadas para intervenir en el trámite no revistiesen ese carácter, deberán sustituir la autorización a favor de profesionales matriculados…". Complementando esta disposición, el art. 6° establece que en oficios, cédulas y mandamientos debe "constar el nombre de las personas autorizadas para intervenir en el trámite. Estos recabarán directamente su diligenciamiento al funcionario que corresponda, y este, cumplida la diligencia, devolverá las actuaciones al tribunal de la causa por intermedio de aquellos". En la práctica, el criterio de aplicación de esta norma es disímil; mientras que en algunas oficinas de notificaciones exigen la presentación de credencial a quien realiza el trámite —para cotejar su identidad con la del "autorizado" que figuraen la cédula—, en otras no toman este recaudo (lo que lleva a que cualquier persona intervenga en la gestión).
-
-[^136]:  Puedeverse el instructivo para la confección de estas cédulas en [www.iadpi.com.ar/wp-content/uploads/2017105/4-Cedula-papeltronica-a-domicilio-fisico.pdf](http://www.iadpi.com.ar/wp-content/uploads/2017105/4-Cedula-papeltronica-a-domicilio-fisico.pdf).
-Según informa "un joven profesional de la matrícula, que patea los pasillos de tribunales a diario", quien recabó información directamente de la Oficina de Notificaciones y Mandamientos "…si la cédula fue debidamente confrontada por el organismo y la pieza procesal (cédula o mandamiento) remitida a la Oficina de Mandamientos y Notificaciones, en el portal de NyPE nos aparece 'Diligenciada', pero ello no es garantía de que el oficial notificador haya concurrido físicamente al domicilio indicado (…) a través de la Mesa de Entradas Virtual (MEV) podía monitorear el estado de la cédula o mandamiento buscando los autos procesales y seleccionando el organismo judicial en el cual se encuentra la oficina notificadora (…) En el portal virtual (MEV) van a figurar los autos judiciales y debajo de esa leyenda, la siguiente sigla: C-NNN-2018 (cédulas) o M-NNN-2018 (mandamientos), y si la cédula o el mandamiento se encuentra en mano del oficial notificador estará 'A despacho'. Una vez practicado el diligenciamiento real, constará en la MEV, el resultado final: observación o la mera notificación" (Vero, Guía 1 para el seguimiento de cédulas y mandamientos "papeltrónicos", disponible en [www.pensamientocivil.com.ar/doctrina/3584-buenos-aires-guial-para-seguimiento-cedulas-y-mandamientos](www.pensamientocivil.com.ar/doctrina/3584-buenos-aires-guial-para-seguimiento-cedulas-y-mandamientos)).
-
-[^137]:  Es la solución que consagra el art. 33 de la Acordada 19/80 CSJN para las cédulas con habilitación, urgentes, y notificar en el día, si su carácter "no figure concreta y debidamente expresado en el acto dictado por el señor juez"; y que puede extenderse analógicamente a los otros casos. Para la notificación bajo responsabilidad, dice Areán que: "Si se diligenciara de ese modo sin que una providencia lo haya ordenado, debe declararse la nulidad de la notificación" —en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2005, t. 3, p. 129—. Por su parte, el art. 177 del Reglamento de Mandamientos y Notificaciones del Poder Judicial de la provincia de Buenos Aires (Acuerdo SCBA 3397), dispone, como requisito de las cédulas a diligenciar, "transcripción del auto que ordena la habilitación de días y horas inhábiles, carácter urgente de la diligencia, bajo responsabilidad de la parte, o diligenciamiento en otro Partido". Sobre la notificación con copias de contenido reservado, tenemos dudas en cuanto a la necesidad de su previa petición por la parte y orden judicial, pues los artículos citados de los códigos procesales son imperativos: las copias "serán entregadas bajo sobre cerrado" expresión esta que nos da a entender que esta modalidad viene impuesta directamente por la ley. No obstante nuestra opinión, otras parecen llevar a una conclusión diversa, coincidente con lo que dijimos en el texto principal. Así, se ha dicho: "Aunque no lo exprese la norma, resulta claro que esta modalidad de cumplir con la entrega de copias, tanto puede ser peticionada por la parte, así como dispuesta de oficio por el tribunal" —Causse, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Arean (dirs.), 2005, t. 3, p. 102—.
-
-[^138]:  CNCiv., Sala B, 3/3/95, JA, 1998-II, síntesis.
-
-[^139]:  CACC2ª San Isidro, 7/10/03, Juba, B1750736.
-
-[^140]:  Areán, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton — Areán (dirs.), 2005, t. 3, ps. 127 y 128.
-
-[^141]:  CNCiv., Sala J, 8/4/97, JA, 1998-Il, síntesis; art. 156, ap. e), Acordada CSJN 19/80: "Las cédulas bajo responsabilidad de la parte actora se diligencian con abstracción de que el requerido viva o no viva en ese domicilio".
-
-[^142]:  Si bien las diligencias procesales deben practicarse en días y horas hábiles, sólo pueden llevarse a cabo en otro momento si se ha autorizado su práctica en los términos del art. 153 del CPCC-BA (CACC 1ª Mar del Plata, Sala II, 3/8/00, Juba, B1403185).
-
-[^143]:  Dicen los arts. 152 del CPCCN y del CPCCBA: "…respecto de las diligencias que los jueces, funcionarios o empleados deban practicar fuera de la oficina, son horas hábiles las que median entre las siete y las veinte".
-
-[^144]:  La circunstancia de que el tercero no tenga la calidad de demandado, lejos de enervar la necesidad de notificar por medio de edictos cuando se desconoce su domicilio la reafirma, pues no se advierte por qué se admitiría la citación por edictos para hacer conocer nada menos que la promoción de la demanda, mientras que se la vedaría para el caso de que la citación sólo fuera en calidad de tercero (CNCiv., Sala F, 30/3/92, LL, 1992-D-301).
-
-[^145]:  El actor debe efectuar todas las diligencias tendientes a localizar el domicilio del demandado, previo a la publicación de edictos, con el alcance que fija el art. 145 del CPCCN, que solo requiere la manifestación bajo juramento de que las ha realizado (CNCiv., Sala A, 23/12/97, LL, 1999-E-892; ED, 178 528; ídem, Sala G, 10/4/95, LL, 1995-D-56; CNCom., Sala E, 28/6/91, Lexis, n° 11/14523). En contra de exigir el mero juramento, se sostiene: "Sin embargo, consideramos que el juez no puede disponer la citación por edictos simplemente porque la parte preste el juramento exigido por la norma, pues su misión no es la de propiciar nulidades posteriores, sino tratar de evitarlas. Por ello, aun cuando la notificación por cédula hubiera dado resultado negativo, es absolutamente conveniente disponer el libramiento de oficios a entes oficiales que registran antecedentes de las personas (…) Por ello, si con el diligenciamiento de los informes no se logra determinar el domicilio, debe el peticionante prestar el juramento del art. 145 del CPCCN y recién entonces el juez ordenará la notificación por edictos" —Areán, en Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2005, t. 3, ps. 158 y 159—.
-
-[^146]:  Para que proceda la notificación por edictos a personas inciertas o de domicilio ignorado debe justificarse previamente haber realizado sin éxito las gestiones tendientes a averiguar el domicilio (CACC 1ª La PLata, Sala II, 4/11/97, Juba, B1401690; CACC Trenque Lauquen, 19/12/89, Lexis, n°14/32402; CACC2ª La Plata, Sala I, 11/9/97, elDial-W1062B).
-
-[^147]:  "Sin perjuicio de los demás derechos que les acuerdan las leyes, es facultad de los abogados en el ejercicio de su profesión requerir a las entidades públicas información concerniente a las cuestiones que se le hayan encomendado y, asimismo, tener libre acceso personal a archivos y demás dependencias administrativas en las que existan registros de antecedentes. Se exceptúan de esta disposición aquellas informaciones de carácter estrictamente privado y aquellos registros y archivos cuyas constancias se declaren reservadas por disposición legal. En estos casos el abogado deberá requerir el informe por intermedio del juez de la causa".
-
-[^148]:  "Es facultad de los abogados y procuradores, en ejercicio de su función, recabar directamente de las oficinas públicas, bancos oficiales o particulares y empresas privadas o mixtas, informes y antecedentes, como así también solicitar certificados sobre hechos concretos atinentes a las causas en que intervengan. Estos pedidos deberán ser evacuados por las oficinas y entidades aludidas dentro del término de quince días. En las solicitudes el profesional hará constar su nombre, domicilio, carátula del juicio, juzgado y secretaría de actuación. Las contestaciones serán entregadas personalmente al profesional, o bien remitidas a su domicilio, según lo haya solicitado; no habiendo realizado ninguna solicitud en tal sentido, serán remitidas al juzgado de la causa…".
-
-[^149]:  Para la confección de cédulas, también pueden verse los instructivos del Instituto Argentino de Derecho Procesal Informático (disponibles en [www.iadpi.com.ar/wp-content/uploads/2017105/Instructivo-Notificaciones-Electronicas.pdf](http://www.iadpi.com.ar/wp-content/uploads/2017105/Instructivo-Notificaciones-Electronicas.pdf)), y de la Asociación de Abogados de Tandil (disponibles en  
-[www.asociaciondeabogadostandil.org/instructivos-para-la-confeccion-de-cedulas-electronicas](http://www.asociaciondeabogadostandil.org/instructivos-para-la-confeccion-de-cedulas-electronicas)).
-
-[^150]:  Si la resolución reviste el carácter de una sentencia interlocutoria y no definitiva, no se imponía el deber de la notificación de oficio como pretende la recurrente, sino que, por el contrario, era la actora quien debía confeccionar la cédula porque hacía a su propio interés que quedara firme el auto que declaró la acumulación de procesos que fuera solicitada a su pedido (art. 137, parte 1ª, CPCCBA). Si un auto debía ser notificado personalmente o por cédula y no se trataba del supuesto contemplado en el art. 483 de la legislación adjetiva, dicha carga no incumbía al órgano, siendo en cambio un deber de la actora, en su carácter de titular de la acción, procurar el anoticiamiento de la providencia dictada y si no se instó la notificación en tiempo propio, sobreviene la caducidad de instancia (CACC 2ª La Plata, Sala I, 30/3/00, Juba, B253670).
-
-[^151]:  Hay tribunales que se resisten a entregar estas copias "acuse de recibo", con el argumento que se trata de un documento "a confronte". Criticamos este comportamiento, por equivocado, véase al respecto Díaz, Algunas prácticas equivocadas en las mesas de entradas de los tribunales, elDial-DC1641.
-
-[^152]:  Art. 145 de la Acordada CSJN 19/80: "En el diligenciamiento de una cédula dirigida a varias personas se debe requerir la presencia de todas ellas y: a) Si de ese requerimiento resultase un diligenciamiento enteramente concordante para todas ellas, el acta será labrada en plural. b) Los diligenciamientos cuyos resultados no sean concordantes se labrarán en actas separadas".
-
-[^153]:  Actualmente, en el fuero nacional, el domicilio solo podría ser "denunciado" pues al "constituido" sólo se remiten cédulas electrónicas.
-
-[^154]:  La Acordada CSJN 43/74 establece que en oficios, cédulas y mandamientos que se libren en la Capital Federal no es obligatorio consignar el nombre y apellido de los magistrados y funcionarios titulares o interinamente a cargo de ellos; asimismo, que en los oficios y en las cédulas de notificación del traslado de la demanda y en las de citación para absolver posiciones y para prestar declaración testimonial deberá consignarse la sede del juzgado o tribunal que entiende en la causa.
-
-[^155]:  De las sentencias interlocutorias y definitivas sólo corresponde transcribir la parte dispositiva (CNCiv., Sala E, 12/4/96, LL, 1996-D-883).
-
-[^156]:  Para la modalidad "bajo responsabilidad" no se ha fijado un lugar especial. Nosotros utilizamos este espacio "carácter" sin que hasta ahora nos hayan devuelto una cédula por ese motivo.
-
-[^157]:  Se entiende que si la cédula que correspondía firmar al secretario lo fue por el abogado, y la misma ha cumplido su finalidad, queda subsanada la irregularidad —Causse, Código Procesal Civil y Comercial de la Nación. Concordado con los códigos provinciales. Análisis doctrinal y jurisprudencial, Highton – Areán (dirs.), 2005, t. 3, p. 94—.
-
-[^158]:  Si bien el Código Civil permite esgrimir la redargución por acción autónoma, doctrina y jurisprudencia mayoritaria entienden que en el caso de atacarse una cédula debe hacérselo por la vía incidental atento que así lo disponen los códigos rituales —cfr. Armella, en Código Civil y normas complementarias. Análisis doctrinal y jurisprudencial, Bueres (dir.) – Highton (coord.), 1999, t. 2 C, p. 62—. Una cédula de notificación es un instrumento público, y su nulidad sólo puede perseguirse en incidente de redargución de falsedad (CACC San Martín, Sala I, 23/11/95, Juba, B1950386).
-
-[^159]:  Respecto de la redargución, pensamos que no se produce el efecto previsto en los arts. 395 del CPCCN y 393 del CPCCBA, que consiste en continuar el proceso hasta el momento de dictar sentencia, en el cual solo se suspenderá el dictado de esta última si el incidente no está aún resuelto, pues esta solución es pertinente en el supuesto de impugnarse un documento acompañado por la contraparte, no tratándose de una cédula de notificación, de cuya validez dependerá la de los actos posteriores.
-
-[^160]:  No obstante que estos requisitos figuran en los códigos como propios del incidente de nulidad, no debe olvidarse que a través de la redargución de falsedad se persigue el mismo efecto: que el acto pierda validez. Corresponde desestimar la redargución de falsedad —en el caso, del mandamiento de intimación de pago— si el peticionante no hizo referencia concreta a los perjuicios que el procedimiento cuestionado le ocasionó, pues las formas procesales no constituyen un fin en sí mismas sino instrumentos que tienden a asegurar el derecho de defensa y enmendar perjuicios efectivos (CNCom., Sala A, 23/10/00, LL, 2001-A-585).
-
-[^161]:  La carga de la prueba recae en quien esgrime la pretensión (CNCiv., Sala l, 8/9/98, LL, 1999-C-60). La prueba que tiende a demostrar la falsedad del instrumento —en el caso, una cédula-de-be tener entidad tal que produzca la convicción necesaria para revertir la presunción de legitimidad y veracidad que emana del mismo. Si bien la prueba testimonial no está prohibida en el juicio de redargución de falsedad de un instrumento, la rendida debe tener tal certidumbre que lleve a quien se pronuncia a la convicción de la insinceridad de las constancias asentadas en el instrumento que se impugna (CNCiv., Sala K, 29/8/03, LL, 2004-B-794).
-
-[^162]:  Si el incidentista controvierte lo afirmado por el oficial notificador interviniente, sin utilizar el carril procesal idóneo, es decir, pretiriendo articular en forma expresa y en términos precisos la pertinente redargución de falsedad, no resulta viable el pedido de nulidad (CACC2ª La Plata, Sala l, 19/8/03, Juba, B254957).
-
-[^163]:  CNCiv., Sala F, 16/12/97, LL, 1998-E-555.
-
-[^164]:  CNCom., Sala B, 12/8/05, LL, ejemplar del 24/11/05, p. 6, [www.scba.gov.ar/fana](http://www.scba.gov.ar/fana), 26032. "Será parte el oficial público que extendió el instrumento" (art. 395, último párrafo, CPCCN).
-
-[^165]:  Si bien es cierto que en el caso de una redargución de falsedad debe necesariamente oírse al oficial público que suscribió el acto impugnado, no lo es menos que en el caso de autos no se justifica su intervención, pues no se ha atacado de falsa la cédula, sino que solo se ha pedido su nulidad (CACC San Isidro, Sala II, 26/11/91, Juba, B1750111).
-
-[^166]:  Juzg. Paz Tordillo, 15/9/04, confirmada por CACC Dolores el 19/11/04, Juba, B9991078. Una cédula de notificación es un instrumento público, y su nulidad sólo puede perseguirse en incidente de redargución de falsedad que deberá promoverse dentro del plazo de diez días de efectuada la impugnación (CACC San Martín, Sala I, 23/11/95, Juba, B 1950386).

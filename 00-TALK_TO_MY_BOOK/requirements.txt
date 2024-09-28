@@ -1,0 +1,7 @@
+
+chromadb
+langchain-chroma
+langchain-community
+langchain-core
+langchain-text-splitters
+typing
