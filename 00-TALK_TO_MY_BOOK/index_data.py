@@ -97,15 +97,44 @@ def split_by_paragraphs(
     return docs_splitted_by_paragraphs
 
 
+def convert_headers(chunk_headers: dict) -> str:
+    """Converts a dictionary to a string."""
+    
+    formatted_headers: str = ""
+    
+    for value in chunk_headers:
+        formatted_headers += f"{chunk_headers[value]}\n"
+        
+    return formatted_headers
+
+def add_headers_to_chunks_content(
+    list_of_docs: List[Document],
+) -> List[Document]:
+    """Add headers to the chunks content."""
+
+    for chunk in list_of_docs: 
+        headers = chunk.metadata["headers"]
+        chunk.page_content = f"{convert_headers(headers)}\n{chunk.page_content}"
+        
+    return list_of_docs
+        
+
+
 if __name__ == "__main__":
     loaded_docs = directory_loader(md_dir)
 
-    splitted_by_headers = split_by_headers(loaded_docs)
+    chunks_splitted_by_headers = split_by_headers(loaded_docs)
 
-    splitted_by_paragraphs = split_by_paragraphs(splitted_by_headers)
+    chunks_splitted_by_paragraphs = split_by_paragraphs(chunks_splitted_by_headers)
+    
+    chunks_with_headers = add_headers_to_chunks_content(chunks_splitted_by_paragraphs)
 
     # for i, document in enumerate(splitted_by_headers):
-    for i, document in enumerate(splitted_by_paragraphs):
+    # for i, document in enumerate(splitted_by_paragraphs):
+    #     print(
+    #         f"""DOC N° {i}:\n\n- METADATA:\n{document.metadata["headers"]}\n\n- CONTENT:\n{document.page_content[:100]}\n\n{'==='*20}\n"""
+    #     )
+    for i, document in enumerate(chunks_with_headers):
         print(
-            f"""DOC N° {i}:\n\n- METADATA:\n{document.metadata["headers"]}\n\n- CONTENT:\n{document.page_content[:100]}\n\n{'==='*20}\n"""
+            f"""DOC N° {i}:\n{document.page_content}\n\n{'==='*20}\n"""
         )

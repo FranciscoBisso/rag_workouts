@@ -294,39 +294,21 @@ Para confeccionar una cédula electrónica, en la pantalla principal, se debe ha
 
 Ahora se abre una ventana desde la que se debe seleccionar el expediente para el cual se va a confeccionar la cédula electrónica; para ello se debe ingresar el número y año de inicio del expediente y hacer clic en el botón Buscar. Al aparecer el expediente se debe hacer clic en la carátula del mismo y luego se debe hacer clic en el botón Siguiente.
 
-En este momento se inicia un asistente que consta de tres pasos en los que se deberá seleccionar el destinatario de la cédula, las resoluciones y copias de traslado a incluir y, de ser necesario, se podrá agregar un texto adicional. Veamos:
-
- Paso 1. Primeramente se deben seleccionar el o los destinatarios de la notificación.
-
- Paso 2. A continuación el sistema muestra una lista con todas las resoluciones dictadas en el expediente para el cual se está confeccionando la notificación, en esta lista se seleccionan aquellas resoluciones que se van a notificar (esto evita tener que transcribir la resolución en el cuerpo de la cédula). En este mismo paso se deben seleccionar, si corresponde, los documentos correspondientes a las copias de traslado.
-
- Paso 3. Por último, se puede escribir un texto que se incluirá en el cuerpo de la cédula.
+En este momento se inicia un asistente que consta de tres pasos en los que se deberá seleccionar el destinatario de la cédula, las resoluciones y copias de traslado a incluir y, de ser necesario, se podrá agregar un texto adicional. Veamos: 1) Primeramente se deben seleccionar el o los destinatarios de la notificación. 2) A continuación el sistema muestra una lista con todas las resoluciones dictadas en el expediente para el cual se está confeccionando la notificación, en esta lista se seleccionan aquellas resoluciones que se van a notificar (esto evita tener que transcribir la resolución en el cuerpo de la cédula). En este mismo paso se deben seleccionar, si corresponde, los documentos correspondientes a las copias de traslado. 3) Por último, se puede escribir un texto que se incluirá en el cuerpo de la cédula.
 
 A continuación, se debe hacer clic en el botón Previsualizar. Se abrirá una ventana en la que se visualiza la cédula que, en la parte superior izquierda, muestra la leyenda "Borrador" Si el usuario que está confeccionando la cédula es Principal podrá notificarla haciendo clic en el botón Notificar; si el usuario es Autorizado podrá almacenar el borrador haciendo clic en el botón Guardar previa asignación de un nombre identificador, luego el usuario Principal podrá consultar y notificar este borrador.
 
-Conviene aclarar dos cuestiones:
-
- La primera es que en el Paso 2 explicado previamente no se visualizarán los documentos correspondientes a las copias de traslado si previamente no fueron enviados al juzgado mediante la aplicación Escritos o, si habiendo sido enviados, el juzgado no los gestionó. En este último caso deberá solicitarse en la mesa de entradas del juzgado que gestione el documento enviado.
-
- La segunda es que luego de hacer clic en el botón Previsualizarla cédula electrónica se verá en blanco, esto es, sin la resolución ni las copias de traslado. No se trata de un error del abogado, así es como el sistema funciona.
+Conviene aclarar dos cuestiones. La primera es que en el Paso 2 explicado previamente no se visualizarán los documentos correspondientes a las copias de traslado si previamente no fueron enviados al juzgado mediante la aplicación Escritos o, si habiendo sido enviados, el juzgado no los gestionó. En este último caso deberá solicitarse en la mesa de entradas del juzgado que gestione el documento enviado. La segunda es que luego de hacer clic en el botón Previsualizarla cédula electrónica se verá en blanco, esto es, sin la resolución ni las copias de traslado. No se trata de un error del abogado, así es como el sistema funciona.
 
 ###### 29.4.1.4.3. CONSULTA Y NOTIFICACIÓN DE CÉDULAS ELECTRÓNICAS EN ESTADO «BORRADOR»
 
 Como explicamos en el apartado anterior, cuando la cédula es confeccionada por un usuario Autorizado, la misma se encuentra en un estado denominado "borrador". Esta cédula electrónica aún no ha sido enviada a su destinatario, para enviarla se debe hacer clic en el botón Borradores. El sistema visualiza una lista con todas las cédulas que se encuentran en ese estado. Se debe hacer clic en la cédula que se va a enviar (identificándola mediante la carátula del expediente y el nombre identificador que se le asignó al momento de confeccionar el borrador) y, una vez previsualizada, se debe hacer clic en el botón Notificar.
 
-En el mismo momento en que se hace clic en el botón Notificar el SNE desencadena cuatro acciones:
+En el mismo momento en que se hace clic en el botón Notificar el SNE desencadena cuatro acciones: La cédula que se encontraba en estado borrador desaparece de la lista de borradores y se podrá visualizar como enviada en la pantalla de consulta. La cédula se puede visualizar como recibida en la cuenta de destino. El juzgado recibe un aviso relacionado con la emisión de la cédula. El sistema envía un correo electrónico de cortesía[^50] al destinatario de la cédula informando la disponibilidad de una nueva notificación en su domicilio electrónico.
 
- La cédula que se encontraba en estado borrador desaparece de la lista de borradores y se podrá visualizar como enviada en la pantalla de consulta.
+El correo electrónico de cortesía es un aviso automático que se puede recibir en la cuenta de correo que se configuró al momento de enrolarse en el SNE.
 
- La cédula se puede visualizar como recibida en la cuenta de destino.
-
- El juzgado recibe un aviso relacionado con la emisión de la cédula.
-
- El sistema envía un correo electrónico de cortesía[^50] al destinatario de la cédula informando la disponibilidad de una nueva notificación en su domicilio electrónico.
-
-  El correo electrónico de cortesía es un aviso automático que se puede recibir en la cuenta de correo que se configuró al momento de enrolarse en el SNE.
-
-  Es importante destacar que la falta de recepción del correo electrónico de cortesía no impide que opere la notificación, por lo tanto, los plazos correrán, se reciba o no el correo electrónico de cortesía.
+Es importante destacar que la falta de recepción del correo electrónico de cortesía no impide que opere la notificación, por lo tanto, los plazos correrán, se reciba o no el correo electrónico de cortesía.
 
 [^50]: El correo electrónico de cortesía es un aviso automático que se puede recibir en la cuenta.
 
@@ -1011,23 +993,17 @@ Hago saber a Ud. que en el expediente caratulado: «Cons. Prop. Perú 619 c. Est
 
 Recordamos que cuando se trata de una notificación especial, v. gr., con habilitación de día y hora, urgente, debe transcribirse también la resolución que así lo or-dena, y deberá completarse el espacio especialmente previsto para ello, denominado "Carácter" (caso contrario deberá anularse el espacio en blanco)[^156]:
 
-CARÁCTER: CON HABILITACIÓN DE DÍA Y HORA  
+CARÁCTER: CON HABILITACIÓN DE DÍA Y HORA
 (Urgente, notificar en el día, habilitación de día y hora inhábil)
 
-OBSERVACIONES ESPECIALES:  
+OBSERVACIONES ESPECIALES:
 (Insanía art. 626 — Amparo — Habeas Corpus — arts. 682, 683, 684 — art. 339/141 – C.P.C.C. art. 129, C.P.P.)
 
 Cuando de la resolución transcripta no surge claramente el objeto de la notificación, este debe expresarse en párrafo aparte, luego de la trascripción de aquella, utilizando el abogado sus propias palabras. Por ejemplo, la parte actora obtuvo el embargo de un bien de la demandada, el que una vez trabado motiva la providencia "Hágase saber al demandado la medida trabada. Notifíquese por cédula (art. 198, Código Procesal Civil y Comercial de la Nación)"; el texto de la providencia, que será trascripto en la cédula, no será claro para el demandado en cuanto a qué medida se refiere; entonces deberá el abogado de la actora añadir a la trascripción de la resolución, punto y aparte, un párrafo que podría ser el siguiente:
 
-Hago saber a Ud. que en el expediente caratulado: "Cons. Prop. Perú 619 c. Estudio Inmobiliario SH s/Rendición de cuentas" que tramita ante este Tribunal, se ha dictado la siguiente resolución: "Buenos Aires, 8 de septiembre de 2006. Hágase saber al demandado la medida trabada. Notifíquese. Fdo.: Juez".
+"Hago saber a Ud. que en el expediente caratulado: 'Cons. Prop. Perú 619 c. Estudio Inmobiliario SH s/Rendición de cuentas' que tramita ante este Tribunal, se ha dictado la siguiente resolución: 'Buenos Aires, 8 de septiembre de 2006. Hágase saber al demandado la medida trabada. Notifíquese. Fdo.: Juez'. La medida que se hace saber es el embargo trabado sobre el inmueble de calle Perú 55… Queda Ud. notificado. Buenos Aires, 8 de octubre de 2006.".
 
-La medida que se hace saber es el embargo trabado sobre el inmueble de calle Perú 55…————————————————————————————————
-
-Queda Ud. notificado.—————————————————————————
-
-Buenos Aires, 8 de octubre de 2006.————————————————————
-
-Sobre las copias que se anexan a la cédula, y las consecuencias de un error en este proceder, ya nos hemos pronunciado extensamente en otros pasajes. Aquí solo diremos que el art. 136 del ritual requiere el " detalle preciso" de dichas copias, por ejemplo: "Se acompaña copia del escrito demanda desalojo y del contrato de locación"; no cumplen esta condición expresiones usadas frecuentemente tales como "se acompañan copias en 5 fojas", pues siempre dejan la duda de cuáles documentos se trata.
+Sobre las copias que se anexan a la cédula, y las consecuencias de un error en este proceder, ya nos hemos pronunciado extensamente en otros pasajes. Aquí solo diremos que el art. 136 del ritual requiere el "detalle preciso" de dichas copias, por ejemplo: "Se acompaña copia del escrito demanda desalojo y del contrato de locación"; no cumplen esta condición expresiones usadas frecuentemente tales como "se acompañan copias en 5 fojas", pues siempre dejan la duda de cuáles documentos se trata.
 
 Además, recordamos la excepción a la regla de adjuntar copias a la cédula, derivada de la interpretación del art. 121 del ritual y del texto expreso de la Res. CSJN 3909/10 (véase supra, 10.5.2.2.).
 
