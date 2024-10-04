@@ -13,9 +13,9 @@ md_dir: str = os.path.join(os.getcwd(), "private_data")
 
 def directory_loader(directory_path: str) -> List[Document]:
     """Loads markdown documents from a given directory."""
-    print("1) LOADING DOCUMENTS FROM DIRECTORY...")
+    print("1. LOADING DOCUMENTS FROM DIRECTORY...")
 
-    docs_list: List[Document] = []
+    loaded_docs: List[Document] = []
 
     for root, _, files in os.walk(directory_path):
 
@@ -36,42 +36,55 @@ def directory_loader(directory_path: str) -> List[Document]:
                         "filename": filename.replace(".md", ""),
                     },
                 )
-                docs_list.append(document)
+                loaded_docs.append(document)
 
-                print(f" 1.{i+1}. loading document --> {filename}")
+                print(f" 1.{i+1}. loading document -> {filename}")
 
-    docs_list.sort(key=lambda doc: doc.metadata["filename"])
+    loaded_docs.sort(key=lambda doc: doc.metadata["filename"])
 
-    return docs_list
+    return loaded_docs
 
 
-def split_by_headers(doc: Document) -> List[Document]:
-    """Splits a single document into chunks based on markdown's header tags."""
+def split_by_headers(loaded_docs: Document) -> List[Document]:
+    """Splits based on markdown headings."""
+    print("\n2. SPLITTING DOCUMENTS BY HEADERS...")
 
     headers = [
-        ("#", "Header 1"),
-        ("##", "Header 2"),
-        ("###", "Header 3"),
-        ("####", "Header 4"),
-        ("#####", "Header 5"),
-        ("######", "Header 6"),
+        ("#", "Encabezado 1"),
+        ("##", "Encabezado 2"),
+        ("###", "Encabezado 3"),
+        ("####", "Encabezado 4"),
+        ("#####", "Encabezado 5"),
+        ("######", "Encabezado 6"),
     ]
 
-    md_splitter = MarkdownHeaderTextSplitter(
+    splitter = MarkdownHeaderTextSplitter(
         headers_to_split_on=headers, strip_headers=True
     )
 
-    list_of_docs_splitted_by_headers = md_splitter.split_text(doc.page_content)
+    docs_splitted_by_headers: List[Document] = []
 
-    return list_of_docs_splitted_by_headers
+    for loaded_doc in loaded_docs:
+        chunks_splitted_by_headers: List[Document] = splitter.split_text(
+            loaded_doc.page_content
+        )
+
+        for chunk in chunks_splitted_by_headers:
+            chunk.metadata = {**loaded_doc.metadata, "headers": chunk.metadata}
+            docs_splitted_by_headers.append(chunk)
+
+    return docs_splitted_by_headers
 
 
-def split_by_paragraphs(list_of_docs: List[Document]) -> List[Document]:
-    """Splits a list of documents into smaller chunks based on paragraphs."""
+def split_by_paragraphs(
+    docs_splitted_by_headers: List[Document],
+) -> List[Document]:
+    """Splits based on paragraphs."""
 
+    print("\n3. SPLITTING DOCUMENTS BY PARAGRAPHS...")
     docs_splitted_by_paragraphs: List[Document] = []
 
-    for doc in list_of_docs:
+    for doc in docs_splitted_by_headers:
         paragraphs: List[str] = doc.page_content.split("\n")
 
         for paragraph in paragraphs:
@@ -81,32 +94,18 @@ def split_by_paragraphs(list_of_docs: List[Document]) -> List[Document]:
             )
             docs_splitted_by_paragraphs.append(final_doc)
 
-    print(f"len(docs_splitted_by_paragraphs): {len(docs_splitted_by_paragraphs)}")
-
     return docs_splitted_by_paragraphs
-
-
-def splitter(docs: List[Document]) -> List[Document]:
-    """Splits documents into chunks based on markdown's header tags."""
-    print("\n\n2) CHUNKING DOCUMENTS...")
-
-    chunks = []
-    for i, doc in enumerate(docs):
-        splits = split_by_headers(doc)
-        chunks.extend(splits)
-        print(f" 2.{i+1}. chunking document --> {doc.metadata['filename']}")
-
-    return chunks
 
 
 if __name__ == "__main__":
     loaded_docs = directory_loader(md_dir)
 
-    splits = splitter(loaded_docs)
+    splitted_by_headers = split_by_headers(loaded_docs)
 
-    splitted_by_paragraphs = split_by_paragraphs(splits)
+    splitted_by_paragraphs = split_by_paragraphs(splitted_by_headers)
 
-    for i, doc in enumerate(splitted_by_paragraphs):
+    # for i, document in enumerate(splitted_by_headers):
+    for i, document in enumerate(splitted_by_paragraphs):
         print(
-            f"DOC N° {i}:\n\n- METADATA: {doc.metadata}\n\n- CONTENT:\n{doc.page_content}\n\n{'==='*20}\n"
+            f"""DOC N° {i}:\n\n- METADATA:\n{document.metadata["headers"]}\n\n- CONTENT:\n{document.page_content[:100]}\n\n{'==='*20}\n"""
         )
