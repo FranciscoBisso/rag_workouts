@@ -40,4 +40,4 @@ if __name__ == "__main__":
     relevant_docs = retrieve_related_docs(question)
     print("RELEVANT DOCUMENTS:\n")
     for i, doc in enumerate(relevant_docs):
-        print(f"+ DOC {i}:\n{doc}\n\n{'==='*20}\n")
+        print(f"DOC {i}:\n\n{doc.page_content}\n\n{'==='*20}\n")
