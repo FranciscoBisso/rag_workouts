@@ -4,20 +4,20 @@ Module for handling queries and responses using Langchain and Chroma.
 
 import os
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
-from index_data import persistent_dir
+from index_data import persistent_dir, embeddings_model
 
 
 current_dir: str = os.getcwd()
 vector_store_path: str = persistent_dir
-question: str = "¿Qué elementos componen el ciclo procedimental?"  # <-- temporary
+# question: str = "¿Qué elementos componen el ciclo procedimental?"  # <-- temporary
+question: str = (
+    "¿Qué diferencia hay entre la instancia y la actuación simple?"  # <-- temporary
+)
 
 
 def retrieve_related_docs(query: str):
     """Retrieves relevant documents based on the query."""
-    embeddings_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
-    )
+
     db = Chroma(
         persist_directory=vector_store_path, embedding_function=embeddings_model
     )
@@ -38,6 +38,7 @@ def retrieve_related_docs(query: str):
 
 if __name__ == "__main__":
     relevant_docs = retrieve_related_docs(question)
+    print(f"DIR: {persistent_dir}")
     print("RELEVANT DOCUMENTS:\n")
     for i, doc in enumerate(relevant_docs):
-        print(f"DOC {i}:\n\n{doc.page_content}\n\n{'==='*20}\n")
+        print(f"DOC {i+1}:\n\n{doc.page_content}\n\n{'==='*20}\n")

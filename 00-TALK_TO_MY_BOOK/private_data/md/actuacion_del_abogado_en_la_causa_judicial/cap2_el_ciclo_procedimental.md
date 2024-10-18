@@ -2,7 +2,7 @@
 
 ## 5. EL «CICLO PROCEDIMENTAL»
 
-Retomando lo dicho al final del capítulo anterior, la instancia y la actuación simple son, en la realidad del trámite judicial, entes esencialmente activos, compuestos por tres elementos que se verifican siempre en el mismo orden: presentación de parte–resolución judicial–notificación. Alcanza con abrir un expediente en cualquiera de sus fojas y nos encontraremos con esta disposición: escrito–resolución–cédula o medio sucedáneo de notificación (retiro de copias, notificación en el expediente, etcétera), o nada si la notificación es por ministerio de la ley.
+Retomando lo dicho al final del capítulo anterior, la instancia y la actuación simple son, en la realidad del trámite judicial, entes esencialmente activos, compuestos por tres elementos que se verifican siempre en el mismo orden: presentación de parte, resolución judicial y notificación. Alcanza con abrir un expediente en cualquiera de sus fojas y nos encontraremos con esta disposición: escrito, resolución, cédula o medio sucedáneo de notificación (retiro de copias, notificación en el expediente, etcétera), o nada si la notificación es por ministerio de la ley.
 
 La diferencia entre una y otra es que el pedido que da origen a la actuación simple se decide inmediatamente, por lo general, a través de una providencia simple; mientras que la pretensión de la instancia se resuelve luego de sustanciarse varias actuaciones simples, lo que posterga la decisión final, que estará contenida en una sentencia interlocutoria o definitiva; pero sus dinámicas son idénticas.
 
