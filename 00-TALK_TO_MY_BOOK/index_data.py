@@ -7,7 +7,8 @@ from typing import List
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_text_splitters import MarkdownHeaderTextSplitter
+from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
+from transformers import AutoTokenizer
 
 
 current_dir: str = os.getcwd()
@@ -15,8 +16,9 @@ md_dir: str = os.path.join(current_dir, "private_data")
 persistent_dir: str = os.path.join(
     current_dir, "database", "actuacion_del_abogado_en_la_causa_judicial"
 )
+hf_model: str = "intfloat/multilingual-e5-large-instruct"
 embeddings_model = HuggingFaceEmbeddings(
-    model_name="intfloat/multilingual-e5-large-instruct"
+    model_name=hf_model
 )
 
 
@@ -85,20 +87,16 @@ def split_by_headers(loaded_docs: Document) -> List[Document]:
     return docs_splitted_by_headers
 
 
-def split_by_paragraphs(docs_splitted_by_headers: List[Document]) -> List[Document]:
-    """Splits based on paragraphs."""
-    print("\n3. SPLITTING DOCUMENTS BY PARAGRAPHS...")
-
-    docs_splitted_by_paragraphs: List[Document] = []
-
-    for doc in docs_splitted_by_headers:
-        paragraphs: List[str] = doc.page_content.split("\n")
-
-        for paragraph in paragraphs:
-            final_doc = Document(page_content=paragraph, metadata=doc.metadata)
-            docs_splitted_by_paragraphs.append(final_doc)
-
-    return docs_splitted_by_paragraphs
+def split_by_tokens(docs_splitted_by_headers: List[Document]) -> List[Document]:
+    """Splits based on tokens."""
+    print("\n3. SPLITTING DOCUMENTS BY TOKENS...")
+    
+    separators = ["\n\n", "\n", "."]
+    tokenizer = AutoTokenizer.from_pretrained(hf_model)
+    splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=450, chunk_overlap=50, separators=separators)
+    docs_splitted_by_tokens = splitter.split_documents(docs_splitted_by_headers)
+    
+    return docs_splitted_by_tokens
 
 
 def stringify_metadata_headers(list_of_docs: List[Document]) -> List[Document]:
@@ -114,15 +112,30 @@ def stringify_metadata_headers(list_of_docs: List[Document]) -> List[Document]:
     return list_of_docs
 
 
-def chunks_lengths(chunks: List[Document]) -> str:
-    """Returns the size of each chunk."""
+
+def tokens_per_chunk(chunks_splitted_by_tokens: list[Document]) -> list[int]:
+    """Returns chunks' max & min lengths in tokens."""
+    
+    tokenizer = AutoTokenizer.from_pretrained(hf_model)
+    token_counts: List[int] = []
+    
+    for chunk in chunks_splitted_by_tokens:
+        tokens = tokenizer.encode(chunk.page_content)
+        token_counts.append(len(tokens))
+        
+    min_len = min(token_counts)
+    max_len = max(token_counts)
+    
+    return f"-> MIN (tokens): {min_len}\n-> MAX (tokens): {max_len}"
+
+def characters_per_chunk(chunks: List[Document]) -> str:
+    """Returns chunks' max & min lengths in characters."""
 
     sizes = [len(chunk.page_content) for chunk in chunks]
-    unrepeated_lengths = sorted(set(sizes))
     min_len = min(sizes)
     max_len = max(sizes)
 
-    return f"- MIN: {min_len}\n+ MAX: {max_len}\n-> ALL: {unrepeated_lengths}"
+    return f"-> MIN (chars): {min_len}\n-> MAX (chars): {max_len}"
 
 
 def generate_embeddings(chunks_to_embed: List[Document]) -> Chroma:
@@ -135,7 +148,7 @@ def generate_embeddings(chunks_to_embed: List[Document]) -> Chroma:
         persist_directory=persistent_dir,
     )
 
-    print("\n6. DOCS EMBEDDED!")
+    print("\n6. EMBEDDING PROCESS SUCCESSFULLY FINISHED!")
 
     return vector_store
 
@@ -145,17 +158,21 @@ if __name__ == "__main__":
 
     chunks_splitted_by_md_headers = split_by_headers(loaded_files)
 
-    chunks_splitted_by_paragraphs = split_by_paragraphs(chunks_splitted_by_md_headers)
+    chunks_splitted_by_tokens = split_by_tokens(chunks_splitted_by_md_headers)
 
-    final_docs = stringify_metadata_headers(chunks_splitted_by_paragraphs)
-
-    # lengths = chunks_lengths(chunks_with_headers)
+    characters_per_chunk = characters_per_chunk(chunks_splitted_by_tokens)
+    
+    tokens_per_chunk = tokens_per_chunk(chunks_splitted_by_tokens)
+    
+    final_docs = stringify_metadata_headers(chunks_splitted_by_tokens)
 
     embeddings = generate_embeddings(final_docs)
 
     # for index, val in enumerate(final_docs):
-    #     print(
-    #         f"""DOC N° {index}:\n\n- METADATA:\n{val.metadata}\n\n- CONTENT:\n{val.page_content[:100]}\n\n{'==='*20}\n"""
-    #     )
+    #     if index >= 0 and index <= 88:
+    #         print(
+    #             f"""DOC N° {index}:\n\n- HEADERS:\n{val.metadata["headers"]}\n\n- CONTENT:\n{val.page_content}\n\n{'==='*20}\n"""
+    #         )
 
-    # print(f"LENGTHS:\n{lengths}")
+    # print(characters_per_chunk, "\n")
+    # print(tokens_per_chunk)
