@@ -13,7 +13,7 @@ vector_store_path: str = persistent_dir
 # question: str = (
 #     "¿Qué diferencia hay entre la instancia y la actuación simple?"  # <-- temporary
 # )
-question: str = "¿Qué se debe tener en cuenta a la hora de decidir si recurrir o no?"
+question: str = "¿Cuáles son los pasos del iter recursivo?"  # <-- temporary
 
 
 def retrieve_related_docs(query: str):
@@ -25,11 +25,11 @@ def retrieve_related_docs(query: str):
 
     retriever = db.as_retriever(
         search_type="similarity",
-        search_kwargs={"k": 5},
-        # search_type="mmr",
-        # search_kwargs={"k": 5, "fetch_k": 15, "lambda_mult": 0.7},
+        search_kwargs={"k": 8},
         # search_type="similarity_score_threshold",
-        # search_kwargs={"k": 5, "score_threshold": 0.7}
+        # search_kwargs={"k": 8, "score_threshold": 0.7},  # <-- tops 0.7
+        # search_type="mmr",
+        # search_kwargs={"k": 8, "fetch_k": 24, "lambda_mult": 0.7},
     )
 
     related_docs = retriever.invoke(query)
@@ -39,6 +39,8 @@ def retrieve_related_docs(query: str):
 
 if __name__ == "__main__":
     relevant_docs = retrieve_related_docs(question)
-    print(f"-> VECTOR STORE: {'/'.join(persistent_dir.split('/')[-2:])}\n\n")
+    print(f"\n-> VECTOR STORE: {'/'.join(persistent_dir.split('/')[-2:])}\n")
     for i, doc in enumerate(relevant_docs):
-        print(f"DOC {i+1}:\n\n{doc.metadata['headers']}\n{doc.page_content}\n\n{'==='*20}\n")
+        print(
+            f">>> DOC {i+1}:\n\n{doc.metadata['headers']}\n\n{doc.page_content}\n\n{'==='*20}\n"
+        )

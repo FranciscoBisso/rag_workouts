@@ -1,5 +1,5 @@
 """
-Module for handling the indexing process of the markdown files.
+Module for handling the indexing process of markdown files.
 """
 
 import os
@@ -35,16 +35,14 @@ def directory_loader(directory_path: str) -> List[Document]:
 
         for i, filename in enumerate(md_files):
             file_path = os.path.join(root, filename)
-            directory_name = os.path.basename(root)
+            file_source = "/".join(element for element in file_path.split("/")[-4:])
 
             with open(file_path, "r", encoding="utf-8") as file:
                 content = file.read()
-
                 document = Document(
                     page_content=content,
                     metadata={
-                        "source": file_path,
-                        "directory": directory_name,
+                        "source": file_source,
                         "filename": filename.replace(".md", ""),
                     },
                 )
@@ -62,12 +60,12 @@ def split_by_headers(loaded_docs: Document) -> List[Document]:
     print("\n2. SPLITTING DOCUMENTS BY HEADERS...")
 
     headers = [
-        ("#", "Header 1"),
-        ("##", "Header 2"),
-        ("###", "Header 3"),
-        ("####", "Header 4"),
-        ("#####", "Header 5"),
-        ("######", "Header 6"),
+        ("#", "H1"),
+        ("##", "H2"),
+        ("###", "H3"),
+        ("####", "H4"),
+        ("#####", "H5"),
+        ("######", "H6"),
     ]
 
     splitter = MarkdownHeaderTextSplitter(
@@ -95,7 +93,10 @@ def split_by_tokens(list_of_docs: List[Document]) -> List[Document]:
     separators = ["\n\n", "\n", "."]
     tokenizer = AutoTokenizer.from_pretrained(hf_model)
     splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
-        tokenizer, chunk_size=450, chunk_overlap=50, separators=separators
+        tokenizer,
+        chunk_size=375,
+        chunk_overlap=15,
+        separators=separators,
     )
     docs_splitted_by_tokens = splitter.split_documents(list_of_docs)
 
@@ -122,9 +123,11 @@ def tokens_per_chunk(list_of_docs: list[Document]) -> list[int]:
 
     tokenizer = AutoTokenizer.from_pretrained(hf_model)
     token_counts: List[int] = []
-
     for chunk in list_of_docs:
-        tokens = tokenizer.encode(chunk.page_content)
+        full_content = (
+            chunk.page_content + chunk.metadata["source"] + chunk.metadata["headers"]
+        )
+        tokens = tokenizer.encode(full_content)
         token_counts.append(len(tokens))
 
     min_len = min(token_counts)
@@ -143,6 +146,17 @@ def characters_per_chunk(chunks: List[Document]) -> str:
     return f"-> MIN (chars): {min_len}\n-> MAX (chars): {max_len}"
 
 
+def prepare_docs(dir_path: str) -> List[Document]:
+    """Loads files, turns them into documents & gets them ready to be embedded."""
+
+    loaded_files = directory_loader(dir_path)
+    chunks_splitted_by_md_headers = split_by_headers(loaded_files)
+    chunks_splitted_by_tokens = split_by_tokens(chunks_splitted_by_md_headers)
+    docs_ready_to_embed = stringify_metadata_headers(chunks_splitted_by_tokens)
+
+    return docs_ready_to_embed
+
+
 def generate_embeddings(docs_to_embed: List[Document]) -> Chroma:
     """Embeds document splits into the vector store."""
     print("\n5. EMBEDDING DOCS...")
@@ -159,25 +173,20 @@ def generate_embeddings(docs_to_embed: List[Document]) -> Chroma:
 
 
 if __name__ == "__main__":
-    loaded_files = directory_loader(md_dir)
+    # 0:99||100:131||132:648||649:876||877:1055||1056:1165
 
-    chunks_splitted_by_md_headers = split_by_headers(loaded_files)
+    final_docs = prepare_docs(md_dir)
 
-    chunks_splitted_by_tokens = split_by_tokens(chunks_splitted_by_md_headers)
+    characters_per_chunk = characters_per_chunk(final_docs)
 
-    characters_per_chunk = characters_per_chunk(chunks_splitted_by_tokens)
+    tokens_per_chunk = tokens_per_chunk(final_docs)
 
-    tokens_per_chunk = tokens_per_chunk(chunks_splitted_by_tokens)
-
-    final_docs = stringify_metadata_headers(chunks_splitted_by_tokens)
-
-    embeddings = generate_embeddings(final_docs)
+    # embeddings = generate_embeddings(final_docs)
 
     # for index, val in enumerate(final_docs):
-    #     if index >= 0 and index <= 88:
-    #         print(
-    #             f"""DOC N° {index}:\n\n- HEADERS:\n{val.metadata["headers"]}\n\n- CONTENT:\n{val.page_content}\n\n{'==='*20}\n"""
-    #         )
+    #     print(
+    #         f"""DOC N°{index}:\n{val.metadata["headers"]}\n\n{val.page_content}\n\n{'==='*20}\n"""
+    #     )
 
-    # print(characters_per_chunk, "\n")
+    # print("\n", characters_per_chunk, "\n")
     # print(tokens_per_chunk)
