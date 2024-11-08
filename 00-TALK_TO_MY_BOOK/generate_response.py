@@ -1,15 +1,15 @@
 """
-Module for handling queries and responses using Langchain and Chroma.
+Module for handling queries and responses using Langchain.
 """
 
 import os
-from typing import List
 import dotenv
+from index_data import persistent_dir, embeddings_model
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
-from index_data import persistent_dir, embeddings_model
+from typing import List
 
 dotenv.load_dotenv()
 
@@ -18,76 +18,58 @@ vector_store_path: str = persistent_dir
 groq_model: str = "llama-3.1-70b-versatile"
 
 # question: str = "¿Qué elementos componen el ciclo procedimental?"  # <-- temporary
-question: str = (
-    "¿Qué diferencia hay entre la instancia y la actuación simple?"  # <-- temporary
-)
-# question: str = "¿Cuáles son los pasos del iter recursivo?"  # <-- temporary
+# question: str = (
+#     "¿Qué diferencia hay entre la instancia y la actuación simple?"  # <-- temporary
+# )
+question: str = "¿Cuáles son los pasos del iter recursivo?"  # <-- temporary
 
 
-def retrieve_related_docs(query: str) -> List[Document]:
-    """Retrieves related documents based on the query."""
+def get_response_from_llm(user_input: str) -> str:
+    """
+    Based on the query provided:
+        - retrieves related documents;
+        - generates a prompt to be fed to the LLM; and
+        - calls the LLM to get a response.
+    """
 
+    llm_model = ChatGroq(model=groq_model, temperature=0, verbose=True)
     db = Chroma(
         persist_directory=vector_store_path, embedding_function=embeddings_model
     )
 
-    retriever = db.as_retriever(
-        search_type="similarity",
-        search_kwargs={"k": 16},
-        # search_type="similarity_score_threshold",
-        # search_kwargs={"k": 16, "score_threshold": 0.7},
-        # search_type="mmr",
-        # search_kwargs={"k": 16, "fetch_k": 48, "lambda_mult": 1.0},
+    retrieved_docs: List[Document] = db.similarity_search(user_input, k=10)
+    context: str = "\n\n".join(
+        [f"{doc.metadata['headers']}\n{doc.page_content}" for doc in retrieved_docs]
     )
 
-    related_docs = retriever.invoke(query)
-
-    return related_docs
-
-
-def get_response(query: str, related_docs: List[Document]) -> str:
-    """Generates a response to the query provided."""
-
-    combined_input = (
-        "Acá tenes algunos documentos que te pueden ayudar a responder la pregunta: "
-        + query
-        + "\n\nDocumentos relevantes:\n"
-        + "\n\n".join(
-            [f"{doc.metadata['headers']}\n{doc.page_content}" for doc in related_docs]
-        )
-        + "\n\nPor favor, responde solo con la información proporcionada en los documentos relevantes."
-        + "La respuesta tiene que ser lo más completa posible. "
-        + "No es necesario que hagas menciones como: 'Según los documentos relevantes...' o similares. "
-        + "Simplemente responde con la información que se encuentra en los documentos.\n"
-        + "Si la respuesta no se encuentra en los documentos suministrados, responde con 'Lo lamento. No tengo información sobre la cuestión planteada'."
+    prompt_template = ChatPromptTemplate(
+        [
+            (
+                "system",
+                "Sos un asistente legal que responde preguntas sobre derecho procesal.",
+            ),
+            (
+                "human",
+                "Responder la siguiente pregunta ÚNICAMENTE en base al contexto proporcionado. "
+                + "La respuesta debe ser clara, completa y precisa. "
+                + "Sin embargo, al responder no es necesario que hagas menciones como 'Según los documentos relevantes...' o expresiones similares. "
+                + "Si la respuesta no se encuentra en los documentos suministrados, responde con 'Lo lamento. No tengo información sobre la cuestión planteada'."
+                + "\n\nCONTEXTO:\n{context}"
+                + "\n\nPREGUNTA: {user_input}",
+            ),
+        ]
     )
 
-    model = ChatGroq(model=groq_model, temperature=0, verbose=True)
+    chain = prompt_template | llm_model
+    chain_result = chain.invoke({"user_input": user_input, "context": context})
 
-    messages = [
-        SystemMessage(
-            content="Sos un asistente legal que responde preguntas sobre derecho procesal."
-        ),
-        HumanMessage(content=combined_input),
-    ]
+    print(f"[Q]: {user_input}\n")
+    print(f"[A]: {chain_result.content}\n")
+    print(f"response_metadata: {chain_result.response_metadata}")
 
-    result = model.invoke(messages)
-
-    return result
+    return chain_result.content
 
 
 if __name__ == "__main__":
-    relevant_docs = retrieve_related_docs(question)
-    response = get_response(question, relevant_docs)
-
-    print(f"\n-> VECTOR STORE: {'/'.join(persistent_dir.split('/')[-2:])}\n")
-    print(f"\n??? QUESTION: {question}\n")
-
-    # for i, doc in enumerate(relevant_docs):
-    #     print(
-    #         f">>> DOC {i+1}:\n\n{doc.metadata['headers']}\n\n{doc.page_content}\n\n{'==='*20}\n"
-    #     )
-
-    print(
-        f"\n=> METADATA:\n{response.response_metadata}\n\n=> ANSWER:\n{response.content}\n"
-    )
+    print(f"SOURCE: {' > '.join(vector_store_path.split('/')[-2:])}\n")
+    response = get_response_from_llm(question)
