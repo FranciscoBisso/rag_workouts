@@ -15,7 +15,8 @@ dotenv.load_dotenv()
 
 current_dir: str = os.getcwd()
 vector_store_path: str = persistent_dir
-groq_model: str = "llama-3.1-70b-versatile"
+groq_model: str = "llama-3.1-8b-instant"
+
 
 # question: str = "¿Qué elementos componen el ciclo procedimental?"  # <-- temporary
 # question: str = (
