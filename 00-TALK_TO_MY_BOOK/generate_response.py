@@ -17,14 +17,6 @@ current_dir: str = os.getcwd()
 vector_store_path: str = persistent_dir
 groq_model: str = "llama-3.1-8b-instant"
 
-
-# question: str = "¿Qué elementos componen el ciclo procedimental?"  # <-- temporary
-# question: str = (
-#     "¿Qué diferencia hay entre la instancia y la actuación simple?"  # <-- temporary
-# )
-question: str = "¿Cuáles son los pasos del iter recursivo?"  # <-- temporary
-
-
 def get_response_from_llm(user_input: str) -> str:
     """
     Based on the query provided:
@@ -33,12 +25,17 @@ def get_response_from_llm(user_input: str) -> str:
         - calls the LLM to get a response.
     """
 
-    llm_model = ChatGroq(model=groq_model, temperature=0, verbose=True)
+    # llm_model = ChatGroq(model=groq_model, temperature=0, verbose=True)
+    llm_model = ChatGroq(model=groq_model, temperature=0, verbose=True, streaming=True)
+    
     db = Chroma(
         persist_directory=vector_store_path, embedding_function=embeddings_model
     )
 
     retrieved_docs: List[Document] = db.similarity_search(user_input, k=10)
+    for doc in retrieved_docs:
+        print(f"{doc.metadata["headers"]}\n{doc.page_content}\n\n{"==="*20}\n")
+    
     context: str = "\n\n".join(
         [f"{doc.metadata['headers']}\n{doc.page_content}" for doc in retrieved_docs]
     )
@@ -53,7 +50,8 @@ def get_response_from_llm(user_input: str) -> str:
                 "human",
                 "Responder la siguiente pregunta ÚNICAMENTE en base al contexto proporcionado. "
                 + "La respuesta debe ser clara, completa y precisa. "
-                + "Sin embargo, al responder no es necesario que hagas menciones como 'Según los documentos relevantes...' o expresiones similares. "
+                + "Sin embargo, al responder no hagas menciones como 'Según el texto...' o expresiones similares. "
+                + "Respondé en primera persona. "
                 + "Si la respuesta no se encuentra en los documentos suministrados, responde con 'Lo lamento. No tengo información sobre la cuestión planteada'."
                 + "\n\nCONTEXTO:\n{context}"
                 + "\n\nPREGUNTA: {user_input}",
@@ -62,15 +60,7 @@ def get_response_from_llm(user_input: str) -> str:
     )
 
     chain = prompt_template | llm_model
-    chain_result = chain.invoke({"user_input": user_input, "context": context})
+    chain_result = chain.stream({"user_input": user_input, "context": context})
+    
+    return chain_result
 
-    print(f"[Q]: {user_input}\n")
-    print(f"[A]: {chain_result.content}\n")
-    print(f"response_metadata: {chain_result.response_metadata}")
-
-    return chain_result.content
-
-
-if __name__ == "__main__":
-    print(f"SOURCE: {' > '.join(vector_store_path.split('/')[-2:])}\n")
-    response = get_response_from_llm(question)
