@@ -24,7 +24,8 @@ embeddings_model = HuggingFaceEmbeddings(model_name=hf_model)
 
 
 def directory_loader(directory_path: str) -> List[Document]:
-    """Loads markdown documents from a given directory."""
+    """LOADS MARKDOWN DOCUMENTS FROM A GIVEN DIRECTORY."""
+
     print("1. LOADING DOCUMENTS FROM DIRECTORY...")
 
     loaded_docs: List[Document] = []
@@ -55,8 +56,9 @@ def directory_loader(directory_path: str) -> List[Document]:
     return loaded_docs
 
 
-def split_by_headers(loaded_docs: Document) -> List[Document]:
-    """Splits based on markdown headings."""
+def split_by_headers(loaded_docs: List[Document]) -> List[Document]:
+    """SPLITS BASED ON MARKDOWN HEADINGS."""
+
     print("\n2. SPLITTING DOCUMENTS BY HEADERS...")
 
     headers = [
@@ -87,7 +89,7 @@ def split_by_headers(loaded_docs: Document) -> List[Document]:
 
 
 def split_by_tokens(list_of_docs: List[Document]) -> List[Document]:
-    """Splits based on tokens."""
+    """SPLITS BASED ON TOKENS"""
     print("\n3. SPLITTING DOCUMENTS BY TOKENS...")
 
     separators = ["\n\n", "\n", "."]
@@ -104,7 +106,7 @@ def split_by_tokens(list_of_docs: List[Document]) -> List[Document]:
 
 
 def stringify_metadata_headers(list_of_docs: List[Document]) -> List[Document]:
-    """Canverts metadata headers from dict to string."""
+    """METADATA'S HEADERS FROM DICT TO STRING."""
 
     for chunk in list_of_docs:
         chunk_headers = chunk.metadata["headers"]
@@ -118,8 +120,8 @@ def stringify_metadata_headers(list_of_docs: List[Document]) -> List[Document]:
     return list_of_docs
 
 
-def tokens_per_chunk(list_of_docs: list[Document]) -> list[int]:
-    """Returns chunks' max & min lengths in tokens."""
+def tokens_per_chunk(list_of_docs: list[Document]) -> str:
+    """RETURNS CHUNKS' MAX & MIN LENGTHS IN TOKENS."""
 
     tokenizer = AutoTokenizer.from_pretrained(hf_model)
     token_counts: List[int] = []
@@ -137,7 +139,7 @@ def tokens_per_chunk(list_of_docs: list[Document]) -> list[int]:
 
 
 def characters_per_chunk(chunks: List[Document]) -> str:
-    """Returns chunks' max & min lengths in characters."""
+    """RETURNS CHUNKS' MAX & MIN LENGTHS IN CHARACTERS."""
 
     sizes = [len(chunk.page_content) for chunk in chunks]
     min_len = min(sizes)
@@ -147,9 +149,9 @@ def characters_per_chunk(chunks: List[Document]) -> str:
 
 
 def prepare_docs(dir_path: str) -> List[Document]:
-    """Loads files, turns them into documents & gets them ready to be embedded."""
+    """LOADS FILES, TURNS THEM INTO DOCUMENTS & GETS THEM READY TO BE EMBEDDED."""
 
-    loaded_files = directory_loader(dir_path)
+    loaded_files: List[Document] = directory_loader(dir_path)
     chunks_splitted_by_md_headers = split_by_headers(loaded_files)
     chunks_splitted_by_tokens = split_by_tokens(chunks_splitted_by_md_headers)
     docs_ready_to_embed = stringify_metadata_headers(chunks_splitted_by_tokens)
@@ -158,7 +160,8 @@ def prepare_docs(dir_path: str) -> List[Document]:
 
 
 def generate_embeddings(docs_to_embed: List[Document]) -> Chroma:
-    """Embeds document splits into the vector store."""
+    """EMBEDS DOCUMENTS INTO A VECTOR STORE."""
+
     print("\n5. EMBEDDING DOCS...")
 
     vector_store = Chroma.from_documents(
@@ -175,18 +178,18 @@ def generate_embeddings(docs_to_embed: List[Document]) -> Chroma:
 if __name__ == "__main__":
     # 0:99||100:131||132:648||649:876||877:1055||1056:1165
 
-    final_docs = prepare_docs(md_dir)
+    final_docs: List[Document] = prepare_docs(md_dir)
 
-    characters_per_chunk = characters_per_chunk(final_docs)
+    chunks_characters_sizes: str = characters_per_chunk(final_docs)
 
-    tokens_per_chunk = tokens_per_chunk(final_docs)
+    chunks_tokens_sizes: str = tokens_per_chunk(final_docs)
 
-    # embeddings = generate_embeddings(final_docs)
+    # embeddings: Chroma = generate_embeddings(final_docs)
 
     # for index, val in enumerate(final_docs):
     #     print(
     #         f"""DOC N°{index}:\n{val.metadata["headers"]}\n\n{val.page_content}\n\n{'==='*20}\n"""
     #     )
 
-    # print("\n", characters_per_chunk, "\n")
-    # print(tokens_per_chunk)
+    # print("\n", chunks_characters_sizes, "\n")
+    # print(chunks_tokens_sizes)

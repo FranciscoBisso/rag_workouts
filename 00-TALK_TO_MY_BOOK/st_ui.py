@@ -11,7 +11,7 @@ st.set_page_config(
 # PAGE'S TITLE
 st.markdown(
     """# :blue[Co]legal
-##### :gray[_Tu asistente virtual en derecho procesal._]""" 
+##### :gray[_Tu asistente virtual en derecho procesal civil y comercial argentino._]"""
 )
 
 
@@ -30,28 +30,29 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 
-
 # USER INPUT
 if user_input := st.chat_input("¿En qué puedo ayudarte?"):
-    
+
     # DISPLAY USER MESSAGE IN CHAT MESSAGE CONTAINER
     with st.chat_message("user", avatar="🧑‍💻"):
         st.markdown(user_input)
-    
+
     # ADD USER MESSAGE TO CHAT HISTORY
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     # PLACEHOLDER FOR ASSISTANT'S RESPONSE
     with st.chat_message("assistant", avatar="🧑‍⚖️"):
         response_placeholder = st.empty()
-        full_response = ""
+        FULL_RESPONSE = ""
 
         # SHOW SPINNER WHILE STREAMING RESPONSE
         with st.spinner(":gray[_Generando respuesta..._]"):
             for chunk in get_response_from_llm(user_input):
                 # ACCUMULATE STREAMED CHUNKS
-                full_response += chunk.content
-                response_placeholder.markdown(full_response)
+                FULL_RESPONSE += chunk.content
+                response_placeholder.markdown(FULL_RESPONSE)
 
         # ADD ASSISTANT'S RESPONSE TO CHAT HISTORY
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
+        st.session_state.messages.append(
+            {"role": "assistant", "content": FULL_RESPONSE}
+        )
