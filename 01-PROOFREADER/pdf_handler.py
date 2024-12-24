@@ -36,7 +36,12 @@ def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]
             documents = loader.load()
 
             for doc in documents:
-                doc.metadata["source"] = pdf_file.name
+                doc.metadata["source"] = (
+                    pdf_file.name.strip()
+                    .upper()
+                    .replace(".PDF", ".pdf")
+                    .replace(". ", "_")
+                )
 
             all_documents.append(documents)
 
