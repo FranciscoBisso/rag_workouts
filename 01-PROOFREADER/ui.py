@@ -6,7 +6,8 @@ import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from typing import List
 
-from pdf_handler import load_files
+# LOCAL IMPORTS
+from pdf_handler import load_files, split_by_tokens, count_tokens
 
 current_dir: str = os.getcwd()
 
@@ -30,6 +31,8 @@ with st.sidebar:
 
     if uploaded_bibliography:
         bibliography: List[List[Document]] = load_files(uploaded_bibliography)
+        documents: List[Document] = split_by_tokens(bibliography)
+        minimax_tokens: str = count_tokens(documents)
 
     # EXAMS UPLOADER
     uploaded_exams: list[UploadedFile] | None = st.file_uploader(
