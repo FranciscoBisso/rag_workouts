@@ -50,7 +50,7 @@ def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]
                     pdf_file.name.strip()
                     .upper()
                     .replace(".PDF", ".pdf")
-                    .replace(". ", "_")
+                    .replace(" ", "_")
                 )
 
             all_documents.append(documents)
