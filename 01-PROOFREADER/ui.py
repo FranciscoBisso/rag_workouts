@@ -1,14 +1,13 @@
 """UI for the Proofreader app"""
 
 from langchain_chroma import Chroma
-from langchain_core.documents import Document
 import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
-from typing import List
+from typing import List, Dict
 
 # LOCAL IMPORTS
 from pdf_handler import handle_pdf
-from llm_handler import pdf_to_doc
+from llm_handler import get_llm_response
 
 
 # PAGE'S CONFIG
@@ -40,6 +39,7 @@ with st.sidebar:
     )
 
     if uploaded_exams:
-        exams: List[Document] = pdf_to_doc(uploaded_exams)
-        for i, exam in enumerate(exams):
-            print(f"EXAM N°:{i}\n{exam}\n\n{'==='*15}", end="\n\n")
+        res: List[List[Dict]] = get_llm_response(uploaded_exams)
+
+        for i, item in enumerate(res):
+            print(f"EXAM {i+1}\nCONTENT:\n    {item}\n\n{'==='*15}", end="\n\n")
