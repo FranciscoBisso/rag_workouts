@@ -21,8 +21,7 @@ HF_API_KEY: SecretStr = SecretStr(os.getenv("HF_API_KEY"))
 
 def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]]:
     """
-    ARGS: uploaded_bibliography (List[UploadedFile])
-    RETURNS: List[List[Document]]. EACH INNER LIST CORRESPONDS TO A PDF FILE
+    FROM USER'S UPLOADED PDF FILES TO List[List[Document]] WHERE EACH INNER LIST CORRESPONDS TO A PDF FILE
     """
 
     if not uploaded_bibliography:
@@ -60,14 +59,13 @@ def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]
 
 def split_by_tokens(bibliography: List[List[Document]]) -> List[Document]:
     """
-    ARGS: bibliography (List[List[Document]])
-    RETURNS: List[Document]. ALL THE DOCUMENTS SPLIT BY TOKENS INTO SMALLER CHUNKS
+    SPLITS DOCUMENTS BY TOKENS INTO SMALLER CHUNKS
     """
 
     if not bibliography:
         raise ValueError("Ups! No se encontró bibliografía a ser dividida")
 
-    print("SPLITTING BIBLIOGRAPHY BY TOKENS...")
+    print("SPLITTING BIBLIOGRAPHY...")
 
     documents: List[Document] = []
     splitter = SentenceTransformersTokenTextSplitter(
@@ -80,19 +78,12 @@ def split_by_tokens(bibliography: List[List[Document]]) -> List[Document]:
         docs = splitter.split_documents(book)
         documents.extend(docs)
 
-    for i, doc in enumerate(documents):
-        if i < 10:
-            print(
-                f"\tDOC N° {i+1}\nLEN(CONTENT): {len(doc.page_content)}\n\n{'==='*15}\n"
-            )
-
     return documents
 
 
 def count_tokens(documents: List[Document]) -> str:
     """
-    ARGS: documents (List[Document])
-    RETURNS: int. MIN & MAX NUMBER OF TOKENS IN THE DOCUMENTS
+    COUNTS DOCS' CONTENT BY TOKENS
     """
 
     print("COUNTING TOKENS...")
@@ -108,7 +99,7 @@ def count_tokens(documents: List[Document]) -> str:
 
 def index_docs(documents: List[Document]) -> Chroma:
     """
-    GENERATES EMBEDDINGS FOR THE DOCUMENTS AND STORES THEM IN A TEMPORARY IN-MEMORY DATABASE.
+    GENERATES EMBEDDINGS FOR THE DOCUMENTS AND STORES THEM IN A TEMPORARY DATABASE.
     """
 
     if not documents:
@@ -122,30 +113,38 @@ def index_docs(documents: List[Document]) -> Chroma:
     # VERIFY API CONNECTION OF EMBEDDING'S MODEL
     try:
         embeddings_model.embed_query("Test query")
-        print("API connection successful")
     except Exception as e:
-        print(f"API connection failed: {str(e)}")
+        print(f"EMBEDDINGS' API CONNECTION FAILED: {str(e)}")
         raise
 
-    batch_size: int = 100
+    batch_size: int = 50
     texts: List[str] = [doc.page_content for doc in documents]
     metadatas: List[dict] = [doc.metadata for doc in documents]
 
-    # INITIALIZE CHROMA VECTOR STORE
-    chroma_vector_store = Chroma(
-        collection_name="bibliography",
-        embedding_function=embeddings_model,
-    )
+    # INITIALIZE VECTOR STORE
+    vector_store = Chroma(embedding_function=embeddings_model)
 
+    # INDEX DOCS IN BATCHES
     print("INDEXING DOCS IN VECTOR STORE...")
-    # ADD BATCHES INTO CHROMA VECTOR STORE
     for i in range(0, len(texts), batch_size):
         batch_texts = texts[i : i + batch_size]
         batch_metadata = metadatas[i : i + batch_size]
-        chroma_vector_store.add_texts(texts=batch_texts, metadatas=batch_metadata)
+        vector_store.add_texts(texts=batch_texts, metadatas=batch_metadata)
         print(
-            f"\t- Processed batch {i//batch_size + 1}/{(len(texts) + batch_size - 1)//batch_size}"
+            f"  - Processed batch {i//batch_size + 1}/{(len(texts) + batch_size - 1)//batch_size}"
         )
 
     print("DOCS SUCCESSFULLY INDEXED IN VECTOR STORE...")
-    return chroma_vector_store
+    return vector_store
+
+
+def handle_pdf(uploaded_bibliography: List[UploadedFile]) -> Chroma:
+    """
+    INDEXES USER'S UPLOADED PDF FILES INTO A VECTOR STORE
+    """
+    bibliography: List[List[Document]] = load_files(uploaded_bibliography)
+    documents: List[Document] = split_by_tokens(bibliography)
+    # print(f"TOKENS:\n{count_tokens(documents)}")
+    vector_store: Chroma = index_docs(documents)
+
+    return vector_store
