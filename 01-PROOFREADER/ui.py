@@ -19,24 +19,30 @@ st.markdown(
 ##### :gray[_Correcciones rápidas y precisas_]"""
 )
 
-
+# SIDEBAR
 with st.sidebar:
     # BIBLIOGRAPHY UPLOADER WIDGET
     uploaded_bibliography: List[UploadedFile] | None = st.file_uploader(
-        label="UPLOAD BIBLIOGRAPHY (.pdf)",
+        label="UPLOAD BIBLIOGRAPHY",
         type=["pdf"],
         accept_multiple_files=True,
     )
-
-    if uploaded_bibliography:
-        bibliography: Chroma = handle_pdf(uploaded_bibliography)
 
     # EXAMS UPLOADER WIDGET
     uploaded_exams: list[UploadedFile] | None = st.file_uploader(
-        label="UPLOAD EXAMS (.pdf)",
+        label="UPLOAD EXAMS",
         type=["pdf"],
         accept_multiple_files=True,
     )
 
-    if uploaded_exams:
-        res: List[List[Dict]] = get_llm_response(uploaded_exams)
+    if uploaded_bibliography and uploaded_exams:
+        res: List[List[Dict]] = get_llm_response(
+            uploaded_exams, handle_pdf(uploaded_bibliography)
+        )
+        for exam in res:
+            print("===" * 15, end="\n\n")
+            for item in exam:
+                print(
+                    f"[Q]: {item["consigna"]}\n\n[AL]: {item["respuesta"]}\n\n[AI]: {item["ai_answer"]}{"--" * 30}",
+                    end="\n\n",
+                )

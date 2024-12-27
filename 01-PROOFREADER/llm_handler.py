@@ -1,6 +1,7 @@
 """HANDLER FOR THE LLM INTERACTION"""
 
 import dotenv
+from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -35,7 +36,7 @@ def pdf_to_doc(uploaded_exams: List[UploadedFile]) -> List[Document]:
     return list_of_exams
 
 
-def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
+def extract_qa_pairs_from_exams(exams: List[Document]) -> List[List[Dict]]:
     """EXTRACTS Q&A FROM THE EXAMS"""
 
     # PYDANTIC MODELS FOR THE RESPONSE
@@ -87,9 +88,65 @@ def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
     return exams_qa_pairs
 
 
-def get_llm_response(uploaded_exams: List[UploadedFile]):
+def get_answer(exercise: str, vector_store: Chroma) -> str:
+    """GETS THE LLM'S RESPONSE"""
+    retrieved_docs: List[Document] = vector_store.similarity_search(
+        query=exercise, k=10
+    )
+    context: str = "\n\n".join([doc.page_content for doc in retrieved_docs])
+
+    # BUILD THE PROMPT
+    prompt_template = ChatPromptTemplate(
+        [
+            (
+                "system",
+                "Sos profesor universitario de derecho procesal civil y comercial argentino que responde preguntas a sus alumnos universitarios. "
+                + "Tus respuestas deben ser lo más completas, detalladas y exhaustivas posible. "
+                + "Integrá y relacioná la información de todo el CONTEXTO proporcionado para dar una respuesta comprehensiva. "
+                + "Incluí ejemplos, plazos, efectos y consecuencias cuando estén disponibles en el CONTEXTO proporcionado. "
+                + "Estructura la respuesta en párrafos ordenados lógicamente.",
+            ),
+            (
+                "human",
+                "Responder la siguiente pregunta ÚNICAMENTE en base al CONTEXTO proporcionado. "
+                + "Si la respuesta no se encuentra en el CONTEXTO proporcionado, simplemente respondé: "
+                + "'Lo lamento. No tengo información sobre la cuestión planteada'."
+                + "\n\nCONTEXTO:\n{context}"
+                + "\n\nPREGUNTA: {user_input}",
+            ),
+        ]
+    )
+
+    # BUILD THE CHAIN & GET THE MODEL'S RESPONSE
+    chain = prompt_template | llm
+    chain_response = chain.invoke({"user_input": exercise, "context": context})
+    res_content = (
+        chain_response.content
+        if isinstance(chain_response.content, str)
+        else str(chain_response.content)
+    )
+
+    return res_content
+
+
+def answer_exercises(
+    exams_qa_pairs: List[List[Dict]], vector_store: Chroma
+) -> List[List[Dict]]:
+    """ANSWERS THE EXAMS' QUESTIONS"""
+
+    for exam in exams_qa_pairs:
+        for qa_pair in exam:
+            qa_pair["ai_answer"] = get_answer(qa_pair["consigna"], vector_store)
+
+    return exams_qa_pairs
+
+
+def get_llm_response(
+    uploaded_exams: List[UploadedFile], vector_store: Chroma
+) -> List[List[Dict]]:
     """GETS THE LLM'S RESPONSE"""
     exams: List[Document] = pdf_to_doc(uploaded_exams)
-    qa_pairs: List[List[Dict]] = extract_qa_pairs(exams)
+    exams_qa_pairs: List[List[Dict]] = extract_qa_pairs_from_exams(exams)
+    llm_answers: List[List[Dict]] = answer_exercises(exams_qa_pairs, vector_store)
 
-    return qa_pairs
+    return llm_answers
