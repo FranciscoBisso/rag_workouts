@@ -16,7 +16,10 @@ dotenv.load_dotenv()
 
 current_dir: str = os.getcwd()
 hf_model: str = "intfloat/multilingual-e5-large"
-HF_API_KEY: SecretStr = SecretStr(os.getenv("HF_API_KEY"))
+hf_key: str | None = os.getenv("HF_API_KEY")
+if not hf_key:
+    raise ValueError("HF_API_KEY ENV VARIABLE IS NOT SET")
+HF_API_KEY: SecretStr = SecretStr(hf_key)
 
 
 def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]]:
@@ -25,7 +28,7 @@ def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]
     """
 
     if not uploaded_bibliography:
-        raise ValueError("No se encontraron archivos PDF subidos")
+        raise ValueError("load_files() >>> MISSING PDF FILES")
 
     print("LOADING PDF FILES...")
 
@@ -63,7 +66,7 @@ def split_by_tokens(bibliography: List[List[Document]]) -> List[Document]:
     """
 
     if not bibliography:
-        raise ValueError("Ups! No se encontró bibliografía a ser dividida")
+        raise ValueError("split_by_tokens() >>> MISSING BIBLIOGRAPHY")
 
     print("SPLITTING BIBLIOGRAPHY...")
 
@@ -103,7 +106,7 @@ def index_docs(documents: List[Document]) -> Chroma:
     """
 
     if not documents:
-        raise ValueError("No se encontraron documentos para indexar.")
+        raise ValueError("index_docs() >>> MISSING DOCUMENTS")
 
     embeddings_model = HuggingFaceInferenceAPIEmbeddings(
         api_key=HF_API_KEY,
@@ -114,7 +117,7 @@ def index_docs(documents: List[Document]) -> Chroma:
     try:
         embeddings_model.embed_query("Test query")
     except Exception as e:
-        print(f"EMBEDDINGS' API CONNECTION FAILED: {str(e)}")
+        print(f"index_docs() >>> EMBEDDINGS' API CONNECTION FAILED: {str(e)}")
         raise
 
     batch_size: int = 50

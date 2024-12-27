@@ -40,6 +40,3 @@ with st.sidebar:
 
     if uploaded_exams:
         res: List[List[Dict]] = get_llm_response(uploaded_exams)
-
-        for i, item in enumerate(res):
-            print(f"EXAM {i+1}\nCONTENT:\n    {item}\n\n{'==='*15}", end="\n\n")

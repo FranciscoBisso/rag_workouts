@@ -14,7 +14,7 @@ from pdf_handler import load_files
 
 dotenv.load_dotenv()
 groq_model: str = "llama-3.1-8b-instant"
-llm = ChatGroq(model=groq_model, temperature=0, stop_sequences=[])
+llm: ChatGroq = ChatGroq(model=groq_model, temperature=0, stop_sequences=[])
 
 
 def pdf_to_doc(uploaded_exams: List[UploadedFile]) -> List[Document]:
@@ -75,9 +75,14 @@ def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
 
         # INVOKE THE LLM AND PARSE THE RESPONSE
         response = llm.invoke(messages)
-        parsed_response = parser.parse(response.content)
+        res_content = (
+            response.content
+            if isinstance(response.content, str)
+            else str(response.content)
+        )
+        parsed_response = parser.parse(res_content)
 
-        exams_qa_pairs.append([parsed_response["qa_pairs"]])
+        exams_qa_pairs.append(parsed_response["qa_pairs"])
 
     return exams_qa_pairs
 
@@ -85,7 +90,6 @@ def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
 def get_llm_response(uploaded_exams: List[UploadedFile]):
     """GETS THE LLM'S RESPONSE"""
     exams: List[Document] = pdf_to_doc(uploaded_exams)
-    # TODO: CHECK IF THIS IS THE BEST DATA STRUCTURE FOR THE RESPONSE
     qa_pairs: List[List[Dict]] = extract_qa_pairs(exams)
 
     return qa_pairs
