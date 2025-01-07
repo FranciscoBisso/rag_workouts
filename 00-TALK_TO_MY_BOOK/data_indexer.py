@@ -13,16 +13,21 @@ from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
 )
 from pydantic import SecretStr
+from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
 
+# .VENV VARIABLES
 load_dotenv()
-# DIRECTORIES RELATED VARIABLES
+
+# DIRECTORIES
 current_dir: str = os.getcwd()
-md_files_dir: str = os.path.join(current_dir, "private_data")
-storage_dir: str = os.path.join(current_dir, "private_data", "parent_documents")
+markdown_dir: str = os.path.join(current_dir, "markdown")
 vector_store_persistent_dir: str = os.path.join(
-    current_dir, "database", "actuacion_del_abogado"
+    current_dir, "database", "actuacion_del_abogado_en_la_causa_judicial"
+)
+storage_dir: str = os.path.join(
+    current_dir, "parent_documents", "actuacion_del_abogado_en_la_causa_judicial"
 )
 
 # HUGGING FACE RELATED VARIABLES
@@ -36,29 +41,40 @@ hf_embeddings = HuggingFaceInferenceAPIEmbeddings(
     model_name=hf_model,
 )
 
+# INITIALIZE TOKENIZER
+tokenizer = AutoTokenizer.from_pretrained(hf_model)
 
 # SPLITTER TO CREATE CHILD DOCS
-child_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,
-    chunk_overlap=50,
-    separators=["\n\n", "\n", ".", "!", "?"],
+child_splitter: RecursiveCharacterTextSplitter = RecursiveCharacterTextSplitter(
+    chunk_size=300,
+    chunk_overlap=30,
+    separators=["\n\n", "\n", "!", "?", ".", ";", ":", ",", " "],
     is_separator_regex=False,
+    strip_whitespace=True,
     add_start_index=True,
+    length_function=lambda text: len(
+        tokenizer.encode(
+            text,
+            truncation=False,
+            add_special_tokens=False,
+            max_length=512,
+        )
+    ),
 )
 
 # VECTOR STORE TO INDEX THE CHILD DOCS
-child_vector_store = Chroma(
+child_vector_store: Chroma = Chroma(
     collection_name="child_docs",
     embedding_function=hf_embeddings,
     persist_directory=vector_store_persistent_dir,
 )
 
 # STORAGE LAYER FOR PARENT DOCUMENTS
-file_store = LocalFileStore(root_path=storage_dir)
+file_store: LocalFileStore = LocalFileStore(root_path=storage_dir)
 docstore = create_kv_docstore(file_store)
 
 # INITIALIZE THE RETRIEVER
-retriever = ParentDocumentRetriever(
+retriever: ParentDocumentRetriever = ParentDocumentRetriever(
     child_splitter=child_splitter,
     vectorstore=child_vector_store,
     docstore=docstore,
@@ -161,7 +177,7 @@ def feed_retriever(
 
     total_documents = len(documents)
     for item in tqdm(
-        range(0, total_documents, batch_size), desc="INDEXING", unit="batch"
+        range(0, total_documents, batch_size), desc="INDEXING BATCHES", unit="batch"
     ):
         batch = documents[item : min(item + batch_size, total_documents)]
         parent_docs_retriever.add_documents(batch, ids=None)
@@ -170,6 +186,6 @@ def feed_retriever(
 
 
 if __name__ == "__main__":
-    loaded_files: List[Document] = directory_loader(md_files_dir)
+    loaded_files: List[Document] = directory_loader(markdown_dir)
     parent_docs = split_by_headers(loaded_files)
     parent_retriever = feed_retriever(parent_docs, retriever)
