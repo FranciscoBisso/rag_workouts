@@ -2,7 +2,6 @@
 Module for handling queries and responses using Langchain.
 """
 
-import os
 from dotenv import load_dotenv
 from data_indexer import retriever
 from langchain_core.documents import Document
@@ -13,7 +12,6 @@ from typing import List, Iterator
 
 load_dotenv()
 
-current_dir: str = os.getcwd()
 groq_model: str = "llama-3.1-8b-instant"
 
 
@@ -36,37 +34,28 @@ def get_response_from_llm(user_input: str) -> Iterator[BaseMessage]:
     prompt_template = ChatPromptTemplate(
         [
             (
-                # "system",
-                # "Sos profesor universitario de derecho procesal civil y comercial argentino que responde preguntas a sus alumnos. "
-                # + "Tus respuestas deben ser lo más completas, detalladas y exhaustivas posible, abarcando todos los aspectos relevantes encontrados en la totalidad del CONTEXTO proporcionado. "
-                # + "Integra y relaciona la información de todo el CONTEXTO proporcionado para dar una respuesta completa y comprehensiva. "
-                # + "Desarrolla exhaustivamente cada concepto mencionado, incluyendo todos sus aspectos y matices. "
-                # + "Proporciona el marco procesal completo cuando sea relevante. "
-                # + "Establece conexiones entre los diferentes aspectos del tema tratado. "
-                # + "Asegúrate de incluir ejemplos, plazos, efectos y consecuencias cuando estén disponibles en el CONTEXTO proporcionado. "
-                # + "Estructura la respuesta en párrafos ordenados lógicamente y expande sobre cada punto relevante.",
                 "system",
                 "Sos profesor universitario de derecho procesal civil y comercial argentino que responde preguntas a sus alumnos. "
-                + "Es FUNDAMENTAL que tu respuesta refleje TODA la información disponible en el CONTEXTO proporcionado, sin omitir ningún detalle. "
-                + "Para cada tema mencionado, debes: "
-                + "1. Explicar exhaustivamente todos sus elementos y características "
-                + "2. Mencionar y desarrollar todas las variantes y excepciones "
-                + "3. Citar los artículos específicos de los códigos procesales cuando estén disponibles "
-                + "4. Incluir ejemplos concretos y casos jurisprudenciales si se mencionan "
-                + "5. Explicar los plazos, procedimientos y efectos legales relevantes "
-                + "6. Establecer conexiones con otros conceptos relacionados del derecho procesal "
-                + "7. Desarrollar las diferencias entre jurisdicciones cuando corresponda "
-                + "Tus respuestas deben ser extensas y minuciosas, aprovechando cada fragmento de información disponible en el contexto. "
+                + "Es FUNDAMENTAL que tu respuesta refleje TODA la información disponible en el CONTEXTO PROPORCIONADO, sin omitir ningún detalle."
+                + "\n\nPara cada tema mencionado, debes: "
+                + "\n1. Explicar exhaustivamente todos sus elementos y características."
+                + "\n2. Mencionar y desarrollar todas las variantes y excepciones."
+                + "\n3. Citar los artículos específicos de los códigos procesales, leyes y normativa cuando estén disponibles."
+                + "\n4. Incluir ejemplos concretos y casos jurisprudenciales si se mencionan."
+                + "\n5. Explicar los plazos, procedimientos y consecuencias legales relevantes."
+                + "\n6. Establecer conexiones entre los conceptos que se relacionan entre sí."
+                + "\n7. Desarrollar las diferencias entre jurisdicciones cuando corresponda."
+                + "\n8. Al responder no hagas menciones como 'Según el texto...', 'Conforme a los documentos suministrados...' o expresiones similares."
+                + "\n\nTus respuestas deben ser extensas, minuciosas y explicativas, aprovechando cada fragmento de información disponible en el CONTEXTO PROPORCIONADO. "
                 + "Estructura la respuesta en párrafos ordenados lógicamente y expande sobre cada punto relevante.",
             ),
             (
                 "human",
-                "Responder la siguiente pregunta ÚNICAMENTE en base al CONTEXTO proporcionado. "
-                + "Al responder no hagas menciones como 'Según el texto...', 'Conforme a los documentos suministrados...' o expresiones similares. "
-                + "Si la respuesta no se encuentra en el CONTEXTO proporcionado, simplemente respondé: "
-                + "'Lo lamento. No tengo información sobre la cuestión planteada'."
-                + "\n\nCONTEXTO:\n{context}"
-                + "\n\nPREGUNTA: {user_input}",
+                "Responder al siguiente mensaje ÚNICAMENTE en base al CONTEXTO PROPORCIONADO. "
+                + "Si la respuesta no se encuentra en el CONTEXTO PROPORCIONADO, simplemente responder con: "
+                + "'Lo lamento, no poseo conocimiento suficiente para brindarte una respuesta adecuada'."
+                + "\n\nPREGUNTA: {user_input}"
+                + "\n\nCONTEXTO:\n{context}",
             ),
         ]
     )
@@ -88,11 +77,14 @@ def get_response_from_llm(user_input: str) -> Iterator[BaseMessage]:
         yield chunk
 
     # PRINT USEFUL INFO
-    print(f"[Q]: {user_input}")
+    print(f"[Q]: {user_input}".upper())
+
+    print(">> RETRIEVED DOCS:\n\n")
     for i, doc in enumerate(retrieved_docs):
         print(
-            f"DOC N°:{i+1}\n{doc.metadata["headers"]}\n{doc.page_content}\n\n{"==="*20}\n"
+            f"DOC N°:{i+1}\n\n{doc.metadata["headers"]}\n{doc.page_content}\n\n{"==="*20}",
+            end="\n\n",
         )
 
     if full_message:
-        print(f"\n[A's METADATA]: {full_message}")
+        print(f"\n\n>> [A's METADATA]: {full_message}")
