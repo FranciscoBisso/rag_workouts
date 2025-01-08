@@ -1,7 +1,7 @@
 """HANDLER FOR THE LLM INTERACTION"""
 
-import dotenv
-from langchain_chroma import Chroma
+from dotenv import load_dotenv
+from langchain.retrievers import ParentDocumentRetriever
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -13,42 +13,28 @@ from typing import List, Dict
 # LOCAL IMPORTS
 from pdf_handler import load_files
 
-dotenv.load_dotenv()
+load_dotenv()
 groq_model: str = "llama-3.1-8b-instant"
 llm: ChatGroq = ChatGroq(model=groq_model, temperature=0, stop_sequences=[])
 
 
-def pdf_to_doc(uploaded_exams: List[UploadedFile]) -> List[Document]:
-    """
-    FORMATS THE EXAMS' FILES TO BE READ BY THE LLM
-    """
-    exams: List[List[Document]] = load_files(uploaded_exams)
-
-    list_of_exams: List[Document] = []
-    for i, exam in enumerate(exams):
-        doc: Document = Document(
-            page_content=" ".join([page.page_content.strip() for page in exam]),
-            metadata={"source": exam[i].metadata["source"]},
-        )
-
-        list_of_exams.append(doc)
-
-    return list_of_exams
-
-
-def extract_qa_pairs_from_exams(exams: List[Document]) -> List[List[Dict]]:
+def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
     """EXTRACTS Q&A FROM THE EXAMS"""
 
     # PYDANTIC MODELS FOR THE RESPONSE
     class QAPair(BaseModel):
+        """MODEL FOR A SINGLE Q&A PAIR"""
+
         consigna: str
         respuesta: str
 
-    class ExamResponse(BaseModel):
+    class QAPairs(BaseModel):
+        """MODEL FOR MULTIPLE Q&A PAIRS"""
+
         qa_pairs: List[QAPair]
 
     # INITIALIZE THE OUTPUT PARSER
-    parser = JsonOutputParser(pydantic_object=ExamResponse)
+    parser = JsonOutputParser(pydantic_object=QAPairs)
 
     exams_qa_pairs: List[List[Dict]] = []
     for exam in exams:
@@ -88,11 +74,9 @@ def extract_qa_pairs_from_exams(exams: List[Document]) -> List[List[Dict]]:
     return exams_qa_pairs
 
 
-def get_answer(exercise: str, vector_store: Chroma) -> str:
+def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
     """GETS THE LLM'S RESPONSE"""
-    retrieved_docs: List[Document] = vector_store.similarity_search(
-        query=exercise, k=10
-    )
+    retrieved_docs: List[Document] = retriever.invoke(exercise)
     context: str = "\n\n".join([doc.page_content for doc in retrieved_docs])
 
     # BUILD THE PROMPT
@@ -130,23 +114,23 @@ def get_answer(exercise: str, vector_store: Chroma) -> str:
 
 
 def answer_exercises(
-    exams_qa_pairs: List[List[Dict]], vector_store: Chroma
+    exams_qa_pairs: List[List[Dict]], retriever: ParentDocumentRetriever
 ) -> List[List[Dict]]:
     """ANSWERS THE EXAMS' QUESTIONS"""
 
     for exam in exams_qa_pairs:
         for qa_pair in exam:
-            qa_pair["ai_answer"] = get_answer(qa_pair["consigna"], vector_store)
+            qa_pair["ai_answer"] = get_answer(qa_pair["consigna"], retriever)
 
     return exams_qa_pairs
 
 
 def get_llm_response(
-    uploaded_exams: List[UploadedFile], vector_store: Chroma
+    uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
 ) -> List[List[Dict]]:
     """GETS THE LLM'S RESPONSE"""
-    exams: List[Document] = pdf_to_doc(uploaded_exams)
-    exams_qa_pairs: List[List[Dict]] = extract_qa_pairs_from_exams(exams)
-    llm_answers: List[List[Dict]] = answer_exercises(exams_qa_pairs, vector_store)
+    exams: List[Document] = load_files(uploaded_exams)
+    exams_qa_pairs: List[List[Dict]] = extract_qa_pairs(exams)
+    llm_answers: List[List[Dict]] = answer_exercises(exams_qa_pairs, retriever)
 
     return llm_answers

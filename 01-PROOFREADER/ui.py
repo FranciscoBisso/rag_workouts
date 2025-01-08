@@ -1,12 +1,11 @@
 """UI for the Proofreader app"""
 
-from langchain_chroma import Chroma
 import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from typing import List, Dict
 
 # LOCAL IMPORTS
-from pdf_handler import handle_pdf
+from pdf_handler import index_bibliography
 from llm_handler import get_llm_response
 
 
@@ -37,7 +36,7 @@ with st.sidebar:
 
     if uploaded_bibliography and uploaded_exams:
         res: List[List[Dict]] = get_llm_response(
-            uploaded_exams, handle_pdf(uploaded_bibliography)
+            uploaded_exams, index_bibliography(uploaded_bibliography)
         )
         for exam in res:
             print("===" * 15, end="\n\n")
