@@ -25,8 +25,8 @@ def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
     class QAPair(BaseModel):
         """MODEL FOR A SINGLE Q&A PAIR"""
 
-        consigna: str
-        respuesta: str
+        exercise: str
+        student_answer: str
 
     class QAPairs(BaseModel):
         """MODEL FOR MULTIPLE Q&A PAIRS"""
@@ -38,18 +38,19 @@ def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
 
     exams_qa_pairs: List[List[Dict]] = []
     for exam in exams:
-        # TEMPLATE WITH THE EXPECTED FORMAT
         template = (
-            "Tu tarea es analizar un examen y extraer todas las consignas junto con sus respectivas respuestas."
-            "\n\nInstrucciones específicas:"
-            "\n1. Identifica todas las consignas del examen, sin importar si están formuladas como preguntas directas o como instrucciones"
-            "\n2. Para cada consigna, extrae la respuesta correspondiente"
-            "\n3. Ignora el contenido introductorio como bibliografía o instrucciones generales"
-            "\n4. Mantén el texto exacto tanto de las consignas como de las respuestas"
-            "\n5. Si hay numeración en las consignas, mantenla"
-            "\n\nExamen a analizar:"
+            "Your task is to analyze an exam and extract all exercises along with their respective answers."
+            "\n\nSpecific instructions:"
+            "\n1. Identify all exercises in the exam, regardless of whether they are formulated as direct questions or as instructions"
+            "\n2. For each exercise, extract the corresponding answer. "
+            "If there is no corresponding answer, fill the answer field with the text 'Sin respuesta'."
+            "\n3. Ignore introductory content such as bibliography or general instructions"
+            "\n4. Keep the exact text of both the exercises and answers"
+            "\n5. If the exercises are numbered, maintain such numbering. "
+            "For example:\n1) First exercise prompt.\n2) Second exercise prompt.\n3) ..."
+            "\n\nExam to analyze:"
             "\n{user_input}"
-            "\n\nDevuelve los resultados en el siguiente formato JSON:"
+            "\n\nReturn the results in the following JSON format:"
             "\n{format_instructions}"
         )
 
@@ -84,19 +85,29 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
         [
             (
                 "system",
-                "Sos profesor universitario de derecho procesal civil y comercial argentino que responde preguntas a sus alumnos universitarios. "
-                + "Tus respuestas deben ser lo más completas, detalladas y exhaustivas posible. "
-                + "Integrá y relacioná la información de todo el CONTEXTO proporcionado para dar una respuesta comprehensiva. "
-                + "Incluí ejemplos, plazos, efectos y consecuencias cuando estén disponibles en el CONTEXTO proporcionado. "
-                + "Estructura la respuesta en párrafos ordenados lógicamente.",
+                "Eres un asistente virtual experto en derecho procesal civil y comercial argentino."
+                + " Es FUNDAMENTAL que tu respuesta refleje TODA la información disponible en el CONTEXTO PROPORCIONADO, sin omitir ningún detalle."
+                + "\n\nPara cada tema mencionado, debes:"
+                + "\n1) Explicar exhaustivamente todos sus elementos y características."
+                + "\n2) Mencionar y desarrollar todas las variantes y excepciones."
+                + "\n3) Citar los artículos específicos de los códigos procesales, leyes y normativa cuando estén disponibles."
+                + "\n4) Incluir ejemplos concretos y casos jurisprudenciales si se mencionan."
+                + "\n5) Explicar los plazos, procedimientos y consecuencias legales relevantes."
+                + "\n6) Establecer conexiones entre los conceptos que se relacionan entre sí."
+                + "\n7) Desarrollar las diferencias entre jurisdicciones cuando corresponda."
+                + "\n8) Al responder NO hagas menciones como 'Según el texto proporcionado...', 'Conforme a los documentos suministrados...' o expresiones similares."
+                + " Responde como si la información del CONTEXTO PROPORCIONADO fuera tuya y no de un libro."
+                + "\n\nTus respuestas deben ser extensas, minuciosas y explicativas, aprovechando cada fragmento de información disponible en el CONTEXTO PROPORCIONADO."
+                + "Estructura la respuesta en párrafos ordenados lógicamente y expande sobre cada punto relevante."
+                + " No repitas en un párrafo lo que ya has dicho en otro.",
             ),
             (
                 "human",
-                "Responder la siguiente pregunta ÚNICAMENTE en base al CONTEXTO proporcionado. "
-                + "Si la respuesta no se encuentra en el CONTEXTO proporcionado, simplemente respondé: "
-                + "'Lo lamento. No tengo información sobre la cuestión planteada'."
-                + "\n\nCONTEXTO:\n{context}"
-                + "\n\nPREGUNTA: {user_input}",
+                "Responder el siguiente ejercicio ÚNICAMENTE en base al CONTEXTO PROPORCIONADO."
+                + " Si la respuesta no se encuentra en el CONTEXTO PROPORCIONADO, simplemente responder con:"
+                + " 'Lo lamento, no poseo conocimiento suficiente para brindarte una respuesta adecuada'."
+                + "\n\nEJERCICIO: {user_input}"
+                + "\n\nCONTEXTO:\n{context}",
             ),
         ]
     )
@@ -120,7 +131,7 @@ def answer_exercises(
 
     for exam in exams_qa_pairs:
         for qa_pair in exam:
-            qa_pair["ai_answer"] = get_answer(qa_pair["consigna"], retriever)
+            qa_pair["ai_answer"] = get_answer(qa_pair["exercise"], retriever)
 
     return exams_qa_pairs
 

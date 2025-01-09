@@ -1,8 +1,8 @@
 """HANDLER FOR THE PDF FILES"""
 
 import os
-from dotenv import load_dotenv
 import tempfile
+from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
 from langchain.storage import LocalFileStore
 from langchain.storage._lc_store import create_kv_docstore
