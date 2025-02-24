@@ -1,4 +1,4 @@
-# pip install -qU easyocr langchain-community langchain-core pdf2image rich
+# pip install -qU langchain-community langchain-core pymupdf pytesseract rich
 
 # GENERAL IMPORTS
 import re
@@ -6,11 +6,11 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print as rprint
 from rich.progress import track
-from typing import List, Dict, Tuple
+from typing import List, Dict
 
 # SPECIFIC IMPORTS
-from easyocr import Reader
-from pdf2image import convert_from_path
+from langchain_community.document_loaders import PyMuPDFLoader
+from langchain_community.document_loaders.parsers import TesseractBlobParser
 
 # RICH'S PRINT COLORS
 YELLOW = "#fde047"
@@ -105,50 +105,45 @@ def is_text_corrupt(text) -> bool:
 
 
 def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
-    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
+    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
+    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
     files_info: List[Dict[str, str]] = search_dir(dir_path, file_ext)
-    reader = Reader(["es", "en"])
 
+    # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
     loaded_docs: List[List[Document]] = []
     for f in track(
         files_info,
-        description=f"[bold {ORANGE}]LOADING PDF FILES[/]",
+        description="LOADING PDF FILES",
         total=len(files_info),
-        # transient=True,
     ):
-        f_pages_imgs = convert_from_path(f["filepath"], fmt="jpeg")
-
-        pages: List[Document] = []
-        for pag in f_pages_imgs:
-            # EasyOCR reads the text
-            results: List[Tuple[List[int], str, float]] = reader.readtext(pag)
-            # Extract text from results
-            page_extracted_text = " ".join([tupl[1] for tupl in results])
-
-            clean_text = text_cleaner(page_extracted_text)
-
-            pages.append(Document(metadata=f, page_content=clean_text))
-
-        loaded_docs.append(pages)
+        loader = PyMuPDFLoader(
+            file_path=f["filepath"],
+            mode="page",
+            images_inner_format="text",
+            images_parser=TesseractBlobParser(),
+        )
+        loaded_file = loader.load()
+        loaded_docs.append(loaded_file)
 
     return loaded_docs
 
 
 if __name__ == "__main__":
-    # LOADING PDF FILES
-    easy_docs = directory_loader(PDF_DIR, "pdf")
-    for index, doc in enumerate(easy_docs):
+    # LOADING DIRECTORY
+    docs = directory_loader(PDF_DIR, "pdf")
+
+    for index, doc in enumerate(docs):
         for page in doc:
             if is_text_corrupt(page.page_content):
-                rprint(f"[{RED}]{page.metadata['filename']}[/]")
+                rprint(f"[{RED}]{page.metadata['title']}[/]")
             else:
-                rprint(f"[{GREEN}]{page.metadata['filename']}[/]")
+                rprint(f"[{GREEN}]{page.metadata['title']}[/]")
 
-    for index, doc in enumerate(easy_docs):
+    for index, doc in enumerate(docs):
         for page in doc:
             rprint(
                 f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["filename"]}[/]\n\n",
+                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
                 f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
             )

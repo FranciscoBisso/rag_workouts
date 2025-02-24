@@ -145,5 +145,5 @@ if __name__ == "__main__":
             rprint(
                 f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
                 f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
-                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{page.page_content}[/]",
+                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
             )

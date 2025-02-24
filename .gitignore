@@ -3,6 +3,7 @@ __pycache__
 .env
 .DS_Store
 .mypy_cache
+pdf
 
 ### VirtualEnv template
 # Virtualenv

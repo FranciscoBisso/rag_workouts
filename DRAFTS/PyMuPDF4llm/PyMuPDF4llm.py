@@ -10,6 +10,7 @@ from typing import List, Dict
 
 # SPECIFIC IMPORTS
 from pymupdf4llm import to_markdown
+from pymupdf import Document as PyMuDocument
 
 # RICH'S PRINT COLORS
 YELLOW = "#fde047"
@@ -103,18 +104,23 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def directory_loader(dir_path: Path, file_ext: str) -> List[Document]:
+def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
     # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
     files_info: List[Dict[str, str]] = search_dir(dir_path, file_ext)
 
     # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
-    loaded_docs: List[Document] = []
+    loaded_docs: List[List[Document]] = []
     for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
-        extracted_text = to_markdown(f["filepath"], show_progress=False)
-        text_cleaned = text_cleaner(extracted_text)
-        loaded_file = Document(metadata=f, page_content=text_cleaned)
+        doc_pages: List[PyMuDocument] = to_markdown(
+            f["filepath"], page_chunks=True, show_progress=False
+        )
+
+        loaded_file: List[Document] = [
+            Document(metadata=page["metadata"], page_content=text_cleaner(page["text"]))
+            for page in doc_pages
+        ]
 
         loaded_docs.append(loaded_file)
 
@@ -123,17 +129,18 @@ def directory_loader(dir_path: Path, file_ext: str) -> List[Document]:
 
 if __name__ == "__main__":
     # LOADING PDF FILES
-    pdf4llm_docs = directory_loader(PDF_DIR, "pdf")
-    for index, doc in enumerate(pdf4llm_docs):
-        if is_text_corrupt(doc.page_content):
-            rprint(f"[{RED}]{doc.metadata['filename']}[/]")
-        else:
-            rprint(f"[{GREEN}]{doc.metadata['filename']}[/]")
+    docs = directory_loader(PDF_DIR, "pdf")
+    for index, doc in enumerate(docs):
+        for page in doc:
+            if is_text_corrupt(page.page_content):
+                rprint(f"[{RED}]{page.metadata['title']}[/]")
+            else:
+                rprint(f"[{GREEN}]{page.metadata['title']}[/]")
 
-    for index, doc in enumerate(pdf4llm_docs):
-        rprint(
-            f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-            f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc.metadata["filename"]}[/]\n\n",
-            f"[bold {YELLOW}]> CONTENT len({len(doc.page_content)}):[/]\n[{WHITE}]{doc.page_content}[/]",
-            f"\n\n{'==='*15}\n\n",
-        )
+    for index, doc in enumerate(docs):
+        for page in doc:
+            rprint(
+                f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
+                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
+                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
+            )
