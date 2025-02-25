@@ -8,14 +8,16 @@ from langchain.storage import LocalFileStore
 from langchain.storage._lc_store import create_kv_docstore
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from pydantic import SecretStr
 from transformers import AutoTokenizer
-from tqdm import tqdm
+from rich.progress import track
 from typing import List
+
+# from rich import print as rprint
 
 load_dotenv()
 
@@ -37,7 +39,6 @@ parent_splitter: RecursiveCharacterTextSplitter = RecursiveCharacterTextSplitter
     separators=["\n\n", "\n", "!", "?", "."],
     is_separator_regex=False,
     strip_whitespace=True,
-    add_start_index=True,
     length_function=lambda text: len(
         tokenizer.encode(
             text,
@@ -54,7 +55,6 @@ child_splitter: RecursiveCharacterTextSplitter = RecursiveCharacterTextSplitter(
     separators=["\n\n", "\n", "!", "?", "."],
     is_separator_regex=False,
     strip_whitespace=True,
-    add_start_index=True,
     length_function=lambda text: len(
         tokenizer.encode(
             text,
@@ -87,14 +87,14 @@ docstore = create_kv_docstore(file_store)
 
 # INITIALIZE THE RETRIEVER
 retriever: ParentDocumentRetriever = ParentDocumentRetriever(
-    parent_splitter=child_splitter,
+    parent_splitter=parent_splitter,
     child_splitter=child_splitter,
     vectorstore=child_vector_store,
     docstore=docstore,
 )
 
 
-def load_files(uploaded_bibliography: List[UploadedFile]) -> List[Document]:
+def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]]:
     """
     CONVERTS USER'S UPLOADED PDF FILES TO List[List[Document]] WHERE EACH INNER LIST CORRESPONDS TO A PDF FILE
     """
@@ -102,13 +102,11 @@ def load_files(uploaded_bibliography: List[UploadedFile]) -> List[Document]:
     if not uploaded_bibliography:
         raise ValueError("load_files() >>> MISSING PDF FILES")
 
-    all_documents = []
+    loaded_files: List[List[Document]] = []
 
     # MAKE TEMPORARY DIRECTORY TO SAVE THE PDF FILES
     with tempfile.TemporaryDirectory() as temp_dir:
-        for pdf_file in tqdm(
-            uploaded_bibliography, desc="LOADING PDF FILES", unit="file"
-        ):
+        for pdf_file in track(uploaded_bibliography, description="LOADING PDF FILES"):
             # PDF FILE'S TEMPORARY PATH
             temp_path = os.path.join(temp_dir, pdf_file.name)
 
@@ -116,41 +114,38 @@ def load_files(uploaded_bibliography: List[UploadedFile]) -> List[Document]:
             with open(temp_path, "wb") as f:
                 f.write(pdf_file.getvalue())
 
-            loader = PyPDFLoader(temp_path)
-            documents = loader.load()
+            file_pages_as_documents: List[Document] = PyMuPDFLoader(temp_path).load()
 
-            for doc in documents:
-                doc.metadata["source"] = (
-                    pdf_file.name.strip()
-                    .upper()
-                    .replace(".PDF", ".pdf")
-                    .replace(" ", "_")
-                )
+            for page in file_pages_as_documents:
+                page.metadata = {
+                    "title": pdf_file.name,
+                    "total_pages": page.metadata["total_pages"],
+                    "page": page.metadata["page"],
+                }
 
-            all_documents.extend(documents)
+            loaded_files.append(file_pages_as_documents)
 
-    return all_documents
+    return loaded_files
 
 
 def feed_retriever(
-    documents: List[Document],
-    parent_docs_retriever: ParentDocumentRetriever,
+    loaded_files: List[List[Document]],
+    parent_docs_retriever: ParentDocumentRetriever = retriever,
     batch_size: int = 10,
 ) -> ParentDocumentRetriever:
     """SETUPS THE RETRIEVER WITH PROGRESS TRACKING."""
 
-    if not documents:
+    if not loaded_files:
         raise ValueError("feed_retriever() >>> MISSING DOCS TO INDEX.")
 
-    if not documents:
-        raise ValueError("feed_retriever() >>> MISSING RETRIEVER.")
-
-    total_documents = len(documents)
-    for item in tqdm(
-        range(0, total_documents, batch_size), desc="INDEXING BATCHES", unit="batch"
-    ):
-        batch = documents[item : min(item + batch_size, total_documents)]
-        parent_docs_retriever.add_documents(batch, ids=None)
+    for loaded_file in loaded_files:
+        file_pages = len(loaded_file)
+        for item in track(
+            range(0, file_pages, batch_size),
+            description=f"{loaded_file[0].metadata["title"].split('-')[0]}",
+        ):
+            batch = loaded_file[item : min(item + batch_size, file_pages)]
+            parent_docs_retriever.add_documents(batch, ids=None)
 
     return retriever
 
@@ -162,9 +157,9 @@ def index_bibliography(
     MAIN FUNCTION TO INDEX THE UPLOADED PDF FILES.
     """
 
-    docs: List[Document] = load_files(uploaded_bibliography)
+    docs_from_uploaded_files: List[List[Document]] = load_files(uploaded_bibliography)
     parent_retriever: ParentDocumentRetriever = feed_retriever(
-        documents=docs, parent_docs_retriever=retriever
+        loaded_files=docs_from_uploaded_files, parent_docs_retriever=retriever
     )
 
     return parent_retriever
