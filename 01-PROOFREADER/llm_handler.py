@@ -6,9 +6,12 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_groq import ChatGroq
-from streamlit.runtime.uploaded_file_manager import UploadedFile
 from pydantic import BaseModel
+from rich.progress import track
+from streamlit.runtime.uploaded_file_manager import UploadedFile
 from typing import List, Dict
+
+# from rich import print as rprint
 
 # LOCAL IMPORTS
 from pdf_handler import load_files
@@ -18,7 +21,7 @@ groq_model: str = "llama-3.1-8b-instant"
 llm: ChatGroq = ChatGroq(model=groq_model, temperature=0, stop_sequences=[])
 
 
-def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
+def extract_qa_pairs(exams: List[List[Document]]) -> List[List[Dict]]:
     """EXTRACTS Q&A FROM THE EXAMS"""
 
     # PYDANTIC MODELS FOR THE RESPONSE
@@ -37,27 +40,29 @@ def extract_qa_pairs(exams: List[Document]) -> List[List[Dict]]:
     parser = JsonOutputParser(pydantic_object=QAPairs)
 
     exams_qa_pairs: List[List[Dict]] = []
-    for exam in exams:
+
+    for exam in track(exams, description="EXTRACTING QA PAIRS FROM EXAMS"):
+        exam_content: str = "\n\n".join([page.page_content for page in exam])
+
         template = (
             "Your task is to analyze an exam and extract all exercises along with their respective answers."
             "\n\nSpecific instructions:"
             "\n1. Identify all exercises in the exam, regardless of whether they are formulated as direct questions or as instructions"
-            "\n2. For each exercise, extract the corresponding answer. "
-            "If there is no corresponding answer, fill the answer field with the text 'Sin respuesta'."
+            "\n2. For each exercise, extract the corresponding answer."
+            " If there is no corresponding answer, fill the answer field with the text 'Sin respuesta'."
             "\n3. Ignore introductory content such as bibliography or general instructions"
             "\n4. Keep the exact text of both the exercises and answers"
             "\n5. If the exercises are numbered, maintain such numbering. "
             "For example:\n1) First exercise prompt.\n2) Second exercise prompt.\n3) ..."
             "\n\nExam to analyze:"
-            "\n{user_input}"
+            "\n{exam_content}"
             "\n\nReturn the results in the following JSON format:"
             "\n{format_instructions}"
         )
-
         # BUILD THE FULL PROMPT
         prompt = ChatPromptTemplate.from_template(template)
         messages = prompt.format_messages(
-            user_input=exam.page_content,
+            exam_content=exam_content,
             format_instructions=parser.get_format_instructions(),
         )
 
@@ -106,7 +111,7 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
                 "Responder el siguiente ejercicio ÚNICAMENTE en base al CONTEXTO PROPORCIONADO."
                 + " Si la respuesta no se encuentra en el CONTEXTO PROPORCIONADO, simplemente responder con:"
                 + " 'Lo lamento, no poseo conocimiento suficiente para brindarte una respuesta adecuada'."
-                + "\n\nEJERCICIO: {user_input}"
+                + "\n\nEJERCICIO: {exercise}"
                 + "\n\nCONTEXTO:\n{context}",
             ),
         ]
@@ -114,7 +119,7 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
 
     # BUILD THE CHAIN & GET THE MODEL'S RESPONSE
     chain = prompt_template | llm
-    chain_response = chain.invoke({"user_input": exercise, "context": context})
+    chain_response = chain.invoke({"exercise": exercise, "context": context})
     res_content = (
         chain_response.content
         if isinstance(chain_response.content, str)
@@ -127,9 +132,9 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
 def answer_exercises(
     exams_qa_pairs: List[List[Dict]], retriever: ParentDocumentRetriever
 ) -> List[List[Dict]]:
-    """ANSWERS THE EXAMS' QUESTIONS"""
+    """ANSWERS THE EXAMS' EXERCISES"""
 
-    for exam in exams_qa_pairs:
+    for exam in track(exams_qa_pairs, description="LLM ANSWERING EXERCISES"):
         for qa_pair in exam:
             qa_pair["ai_answer"] = get_answer(qa_pair["exercise"], retriever)
 
@@ -140,7 +145,7 @@ def get_llm_response(
     uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
 ) -> List[List[Dict]]:
     """GETS THE LLM'S RESPONSE"""
-    exams: List[Document] = load_files(uploaded_exams)
+    exams: List[List[Document]] = load_files(uploaded_exams)
     exams_qa_pairs: List[List[Dict]] = extract_qa_pairs(exams)
     llm_answers: List[List[Dict]] = answer_exercises(exams_qa_pairs, retriever)
 

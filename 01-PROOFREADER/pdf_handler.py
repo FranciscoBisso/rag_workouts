@@ -133,7 +133,10 @@ def feed_retriever(
     parent_docs_retriever: ParentDocumentRetriever = retriever,
     batch_size: int = 10,
 ) -> ParentDocumentRetriever:
-    """SETUPS THE RETRIEVER WITH PROGRESS TRACKING."""
+    """SETUPS THE RETRIEVER WITH PROGRESS TRACKING.
+    If the loaded_files is too large, the parent_docs_retriever.add_documents() wont it be able to handle it.
+    Therefore, it needs to be split into batches.
+    """
 
     if not loaded_files:
         raise ValueError("feed_retriever() >>> MISSING DOCS TO INDEX.")
@@ -142,7 +145,7 @@ def feed_retriever(
         file_pages = len(loaded_file)
         for item in track(
             range(0, file_pages, batch_size),
-            description=f"{loaded_file[0].metadata["title"].split('-')[0]}",
+            description=f"{loaded_file[0].metadata["title"].split('—')[0]}",
         ):
             batch = loaded_file[item : min(item + batch_size, file_pages)]
             parent_docs_retriever.add_documents(batch, ids=None)
