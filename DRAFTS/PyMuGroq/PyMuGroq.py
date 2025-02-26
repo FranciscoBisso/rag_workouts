@@ -132,7 +132,7 @@ def pdf_loader(pdf_path: Path) -> List[Document]:
         mode="page",
         images_inner_format="text",
         images_parser=LLMImageBlobParser(
-            model=MODEL,
+            model=LLM_MODEL,
             prompt=PROMPT,
         ),
     ).load()
