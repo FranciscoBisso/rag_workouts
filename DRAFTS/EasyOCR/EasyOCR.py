@@ -26,6 +26,8 @@ WHITE = "#cccccc"
 GREEN = "#3fb618"
 
 # PATHS
+CUR_DIR = Path(__file__).parent
+MODEL_STORE_DIR = CUR_DIR / "model_store"
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"
@@ -108,7 +110,7 @@ def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     files_info: List[Dict[str, str]] = search_dir(dir_path, file_ext)
-    reader = Reader(["es", "en"])
+    reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
 
     loaded_docs: List[List[Document]] = []
     for f in track(
