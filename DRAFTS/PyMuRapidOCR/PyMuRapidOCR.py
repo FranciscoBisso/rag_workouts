@@ -1,3 +1,5 @@
+"""PyMuPDFLoader + RapidOCRBlobParser to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+
 # pip install -qU langchain-community langchain-core pymupdf rich rapidocr-onnxruntime
 
 # GENERAL IMPORTS

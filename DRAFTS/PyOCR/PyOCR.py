@@ -1,3 +1,5 @@
+"""PyOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
+
 # pip install -qU langchain-community langchain-core pdf2image pyocr rich
 
 # GENERAL IMPORTS

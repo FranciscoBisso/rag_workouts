@@ -1,3 +1,5 @@
+"""PyMuPDFLoader + TesseractBlobParser to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+
 # pip install -qU langchain-community langchain-core pymupdf pytesseract rich
 
 # GENERAL IMPORTS

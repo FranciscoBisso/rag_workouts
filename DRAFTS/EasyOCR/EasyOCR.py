@@ -1,3 +1,5 @@
+"""EasyOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
+
 # pip install -qU easyocr langchain-community langchain-core pdf2image rich
 
 # GENERAL IMPORTS

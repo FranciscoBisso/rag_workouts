@@ -1,4 +1,7 @@
+"""PyMuPDFLoader + LLMImageBlobParser + ChatGroq to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+
 # pip install -qU langchain-community langchain-groq Pillow pymupdf rich
+
 # GENERAL IMPORTS
 import re
 from langchain_core.documents import Document

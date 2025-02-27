@@ -1,10 +1,11 @@
+"""EasyOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
+
 # pip install -qU langchain-community langchain-core pdf2image pytesseract rich
 
 # GENERAL IMPORTS
 import re
 from langchain_core.documents import Document
 from pathlib import Path
-from PIL import Image
 from rich import print as rprint
 from rich.progress import track
 from typing import List, Dict
@@ -12,6 +13,7 @@ from typing import List, Dict
 # SPECIFIC IMPORTS
 from pdf2image import convert_from_path
 from pytesseract import image_to_string
+from PIL import Image
 
 # RICH'S PRINT COLORS
 YELLOW = "#fde047"

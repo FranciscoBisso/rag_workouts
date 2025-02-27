@@ -1,3 +1,5 @@
+"""PyMuPDF4llm to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+
 # pip install -qU langchain-community langchain-core pymupdf pymupdf4llm rich
 
 # GENERAL IMPORTS
