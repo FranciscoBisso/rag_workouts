@@ -177,30 +177,19 @@ def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
 
 
 if __name__ == "__main__":
-    brkn_pdf = pdf_loader(PDF_FILE_2)
+    docs = directory_loader(PDF_DIR, "pdf")
 
-    for index, doc in enumerate(brkn_pdf):
-        content = "".join(doc.page_content.split("\n\n\n\n")[0].split("\n")[1:])
-        doc.page_content = content
-        rprint(
-            f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-            f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc.metadata['title']}[/]\n\n",
-            f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc.page_content)}[/]",
-        )
+    for index, doc in enumerate(docs):
+        for page in doc:
+            if is_text_corrupt(page.page_content):
+                rprint(f"[{RED}]{page.metadata['title']}[/]")
+            else:
+                rprint(f"[{GREEN}]{page.metadata['title']}[/]")
 
-    # docs = directory_loader(PDF_DIR, "pdf")
-
-    # for index, doc in enumerate(docs):
-    #     for page in doc:
-    #         if is_text_corrupt(page.page_content):
-    #             rprint(f"[{RED}]{page.metadata['title']}[/]")
-    #         else:
-    #             rprint(f"[{GREEN}]{page.metadata['title']}[/]")
-
-    # for index, doc in enumerate(docs):
-    #     for page in doc:
-    #         rprint(
-    #             f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-    #             f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
-    #             f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
-    #         )
+    for index, doc in enumerate(docs):
+        for page in doc:
+            rprint(
+                f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
+                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
+                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
+            )
