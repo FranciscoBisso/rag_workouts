@@ -1,4 +1,4 @@
-"""PyMuPDF4llm to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
 
 # pip install -qU langchain-community langchain-core pymupdf rich tqdm
 
@@ -6,7 +6,7 @@
 import re
 from langchain_core.documents import Document
 from pathlib import Path
-from rich import print as rprint
+from rich import print
 from typing import List
 
 # SPECIFIC IMPORTS
@@ -43,15 +43,12 @@ def text_cleaner(text: str) -> str:
     # FROM NON-BREAKING SPACE CHARACTER TO A REGULAR SPACE
     text = re.sub(r"\xa0", " ", text)
     # FROM MULTIPLE SPACES TO A SINGLE SPACE
-    text = re.sub(r" +", " ", text)
+    text = re.sub(r" {2,}", " ", text)
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n\n")]
-    )
     text = "\n".join(
-        [single_line_break.strip() for single_line_break in text.split("\n")]
+        [double_line_break.strip() for double_line_break in text.split("\n")]
     )
 
     text = text.strip()
@@ -77,7 +74,7 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def directory_loader(dir_path: Path | str) -> List[Document]:
+def pdf_loader(dir_path: Path | str) -> List[Document]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     loaded_files: List[Document] = GenericLoader(
@@ -96,17 +93,17 @@ def directory_loader(dir_path: Path | str) -> List[Document]:
 
 
 if __name__ == "__main__":
-    docs = directory_loader(PDF_DIR)
+    docs = pdf_loader(PDF_DIR)
 
     for index, doc in enumerate(docs):
         if is_text_corrupt(doc.page_content):
-            rprint(f"[{RED}]{doc.metadata['title']}[/]")
+            print(f"[{RED}]{doc.metadata['title']}[/]")
         else:
-            rprint(f"[{GREEN}]{doc.metadata['title']}[/]")
+            print(f"[{GREEN}]{doc.metadata['title']}[/]")
 
     for i, doc in enumerate(docs):
         # doc.page_content = text_cleaner(doc.page_content)
-        rprint(
+        print(
             f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{i}[/]\n",
             f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc.metadata['title']}[/]\n\n",
             f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc.page_content[:2000]}[/]",

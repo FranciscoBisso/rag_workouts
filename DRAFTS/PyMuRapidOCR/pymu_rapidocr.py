@@ -1,18 +1,18 @@
-"""PyMuPDFLoader + TesseractBlobParser to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""PyMuPDFLoader + RapidOCRBlobParser to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
 
-# pip install -qU langchain-community langchain-core pymupdf pytesseract rich
+# pip install -qU langchain-community langchain-core pymupdf rich rapidocr-onnxruntime
 
 # GENERAL IMPORTS
 import re
 from langchain_core.documents import Document
 from pathlib import Path
-from rich import print as rprint
+from rich import print
 from rich.progress import track
-from typing import List, Dict
+from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
 from langchain_community.document_loaders import PyMuPDFLoader
-from langchain_community.document_loaders.parsers import TesseractBlobParser
+from langchain_community.document_loaders.parsers import RapidOCRBlobParser
 
 # RICH'S PRINT COLORS
 YELLOW = "#fde047"
@@ -35,8 +35,16 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-def search_dir(dir_path: Path, file_ext: str) -> List[Dict[str, str]]:
+class FileInfo(TypedDict):
+    """FILE'S INFO"""
+
+    filename: str
+    filepath: str
+
+
+def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
     """FILE'S SEARCH IN A GIVEN DIRECTORY"""
+
     dir_path = Path(dir_path)
 
     if not dir_path.is_dir():
@@ -49,7 +57,7 @@ def search_dir(dir_path: Path, file_ext: str) -> List[Dict[str, str]]:
         file_ext = f".{file_ext}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[Dict[str, str]] = [
+    files_info: List[FileInfo] = [
         {"filename": f.name, "filepath": str(f)}
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
@@ -66,23 +74,20 @@ def search_dir(dir_path: Path, file_ext: str) -> List[Dict[str, str]]:
 
 def text_cleaner(text: str) -> str:
     """
-    CLEANS TEXT BY REPLACING NON-BREAKING SPACES, NORMALIZING SPACES AND NEWLINES,
-    AND REMOVING HASH SYMBOLS.
+    CLEANS TEXT BY REPLACING NON-BREAKING SPACES & NORMALIZING SPACES AND NEWLINES.
     """
 
     # FROM NON-BREAKING SPACE CHARACTER TO A REGULAR SPACE
     text = re.sub(r"\xa0", " ", text)
     # FROM MULTIPLE SPACES TO A SINGLE SPACE
-    text = re.sub(r" +", " ", text)
-    # FROM >=3 - SYMBOLS TO NONE
-    text = re.sub(r"-{3,}", "", text)
+    text = re.sub(r" {2,}", " ", text)
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
-    # FROM >=2  HASH SYMBOLS TO NONE
-    text = re.sub(r"#{2,}", "", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n\n".join([line.strip() for line in text.split("\n\n")])
-    # text = "\n".join([line.strip() for line in text.split("\n")])
+    text = "\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n")]
+    )
+
     text = text.strip()
 
     return text
@@ -106,45 +111,44 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
+def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
     # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
-    files_info: List[Dict[str, str]] = search_dir(dir_path, file_ext)
+    loaded_docs: List[List[Document]] = []
+    files_info: List[FileInfo] = files_finder(dir_path, file_ext)
 
     # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
-    loaded_docs: List[List[Document]] = []
     for f in track(
         files_info,
         description="LOADING PDF FILES",
         total=len(files_info),
     ):
-        loader = PyMuPDFLoader(
+        loaded_file: List[Document] = PyMuPDFLoader(
             file_path=f["filepath"],
             mode="page",
             images_inner_format="text",
-            images_parser=TesseractBlobParser(),
-        )
-        loaded_file = loader.load()
+            images_parser=RapidOCRBlobParser(),
+        ).load()
+
         loaded_docs.append(loaded_file)
 
     return loaded_docs
 
 
 if __name__ == "__main__":
-    # LOADING DIRECTORY
-    docs = directory_loader(PDF_DIR, "pdf")
+    docs = pdf_loader(PDF_DIR, "pdf")
 
     for index, doc in enumerate(docs):
         for page in doc:
             if is_text_corrupt(page.page_content):
-                rprint(f"[{RED}]{page.metadata['title']}[/]")
+                print(f"[{RED}]{page.metadata['title']}[/]")
             else:
-                rprint(f"[{GREEN}]{page.metadata['title']}[/]")
+                print(f"[{GREEN}]{page.metadata['title']}[/]")
 
     for index, doc in enumerate(docs):
         for page in doc:
-            rprint(
+            print(
                 f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
                 f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
                 f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",

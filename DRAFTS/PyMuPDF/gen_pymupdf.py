@@ -1,6 +1,6 @@
-"""PyMuPDF4llm to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""A generator that uses PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
 
-# pip install -qU langchain-community langchain-core pymupdf pymupdf4llm rich
+# pip install -qU langchain-community langchain-core pymupdf rich tqdm
 
 # GENERAL IMPORTS
 import re
@@ -8,11 +8,10 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import List, TypedDict
+from typing import Generator, List, TypedDict
 
 # SPECIFIC IMPORTS
-from pymupdf4llm import to_markdown
-from pymupdf import Document as PyMuDocument
+from langchain_community.document_loaders import PyMuPDFLoader
 
 # RICH'S PRINT COLORS
 YELLOW = "#fde047"
@@ -40,6 +39,13 @@ class FileInfo(TypedDict):
 
     filename: str
     filepath: str
+
+
+class DocStatus(TypedDict):
+    """DOCUMENT STATUS"""
+
+    parsed: bool
+    document: Document
 
 
 def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
@@ -111,43 +117,58 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
-    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
+def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, None]:
+    """
+    LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
+        1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
+        2) LOADS THEM USING THE PyMuPDF LOADER
+        3) CLEANS THE CONTENT OF EACH DOCUMENT.
+    AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
+    IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
 
-    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
-    files_info: List[FileInfo] = files_finder(dir_path, file_ext)
+    Args:
+        dir_path (Union[Path, str]): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
 
-    # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
-    loaded_docs: List[List[Document]] = []
+    Yields:
+        A DICTIONARY CONTAINING TWO KEYS:
+            - "is_corrupt": A BOOLEAN INDICATING WHETHER THE DOCUMENT'S CONTENT IS CORRUPT.
+            - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
+    """
+
+    dir_path = Path(dir_path)
+
+    files_info: List[FileInfo] = files_finder(dir_path, "pdf")
+
     for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
-        doc_pages: List[PyMuDocument] = to_markdown(
-            f["filepath"], page_chunks=True, show_progress=False
-        )
+        loaded_file: Document = PyMuPDFLoader(
+            file_path=f["filepath"],
+            mode="single",
+        ).load()[0]
+        loaded_file.page_content = text_cleaner(loaded_file.page_content)
+        loaded_file.metadata["title"] = Path(loaded_file.metadata["source"]).name.split(
+            "."
+        )[0]
 
-        loaded_file: List[Document] = [
-            Document(metadata=page["metadata"], page_content=text_cleaner(page["text"]))
-            for page in doc_pages
-        ]
+        if is_text_corrupt(loaded_file.page_content):
+            loaded_file.page_content = ""
+            yield {"parsed": False, "document": loaded_file}
 
-        loaded_docs.append(loaded_file)
-
-    return loaded_docs
+        yield {"parsed": True, "document": loaded_file}
 
 
 if __name__ == "__main__":
-    # LOADING PDF FILES
-    docs = pdf_loader(PDF_DIR, "pdf")
-    for index, doc in enumerate(docs):
-        for page in doc:
-            if is_text_corrupt(page.page_content):
-                print(f"[{RED}]{page.metadata['title']}[/]")
-            else:
-                print(f"[{GREEN}]{page.metadata['title']}[/]")
+    docs = pdf_loader_generator(PDF_DIR)
 
     for index, doc in enumerate(docs):
-        for page in doc:
-            print(
-                f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
-                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
-            )
+        if doc["parsed"] is False:
+            print(f"[{RED}]{doc['document'].metadata['title']}[/]\n")
+        else:
+            print(f"[{GREEN}]{doc['document'].metadata['title']}[/]\n")
+
+        print(
+            f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
+            f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['title']}[/]\n\n",
+            f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc['document'].page_content[:2000]}[/]",
+            # f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc.page_content[:2000])}[/]",
+            f"\n\n{'==='*15}\n",
+        )

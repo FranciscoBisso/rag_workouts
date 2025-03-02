@@ -6,9 +6,9 @@
 import re
 from langchain_core.documents import Document
 from pathlib import Path
-from rich import print as rprint
+from rich import print
 from rich.progress import track
-from typing import List, Dict
+from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
 from pdf2image import convert_from_path
@@ -36,8 +36,16 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-def search_dir(dir_path: Path, file_ext: str) -> List[Dict[str, str]]:
+class FileInfo(TypedDict):
+    """FILE'S INFO"""
+
+    filename: str
+    filepath: str
+
+
+def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
     """FILE'S SEARCH IN A GIVEN DIRECTORY"""
+
     dir_path = Path(dir_path)
 
     if not dir_path.is_dir():
@@ -50,7 +58,7 @@ def search_dir(dir_path: Path, file_ext: str) -> List[Dict[str, str]]:
         file_ext = f".{file_ext}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[Dict[str, str]] = [
+    files_info: List[FileInfo] = [
         {"filename": f.name, "filepath": str(f)}
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
@@ -67,23 +75,20 @@ def search_dir(dir_path: Path, file_ext: str) -> List[Dict[str, str]]:
 
 def text_cleaner(text: str) -> str:
     """
-    CLEANS TEXT BY REPLACING NON-BREAKING SPACES, NORMALIZING SPACES AND NEWLINES,
-    AND REMOVING HASH SYMBOLS.
+    CLEANS TEXT BY REPLACING NON-BREAKING SPACES & NORMALIZING SPACES AND NEWLINES.
     """
 
     # FROM NON-BREAKING SPACE CHARACTER TO A REGULAR SPACE
     text = re.sub(r"\xa0", " ", text)
     # FROM MULTIPLE SPACES TO A SINGLE SPACE
-    text = re.sub(r" +", " ", text)
-    # FROM >=3 - SYMBOLS TO NONE
-    text = re.sub(r"-{3,}", "", text)
+    text = re.sub(r" {2,}", " ", text)
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
-    # FROM >=2  HASH SYMBOLS TO NONE
-    text = re.sub(r"#{2,}", "", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n\n".join([line.strip() for line in text.split("\n\n")])
-    # text = "\n".join([line.strip() for line in text.split("\n")])
+    text = "\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n")]
+    )
+
     text = text.strip()
 
     return text
@@ -107,11 +112,11 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
+def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
     # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
-    files_info: List[Dict[str, str]] = search_dir(dir_path, file_ext)
+    files_info: List[FileInfo] = files_finder(dir_path, file_ext)
 
     # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
     loaded_docs: List[List[Document]] = []
@@ -134,19 +139,18 @@ def directory_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
 
 
 if __name__ == "__main__":
-    # LOADING DIRECTORY
-    docs = directory_loader(PDF_DIR, "pdf")
+    docs = pdf_loader(PDF_DIR, "pdf")
 
     for index, doc in enumerate(docs):
         for pag in doc:
             if is_text_corrupt(pag.page_content):
-                rprint(f"[{RED}]{pag.metadata['filename']}[/]")
+                print(f"[{RED}]{pag.metadata['filename']}[/]")
             else:
-                rprint(f"[{GREEN}]{pag.metadata['filename']}[/]")
+                print(f"[{GREEN}]{pag.metadata['filename']}[/]")
 
     for index, doc in enumerate(docs):
         for pag in doc:
-            rprint(
+            print(
                 f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
                 f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{pag.metadata["filename"]}[/]\n\n",
                 f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(pag.page_content)}[/]",
