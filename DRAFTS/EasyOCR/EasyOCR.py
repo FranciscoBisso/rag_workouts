@@ -11,7 +11,6 @@ from rich.progress import track
 from typing import List, TypedDict, Tuple
 
 # SPECIFIC IMPORTS
-# import easyocr
 from easyocr import Reader
 from pdf2image import convert_from_path
 
@@ -125,7 +124,6 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     files_info: List[FileInfo] = files_finder(dir_path, file_ext)
-    # reader = easyocr.Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
     reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
 
     loaded_docs: List[DocStatus] = []
