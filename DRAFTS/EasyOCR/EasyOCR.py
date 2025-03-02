@@ -11,6 +11,7 @@ from rich.progress import track
 from typing import List, TypedDict, Tuple
 
 # SPECIFIC IMPORTS
+# import easyocr
 from easyocr import Reader
 from pdf2image import convert_from_path
 
@@ -42,6 +43,13 @@ class FileInfo(TypedDict):
 
     filename: str
     filepath: str
+
+
+class DocStatus(TypedDict):
+    """DOCUMENT STATUS"""
+
+    parsed: bool
+    document: Document
 
 
 def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
@@ -113,13 +121,14 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
+def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     files_info: List[FileInfo] = files_finder(dir_path, file_ext)
+    # reader = easyocr.Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
     reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
 
-    loaded_docs: List[List[Document]] = []
+    loaded_docs: List[DocStatus] = []
     for f in track(
         files_info,
         description=f"[bold {ORANGE}]LOADING PDF FILES[/]",
@@ -128,35 +137,37 @@ def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
     ):
         f_pages_imgs = convert_from_path(f["filepath"], fmt="jpeg")
 
-        pages: List[Document] = []
+        pages_text: List[str] = []
         for pag in f_pages_imgs:
             # EasyOCR reads the text
             results: List[Tuple[List[int], str, float]] = reader.readtext(pag)
             # Extract text from results
             page_extracted_text = " ".join([tupl[1] for tupl in results])
+            pages_text.append(page_extracted_text)
 
-            clean_text = text_cleaner(page_extracted_text)
+        doc_text: str = "".join(pages_text)
+        loaded_doc: DocStatus = (
+            {
+                "parsed": False,
+                "document": Document(metadata=f, page_content=doc_text),
+            }
+            if is_text_corrupt(doc_text)
+            else {
+                "parsed": True,
+                "document": Document(metadata=f, page_content=doc_text),
+            }
+        )
 
-            pages.append(Document(metadata=f, page_content=clean_text))
-
-        loaded_docs.append(pages)
+        loaded_docs.append(loaded_doc)
 
     return loaded_docs
 
 
 if __name__ == "__main__":
-    easy_docs = pdf_loader(PDF_DIR, "pdf")
+    easy_docs: List[DocStatus] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(easy_docs):
-        for page in doc:
-            if is_text_corrupt(page.page_content):
-                print(f"[{RED}]{page.metadata['filename']}[/]")
-            else:
-                print(f"[{GREEN}]{page.metadata['filename']}[/]")
-
-    for index, doc in enumerate(easy_docs):
-        for page in doc:
-            print(
-                f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["filename"]}[/]\n\n",
-                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
-            )
+        print(
+            f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
+            f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]\n\n",
+            f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc["document"].page_content)}[/]",
+        )
