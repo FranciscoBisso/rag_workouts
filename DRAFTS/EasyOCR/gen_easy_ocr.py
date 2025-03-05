@@ -8,7 +8,7 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import List, TypedDict, Tuple
+from typing import Generator, List, TypedDict, Tuple
 
 # SPECIFIC IMPORTS
 from easyocr import Reader
@@ -120,14 +120,15 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
+def pdf_loader(
+    dir_path: Path, file_ext: str = "pdf"
+) -> Generator[DocStatus, None, None]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
 
     files_info: List[FileInfo] = files_finder(dir_path, file_ext)
 
-    loaded_docs: List[DocStatus] = []
     for f in track(
         files_info,
         description=f"[bold {ORANGE}]LOADING PDF FILES[/]",
@@ -145,7 +146,8 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
             pages_text.append(page_extracted_text)
 
         cleaned_text: str = text_cleaner("".join(pages_text))
-        loaded_docs.append(
+
+        yield (
             {
                 "is_parsed": False,
                 "document": Document(metadata=f, page_content=cleaned_text),
@@ -157,11 +159,9 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
             }
         )
 
-    return loaded_docs
-
 
 if __name__ == "__main__":
-    easy_docs: List[DocStatus] = pdf_loader(PDF_DIR)
+    easy_docs: Generator[DocStatus, None, None] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(easy_docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
