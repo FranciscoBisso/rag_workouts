@@ -42,6 +42,13 @@ class FileInfo(TypedDict):
     filepath: str
 
 
+class DocStatus(TypedDict):
+    """DOCUMENT STATUS"""
+
+    parsed: bool
+    document: Document
+
+
 def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
     """FILE'S SEARCH IN A GIVEN DIRECTORY"""
 
@@ -150,4 +157,26 @@ if __name__ == "__main__":
                 f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
                 f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{page.metadata["title"]}[/]\n\n",
                 f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(page.page_content)}[/]",
+                f"\n\n{'==='*15}\n",
             )
+
+        pages_text: List[str] = []
+        for pag in f_pages_imgs:
+            # EasyOCR reads the text
+            results: List[Tuple[List[int], str, float]] = reader.readtext(pag)
+            # Extract text from results
+            page_extracted_text = " ".join([tupl[1] for tupl in results])
+            pages_text.append(page_extracted_text)
+
+        doc_text: str = "".join(pages_text)
+        loaded_doc: DocStatus = (
+            {
+                "parsed": False,
+                "document": Document(metadata=f, page_content=doc_text),
+            }
+            if is_text_corrupt(doc_text)
+            else {
+                "parsed": True,
+                "document": Document(metadata=f, page_content=doc_text),
+            }
+        )

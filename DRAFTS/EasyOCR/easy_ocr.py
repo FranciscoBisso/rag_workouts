@@ -168,4 +168,5 @@ if __name__ == "__main__":
             f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
             f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]\n\n",
             f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc["document"].page_content)}[/]",
+            f"\n\n{'==='*15}\n",
         )
