@@ -14,19 +14,20 @@ from typing import Generator, List, TypedDict
 from langchain_community.document_loaders import PyMuPDFLoader
 
 # RICH'S PRINT COLORS
-YELLOW = "#fde047"
-ORANGE = "#f97316"
-RED = "#ef4444"
 BLUE = "#3b82f6"
 CYAN = "#06b6d4"
 EMERALD = "#34d399"
-VIOLET = "#a855f7"
-PINK = "#ec4899"
 GRAY = "#64748b"
-WHITE = "#cccccc"
 GREEN = "#3fb618"
+ORANGE = "#f97316"
+PINK = "#ec4899"
+RED = "#ef4444"
+VIOLET = "#a855f7"
+WHITE = "#cccccc"
+YELLOW = "#fde047"
 
 # PATHS
+CUR_DIR = Path(__file__).cwd()
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"

@@ -7,7 +7,7 @@ import re
 from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
-from typing import List
+from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
 from langchain_community.document_loaders import FileSystemBlobLoader
@@ -15,24 +15,39 @@ from langchain_community.document_loaders.generic import GenericLoader
 from langchain_community.document_loaders.parsers import PyMuPDFParser
 
 # RICH'S PRINT COLORS
-YELLOW = "#fde047"
-ORANGE = "#f97316"
-RED = "#ef4444"
 BLUE = "#3b82f6"
 CYAN = "#06b6d4"
 EMERALD = "#34d399"
-VIOLET = "#a855f7"
-PINK = "#ec4899"
 GRAY = "#64748b"
-WHITE = "#cccccc"
 GREEN = "#3fb618"
+ORANGE = "#f97316"
+PINK = "#ec4899"
+RED = "#ef4444"
+VIOLET = "#a855f7"
+WHITE = "#cccccc"
+YELLOW = "#fde047"
 
 # PATHS
+CUR_DIR = Path(__file__).cwd()
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"
 PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
+
+
+class FileInfo(TypedDict):
+    """FILE'S INFO"""
+
+    filename: str
+    filepath: str
+
+
+class DocStatus(TypedDict):
+    """DOCUMENT STATUS"""
+
+    is_parsed: bool
+    document: Document
 
 
 def text_cleaner(text: str) -> str:
