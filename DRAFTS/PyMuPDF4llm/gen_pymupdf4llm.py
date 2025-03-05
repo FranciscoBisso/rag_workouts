@@ -1,6 +1,6 @@
-"""PyMuPDF4llm to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""A generator that uses PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
 
-# pip install -qU langchain-community langchain-core pymupdf pymupdf4llm rich
+# pip install -qU langchain-community langchain-core pymupdf rich tqdm
 
 # GENERAL IMPORTS
 import re
@@ -8,13 +8,10 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import List, TypedDict
+from typing import Generator, List, TypedDict
 
 # SPECIFIC IMPORTS
-from langchain_community.document_loaders import FileSystemBlobLoader
-from langchain_community.document_loaders.generic import GenericLoader
-from langchain_pymupdf4llm import PyMuPDF4LLMParser
-
+from langchain_pymupdf4llm import PyMuPDF4LLMLoader
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -50,6 +47,36 @@ class DocStatus(TypedDict):
 
     is_parsed: bool
     document: Document
+
+
+def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
+    """FILE'S SEARCH IN A GIVEN DIRECTORY"""
+
+    dir_path = Path(dir_path)
+
+    if not dir_path.is_dir():
+        raise ValueError(f"search_dir() => DIRECTORY ({dir_path}) DOESN'T EXIST.")
+
+    if not any(dir_path.iterdir()):
+        raise ValueError(f"search_dir() => DIRECTORY ({dir_path}) IS EMPTY.")
+
+    if not file_ext.startswith("."):
+        file_ext = f".{file_ext}"
+
+    # SEARCH FOR REQUIRED FILES
+    files_info: List[FileInfo] = [
+        {"filename": f.name, "filepath": str(f)}
+        for f in dir_path.glob(f"*{file_ext}")
+        if f.is_file()
+    ]
+
+    # CHECK IF FILES WERE FOUND
+    if not files_info:
+        raise ValueError(
+            f"search_dir() => NO FILES WITH EXTENSION ({file_ext}) WERE FOUND IN DIRECTORY ({dir_path})."
+        )
+
+    return files_info
 
 
 def text_cleaner(text: str) -> str:
@@ -91,35 +118,49 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path | str) -> List[DocStatus]:
-    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
+def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, None]:
+    """
+    LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
+        1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
+        2) LOADS THEM USING THE PyMuPDF4llm LOADER
+        3) CLEANS THE CONTENT OF EACH DOCUMENT.
+    AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
+    IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
+
+    Args:
+        dir_path (Union[Path, str]): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
+
+    Yields:
+        A DICTIONARY CONTAINING TWO KEYS:
+            - "is_corrupt": A BOOLEAN INDICATING WHETHER THE DOCUMENT'S CONTENT IS CORRUPT.
+            - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
+    """
+
     dir_path = Path(dir_path)
 
-    documents = GenericLoader(
-        blob_loader=FileSystemBlobLoader(
-            path=dir_path,
-            glob="*.pdf",
-            show_progress=True,
-        ),
-        blob_parser=PyMuPDF4LLMParser(
+    files_info: List[FileInfo] = files_finder(dir_path, "pdf")
+
+    for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
+        loaded_file: Document = PyMuPDF4LLMLoader(
+            file_path=f["filepath"],
             mode="single",
-            pages_delimiter="",
-        ),
-    ).load()
+            pages_delimiter="\n",
+        ).load()[0]
+        loaded_file.page_content = text_cleaner(loaded_file.page_content)
+        loaded_file.metadata["title"] = Path(loaded_file.metadata["source"]).name.split(
+            "."
+        )[0]
 
-    loaded_docs: List[DocStatus] = []
-    for d in documents:
-        d.page_content = text_cleaner(d.page_content)
-        if is_text_corrupt(d.page_content):
-            loaded_docs.append({"is_parsed": False, "document": d})
-        else:
-            loaded_docs.append({"is_parsed": True, "document": d})
-
-    return loaded_docs
+        yield (
+            {"is_parsed": False, "document": loaded_file}
+            if is_text_corrupt(loaded_file.page_content)
+            else {"is_parsed": True, "document": loaded_file}
+        )
 
 
 if __name__ == "__main__":
-    docs: List[DocStatus] = pdf_loader(PDF_DIR)
+    docs = pdf_loader_generator(PDF_DIR)
+
     for index, doc in enumerate(docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",

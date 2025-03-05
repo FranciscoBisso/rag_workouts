@@ -7,12 +7,13 @@ import re
 from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
-from rich.progress import track
 from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
-from pymupdf4llm import to_markdown
-from pymupdf import Document as PyMuDocument
+from langchain_community.document_loaders import FileSystemBlobLoader
+from langchain_community.document_loaders.generic import GenericLoader
+from langchain_pymupdf4llm import PyMuPDF4LLMParser
+
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -48,36 +49,6 @@ class DocStatus(TypedDict):
 
     is_parsed: bool
     document: Document
-
-
-def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
-    """FILE'S SEARCH IN A GIVEN DIRECTORY"""
-
-    dir_path = Path(dir_path)
-
-    if not dir_path.is_dir():
-        raise ValueError(f"search_dir() => DIRECTORY ({dir_path}) DOESN'T EXIST.")
-
-    if not any(dir_path.iterdir()):
-        raise ValueError(f"search_dir() => DIRECTORY ({dir_path}) IS EMPTY.")
-
-    if not file_ext.startswith("."):
-        file_ext = f".{file_ext}"
-
-    # SEARCH FOR REQUIRED FILES
-    files_info: List[FileInfo] = [
-        {"filename": f.name, "filepath": str(f)}
-        for f in dir_path.glob(f"*{file_ext}")
-        if f.is_file()
-    ]
-
-    # CHECK IF FILES WERE FOUND
-    if not files_info:
-        raise ValueError(
-            f"search_dir() => NO FILES WITH EXTENSION ({file_ext}) WERE FOUND IN DIRECTORY ({dir_path})."
-        )
-
-    return files_info
 
 
 def text_cleaner(text: str) -> str:
@@ -119,42 +90,30 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
+def pdf_loader(dir_path: Path | str) -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
+    dir_path = Path(dir_path)
 
-    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
-    files_info: List[FileInfo] = files_finder(dir_path, file_ext)
+    documents = GenericLoader(
+        blob_loader=FileSystemBlobLoader(
+            path=dir_path,
+            glob="*.pdf",
+            show_progress=True,
+        ),
+        blob_parser=PyMuPDF4LLMParser(
+            mode="single",
+            pages_delimiter="",
+        ),
+    ).load()
 
-    # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
     loaded_docs: List[DocStatus] = []
-    for f in track(
-        files_info,
-        description=f"[bold {PINK}]LOADING PDF FILES[/]",
-        total=len(files_info),
-    ):
-        doc_pages: List[PyMuDocument] = to_markdown(
-            f["filepath"], page_chunks=True, show_progress=False
+    for d in documents:
+        d.page_content = text_cleaner(d.page_content)
+        loaded_docs.append(
+            {"is_parsed": False, "document": d}
+            if is_text_corrupt(d.page_content)
+            else {"is_parsed": True, "document": d}
         )
-
-        cleaned_text: str = "\n".join(
-            "".join([text_cleaner(page["text"]) for page in doc_pages]).split(
-                "\n\n-----"
-            )
-        )
-
-        loaded_file: DocStatus = (
-            {
-                "is_parsed": False,
-                "document": Document(metadata=f, page_content=cleaned_text),
-            }
-            if is_text_corrupt(cleaned_text)
-            else {
-                "is_parsed": True,
-                "document": Document(metadata=f, page_content=cleaned_text),
-            }
-        )
-
-        loaded_docs.append(loaded_file)
 
     return loaded_docs
 
@@ -165,7 +124,7 @@ if __name__ == "__main__":
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
-            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["title"]}[/]",
             # f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
             f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc["document"].page_content)}[/]",
             f"[bold {CYAN}]\n\n{'==='*15}[/]",
