@@ -45,7 +45,7 @@ class FileInfo(TypedDict):
 class DocStatus(TypedDict):
     """DOCUMENT STATUS"""
 
-    parsed: bool
+    is_parsed: bool
     document: Document
 
 
@@ -150,26 +150,22 @@ def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, Non
             "."
         )[0]
 
-        if is_text_corrupt(loaded_file.page_content):
-            loaded_file.page_content = ""
-            yield {"parsed": False, "document": loaded_file}
-
-        yield {"parsed": True, "document": loaded_file}
+        yield (
+            {"is_parsed": False, "document": loaded_file}
+            if is_text_corrupt(loaded_file.page_content)
+            else {"is_parsed": True, "document": loaded_file}
+        )
 
 
 if __name__ == "__main__":
     docs = pdf_loader_generator(PDF_DIR)
 
     for index, doc in enumerate(docs):
-        if doc["parsed"] is False:
-            print(f"[{RED}]{doc['document'].metadata['title']}[/]\n")
-        else:
-            print(f"[{GREEN}]{doc['document'].metadata['title']}[/]\n")
-
         print(
-            f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-            f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['title']}[/]\n\n",
-            f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc['document'].page_content[:2000]}[/]",
-            # f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc.page_content[:2000])}[/]",
-            f"\n\n{'==='*15}\n",
+            f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
+            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["title"]}[/]",
+            # f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc["document"].page_content)}[/]",
+            f"[bold {CYAN}]\n\n{'==='*15}[/]",
         )
