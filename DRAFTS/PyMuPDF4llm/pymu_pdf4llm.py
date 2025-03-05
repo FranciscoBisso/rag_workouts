@@ -11,7 +11,7 @@ from rich.progress import track
 from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
-from pymupdf4llm import to_markdown
+from PyMuPDF4llm.pymu_pdf4llm import to_markdown
 from pymupdf import Document as PyMuDocument
 
 # RICH'S PRINT COLORS
