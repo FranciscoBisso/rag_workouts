@@ -89,10 +89,11 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path | str) -> List[Document]:
+def pdf_loader(dir_path: Path | str) -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
-    loaded_files: List[Document] = GenericLoader(
+    dir_path = Path(dir_path)
+    loaded_documents: List[Document] = GenericLoader(
         blob_loader=FileSystemBlobLoader(
             path=dir_path,
             glob="*.pdf",
@@ -101,27 +102,40 @@ def pdf_loader(dir_path: Path | str) -> List[Document]:
         blob_parser=PyMuPDFParser(
             extract_images=False,
             mode="single",
+            pages_delimiter="\n",
         ),
     ).load()
+
+    loaded_files: List[DocStatus] = []
+    for loaded_doc in loaded_documents:
+        cleaned_text = text_cleaner(loaded_doc.page_content)
+        loaded_doc.page_content = cleaned_text
+
+        document: DocStatus = (
+            {
+                "is_parsed": False,
+                "document": loaded_doc,
+            }
+            if is_text_corrupt(cleaned_text)
+            else {
+                "is_parsed": True,
+                "document": loaded_doc,
+            }
+        )
+
+        loaded_files.append(document)
 
     return loaded_files
 
 
 if __name__ == "__main__":
     docs = pdf_loader(PDF_DIR)
-
     for index, doc in enumerate(docs):
-        if is_text_corrupt(doc.page_content):
-            print(f"[{RED}]{doc.metadata['title']}[/]")
-        else:
-            print(f"[{GREEN}]{doc.metadata['title']}[/]")
-
-    for i, doc in enumerate(docs):
-        # doc.page_content = text_cleaner(doc.page_content)
         print(
-            f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{i}[/]\n",
-            f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc.metadata['title']}[/]\n\n",
-            f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc.page_content[:2000]}[/]",
-            # f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc.page_content)}[/]",
-            f"\n\n{'==='*15}\n",
+            f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
+            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["title"]}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
+            # f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc["document"].page_content)}[/]",
+            f"[bold {CYAN}]\n\n{'==='*15}[/]",
         )
