@@ -145,7 +145,7 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
                 img_path = Path(temp_dir) / f"page_{i}.png"
                 # SAVE IMG AS PNG
                 img.save(img_path, format="PNG")
-                blob = Blob.from_path(str(img_path))
+                blob = Blob.from_path(img_path)
                 # PARSE BLOB WITH OCR
                 ocr_page: List[Document] = RapidOCRBlobParser().parse(blob)
 
