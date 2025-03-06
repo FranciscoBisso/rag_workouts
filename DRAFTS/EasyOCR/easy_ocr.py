@@ -67,7 +67,7 @@ def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetada
 
     # SEARCH FOR REQUIRED FILES
     files_info: List[FileMetadata] = [
-        {"filename": f.name, "filepath": str(f)}
+        FileMetadata(filename=f.name, filepath=str(f))
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
     ]
@@ -93,8 +93,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -120,7 +120,7 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
+def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
@@ -130,7 +130,7 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
     loaded_docs: List[DocStatus] = []
     for f in track(
         files_info,
-        description=f"[bold {ORANGE}]LOADING PDF FILES[/]",
+        description=f"[bold {GREEN}]LOADING PDF FILES[/]",
         total=len(files_info),
         # transient=True,
     ):
@@ -146,15 +146,15 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
 
         cleaned_text: str = text_cleaner("".join(pages_text))
         loaded_docs.append(
-            {
-                "is_parsed": False,
-                "document": Document(metadata=f, page_content=cleaned_text),
-            }
+            DocStatus(
+                is_parsed=False,
+                document=Document(metadata=f, page_content=cleaned_text),
+            )
             if is_text_corrupt(cleaned_text)
-            else {
-                "is_parsed": True,
-                "document": Document(metadata=f, page_content=cleaned_text),
-            }
+            else DocStatus(
+                is_parsed=True,
+                document=Document(metadata=f, page_content=cleaned_text),
+            )
         )
 
     return loaded_docs

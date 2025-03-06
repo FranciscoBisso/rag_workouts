@@ -1,9 +1,10 @@
-"""PyTesseract to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
+"""RapidOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES - BEST SO FAR
 
-# pip install -qU langchain-community langchain-core pdf2image pytesseract rich
+# pip install -qU langchain-community langchain-core pdf2image rapidocr_onnxruntime rich
 
 # GENERAL IMPORTS
 import re
+import tempfile
 from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
@@ -11,8 +12,9 @@ from rich.progress import track
 from typing import Generator, List, TypedDict
 
 # SPECIFIC IMPORTS
+from langchain_core.documents.base import Blob
+from langchain_community.document_loaders.parsers.images import RapidOCRBlobParser
 from pdf2image import convert_from_path
-from pytesseract import image_to_string
 from PIL import Image
 
 # RICH'S PRINT COLORS
@@ -30,6 +32,7 @@ YELLOW = "#fde047"
 
 # PATHS
 CUR_DIR = Path(__file__).cwd()
+MODEL_STORE_DIR = CUR_DIR / "model_store"
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"
@@ -126,7 +129,7 @@ def pdf_loader(
     """
     LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
         1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
-        2) LOADS THEM USING PyTesseract
+        2) LOADS THEM USING RapidOCR
         3) CLEANS THE CONTENT OF EACH DOCUMENT.
     AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
     IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
@@ -140,23 +143,33 @@ def pdf_loader(
             - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
     """
 
-    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
     files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
-    for f in track(
+
+    for f_metadata in track(
         files_metadata,
         description=f"[bold {GREEN}]LOADING PDF FILES[/]",
         total=len(files_metadata),
     ):
-        f_pages_imgs: List[Image.Image] = convert_from_path(f["filepath"])
+        # CONVERT PDF TO IMAGES
+        pages_images: List[Image.Image] = convert_from_path(
+            f_metadata["filepath"], fmt="png"
+        )
 
         pages_text: List[str] = []
-        for page in f_pages_imgs:
-            page_extracted_text = image_to_string(page, lang="spa")
-            clean_text = text_cleaner(page_extracted_text)
-            pages_text.append(clean_text)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            for i, img in enumerate(pages_images):
+                img_path = Path(temp_dir) / f"page_{i}.png"
+                # SAVE IMG AS PNG
+                img.save(img_path, format="PNG")
+                blob = Blob.from_path(img_path)
+                # PARSE BLOB WITH OCR
+                ocr_page: List[Document] = RapidOCRBlobParser().parse(blob)
+
+                # CLEAN PAGE EXTRACTED TEXT & APPEND IT
+                pages_text.append(text_cleaner(ocr_page[0].page_content))
 
         content: str = "\n".join(pages_text)
-        file_doc: Document = Document(metadata=f, page_content=content)
+        file_doc: Document = Document(metadata=f_metadata, page_content=content)
 
         yield (
             DocStatus(is_parsed=False, document=file_doc)

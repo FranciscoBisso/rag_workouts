@@ -91,8 +91,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -128,7 +128,7 @@ def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, Non
     IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
 
     Args:
-        dir_path (Union[Path, str]): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
+        dir_path (Path | str): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
 
     Yields:
         A DICTIONARY CONTAINING TWO KEYS:
@@ -138,9 +138,11 @@ def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, Non
 
     dir_path = Path(dir_path)
 
-    files_info: List[FileMetadata] = files_finder(dir_path, "pdf")
+    files_metadata: List[FileMetadata] = files_finder(dir_path, "pdf")
 
-    for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
+    for f in track(
+        files_metadata, description="LOADING PDF FILES", total=len(files_metadata)
+    ):
         loaded_file: Document = PyMuPDF4LLMLoader(
             file_path=f["filepath"],
             mode="single",

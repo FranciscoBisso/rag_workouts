@@ -37,13 +37,6 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-class FileMetadata(TypedDict):
-    """FILE'S INFO"""
-
-    filename: str
-    filepath: str
-
-
 class DocStatus(TypedDict):
     """DOCUMENT STATUS"""
 
@@ -63,8 +56,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -102,7 +95,7 @@ def pdf_loader(dir_path: Path | str) -> List[DocStatus]:
         ),
         blob_parser=PyMuPDF4LLMParser(
             mode="single",
-            pages_delimiter="",
+            pages_delimiter="\n",
         ),
     ).load()
 
@@ -110,9 +103,9 @@ def pdf_loader(dir_path: Path | str) -> List[DocStatus]:
     for d in documents:
         d.page_content = text_cleaner(d.page_content)
         loaded_docs.append(
-            {"is_parsed": False, "document": d}
+            DocStatus(is_parsed=False, document=d)
             if is_text_corrupt(d.page_content)
-            else {"is_parsed": True, "document": d}
+            else DocStatus(is_parsed=True, document=d)
         )
 
     return loaded_docs

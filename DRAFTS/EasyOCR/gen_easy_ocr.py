@@ -37,7 +37,7 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-class FileInfo(TypedDict):
+class FileMetadata(TypedDict):
     """FILE'S INFO"""
 
     filename: str
@@ -51,7 +51,7 @@ class DocStatus(TypedDict):
     document: Document
 
 
-def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
+def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetadata]:
     """FILE'S SEARCH IN A GIVEN DIRECTORY"""
 
     dir_path = Path(dir_path)
@@ -66,8 +66,8 @@ def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
         file_ext = f".{file_ext}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[FileInfo] = [
-        {"filename": f.name, "filepath": str(f)}
+    files_info: List[FileMetadata] = [
+        FileMetadata(filename=f.name, filepath=str(f))
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
     ]
@@ -93,8 +93,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -121,18 +121,33 @@ def is_text_corrupt(text) -> bool:
 
 
 def pdf_loader(
-    dir_path: Path, file_ext: str = "pdf"
+    dir_path: Path | str, file_ext: str = "pdf"
 ) -> Generator[DocStatus, None, None]:
-    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
+    """
+    LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
+        1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
+        2) LOADS THEM USING EasyOCR
+        3) CLEANS THE CONTENT OF EACH DOCUMENT.
+    AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
+    IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
+
+    Args:
+        dir_path (Path | str): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
+
+    Yields:
+        A DICTIONARY CONTAINING TWO KEYS:
+            - "is_corrupt": A BOOLEAN INDICATING WHETHER THE DOCUMENT'S CONTENT IS CORRUPT.
+            - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
+    """
 
     reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
 
-    files_info: List[FileInfo] = files_finder(dir_path, file_ext)
+    files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
 
     for f in track(
-        files_info,
-        description=f"[bold {ORANGE}]LOADING PDF FILES[/]",
-        total=len(files_info),
+        files_metadata,
+        description=f"[bold {GREEN}]LOADING PDF FILES[/]",
+        total=len(files_metadata),
         # transient=True,
     ):
         f_pages_imgs = convert_from_path(f["filepath"], fmt="jpeg")
@@ -145,18 +160,18 @@ def pdf_loader(
             page_extracted_text = " ".join([tupl[1] for tupl in results])
             pages_text.append(page_extracted_text)
 
-        cleaned_text: str = text_cleaner("".join(pages_text))
+        cleaned_text: str = text_cleaner("\n".join(pages_text))
 
         yield (
-            {
-                "is_parsed": False,
-                "document": Document(metadata=f, page_content=cleaned_text),
-            }
+            DocStatus(
+                is_parsed=False,
+                document=Document(metadata=f, page_content=cleaned_text),
+            )
             if is_text_corrupt(cleaned_text)
-            else {
-                "is_parsed": True,
-                "document": Document(metadata=f, page_content=cleaned_text),
-            }
+            else DocStatus(
+                is_parsed=True,
+                document=Document(metadata=f, page_content=cleaned_text),
+            )
         )
 
 
