@@ -1,4 +1,4 @@
-"""RapidOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES
+"""RapidOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES - BEST SO FAR
 
 # pip install -qU langchain-community langchain-core pdf2image rapidocr_onnxruntime rich
 
@@ -14,8 +14,8 @@ from typing import List, TypedDict
 # SPECIFIC IMPORTS
 from langchain_core.documents.base import Blob
 from langchain_community.document_loaders.parsers.images import RapidOCRBlobParser
-from PIL import Image
 from pdf2image import convert_from_path
+from PIL import Image
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -70,7 +70,7 @@ def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetada
 
     # SEARCH FOR REQUIRED FILES
     files_info: List[FileMetadata] = [
-        {"filename": f.name, "filepath": str(f)}
+        FileMetadata(filename=f.name, filepath=str(f))
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
     ]
@@ -96,8 +96,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -123,7 +123,7 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
+def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
     files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
@@ -131,7 +131,7 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
     loaded_docs: List[DocStatus] = []
     for f_metadata in track(
         files_metadata,
-        description=f"[bold {PINK}]LOADING PDF FILES[/]",
+        description=f"[bold {GREEN}]LOADING PDF FILES[/]",
         total=len(files_metadata),
     ):
         # CONVERT PDF TO IMAGES
@@ -152,20 +152,20 @@ def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
                 # CLEAN PAGE EXTRACTED TEXT & APPEND IT
                 pages_text.append(text_cleaner(ocr_page[0].page_content))
 
-        content: str = " ".join(pages_text)
+        content: str = "\n".join(pages_text)
         file_doc: Document = Document(metadata=f_metadata, page_content=content)
         loaded_docs.append(
-            {"is_parsed": False, "document": file_doc}
+            DocStatus(is_parsed=False, document=file_doc)
             if is_text_corrupt(content)
-            else {"is_parsed": True, "document": file_doc}
+            else DocStatus(is_parsed=True, document=file_doc)
         )
 
     return loaded_docs
 
 
 if __name__ == "__main__":
-    easy_docs: List[DocStatus] = pdf_loader(PDF_DIR)
-    for index, doc in enumerate(easy_docs):
+    docs: List[DocStatus] = pdf_loader(PDF_DIR)
+    for index, doc in enumerate(docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",

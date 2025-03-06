@@ -47,7 +47,7 @@ class FileMetadata(TypedDict):
 class DocStatus(TypedDict):
     """DOCUMENT STATUS"""
 
-    parsed: bool
+    is_parsed: bool
     document: Document
 
 
@@ -67,7 +67,7 @@ def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetada
 
     # SEARCH FOR REQUIRED FILES
     files_info: List[FileMetadata] = [
-        {"filename": f.name, "filepath": str(f)}
+        FileMetadata(filename=f.name, filepath=str(f))
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
     ]
@@ -93,8 +93,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -120,46 +120,44 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
+def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
     # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
-    files_info: List[FileMetadata] = files_finder(dir_path, file_ext)
+    files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
 
-    # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
-    loaded_docs: List[List[Document]] = []
+    loaded_docs: List[DocStatus] = []
     for f in track(
-        files_info,
-        description="LOADING PDF FILES",
-        total=len(files_info),
+        files_metadata,
+        description=f"[bold {GREEN}]LOADING PDF FILES[/]",
+        total=len(files_metadata),
     ):
         f_pages_imgs: List[Image.Image] = convert_from_path(f["filepath"])
 
-        pages: List[Document] = []
+        pages_text: List[str] = []
         for page in f_pages_imgs:
             page_extracted_text = image_to_string(page, lang="spa")
             clean_text = text_cleaner(page_extracted_text)
-            pages.append(Document(metadata=f, page_content=clean_text))
+            pages_text.append(clean_text)
 
-        loaded_docs.append(pages)
+        content: str = "\n".join(pages_text)
+        file_doc: Document = Document(metadata=f, page_content=content)
+        loaded_docs.append(
+            DocStatus(is_parsed=False, document=file_doc)
+            if is_text_corrupt(content)
+            else DocStatus(is_parsed=True, document=file_doc)
+        )
 
     return loaded_docs
 
 
 if __name__ == "__main__":
-    docs = pdf_loader(PDF_DIR, "pdf")
-
+    docs: List[DocStatus] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(docs):
-        for pag in doc:
-            if is_text_corrupt(pag.page_content):
-                print(f"[{RED}]{pag.metadata['filename']}[/]")
-            else:
-                print(f"[{GREEN}]{pag.metadata['filename']}[/]")
-
-    for index, doc in enumerate(docs):
-        for pag in doc:
-            print(
-                f"[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]\n",
-                f"[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{pag.metadata["filename"]}[/]\n\n",
-                f"[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(pag.page_content)}[/]",
-            )
+        print(
+            f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
+            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc["document"].page_content)}[/]",
+            f"\n\n[bold {CYAN}]{'==='*15}[/]",
+        )
