@@ -1,6 +1,6 @@
-"""A generator that uses PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""PyTesseract to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
 
-# pip install -qU langchain-community langchain-core pymupdf rich tqdm
+# pip install -qU langchain-community langchain-core pdf2image pytesseract rich
 
 # GENERAL IMPORTS
 import re
@@ -11,7 +11,9 @@ from rich.progress import track
 from typing import Generator, List, TypedDict
 
 # SPECIFIC IMPORTS
-from langchain_pymupdf4llm import PyMuPDF4LLMLoader
+from pdf2image import convert_from_path
+from pytesseract import image_to_string
+from PIL import Image
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -91,8 +93,8 @@ def text_cleaner(text: str) -> str:
     # FROM >=3 LINE BREAKS TO DOUBLE LINE BREAKS
     text = re.sub(r"\n{3,}", "\n\n", text)
     # TRIM LEADING AND TRAILING WHITESPACE
-    text = "\n".join(
-        [double_line_break.strip() for double_line_break in text.split("\n")]
+    text = "\n\n".join(
+        [double_line_break.strip() for double_line_break in text.split("\n\n")]
     )
 
     text = text.strip()
@@ -118,55 +120,43 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, None]:
-    """
-    LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
-        1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
-        2) LOADS THEM USING THE PyMuPDF4llm LOADER
-        3) CLEANS THE CONTENT OF EACH DOCUMENT.
-    AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
-    IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
+def pdf_loader(
+    dir_path: Path | str, file_ext: str = "pdf"
+) -> Generator[DocStatus, None, None]:
+    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
-    Args:
-        dir_path (Union[Path, str]): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
+    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
+    files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
+    for f in track(
+        files_metadata,
+        description=f"[bold {GREEN}]LOADING PDF FILES[/]",
+        total=len(files_metadata),
+    ):
+        f_pages_imgs: List[Image.Image] = convert_from_path(f["filepath"])
 
-    Yields:
-        A DICTIONARY CONTAINING TWO KEYS:
-            - "is_corrupt": A BOOLEAN INDICATING WHETHER THE DOCUMENT'S CONTENT IS CORRUPT.
-            - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
-    """
+        pages_text: List[str] = []
+        for page in f_pages_imgs:
+            page_extracted_text = image_to_string(page, lang="spa")
+            clean_text = text_cleaner(page_extracted_text)
+            pages_text.append(clean_text)
 
-    dir_path = Path(dir_path)
-
-    files_info: List[FileMetadata] = files_finder(dir_path, "pdf")
-
-    for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
-        loaded_file: Document = PyMuPDF4LLMLoader(
-            file_path=f["filepath"],
-            mode="single",
-            pages_delimiter="\n",
-        ).load()[0]
-        loaded_file.page_content = text_cleaner(loaded_file.page_content)
-        loaded_file.metadata["title"] = Path(loaded_file.metadata["source"]).name.split(
-            "."
-        )[0]
+        content: str = "\n".join(pages_text)
+        file_doc: Document = Document(metadata=f, page_content=content)
 
         yield (
-            DocStatus(is_parsed=False, document=loaded_file)
-            if is_text_corrupt(loaded_file.page_content)
-            else DocStatus(is_parsed=True, document=loaded_file)
+            DocStatus(is_parsed=False, document=file_doc)
+            if is_text_corrupt(content)
+            else DocStatus(is_parsed=True, document=file_doc)
         )
 
 
 if __name__ == "__main__":
-    docs = pdf_loader_generator(PDF_DIR)
-
+    docs: Generator[DocStatus, None, None] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
-            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["title"]}[/]",
-            # f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
-            f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc["document"].page_content)}[/]",
-            f"[bold {CYAN}]\n\n{'==='*15}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc["document"].page_content)}[/]",
+            f"\n\n[bold {CYAN}]{'==='*15}[/]",
         )
