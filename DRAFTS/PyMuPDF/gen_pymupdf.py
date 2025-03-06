@@ -35,7 +35,7 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-class FileInfo(TypedDict):
+class FileMetadata(TypedDict):
     """FILE'S INFO"""
 
     filename: str
@@ -49,7 +49,7 @@ class DocStatus(TypedDict):
     document: Document
 
 
-def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
+def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetadata]:
     """FILE'S SEARCH IN A GIVEN DIRECTORY"""
 
     dir_path = Path(dir_path)
@@ -64,7 +64,7 @@ def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
         file_ext = f".{file_ext}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[FileInfo] = [
+    files_info: List[FileMetadata] = [
         {"filename": f.name, "filepath": str(f)}
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
@@ -138,7 +138,7 @@ def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, Non
 
     dir_path = Path(dir_path)
 
-    files_info: List[FileInfo] = files_finder(dir_path, "pdf")
+    files_info: List[FileMetadata] = files_finder(dir_path, "pdf")
 
     for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
         loaded_file: Document = PyMuPDFLoader(

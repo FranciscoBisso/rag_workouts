@@ -36,7 +36,7 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-class FileInfo(TypedDict):
+class FileMetadata(TypedDict):
     """FILE'S INFO"""
 
     filename: str
@@ -50,7 +50,7 @@ class DocStatus(TypedDict):
     document: Document
 
 
-def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
+def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetadata]:
     """FILE'S SEARCH IN A GIVEN DIRECTORY"""
 
     dir_path = Path(dir_path)
@@ -65,7 +65,7 @@ def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileInfo]:
         file_ext = f".{file_ext}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[FileInfo] = [
+    files_info: List[FileMetadata] = [
         {"filename": f.name, "filepath": str(f)}
         for f in dir_path.glob(f"*{file_ext}")
         if f.is_file()
@@ -124,7 +124,7 @@ def pdf_loader(dir_path: Path, file_ext: str) -> List[List[Document]]:
 
     # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
     loaded_docs: List[List[Document]] = []
-    files_info: List[FileInfo] = files_finder(dir_path, file_ext)
+    files_info: List[FileMetadata] = files_finder(dir_path, file_ext)
 
     # LOADS EACH PDF FILE: FILE --> LIST[DOCUMENT]
     for f in track(

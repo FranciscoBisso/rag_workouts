@@ -37,7 +37,7 @@ PDF_FILE_1 = PDF_DIR / "RES 04-04-2024 - DILIGENCIA PRELIMINAR.pdf"
 PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
-class FileInfo(TypedDict):
+class FileMetadata(TypedDict):
     """FILE'S INFO"""
 
     filename: str

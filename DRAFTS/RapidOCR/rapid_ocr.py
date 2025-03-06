@@ -1,17 +1,21 @@
-"""A generator that uses PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""RapidOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES
 
-# pip install -qU langchain-community langchain-core pymupdf rich tqdm
+# pip install -qU langchain-community langchain-core pdf2image rapidocr_onnxruntime rich
 
 # GENERAL IMPORTS
 import re
+import tempfile
 from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import Generator, List, TypedDict
+from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
-from langchain_pymupdf4llm import PyMuPDF4LLMLoader
+from langchain_core.documents.base import Blob
+from langchain_community.document_loaders.parsers.images import RapidOCRBlobParser
+from PIL import Image
+from pdf2image import convert_from_path
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -28,6 +32,7 @@ YELLOW = "#fde047"
 
 # PATHS
 CUR_DIR = Path(__file__).cwd()
+MODEL_STORE_DIR = CUR_DIR / "model_store"
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"
@@ -118,55 +123,53 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, None]:
-    """
-    LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
-        1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
-        2) LOADS THEM USING THE PyMuPDF4llm LOADER
-        3) CLEANS THE CONTENT OF EACH DOCUMENT.
-    AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
-    IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
+def pdf_loader(dir_path: Path, file_ext: str = "pdf") -> List[DocStatus]:
+    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
-    Args:
-        dir_path (Union[Path, str]): THE PATH OF THE DIRECTORY CONTAINING THE PDF FILES.
+    files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
 
-    Yields:
-        A DICTIONARY CONTAINING TWO KEYS:
-            - "is_corrupt": A BOOLEAN INDICATING WHETHER THE DOCUMENT'S CONTENT IS CORRUPT.
-            - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
-    """
-
-    dir_path = Path(dir_path)
-
-    files_info: List[FileMetadata] = files_finder(dir_path, "pdf")
-
-    for f in track(files_info, description="LOADING PDF FILES", total=len(files_info)):
-        loaded_file: Document = PyMuPDF4LLMLoader(
-            file_path=f["filepath"],
-            mode="single",
-            pages_delimiter="\n",
-        ).load()[0]
-        loaded_file.page_content = text_cleaner(loaded_file.page_content)
-        loaded_file.metadata["title"] = Path(loaded_file.metadata["source"]).name.split(
-            "."
-        )[0]
-
-        yield (
-            {"is_parsed": False, "document": loaded_file}
-            if is_text_corrupt(loaded_file.page_content)
-            else {"is_parsed": True, "document": loaded_file}
+    loaded_docs: List[DocStatus] = []
+    for f_metadata in track(
+        files_metadata,
+        description=f"[bold {PINK}]LOADING PDF FILES[/]",
+        total=len(files_metadata),
+    ):
+        # CONVERT PDF TO IMAGES
+        pages_images: List[Image.Image] = convert_from_path(
+            f_metadata["filepath"], fmt="png"
         )
+
+        pages_text: List[str] = []
+        with tempfile.TemporaryDirectory() as temp_dir:
+            for i, img in enumerate(pages_images):
+                img_path = Path(temp_dir) / f"page_{i}.png"
+                # SAVE IMG AS PNG
+                img.save(img_path, format="PNG")
+                blob = Blob.from_path(str(img_path))
+                # PARSE BLOB WITH OCR
+                ocr_page: List[Document] = RapidOCRBlobParser().parse(blob)
+
+                # CLEAN PAGE EXTRACTED TEXT & APPEND IT
+                pages_text.append(text_cleaner(ocr_page[0].page_content))
+
+        content: str = " ".join(pages_text)
+        file_doc: Document = Document(metadata=f_metadata, page_content=content)
+        loaded_docs.append(
+            {"is_parsed": False, "document": file_doc}
+            if is_text_corrupt(content)
+            else {"is_parsed": True, "document": file_doc}
+        )
+
+    return loaded_docs
 
 
 if __name__ == "__main__":
-    docs = pdf_loader_generator(PDF_DIR)
-
-    for index, doc in enumerate(docs):
+    easy_docs: List[DocStatus] = pdf_loader(PDF_DIR)
+    for index, doc in enumerate(easy_docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
-            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["title"]}[/]",
-            # f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
-            f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc["document"].page_content)}[/]",
-            f"[bold {CYAN}]\n\n{'==='*15}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc["document"].page_content)}[/]",
+            f"\n\n[bold {CYAN}]{'==='*15}[/]",
         )
