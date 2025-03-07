@@ -165,8 +165,8 @@ if __name__ == "__main__":
     for index, doc in enumerate(easy_docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
-            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc["is_parsed"]).upper()}[/]",
-            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc["document"].metadata["filename"]}[/]",
-            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc["document"].page_content)}[/]",
-            f"[bold {CYAN}]\n\n{'==='*15}[/]",
+            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc['is_parsed']).upper()}[/]",
+            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['filename']}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc['document'].page_content)}[/]",
+            f"[bold {CYAN}]\n\n{'===' * 15}[/]",
         )
