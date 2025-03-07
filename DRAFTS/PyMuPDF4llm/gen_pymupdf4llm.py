@@ -1,6 +1,6 @@
 """A generator that uses PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
 
-# pip install -qU langchain-community langchain-core pymupdf rich tqdm
+# pip install -qU langchain-community langchain-core pymupdf langchain-pymupdf4llm rich tqdm
 
 # GENERAL IMPORTS
 import re
