@@ -1,10 +1,7 @@
-"""RapidOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES - BEST SO FAR
-
-# pip install -qU langchain-community langchain-core pdf2image rapidocr_onnxruntime rich
+"""PyTesseract to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
 
 # GENERAL IMPORTS
 import re
-import tempfile
 from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
@@ -12,9 +9,8 @@ from rich.progress import track
 from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
-from langchain_core.documents.base import Blob
-from langchain_community.document_loaders.parsers.images import RapidOCRBlobParser
 from pdf2image import convert_from_path
+from pytesseract import image_to_string
 from PIL import Image
 
 # RICH'S PRINT COLORS
@@ -32,7 +28,6 @@ YELLOW = "#fde047"
 
 # PATHS
 CUR_DIR = Path(__file__).cwd()
-MODEL_STORE_DIR = CUR_DIR / "model_store"
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"
@@ -124,36 +119,27 @@ def is_text_corrupt(text) -> bool:
 
 
 def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> List[DocStatus]:
-    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
+    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
 
+    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
     files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
 
     loaded_docs: List[DocStatus] = []
-    for f_metadata in track(
+    for f in track(
         files_metadata,
         description=f"[bold {GREEN}]LOADING PDF FILES[/]",
         total=len(files_metadata),
     ):
-        # CONVERT PDF TO IMAGES
-        pages_images: List[Image.Image] = convert_from_path(
-            f_metadata["filepath"], fmt="png"
-        )
+        f_pages_imgs: List[Image.Image] = convert_from_path(f["filepath"])
 
         pages_text: List[str] = []
-        with tempfile.TemporaryDirectory() as temp_dir:
-            for i, img in enumerate(pages_images):
-                img_path = Path(temp_dir) / f"page_{i}.png"
-                # SAVE IMG AS PNG
-                img.save(img_path, format="PNG")
-                blob = Blob.from_path(img_path)
-                # PARSE BLOB WITH OCR
-                ocr_page: List[Document] = RapidOCRBlobParser().parse(blob)
-
-                # CLEAN PAGE EXTRACTED TEXT & APPEND IT
-                pages_text.append(text_cleaner(ocr_page[0].page_content))
+        for page in f_pages_imgs:
+            page_extracted_text = image_to_string(page, lang="spa")
+            clean_text = text_cleaner(page_extracted_text)
+            pages_text.append(clean_text)
 
         content: str = "\n".join(pages_text)
-        file_doc: Document = Document(metadata=f_metadata, page_content=content)
+        file_doc: Document = Document(metadata=f, page_content=content)
         loaded_docs.append(
             DocStatus(is_parsed=False, document=file_doc)
             if is_text_corrupt(content)

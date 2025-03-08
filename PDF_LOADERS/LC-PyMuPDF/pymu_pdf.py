@@ -1,6 +1,4 @@
-"""PyMuPDF4llm to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
-
-# pip install -qU langchain-community langchain-core pymupdf langchain-pymupdf4llm rich tqdm
+"""PyMuPDF to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
 
 # GENERAL IMPORTS
 import re
@@ -12,8 +10,7 @@ from typing import List, TypedDict
 # SPECIFIC IMPORTS
 from langchain_community.document_loaders import FileSystemBlobLoader
 from langchain_community.document_loaders.generic import GenericLoader
-from langchain_pymupdf4llm import PyMuPDF4LLMParser
-
+from langchain_community.document_loaders.parsers import PyMuPDFParser
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -84,41 +81,47 @@ def is_text_corrupt(text) -> bool:
 
 
 def pdf_loader(dir_path: Path | str) -> List[DocStatus]:
-    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY"""
-    dir_path = Path(dir_path)
+    """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
-    documents = GenericLoader(
+    dir_path = Path(dir_path)
+    loaded_documents: List[Document] = GenericLoader(
         blob_loader=FileSystemBlobLoader(
             path=dir_path,
             glob="*.pdf",
             show_progress=True,
         ),
-        blob_parser=PyMuPDF4LLMParser(
+        blob_parser=PyMuPDFParser(
+            extract_images=False,
             mode="single",
             pages_delimiter="\n",
         ),
     ).load()
 
-    loaded_docs: List[DocStatus] = []
-    for d in documents:
-        d.page_content = text_cleaner(d.page_content)
-        loaded_docs.append(
-            DocStatus(is_parsed=False, document=d)
-            if is_text_corrupt(d.page_content)
-            else DocStatus(is_parsed=True, document=d)
+    loaded_files: List[DocStatus] = []
+    for loaded_doc in loaded_documents:
+        cleaned_text = text_cleaner(loaded_doc.page_content)
+        loaded_doc.page_content = cleaned_text
+
+        loaded_files.append(
+            DocStatus(is_parsed=False, document=loaded_doc)
+            if is_text_corrupt(cleaned_text)
+            else DocStatus(
+                is_parsed=True,
+                document=loaded_doc,
+            )
         )
 
-    return loaded_docs
+    return loaded_files
 
 
 if __name__ == "__main__":
-    docs: List[DocStatus] = pdf_loader(PDF_DIR)
+    docs = pdf_loader(PDF_DIR)
     for index, doc in enumerate(docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc['is_parsed']).upper()}[/]",
             f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['title']}[/]",
-            # f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
-            f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc['document'].page_content)}[/]",
+            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc['document'].page_content}[/]",
+            # f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc["document"].page_content)}[/]",
             f"[bold {CYAN}]\n\n{'===' * 15}[/]",
         )

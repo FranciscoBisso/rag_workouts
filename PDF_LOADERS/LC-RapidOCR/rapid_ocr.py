@@ -1,18 +1,19 @@
-"""EasyOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
-
-# pip install -qU easyocr langchain-community langchain-core pdf2image rich
+"""RapidOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES - BEST SO FAR
 
 # GENERAL IMPORTS
 import re
+import tempfile
 from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import List, TypedDict, Tuple
+from typing import List, TypedDict
 
 # SPECIFIC IMPORTS
-from easyocr import Reader
+from langchain_core.documents.base import Blob
+from langchain_community.document_loaders.parsers.images import RapidOCRBlobParser
 from pdf2image import convert_from_path
+from PIL import Image
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -123,50 +124,50 @@ def is_text_corrupt(text) -> bool:
 def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> List[DocStatus]:
     """LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY WITH PROGRESS INDICATOR."""
 
-    reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
-
-    files_info: List[FileMetadata] = files_finder(dir_path, file_ext)
+    files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
 
     loaded_docs: List[DocStatus] = []
-    for f in track(
-        files_info,
+    for f_metadata in track(
+        files_metadata,
         description=f"[bold {GREEN}]LOADING PDF FILES[/]",
-        total=len(files_info),
-        # transient=True,
+        total=len(files_metadata),
     ):
-        f_pages_imgs = convert_from_path(f["filepath"], fmt="jpeg")
+        # CONVERT PDF TO IMAGES
+        pages_images: List[Image.Image] = convert_from_path(
+            f_metadata["filepath"], fmt="png"
+        )
 
         pages_text: List[str] = []
-        for pag in f_pages_imgs:
-            # EasyOCR reads the text
-            results: List[Tuple[List[int], str, float]] = reader.readtext(pag)
-            # Extract text from results
-            page_extracted_text = " ".join([tupl[1] for tupl in results])
-            pages_text.append(page_extracted_text)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            for i, img in enumerate(pages_images):
+                img_path = Path(temp_dir) / f"page_{i}.png"
+                # SAVE IMG AS PNG
+                img.save(img_path, format="PNG")
+                blob = Blob.from_path(img_path)
+                # PARSE BLOB WITH OCR
+                ocr_page: List[Document] = RapidOCRBlobParser().parse(blob)
 
-        cleaned_text: str = text_cleaner("".join(pages_text))
+                # CLEAN PAGE EXTRACTED TEXT & APPEND IT
+                pages_text.append(text_cleaner(ocr_page[0].page_content))
+
+        content: str = "\n".join(pages_text)
+        file_doc: Document = Document(metadata=f_metadata, page_content=content)
         loaded_docs.append(
-            DocStatus(
-                is_parsed=False,
-                document=Document(metadata=f, page_content=cleaned_text),
-            )
-            if is_text_corrupt(cleaned_text)
-            else DocStatus(
-                is_parsed=True,
-                document=Document(metadata=f, page_content=cleaned_text),
-            )
+            DocStatus(is_parsed=False, document=file_doc)
+            if is_text_corrupt(content)
+            else DocStatus(is_parsed=True, document=file_doc)
         )
 
     return loaded_docs
 
 
 if __name__ == "__main__":
-    easy_docs: List[DocStatus] = pdf_loader(PDF_DIR)
-    for index, doc in enumerate(easy_docs):
+    docs: List[DocStatus] = pdf_loader(PDF_DIR)
+    for index, doc in enumerate(docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc['is_parsed']).upper()}[/]",
             f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['filename']}[/]",
             f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc['document'].page_content)}[/]",
-            f"[bold {CYAN}]\n\n{'===' * 15}[/]",
+            f"\n\n[bold {CYAN}]{'===' * 15}[/]",
         )

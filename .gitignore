@@ -2,8 +2,7 @@ __pycache__
 .venv
 .env
 .DS_Store
-.mypy_cache
-pdf
+
 
 ### VirtualEnv template
 # Virtualenv
@@ -228,3 +227,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# qodo
+.qodo

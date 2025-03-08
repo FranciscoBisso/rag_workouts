@@ -1,6 +1,4 @@
-"""PyTesseract to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
-
-# pip install -qU langchain-community langchain-core pdf2image pytesseract rich
+"""A generator that uses EasyOCR to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
 
 # GENERAL IMPORTS
 import re
@@ -8,12 +6,11 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import Generator, List, TypedDict
+from typing import Generator, List, TypedDict, Tuple
 
 # SPECIFIC IMPORTS
+from easyocr import Reader
 from pdf2image import convert_from_path
-from pytesseract import image_to_string
-from PIL import Image
 
 # RICH'S PRINT COLORS
 BLUE = "#3b82f6"
@@ -30,6 +27,7 @@ YELLOW = "#fde047"
 
 # PATHS
 CUR_DIR = Path(__file__).cwd()
+MODEL_STORE_DIR = CUR_DIR / "model_store"
 ROOT_DIR = Path("../../../../../COLEGA DATA")
 PDF_DIR = ROOT_DIR / "notificaciones"
 PDF_DIR_2 = ROOT_DIR / "MÉTODO DE LA DEMANDA Y SU CONTESTACIÓN" / "CAPS"
@@ -126,7 +124,7 @@ def pdf_loader(
     """
     LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
         1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
-        2) LOADS THEM USING PyTesseract
+        2) LOADS THEM USING EasyOCR
         3) CLEANS THE CONTENT OF EACH DOCUMENT.
     AS DOCUMENTS ARE LOADED, THEY ARE GENERATED ONE AT A TIME, ALLOWING FOR
     IMMEDIATE PROCESSING WITHOUT WAITING FOR ALL TO BE LOADED.
@@ -140,34 +138,44 @@ def pdf_loader(
             - "document": A LANGCHAIN'S DOCUMENT OBJECT REPRESENTING EACH LOADED AND PROCESSED PDF FILE.
     """
 
-    # SEARCH IN THE GIVEN DIRECTORY FOR EACH PDF FILE IN IT AND GETS ITS PATH
+    reader = Reader(["es", "en"], model_storage_directory=MODEL_STORE_DIR)
+
     files_metadata: List[FileMetadata] = files_finder(dir_path, file_ext)
+
     for f in track(
         files_metadata,
         description=f"[bold {GREEN}]LOADING PDF FILES[/]",
         total=len(files_metadata),
+        # transient=True,
     ):
-        f_pages_imgs: List[Image.Image] = convert_from_path(f["filepath"])
+        f_pages_imgs = convert_from_path(f["filepath"], fmt="jpeg")
 
         pages_text: List[str] = []
-        for page in f_pages_imgs:
-            page_extracted_text = image_to_string(page, lang="spa")
-            clean_text = text_cleaner(page_extracted_text)
-            pages_text.append(clean_text)
+        for pag in f_pages_imgs:
+            # EasyOCR reads the text
+            results: List[Tuple[List[int], str, float]] = reader.readtext(pag)
+            # Extract text from results
+            page_extracted_text = " ".join([tupl[1] for tupl in results])
+            pages_text.append(page_extracted_text)
 
-        content: str = "\n".join(pages_text)
-        file_doc: Document = Document(metadata=f, page_content=content)
+        cleaned_text: str = text_cleaner("\n".join(pages_text))
 
         yield (
-            DocStatus(is_parsed=False, document=file_doc)
-            if is_text_corrupt(content)
-            else DocStatus(is_parsed=True, document=file_doc)
+            DocStatus(
+                is_parsed=False,
+                document=Document(metadata=f, page_content=cleaned_text),
+            )
+            if is_text_corrupt(cleaned_text)
+            else DocStatus(
+                is_parsed=True,
+                document=Document(metadata=f, page_content=cleaned_text),
+            )
         )
 
 
 if __name__ == "__main__":
-    docs: Generator[DocStatus, None, None] = pdf_loader(PDF_DIR)
-    for index, doc in enumerate(docs):
+    easy_docs: Generator[DocStatus, None, None] = pdf_loader(PDF_DIR)
+    for index, doc in enumerate(easy_docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
             f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc['is_parsed']).upper()}[/]",

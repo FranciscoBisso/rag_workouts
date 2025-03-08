@@ -1,0 +1,12 @@
+[project]
+name = "easy-ocr"
+version = "0.1.0"
+description = "EasyOCR implementation to load PDF files"
+requires-python = ">=3.13"
+dependencies = [
+    "easyocr>=1.7.2",
+    "langchain-community>=0.3.19",
+    "langchain-core>=0.3.43",
+    "pdf2image>=1.17.0",
+    "rich>=13.9.4",
+]
