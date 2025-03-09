@@ -1,0 +1,23 @@
+[project]
+name = "01-talk-to-my-book"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=0.6.3",
+    "langchain>=0.3.20",
+    "langchain-chroma>=0.2.2",
+    "langchain-community>=0.3.19",
+    "langchain-core>=0.3.43",
+    "langchain-groq>=0.2.5",
+    "langchain-text-splitters>=0.3.6",
+    "numpy>=1.26.4",
+    "python-dotenv>=1.0.1",
+    "rich>=13.9.4",
+    "streamlit>=1.43.1",
+    "tqdm>=4.67.1",
+    "transformers>=4.49.0",
+    "types-tqdm>=4.67.0.20250301",
+    "watchdog>=6.0.0",
+]

@@ -13,7 +13,7 @@ from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
 )
 from pydantic import SecretStr
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer  # type: ignore # <- mypy issue #1198
 from tqdm import tqdm
 from typing import List
 
