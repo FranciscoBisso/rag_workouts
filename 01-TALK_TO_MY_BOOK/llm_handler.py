@@ -84,7 +84,7 @@ def get_response_from_llm(user_input: str) -> Iterator[BaseMessage]:
     print(">> RETRIEVED DOCS:", end="\n\n")
     for i, doc in enumerate(retrieved_docs):
         print(
-            f"DOC N°: {i+1}\n\n{doc.metadata["headers"]}\n{doc.page_content}\n\n{"==="*20}",
+            f"DOC N°: {i + 1}\n\n{doc.metadata['headers']}\n{doc.page_content}\n\n{'===' * 20}",
             end="\n\n",
         )
 
