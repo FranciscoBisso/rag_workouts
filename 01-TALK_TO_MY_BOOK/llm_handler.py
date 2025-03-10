@@ -2,6 +2,7 @@
 Module for handling queries and responses using Langchain.
 """
 
+# pylint: disable=C0411 # disable wrong-import-order rule from pylint
 from dotenv import load_dotenv
 from data_indexer import retriever
 from langchain_core.documents import Document

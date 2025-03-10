@@ -1,5 +1,6 @@
 """STREAMLIT'S UI"""
 
+# pylint: disable=C0411 # disable wrong-import-order rule from pylint
 import streamlit as st
 from typing import List
 from llm_handler import get_response_from_llm
@@ -35,7 +36,6 @@ for message in st.session_state.messages:
 
 # USER INPUT
 if user_input := st.chat_input("¿En qué puedo ayudarte?"):
-
     # DISPLAY USER MESSAGE IN CHAT MESSAGE CONTAINER
     with st.chat_message("user", avatar="🧑‍💻"):
         st.markdown(user_input)

@@ -1,5 +1,6 @@
 """HANDLES PRIVATE DATA INDEXING"""
 
+# pylint: disable=C0411 # disable wrong-import-order rule from pylint
 import os
 from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
