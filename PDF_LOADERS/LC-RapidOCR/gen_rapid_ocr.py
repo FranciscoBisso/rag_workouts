@@ -7,7 +7,7 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import Generator, List, TypedDict
+from typing import Iterator, List, TypedDict
 
 # SPECIFIC IMPORTS
 from langchain_core.documents.base import Blob
@@ -121,9 +121,7 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader(
-    dir_path: Path | str, file_ext: str = "pdf"
-) -> Generator[DocStatus, None, None]:
+def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> Iterator[DocStatus]:
     """
     LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
         1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
@@ -177,7 +175,7 @@ def pdf_loader(
 
 
 if __name__ == "__main__":
-    docs: Generator[DocStatus, None, None] = pdf_loader(PDF_DIR)
+    docs: Iterator[DocStatus] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(docs):
         print(
             f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",

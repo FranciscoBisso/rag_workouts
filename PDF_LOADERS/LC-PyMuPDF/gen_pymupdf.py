@@ -6,7 +6,7 @@ from langchain_core.documents import Document
 from pathlib import Path
 from rich import print
 from rich.progress import track
-from typing import Generator, List, TypedDict
+from typing import Iterator, List, TypedDict
 
 # SPECIFIC IMPORTS
 from langchain_community.document_loaders import PyMuPDFLoader
@@ -116,7 +116,7 @@ def is_text_corrupt(text) -> bool:
     return False
 
 
-def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, None]:
+def pdf_loader_generator(dir_path: Path | str) -> Iterator[DocStatus]:
     """
     LOADS PDF DOCUMENTS FROM A GIVEN DIRECTORY:
         1) SEARCHES FOR PDF FILES IN THE SPECIFIED DIRECTORY,
@@ -161,7 +161,7 @@ def pdf_loader_generator(dir_path: Path | str) -> Generator[DocStatus, None, Non
 
 
 if __name__ == "__main__":
-    docs: Generator[DocStatus, None, None] = pdf_loader_generator(PDF_DIR)
+    docs: Iterator[DocStatus] = pdf_loader_generator(PDF_DIR)
 
     for index, doc in enumerate(docs):
         print(
