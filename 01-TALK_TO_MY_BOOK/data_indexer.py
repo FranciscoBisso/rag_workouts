@@ -1,6 +1,5 @@
 """HANDLES PRIVATE DATA INDEXING"""
 
-# pylint: disable=C0411 # disable wrong-import-order rule from pylint
 import os
 from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
@@ -16,7 +15,7 @@ from langchain_text_splitters import (
 from pathlib import Path
 from pydantic import SecretStr
 from rich.progress import track
-from transformers import AutoTokenizer  # type: ignore # <- mypy issue #1198
+from transformers import AutoTokenizer  # type: ignore # <- Mypy(import-untyped)
 from typing import List, TypedDict
 
 # .VENV VARIABLES
@@ -122,7 +121,7 @@ def files_finder(dir_path: Path | str, file_type: str = "md") -> List[FileMetada
         file_type = f".{file_type}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[FileMetadata] = [
+    files_metadata: List[FileMetadata] = [
         FileMetadata(name=f.name, path=f)
         for f in track(
             dir_path.glob(f"*{file_type}"),
@@ -133,12 +132,12 @@ def files_finder(dir_path: Path | str, file_type: str = "md") -> List[FileMetada
     ]
 
     # CHECK IF FILES WERE FOUND
-    if not files_info:
+    if not files_metadata:
         raise ValueError(
             f"❌ files_finder() => NO FILES OF TYPE ({file_type}) WERE FOUND IN DIRECTORY ({dir_path})."
         )
 
-    return files_info
+    return files_metadata
 
 
 def directory_loader(

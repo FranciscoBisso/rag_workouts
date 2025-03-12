@@ -1,4 +1,7 @@
-"""EasyOCR's implementation to load PDF files"""  # * LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
+"""
+EasyOCR's implementation to load PDF files
+* LOADS CORRUPT PDF FILES: not so good with ...Digitally signed by...
+"""
 
 # GENERAL IMPORTS
 import re
@@ -12,18 +15,6 @@ from typing import List, TypedDict, Tuple
 from easyocr import Reader
 from pdf2image import convert_from_path
 
-# RICH'S PRINT COLORS
-BLUE = "#3b82f6"
-CYAN = "#06b6d4"
-EMERALD = "#34d399"
-GRAY = "#64748b"
-GREEN = "#3fb618"
-ORANGE = "#f97316"
-PINK = "#ec4899"
-RED = "#ef4444"
-VIOLET = "#a855f7"
-WHITE = "#cccccc"
-YELLOW = "#fde047"
 
 # PATHS
 CUR_DIR = Path(__file__).cwd()
@@ -36,10 +27,10 @@ PDF_FILE_2 = PDF_DIR_2 / "1_EL_CASO_Y_SU_SOLUCIÓN.pdf"
 
 
 class FileMetadata(TypedDict):
-    """FILE'S INFO"""
+    """FILE'S METADATA"""
 
-    filename: str
-    filepath: str
+    name: str
+    path: Path
 
 
 class DocStatus(TypedDict):
@@ -49,34 +40,54 @@ class DocStatus(TypedDict):
     document: Document
 
 
-def files_finder(dir_path: Path | str, file_ext: str = "pdf") -> List[FileMetadata]:
-    """FILE'S SEARCH IN A GIVEN DIRECTORY"""
+def files_finder(dir_path: Path | str, file_type: str = "pdf") -> List[FileMetadata]:
+    """
+    SEARCHES AND RETRIEVES FILES' METADATA FROM A SPECIFIED DIRECTORY
+        ARGS:
+            dir_path (Path | str): TARGET DIRECTORY PATH TO SEARCH FILES
+            file_type (str): FILE EXTENSION TO FILTER (DEFAULT: 'pdf')
+
+        RETURNS:
+            List[FileMetadata]: LIST OF DICTIONARIES CONTAINING FILE INFO:
+                - name: FILE'S NAME
+                - path: COMPLETE FILE PATH
+
+        RAISES:
+            ValueError:
+                - IF DIRECTORY DOESN'T EXIST
+                - IF DIRECTORY IS EMPTY
+                - IF NO FILES WITH SPECIFIED EXTENSION ARE FOUND
+    """
 
     dir_path = Path(dir_path)
 
     if not dir_path.is_dir():
-        raise ValueError(f"search_dir() => DIRECTORY ({dir_path}) DOESN'T EXIST.")
+        raise ValueError(f"❌ files_finder() => DIRECTORY ({dir_path}) DOESN'T EXIST.")
 
     if not any(dir_path.iterdir()):
-        raise ValueError(f"search_dir() => DIRECTORY ({dir_path}) IS EMPTY.")
+        raise ValueError(f"❌ files_finder() => DIRECTORY ({dir_path}) IS EMPTY.")
 
-    if not file_ext.startswith("."):
-        file_ext = f".{file_ext}"
+    if not file_type.startswith("."):
+        file_type = f".{file_type}"
 
     # SEARCH FOR REQUIRED FILES
-    files_info: List[FileMetadata] = [
-        FileMetadata(filename=f.name, filepath=str(f))
-        for f in dir_path.glob(f"*{file_ext}")
+    files_metadata: List[FileMetadata] = [
+        FileMetadata(name=f.name, path=f)
+        for f in track(
+            dir_path.glob(f"*{file_type}"),
+            description="[bold cyan]🔍 SEARCHING FILES[/]",
+            total=len(list(dir_path.glob(f"*{file_type}"))),
+        )
         if f.is_file()
     ]
 
     # CHECK IF FILES WERE FOUND
-    if not files_info:
+    if not files_metadata:
         raise ValueError(
-            f"search_dir() => NO FILES WITH EXTENSION ({file_ext}) WERE FOUND IN DIRECTORY ({dir_path})."
+            f"❌ files_finder() => NO FILES OF TYPE ({file_type}) WERE FOUND IN DIRECTORY ({dir_path})."
         )
 
-    return files_info
+    return files_metadata
 
 
 def text_cleaner(text: str) -> str:
@@ -105,13 +116,11 @@ def is_text_corrupt(text) -> bool:
     if not text.strip():
         return True
 
-    # COUNTS ALPHABETIC CHARACTERS, SPACES AND BOM/REPLACEMENT CHARACTERS ("�")
+    # COUNTS ALPHABETIC CHARACTERS & SPACES
     total_chars = len(text)
     valid_chars = sum(c.isalpha() or c.isspace() for c in text)
-    # invalid_chars = sum(1 for c in text if c in "�")
 
-    # IF TOO MANY CORRUPT CHARACTERS OR TOO FEW ALPHABETIC CHARACTERS, MARK AS CORRUPT
-    # if (invalid_chars / total_chars) > 0.3:
+    # IF TOO FEW ALPHABETIC CHARACTERS, MARK AS CORRUPT
     if (valid_chars / total_chars) < 0.7:
         return True
 
@@ -128,11 +137,11 @@ def pdf_loader(dir_path: Path | str, file_ext: str = "pdf") -> List[DocStatus]:
     loaded_docs: List[DocStatus] = []
     for f in track(
         files_info,
-        description=f"[bold {GREEN}]LOADING PDF FILES[/]",
+        description="📂 [bold yellow]LOADING PDF FILES[/]",
         total=len(files_info),
         # transient=True,
     ):
-        f_pages_imgs = convert_from_path(f["filepath"], fmt="jpeg")
+        f_pages_imgs = convert_from_path(f["path"], fmt="jpeg")
 
         pages_text: List[str] = []
         for pag in f_pages_imgs:
@@ -162,9 +171,9 @@ if __name__ == "__main__":
     easy_docs: List[DocStatus] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(easy_docs):
         print(
-            f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
-            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc['is_parsed']).upper()}[/]",
-            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['filename']}[/]",
-            f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{repr(doc['document'].page_content)}[/]",
-            f"[bold {CYAN}]\n\n{'===' * 15}[/]",
+            f"\n[bold sky_blue2]> DOC N°:[/] [bold grey93]{index}[/]",
+            f"\n\n[bold light_coral]> PARSED:[/] [bold grey93]{str(doc['is_parsed']).upper()}[/]",
+            f"\n\n[bold sea_green1]> FILENAME:[/] [bold grey93]{doc['document'].metadata['name']}[/]",
+            f"\n\n[bold yellow]> CONTENT:[/]\n[grey93]{repr(doc['document'].page_content)}[/]",
+            f"\n\n[bold cyan]{'===' * 15}[/]",
         )

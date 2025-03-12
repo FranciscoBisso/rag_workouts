@@ -1,4 +1,7 @@
-"""PyMuPDF4LLM to load PDF files"""  # !!! FAILS TO LOAD CORRUPT PDF FILES
+"""
+PyMuPDF4LLM to load PDF files
+!!! FAILS TO LOAD CORRUPT PDF FILES
+"""
 
 # GENERAL IMPORTS
 import re
@@ -12,19 +15,6 @@ from langchain_community.document_loaders import FileSystemBlobLoader
 from langchain_community.document_loaders.generic import GenericLoader
 from langchain_pymupdf4llm import PyMuPDF4LLMParser
 
-
-# RICH'S PRINT COLORS
-BLUE = "#3b82f6"
-CYAN = "#06b6d4"
-EMERALD = "#34d399"
-GRAY = "#64748b"
-GREEN = "#3fb618"
-ORANGE = "#f97316"
-PINK = "#ec4899"
-RED = "#ef4444"
-VIOLET = "#a855f7"
-WHITE = "#cccccc"
-YELLOW = "#fde047"
 
 # PATHS
 CUR_DIR = Path(__file__).cwd()
@@ -68,13 +58,11 @@ def is_text_corrupt(text) -> bool:
     if not text.strip():
         return True
 
-    # COUNTS ALPHABETIC CHARACTERS, SPACES AND BOM/REPLACEMENT CHARACTERS ("�")
+    # COUNTS ALPHABETIC CHARACTERS & SPACES
     total_chars = len(text)
     valid_chars = sum(c.isalpha() or c.isspace() for c in text)
-    # invalid_chars = sum(1 for c in text if c in "�")
 
-    # IF TOO MANY CORRUPT CHARACTERS OR TOO FEW ALPHABETIC CHARACTERS, MARK AS CORRUPT
-    # if (invalid_chars / total_chars) > 0.3:
+    # IF TOO FEW ALPHABETIC CHARACTERS, MARK AS CORRUPT
     if (valid_chars / total_chars) < 0.7:
         return True
 
@@ -113,10 +101,9 @@ if __name__ == "__main__":
     docs: List[DocStatus] = pdf_loader(PDF_DIR)
     for index, doc in enumerate(docs):
         print(
-            f"\n[bold {BLUE}]> DOC N°:[/] [bold {WHITE}]{index}[/]",
-            f"\n\n[bold {ORANGE}]> PARSED:[/] [bold {WHITE}]{str(doc['is_parsed']).upper()}[/]",
-            f"\n\n[bold {EMERALD}]> FILENAME:[/] [bold {WHITE}]{doc['document'].metadata['title']}[/]",
-            # f"\n\n[bold {YELLOW}]> CONTENT:[/]\n[{WHITE}]{doc["document"].page_content}[/]",
-            f"\n\n[bold {YELLOW}]> CONTENT:[/] [{WHITE}]{repr(doc['document'].page_content)}[/]",
-            f"[bold {CYAN}]\n\n{'===' * 15}[/]",
+            f"\n[bold sky_blue2]> DOC N°:[/] [bold grey93]{index}[/]",
+            f"\n\n[bold light_coral]> PARSED:[/] [bold grey93]{str(doc['is_parsed']).upper()}[/]",
+            f"\n\n[bold sea_green1]> FILENAME:[/] [bold grey93]{doc['document'].metadata['title']}[/]",
+            f"\n\n[bold yellow]> CONTENT:[/]\n[grey93]{repr(doc['document'].page_content)}[/]",
+            f"\n\n[bold cyan]{'===' * 15}[/]",
         )
