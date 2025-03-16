@@ -8,14 +8,14 @@ from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
 from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field
 from rich.progress import track
 from streamlit.runtime.uploaded_file_manager import UploadedFile
-from typing import List, Dict
+from typing import cast, List
 
 # from rich import print
+
 
 # LOCAL IMPORTS
 from pdf_handler import load_files
@@ -26,21 +26,39 @@ llm: ChatGroq = ChatGroq(model=groq_model, temperature=0, stop_sequences=[])
 
 
 # PYDANTIC MODELS
-class QAPair(BaseModel):
+class EAPair(BaseModel):
     """
-    REPRESENTS A SINGLE QUESTION-ANSWER PAIR FROM AN EXAM
-    """
-
-    exercise: str = Field(description="The exercise or question text")
-    student_answer: str = Field(description="The student's answer to the exercise")
-
-
-class QAPairs(BaseModel):
-    """
-    REPRESENTS A COLLECTION OF QUESTION-ANSWER PAIRS
+    REPRESENTS A SINGLE EXERCISE - STUDENT ANSWER PAIR
     """
 
-    qa_pairs: List[QAPair]
+    exercise: str = Field(description="Exercise or question text")
+    student_answer: str = Field(description="Student's answer to the exercise")
+
+
+class ExamEAPairsCollection(BaseModel):
+    """
+    REPRESENTS A COLLECTION OF EXERCISE - STUDENT ANSWER PAIRS
+    """
+
+    collection: List[EAPair]
+
+
+class EAATriad(BaseModel):
+    """
+    REPRESENTS A SINGLE EXERCISE - STUDENT ANSWER - AI ANSWER TRIAD
+    """
+
+    exercise: str = Field(description="Exercise or question text")
+    student_answer: str = Field(description="Student's answer to the exercise")
+    ai_answer: str = Field(description="LLM's answer to the exercise")
+
+
+class ExamEAATriadsCollection(BaseModel):
+    """
+    REPRESENTS A COLLECTION OF EXERCISE - STUDENT ANSWER - AI ANSWER TRIADS
+    """
+
+    collection: List[EAATriad]
 
 
 def build_prompt(system_msg: str, human_msg: str) -> ChatPromptTemplate:
@@ -56,24 +74,23 @@ def build_prompt(system_msg: str, human_msg: str) -> ChatPromptTemplate:
     return ChatPromptTemplate([("system", system_msg), ("human", human_msg)])
 
 
-def extract_qa_pairs(exams: List[List[Document]]) -> List[List[Dict]]:
+def get_collections_of_ea_pairs(
+    exams: List[List[Document]],
+) -> List[ExamEAPairsCollection]:
     """
     PROCESSES EXAM DOCUMENTS TO EXTRACT QUESTION-ANSWER PAIRS
         ARGS:
             exams (List[List[Document]]): LIST OF EXAM DOCUMENTS TO PROCESS
 
         RETURNS:
-            List[List[Dict]]: NESTED LIST OF DICTIONARIES CONTAINING EXTRACTED QA PAIRS
+            List[List[Dict]]: LIST OF ExamEAPairsCollection OBJECTS CONTAINING EXTRACTED QA PAIRS
     """
 
-    # INITIALIZE THE OUTPUT PARSER
-    parser = JsonOutputParser(pydantic_object=QAPairs)
-
-    exams_qa_pairs: List[List[Dict]] = []
+    collections_of_triads: List[ExamEAPairsCollection] = []
 
     for exam in track(
         exams,
-        description="[bold light_coral]EXTRACTING QA PAIRS FROM EXAMS[/]",
+        description="[bold light_coral]EXTRACTING TRIADS FROM EXAMS[/]",
         total=len(exams),
     ):
         exam_content: str = "\n\n".join([page.page_content for page in exam])
@@ -81,39 +98,30 @@ def extract_qa_pairs(exams: List[List[Document]]) -> List[List[Dict]]:
         system_msg: str = (
             "1. TO DO:"
             "\nYour task is to analyze an exam and extract all exercises along with their respective answers."
-            "\n\n2. FORMAT INSTRUCTIONS:"
-            "\nReturn the results in the following JSON format:"
-            "\n{format_instructions}"
-            "\n\n3. SPECIFIC TASK INSTRUCTIONS:"
-            "\n\t3.1. Identify all exercises in the exam, regardless of whether they are formulated as direct questions or as instructions"
-            "\n\t3.2. For each exercise, extract the corresponding answer."
+            "\n\n2. SPECIFIC TASK INSTRUCTIONS:"
+            "\n\t- Identify all exercises in the exam, regardless of whether they are formulated as direct questions or as instructions"
+            "\n\t- For each exercise, extract the corresponding answer."
             " If there is no corresponding answer, fill the answer field with the text 'Sin respuesta'."
-            "\n\t3.3. Ignore introductory content such as bibliography or general instructions"
-            "\n\t3.4. Keep the exact text of both the exercises and answers"
-            "\n\t3.5. If the exercises are numbered, maintain such numbering. For example:"
+            "\n\t- Ignore introductory content such as bibliography or general instructions"
+            "\n\t- Keep the exact text of both the exercises and answers"
+            "\n\t- If the exercises are numbered, maintain such numbering. For example:"
             "\n\t\t1) First exercise prompt.\n\t\t2) Second exercise prompt.\n\t\t3) ..."
         )
         human_msg: str = "\n\nPlease analyze the following exam:\n{exam_content}"
 
         # BUILD THE FULL PROMPT
         prompt = build_prompt(system_msg=system_msg, human_msg=human_msg)
-        messages = prompt.format_messages(
-            exam_content=exam_content,
-            format_instructions=parser.get_format_instructions(),
-        )
 
-        # INVOKE THE LLM AND PARSE THE RESPONSE
-        response = llm.invoke(messages)
-        res_content = (
-            response.content
-            if isinstance(response.content, str)
-            else str(response.content)
-        )
-        parsed_response = parser.parse(res_content)
+        # CREATE A STRUCTURED LLM USING with_structured_output
+        structured_llm = llm.with_structured_output(ExamEAPairsCollection)
 
-        exams_qa_pairs.append(parsed_response["qa_pairs"])
+        # BUILD THE CHAIN & INVOKE
+        chain = prompt | structured_llm
+        response = chain.invoke({"exam_content": exam_content})
+        result = cast(ExamEAPairsCollection, response)
+        collections_of_triads.append(result)
 
-    return exams_qa_pairs
+    return collections_of_triads
 
 
 def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
@@ -175,32 +183,43 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
 
 
 def answer_exercises(
-    exams_qa_pairs: List[List[Dict]], retriever: ParentDocumentRetriever
-) -> List[List[Dict]]:
+    exams_ea_pairs_collections: List[ExamEAPairsCollection],
+    retriever: ParentDocumentRetriever,
+) -> List[ExamEAATriadsCollection]:
     """
     PROCESSES ALL EXERCISES IN THE QA PAIRS TO GENERATE AI ANSWERS
         ARGS:
-            exams_qa_pairs (List[List[Dict]]): NESTED LIST OF QA PAIRS TO PROCESS
+            exams_ea_pairs_collections (List[ExamEAPairsCollection]): NESTED LIST OF EXERCISE-ANSWER PAIRS TO PROCESS
             retriever (ParentDocumentRetriever): THE RETRIEVER INSTANCE FOR CONTEXT LOOKUP
 
         RETURNS:
-            List[List[Dict]]: UPDATED QA PAIRS WITH AI-GENERATED ANSWERS
+            List[ExamEAATriadsCollection]: NESTED LIST OF EXERCISE-ANSWER-AI ANSWER TRIADS
     """
-
+    exams_triads_collections: List[ExamEAATriadsCollection] = []
     for exam in track(
-        exams_qa_pairs,
+        exams_ea_pairs_collections,
         description="[bold sky_blue2]LLM ANSWERING EXERCISES[/]",
-        total=len(exams_qa_pairs),
+        total=len(exams_ea_pairs_collections),
     ):
-        for qa_pair in exam:
-            qa_pair["ai_answer"] = get_answer(qa_pair["exercise"], retriever)
+        exam_new_collection: ExamEAATriadsCollection = ExamEAATriadsCollection(
+            collection=[]
+        )
 
-    return exams_qa_pairs
+        exams_triads_collections.append(exam_new_collection)
+        for ea_pair in exam.collection:
+            triad = EAATriad(
+                exercise=ea_pair.exercise,
+                student_answer=ea_pair.student_answer,
+                ai_answer=get_answer(ea_pair.exercise, retriever),
+            )
+            exam_new_collection.collection.append(triad)
+
+    return exams_triads_collections
 
 
 def get_llm_response(
     uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
-) -> List[List[Dict]]:
+):
     """
     MAIN FUNCTION TO PROCESS UPLOADED EXAMS AND GENERATE LLM RESPONSES
         ARGS:
@@ -208,11 +227,13 @@ def get_llm_response(
             retriever (ParentDocumentRetriever): THE RETRIEVER INSTANCE FOR CONTEXT LOOKUP
 
         RETURNS:
-            List[List[Dict]]: COMPLETE PROCESSED RESULTS WITH EXERCISES, STUDENT ANSWERS, AND AI RESPONSES
+            List[ExamEAATriadsCollection]: COMPLETE PROCESSED RESULTS AS A LIST OF LIST OF EXERCISE-ANSWER-AI ANSWER TRIADS
     """
 
     exams: List[List[Document]] = load_files(uploaded_exams)
-    exams_qa_pairs: List[List[Dict]] = extract_qa_pairs(exams)
-    llm_answers: List[List[Dict]] = answer_exercises(exams_qa_pairs, retriever)
+    exams_collections_of_ea_pairs: List[ExamEAPairsCollection] = (
+        get_collections_of_ea_pairs(exams)
+    )
+    llm_answers = answer_exercises(exams_collections_of_ea_pairs, retriever)
 
     return llm_answers

@@ -48,16 +48,17 @@ def display_llm_response(exams_list: List[List[Dict]]):
     ARGS:
         exams_list (List[List[Dict]]): LIST OF EXAMS, EACH CONTAINING A LIST OF QA DICTIONARIES
     """
-    # Create tabs for each exam
-    tabs = st.tabs([f"Exam {i+1}" for i in range(len(exams_list))])
 
-    # Display content for each exam in its respective tab
+    # CREATE TABS FOR EACH EXAM
+    tabs = st.tabs([f"Exam {i + 1}" for i in range(len(exams_list))])
+
+    # DISPLAY CONTENT FOR EACH EXAM IN ITS RESPECTIVE TAB
     for exam_idx, tab in enumerate(tabs):
         with tab:
             st.markdown(f"### Exam {exam_idx + 1}")
             st.markdown("---")
 
-            # Display each question in the exam
+            # DISPLAY EACH QUESTION IN THE EXAM
             for q_idx, qa_item in enumerate(exams_list[exam_idx], 1):
                 display_qa_item(qa_item, q_idx)
 
@@ -103,10 +104,10 @@ if st.session_state["response"]:
     for element in st.session_state["response"]:
         for item_index, item in enumerate(element):
             with st.expander(item["exercise"], expanded=False):
-                # Student Answer
+                # STUDENT ANSWER
                 st.markdown("###### Student Answer:")
                 st.write(item["student_answer"])
 
-                # AI Answer
+                # AI ANSWER
                 st.markdown("###### AI Answer:")
                 st.write(item["ai_answer"])
