@@ -12,10 +12,7 @@ from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field
 from rich.progress import track
 from streamlit.runtime.uploaded_file_manager import UploadedFile
-from typing import cast, List
-
-# from rich import print
-
+from typing import List
 
 # LOCAL IMPORTS
 from pdf_handler import load_files
@@ -118,8 +115,12 @@ def get_collections_of_ea_pairs(
         # BUILD THE CHAIN & INVOKE
         chain = prompt | structured_llm
         response = chain.invoke({"exam_content": exam_content})
-        result = cast(ExamEAPairsCollection, response)
-        collections_of_triads.append(result)
+        if isinstance(response, ExamEAPairsCollection):
+            collections_of_triads.append(response)
+        else:
+            raise ValueError(
+                f"Expected ExamEAPairsCollection, but got {type(response)}"
+            )
 
     return collections_of_triads
 
