@@ -1,8 +1,7 @@
 """HANDLER FOR THE PDF FILES"""
 
-# pylint: disable=C0411 # disable wrong-import-order rule from pylint
+import asyncio
 import os
-import tempfile
 from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
 from langchain.storage import LocalFileStore
@@ -12,23 +11,23 @@ from langchain_core.documents import Document
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from streamlit.runtime.uploaded_file_manager import UploadedFile
+from pathlib import Path
 from pydantic import SecretStr
-from transformers import AutoTokenizer  # type: ignore # <- mypy issue #1198
+from rich import print
 from rich.progress import track
+from streamlit.runtime.uploaded_file_manager import UploadedFile
+from tempfile import mkdtemp, TemporaryDirectory
+from transformers import AutoTokenizer  # type: ignore # <- Mypy(import-untyped)
 from typing import List
-
-# from rich import print
 
 load_dotenv()
 
-current_dir: str = os.getcwd()
+current_dir: Path = Path.cwd()
 hf_model: str = "intfloat/multilingual-e5-large"
 hf_key: str | None = os.getenv("HF_API_KEY")
 if not hf_key:
     raise ValueError("HF_API_KEY ENV VARIABLE IS NOT SET")
 HF_API_KEY: SecretStr = SecretStr(hf_key)
-
 
 # INITIALIZE TOKENIZER
 tokenizer = AutoTokenizer.from_pretrained(hf_model)
@@ -73,7 +72,7 @@ hf_embeddings = HuggingFaceInferenceAPIEmbeddings(
 )
 
 # TEMPORARY VECTOR STORE TO INDEX THE CHILD DOCS
-vector_store_temp_dir = tempfile.mkdtemp()
+vector_store_temp_dir = mkdtemp()
 child_vector_store: Chroma = Chroma(
     collection_name="child_docs",
     embedding_function=hf_embeddings,
@@ -81,10 +80,9 @@ child_vector_store: Chroma = Chroma(
 )
 
 # TEMPORARY STORAGE LAYER FOR PARENT DOCUMENTS
-file_store_temp_dir = tempfile.mkdtemp()
+file_store_temp_dir = mkdtemp()
 file_store: LocalFileStore = LocalFileStore(root_path=file_store_temp_dir)
 docstore = create_kv_docstore(file_store)
-
 
 # INITIALIZE THE RETRIEVER
 retriever: ParentDocumentRetriever = ParentDocumentRetriever(
@@ -95,58 +93,75 @@ retriever: ParentDocumentRetriever = ParentDocumentRetriever(
 )
 
 
-def load_files(uploaded_bibliography: List[UploadedFile]) -> List[List[Document]]:
+def load_files(uploaded_files: List[UploadedFile]) -> List[List[Document]]:
     """
-    CONVERTS USER'S UPLOADED PDF FILES TO List[List[Document]] WHERE EACH INNER LIST CORRESPONDS TO A PDF FILE
+    PROCESSES UPLOADED PDF FILES INTO DOCUMENT OBJECTS FOR RAG OPERATIONS
+        ARGS:
+            uploaded_files: LIST OF PDF FILES UPLOADED BY THE USER
+
+        RETURNS:
+            List[List[Document]]: NESTED LIST WHERE EACH INNER LIST CONTAINS THE PAGES
+            OF A SINGLE PDF AS DOCUMENT OBJECTS
+
+        RAISES:
+            ValueError: IF NO PDF FILES ARE PROVIDED
     """
 
-    if not uploaded_bibliography:
+    if not uploaded_files:
         raise ValueError("load_files() >>> MISSING PDF FILES")
 
-    loaded_files: List[List[Document]] = []
+    parsed_files: List[List[Document]] = []
 
-    # MAKE TEMPORARY DIRECTORY TO SAVE THE PDF FILES
-    with tempfile.TemporaryDirectory() as temp_dir:
-        for pdf_file in track(uploaded_bibliography, description="LOADING PDF FILES"):
-            # PDF FILE'S TEMPORARY PATH
-            temp_path = os.path.join(temp_dir, pdf_file.name)
+    with TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
 
-            # SAVE TEMPORARY FILE
-            with open(temp_path, "wb") as f:
-                f.write(pdf_file.getvalue())
+        for pdf_file in track(
+            uploaded_files, description="[bold sea_green1]LOADING PDF FILES[/]"
+        ):
+            file_path = temp_path / pdf_file.name
+            file_path.write_bytes(pdf_file.getvalue())
 
-            file_pages_as_documents: List[Document] = PyMuPDFLoader(temp_path).load()
+            file_pages_as_documents: List[Document] = PyMuPDFLoader(file_path).load()
 
             for page in file_pages_as_documents:
                 page.metadata = {
-                    "title": pdf_file.name,
+                    "title": file_path.name,
                     "total_pages": page.metadata["total_pages"],
                     "page": page.metadata["page"],
                 }
+            parsed_files.append(file_pages_as_documents)
 
-            loaded_files.append(file_pages_as_documents)
-
-    return loaded_files
+    return parsed_files
 
 
-def feed_retriever(
+async def feed_retriever(
     loaded_files: List[List[Document]],
     parent_docs_retriever: ParentDocumentRetriever = retriever,
     batch_size: int = 10,
 ) -> ParentDocumentRetriever:
-    """SETUPS THE RETRIEVER WITH PROGRESS TRACKING.
-    If the loaded_files is too large, the parent_docs_retriever.add_documents() wont it be able to handle it.
-    Therefore, it needs to be split into batches.
-    """
+    """SETUPS THE RETRIEVER & INDEXES DOCUMENTS INTO THE VECTOR STORE.
+    IF loaded_files IS TOO LARGE, parent_docs_retriever.add_documents() WONT BE ABLE TO HANDLE IT.
+    THUS, IT NEEDS TO BE SPLIT INTO BATCHES.
+        ARGS:
+            - loaded_files: NESTED LIST OF DOCUMENT OBJECTS FROM PDF FILES
+            - parent_docs_retriever: RETRIEVER INSTANCE FOR DOCUMENT INDEXING
+            - batch_size: NUMBER OF DOCUMENTS TO PROCESS IN EACH BATCH
 
+        RETURNS:
+            ParentDocumentRetriever: CONFIGURED RETRIEVER WITH INDEXED DOCUMENTS
+
+        RAISES:
+            ValueError: IF NO DOCUMENTS ARE PROVIDED FOR INDEXING
+    """
     if not loaded_files:
         raise ValueError("feed_retriever() >>> MISSING DOCS TO INDEX.")
 
+    print("[bold cyan]INDEXING:[/]")
     for loaded_file in loaded_files:
         file_pages = len(loaded_file)
         for item in track(
             range(0, file_pages, batch_size),
-            description=f"{loaded_file[0].metadata['title'].split('—')[0]}",
+            description=f"[bold cyan]  - {loaded_file[0].metadata['title']}[/]",
         ):
             batch = loaded_file[item : min(item + batch_size, file_pages)]
             parent_docs_retriever.add_documents(batch, ids=None)
@@ -154,16 +169,37 @@ def feed_retriever(
     return retriever
 
 
+async def orchestrate_indexing(
+    uploaded_bibliography: List[UploadedFile],
+) -> ParentDocumentRetriever:
+    """
+    COORDINATES THE COMPLETE INDEXING PIPELINE FOR UPLOADED BIBLIOGRAPHY
+        ARGS:
+            uploaded_bibliography: LIST OF PDF FILES TO BE PROCESSED
+
+        RETURNS:
+            ParentDocumentRetriever: FULLY CONFIGURED RETRIEVER WITH INDEXED DOCUMENTS
+    """
+    docs_from_uploaded_files: List[List[Document]] = load_files(uploaded_bibliography)
+    parent_retriever: ParentDocumentRetriever = await feed_retriever(
+        loaded_files=docs_from_uploaded_files, parent_docs_retriever=retriever
+    )
+    return parent_retriever
+
+
 def index_bibliography(
     uploaded_bibliography: List[UploadedFile],
 ) -> ParentDocumentRetriever:
     """
-    MAIN FUNCTION TO INDEX THE UPLOADED PDF FILES.
+    MAIN ENTRY POINT FOR PDF PROCESSING AND INDEXING OPERATIONS
+        ARGS:
+            uploaded_bibliography: LIST OF PDF FILES TO BE PROCESSED
+
+        RETURNS:
+            ParentDocumentRetriever: RETRIEVER READY FOR RAG OPERATIONS
     """
 
-    docs_from_uploaded_files: List[List[Document]] = load_files(uploaded_bibliography)
-    parent_retriever: ParentDocumentRetriever = feed_retriever(
-        loaded_files=docs_from_uploaded_files, parent_docs_retriever=retriever
-    )
+    if not uploaded_bibliography:
+        raise ValueError("index_bibliography() >>> MISSING PDF FILES")
 
-    return parent_retriever
+    return asyncio.run(orchestrate_indexing(uploaded_bibliography))

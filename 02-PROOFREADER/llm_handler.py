@@ -89,7 +89,7 @@ async def get_collections_of_ea_pairs(
 
     for exam in track(
         exams,
-        description="[bold light_coral]EXTRACTING TRIADS FROM EXAMS[/]",
+        description="[bold yellow]EXTRACTING TRIADS FROM EXAMS[/]",
         total=len(exams),
     ):
         exam_content: str = "\n\n".join([page.page_content for page in exam])
@@ -201,7 +201,7 @@ async def answer_exercises(
     exams_triads_collections: List[ExamEAATriadsCollection] = []
     for exam in track(
         exams_ea_pairs_collections,
-        description="[bold sky_blue2]LLM ANSWERING EXERCISES[/]",
+        description="[bold light_coral]LLM ANSWERING EXERCISES[/]",
         total=len(exams_ea_pairs_collections),
     ):
         exam_new_collection = ExamEAATriadsCollection(collection=[])
