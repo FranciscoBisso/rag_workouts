@@ -1,5 +1,6 @@
 """HANDLER FOR THE PDF FILES"""
 
+import streamlit as st
 import asyncio
 import os
 from dotenv import load_dotenv
@@ -12,7 +13,7 @@ from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pathlib import Path
-from pydantic import SecretStr
+from pydantic import BaseModel, Field, SecretStr
 from rich import print
 from rich.progress import track
 from streamlit.runtime.uploaded_file_manager import UploadedFile
@@ -93,15 +94,33 @@ retriever: ParentDocumentRetriever = ParentDocumentRetriever(
 )
 
 
-def load_files(uploaded_files: List[UploadedFile]) -> List[List[Document]]:
+# PYDANTIC MODELS
+class ParsedFile(BaseModel):
     """
-    PROCESSES UPLOADED PDF FILES INTO DOCUMENT OBJECTS FOR RAG OPERATIONS
+    REPRESENTS A SINGLE FILE WITH ITS PAGES AS DOCUMENT OBJECTS
+    """
+
+    pages: List[Document] = Field(description="List of pages as Document objects")
+
+
+class Library(BaseModel):
+    """
+    REPRESENTS A COLLECTION OF ParsedFile
+    """
+
+    parsed_files_collection: List[ParsedFile] = Field(
+        description="List of parsed files in the library"
+    )
+
+
+def load_files(uploaded_files: List[UploadedFile]) -> Library:
+    """
+    PROCESSES UPLOADED PDF FILES INTO A LIBRARY OF BOOKS
         ARGS:
             uploaded_files: LIST OF PDF FILES UPLOADED BY THE USER
 
         RETURNS:
-            List[List[Document]]: NESTED LIST WHERE EACH INNER LIST CONTAINS THE PAGES
-            OF A SINGLE PDF AS DOCUMENT OBJECTS
+            Library: COLLECTION OF ParsedFile WHERE EACH ParsedFile CONTAINS ITS PAGES AS DOCUMENT OBJECTS
 
         RAISES:
             ValueError: IF NO PDF FILES ARE PROVIDED
@@ -110,13 +129,13 @@ def load_files(uploaded_files: List[UploadedFile]) -> List[List[Document]]:
     if not uploaded_files:
         raise ValueError("load_files() >>> MISSING PDF FILES")
 
-    parsed_files: List[List[Document]] = []
+    files: List[ParsedFile] = []
 
     with TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
 
         for pdf_file in track(
-            uploaded_files, description="[bold sea_green1]LOADING PDF FILES[/]"
+            uploaded_files, description="[bold sea_green2]LOADING PDF FILES[/]"
         ):
             file_path = temp_path / pdf_file.name
             file_path.write_bytes(pdf_file.getvalue())
@@ -129,21 +148,21 @@ def load_files(uploaded_files: List[UploadedFile]) -> List[List[Document]]:
                     "total_pages": page.metadata["total_pages"],
                     "page": page.metadata["page"],
                 }
-            parsed_files.append(file_pages_as_documents)
 
-    return parsed_files
+            files.append(ParsedFile(pages=file_pages_as_documents))
+
+    return Library(parsed_files_collection=files)
 
 
 async def feed_retriever(
-    loaded_files: List[List[Document]],
+    library: Library,
     parent_docs_retriever: ParentDocumentRetriever = retriever,
     batch_size: int = 10,
 ) -> ParentDocumentRetriever:
-    """SETUPS THE RETRIEVER & INDEXES DOCUMENTS INTO THE VECTOR STORE.
-    IF loaded_files IS TOO LARGE, parent_docs_retriever.add_documents() WONT BE ABLE TO HANDLE IT.
-    THUS, IT NEEDS TO BE SPLIT INTO BATCHES.
+    """
+    SETUPS THE RETRIEVER & INDEXES DOCUMENTS INTO THE VECTOR STORE.
         ARGS:
-            - loaded_files: NESTED LIST OF DOCUMENT OBJECTS FROM PDF FILES
+            - library: Library instance containing ParsedFile and their pages as Documents
             - parent_docs_retriever: RETRIEVER INSTANCE FOR DOCUMENT INDEXING
             - batch_size: NUMBER OF DOCUMENTS TO PROCESS IN EACH BATCH
 
@@ -153,17 +172,17 @@ async def feed_retriever(
         RAISES:
             ValueError: IF NO DOCUMENTS ARE PROVIDED FOR INDEXING
     """
-    if not loaded_files:
+    if not library.parsed_files_collection:
         raise ValueError("feed_retriever() >>> MISSING DOCS TO INDEX.")
 
     print("[bold cyan]INDEXING:[/]")
-    for loaded_file in loaded_files:
-        file_pages = len(loaded_file)
+    for parsed_file in library.parsed_files_collection:
+        file_pages = len(parsed_file.pages)
         for item in track(
             range(0, file_pages, batch_size),
-            description=f"[bold cyan]  - {loaded_file[0].metadata['title']}[/]",
+            description=f"[bold cyan]- {parsed_file.pages[0].metadata['title']}[/]",
         ):
-            batch = loaded_file[item : min(item + batch_size, file_pages)]
+            batch = parsed_file.pages[item : min(item + batch_size, file_pages)]
             parent_docs_retriever.add_documents(batch, ids=None)
 
     return retriever
@@ -180,9 +199,9 @@ async def orchestrate_indexing(
         RETURNS:
             ParentDocumentRetriever: FULLY CONFIGURED RETRIEVER WITH INDEXED DOCUMENTS
     """
-    docs_from_uploaded_files: List[List[Document]] = load_files(uploaded_bibliography)
+    library: Library = load_files(uploaded_bibliography)
     parent_retriever: ParentDocumentRetriever = await feed_retriever(
-        loaded_files=docs_from_uploaded_files, parent_docs_retriever=retriever
+        library=library, parent_docs_retriever=retriever
     )
     return parent_retriever
 
@@ -203,3 +222,25 @@ def index_bibliography(
         raise ValueError("index_bibliography() >>> MISSING PDF FILES")
 
     return asyncio.run(orchestrate_indexing(uploaded_bibliography))
+
+
+# PAGE'S CONFIG
+st.set_page_config(page_title="Proofreader", page_icon="📑", layout="centered")
+
+# PAGE'S TITLE
+st.markdown(
+    """# Proofreader
+##### :gray[_Correcciones rápidas y precisas_]"""
+)
+
+# SIDEBAR
+with st.sidebar:
+    # BIBLIOGRAPHY UPLOADER WIDGET
+    uploaded_bibliography: List[UploadedFile] | None = st.file_uploader(
+        label="UPLOAD BIBLIOGRAPHY",
+        type=["pdf"],
+        accept_multiple_files=True,
+    )
+
+    if uploaded_bibliography:
+        index_bibliography(uploaded_bibliography)
