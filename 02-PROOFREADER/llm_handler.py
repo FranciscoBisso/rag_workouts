@@ -4,6 +4,7 @@ THIS MODULE PROVIDES FUNCTIONALITY FOR EXTRACTING Q&A PAIRS FROM EXAMS AND GENER
 """
 
 # pylint: disable=C0411 # disable wrong-import-order rule from pylint
+import asyncio
 from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
 from langchain_core.documents import Document
@@ -13,6 +14,7 @@ from pydantic import BaseModel, Field
 from rich.progress import track
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from typing import List
+
 
 # LOCAL IMPORTS
 from pdf_handler import load_files
@@ -71,11 +73,11 @@ def build_prompt(system_msg: str, human_msg: str) -> ChatPromptTemplate:
     return ChatPromptTemplate([("system", system_msg), ("human", human_msg)])
 
 
-def get_collections_of_ea_pairs(
+async def get_collections_of_ea_pairs(
     exams: List[List[Document]],
 ) -> List[ExamEAPairsCollection]:
     """
-    PROCESSES EXAM DOCUMENTS TO EXTRACT QUESTION-ANSWER PAIRS
+    ASYNCHRONOUSLY PROCESSES EXAM DOCUMENTS TO EXTRACT QUESTION-ANSWER PAIRS
         ARGS:
             exams (List[List[Document]]): LIST OF EXAM DOCUMENTS TO PROCESS
 
@@ -114,7 +116,7 @@ def get_collections_of_ea_pairs(
 
         # BUILD THE CHAIN & INVOKE
         chain = prompt | structured_llm
-        response = chain.invoke({"exam_content": exam_content})
+        response = await chain.ainvoke({"exam_content": exam_content})
         if isinstance(response, ExamEAPairsCollection):
             collections_of_triads.append(response)
         else:
@@ -125,9 +127,9 @@ def get_collections_of_ea_pairs(
     return collections_of_triads
 
 
-def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
+async def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
     """
-    GENERATES AN AI RESPONSE FOR A GIVEN EXERCISE USING THE RETRIEVER
+    ASYNCHRONOUSLY GENERATES A CONTEXTUALIZED AI RESPONSE FOR A GIVEN EXERCISE
         ARGS:
             exercise (str): THE EXERCISE TEXT TO GENERATE AN ANSWER FOR
             retriever (ParentDocumentRetriever): THE RETRIEVER INSTANCE FOR CONTEXT LOOKUP
@@ -173,7 +175,7 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
 
     # BUILD THE CHAIN & GET THE MODEL'S RESPONSE
     chain = prompt | llm
-    chain_response = chain.invoke({"exercise": exercise, "context": context})
+    chain_response = await chain.ainvoke({"exercise": exercise, "context": context})
     res_content = (
         chain_response.content
         if isinstance(chain_response.content, str)
@@ -183,12 +185,12 @@ def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
     return res_content
 
 
-def answer_exercises(
+async def answer_exercises(
     exams_ea_pairs_collections: List[ExamEAPairsCollection],
     retriever: ParentDocumentRetriever,
 ) -> List[ExamEAATriadsCollection]:
     """
-    PROCESSES ALL EXERCISES IN THE QA PAIRS TO GENERATE AI ANSWERS
+    ASYNCHRONOUSLY PROCESSES ALL EXERCISES IN THE QA PAIRS TO GENERATE AI ANSWERS
         ARGS:
             exams_ea_pairs_collections (List[ExamEAPairsCollection]): NESTED LIST OF EXERCISE-ANSWER PAIRS TO PROCESS
             retriever (ParentDocumentRetriever): THE RETRIEVER INSTANCE FOR CONTEXT LOOKUP
@@ -202,27 +204,32 @@ def answer_exercises(
         description="[bold sky_blue2]LLM ANSWERING EXERCISES[/]",
         total=len(exams_ea_pairs_collections),
     ):
-        exam_new_collection: ExamEAATriadsCollection = ExamEAATriadsCollection(
-            collection=[]
-        )
-
+        exam_new_collection = ExamEAATriadsCollection(collection=[])
         exams_triads_collections.append(exam_new_collection)
-        for ea_pair in exam.collection:
+
+        # CREATE TASKS FOR ALL EXAM'S QUESTIONS
+        tasks = [get_answer(ea_pair.exercise, retriever) for ea_pair in exam.collection]
+
+        # RUN TASKS CONCURRENTLY
+        ai_answers = await asyncio.gather(*tasks)
+
+        # BUILD TRIADS
+        for i, ea_pair in enumerate(exam.collection):
             triad = EAATriad(
                 exercise=ea_pair.exercise,
                 student_answer=ea_pair.student_answer,
-                ai_answer=get_answer(ea_pair.exercise, retriever),
+                ai_answer=ai_answers[i],
             )
             exam_new_collection.collection.append(triad)
 
     return exams_triads_collections
 
 
-def get_llm_response(
+async def orchestrate_generative_process(
     uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
 ):
     """
-    MAIN FUNCTION TO PROCESS UPLOADED EXAMS AND GENERATE LLM RESPONSES
+    ASYNCHRONOUSLY PROCESSES UPLOADED EXAMS AND GENERATES AN LLM RESPONSE
         ARGS:
             uploaded_exams (List[UploadedFile]): LIST OF UPLOADED EXAM FILES
             retriever (ParentDocumentRetriever): THE RETRIEVER INSTANCE FOR CONTEXT LOOKUP
@@ -232,9 +239,24 @@ def get_llm_response(
     """
 
     exams: List[List[Document]] = load_files(uploaded_exams)
-    exams_collections_of_ea_pairs: List[ExamEAPairsCollection] = (
-        get_collections_of_ea_pairs(exams)
-    )
-    llm_answers = answer_exercises(exams_collections_of_ea_pairs, retriever)
+    exams_collections_of_ea_pairs: List[
+        ExamEAPairsCollection
+    ] = await get_collections_of_ea_pairs(exams)
+    llm_answers = await answer_exercises(exams_collections_of_ea_pairs, retriever)
 
     return llm_answers
+
+
+def get_llm_response(
+    uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
+):
+    """
+    SYNCHRONOUS WRAPPER THAT EXECUTES THE ASYNCHRONOUS VERSION OF THE TASK ORCHESTRATOR
+        ARGS:
+            uploaded_exams (List[UploadedFile]): LIST OF UPLOADED EXAM FILES
+            retriever (ParentDocumentRetriever): THE RETRIEVER INSTANCE FOR CONTEXT LOOKUP
+
+        RETURNS:
+            List[ExamEAATriadsCollection]: COMPLETE PROCESSED RESULTS FROM THE ASYNCHRONOUS TASK ORCHESTRATOR
+    """
+    return asyncio.run(orchestrate_generative_process(uploaded_exams, retriever))
