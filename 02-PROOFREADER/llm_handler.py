@@ -153,6 +153,7 @@ async def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
         return "En la bibliografía aportada no se encontró información relevante para responder el ejercicio."
 
     context: str = "\n\n".join([doc.page_content for doc in retrieved_docs])
+    # context = retrieved_docs[0].page_content # <-- UNCOMMENT IF GROQ'S MAX TOKEN LIMIT IS REACHED
 
     # BUILD THE PROMPT
     system_msg: str = (

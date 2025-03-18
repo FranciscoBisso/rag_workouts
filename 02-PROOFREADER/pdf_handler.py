@@ -1,6 +1,8 @@
-"""HANDLER FOR THE PDF FILES"""
+"""
+MAIN MODULE FOR HANDLING PDF FILES INGESTION AND INDEXING
+THIS MODULE PROVIDES FUNCTIONALITY FOR LOADING PDF FILES, PARSING THEIR CONTENT, AND INDEXING THE DOCUMENTS FOR RAG OPERATIONS.
+"""
 
-import streamlit as st
 import asyncio
 import os
 from dotenv import load_dotenv
@@ -222,25 +224,3 @@ def index_bibliography(
         raise ValueError("index_bibliography() >>> MISSING PDF FILES")
 
     return asyncio.run(orchestrate_indexing(uploaded_bibliography))
-
-
-# PAGE'S CONFIG
-st.set_page_config(page_title="Proofreader", page_icon="📑", layout="centered")
-
-# PAGE'S TITLE
-st.markdown(
-    """# Proofreader
-##### :gray[_Correcciones rápidas y precisas_]"""
-)
-
-# SIDEBAR
-with st.sidebar:
-    # BIBLIOGRAPHY UPLOADER WIDGET
-    uploaded_bibliography: List[UploadedFile] | None = st.file_uploader(
-        label="UPLOAD BIBLIOGRAPHY",
-        type=["pdf"],
-        accept_multiple_files=True,
-    )
-
-    if uploaded_bibliography:
-        index_bibliography(uploaded_bibliography)
