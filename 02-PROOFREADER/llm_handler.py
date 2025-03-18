@@ -249,7 +249,7 @@ async def answer_exercises(
 
 async def orchestrate_generative_process(
     uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
-):
+) -> List[ExamEAATriadsCollection]:
     """
     ASYNCHRONOUSLY PROCESSES UPLOADED EXAMS AND GENERATES AN LLM RESPONSE
         ARGS:
@@ -276,7 +276,7 @@ async def orchestrate_generative_process(
 
 def get_llm_response(
     uploaded_exams: List[UploadedFile], retriever: ParentDocumentRetriever
-):
+) -> List[ExamEAATriadsCollection]:
     """
     SYNCHRONOUS WRAPPER THAT EXECUTES THE ASYNCHRONOUS VERSION OF THE TASK ORCHESTRATOR
         ARGS:
@@ -286,4 +286,5 @@ def get_llm_response(
         RETURNS:
             List[ExamEAATriadsCollection]: COMPLETE PROCESSED RESULTS FROM THE ASYNCHRONOUS TASK ORCHESTRATOR
     """
+
     return asyncio.run(orchestrate_generative_process(uploaded_exams, retriever))
