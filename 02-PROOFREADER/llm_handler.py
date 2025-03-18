@@ -8,6 +8,7 @@ import asyncio
 from dotenv import load_dotenv
 from langchain.retrievers import ParentDocumentRetriever
 from langchain_core.documents import Document
+from langchain_core.messages import BaseMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field
@@ -17,7 +18,7 @@ from typing import List
 
 
 # LOCAL IMPORTS
-from pdf_handler import load_files
+from pdf_handler import Library, load_files
 
 load_dotenv()
 groq_model: str = "llama-3.1-8b-instant"
@@ -70,29 +71,34 @@ def build_prompt(system_msg: str, human_msg: str) -> ChatPromptTemplate:
         RETURNS:
             ChatPromptTemplate: A FORMATTED CHAT PROMPT TEMPLATE
     """
+    if not system_msg or not human_msg:
+        raise ValueError("build_prompt() >>> MISSING SYSTEM OR HUMAN MESSAGE")
+
     return ChatPromptTemplate([("system", system_msg), ("human", human_msg)])
 
 
 async def get_collections_of_ea_pairs(
-    exams: List[List[Document]],
+    exams: Library,
 ) -> List[ExamEAPairsCollection]:
     """
     ASYNCHRONOUSLY PROCESSES EXAM DOCUMENTS TO EXTRACT QUESTION-ANSWER PAIRS
         ARGS:
-            exams (List[List[Document]]): LIST OF EXAM DOCUMENTS TO PROCESS
+            exams (Library): LIBRARY OBJECT CONTAINING PARSED FILES TO PROCESS
 
         RETURNS:
-            List[List[Dict]]: LIST OF ExamEAPairsCollection OBJECTS CONTAINING EXTRACTED QA PAIRS
+            List[ExamEAPairsCollection]: LIST OF ExamEAPairsCollection OBJECTS CONTAINING EXTRACTED QA PAIRS
     """
 
     collections_of_triads: List[ExamEAPairsCollection] = []
 
-    for exam in track(
-        exams,
+    for parsed_file in track(
+        exams.parsed_files_collection,
         description="[bold yellow]EXTRACTING TRIADS FROM EXAMS[/]",
-        total=len(exams),
+        total=len(exams.parsed_files_collection),
     ):
-        exam_content: str = "\n\n".join([page.page_content for page in exam])
+        exam_content: str = "\n\n".join(
+            [page.page_content for page in parsed_file.pages]
+        )
 
         system_msg: str = (
             "1. TO DO:"
@@ -109,7 +115,9 @@ async def get_collections_of_ea_pairs(
         human_msg: str = "\n\nPlease analyze the following exam:\n{exam_content}"
 
         # BUILD THE FULL PROMPT
-        prompt = build_prompt(system_msg=system_msg, human_msg=human_msg)
+        prompt: ChatPromptTemplate = build_prompt(
+            system_msg=system_msg, human_msg=human_msg
+        )
 
         # CREATE A STRUCTURED LLM USING with_structured_output
         structured_llm = llm.with_structured_output(ExamEAPairsCollection)
@@ -117,11 +125,12 @@ async def get_collections_of_ea_pairs(
         # BUILD THE CHAIN & INVOKE
         chain = prompt | structured_llm
         response = await chain.ainvoke({"exam_content": exam_content})
+
         if isinstance(response, ExamEAPairsCollection):
             collections_of_triads.append(response)
         else:
             raise ValueError(
-                f"Expected ExamEAPairsCollection, but got {type(response)}"
+                f"get_collections_of_ea_pairs() >>> EXPECTED ExamEAPairsCollection BUT GOT {type(response)}"
             )
 
     return collections_of_triads
@@ -138,7 +147,11 @@ async def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
             str: THE AI-GENERATED ANSWER FOR THE EXERCISE
     """
 
+    # RETRIEVE CONTEXTUAL INFORMATION
     retrieved_docs: List[Document] = retriever.invoke(exercise)
+    if not retrieved_docs:
+        return "En la bibliografía aportada no se encontró información relevante para responder el ejercicio."
+
     context: str = "\n\n".join([doc.page_content for doc in retrieved_docs])
 
     # BUILD THE PROMPT
@@ -171,12 +184,17 @@ async def get_answer(exercise: str, retriever: ParentDocumentRetriever) -> str:
         "\n\nEJERCICIO: {exercise}"
         "\n\nCONTEXTO:\n{context}"
     )
-    prompt = build_prompt(system_msg=system_msg, human_msg=human_msg)
+    prompt: ChatPromptTemplate = build_prompt(
+        system_msg=system_msg, human_msg=human_msg
+    )
 
     # BUILD THE CHAIN & GET THE MODEL'S RESPONSE
     chain = prompt | llm
-    chain_response = await chain.ainvoke({"exercise": exercise, "context": context})
-    res_content = (
+    chain_response: BaseMessage = await chain.ainvoke(
+        {"exercise": exercise, "context": context}
+    )
+
+    res_content: str = (
         chain_response.content
         if isinstance(chain_response.content, str)
         else str(chain_response.content)
@@ -198,6 +216,10 @@ async def answer_exercises(
         RETURNS:
             List[ExamEAATriadsCollection]: NESTED LIST OF EXERCISE-ANSWER-AI ANSWER TRIADS
     """
+
+    if not exams_ea_pairs_collections:
+        raise ValueError("answer_exercises() >>> exams_ea_pairs_collections IS EMPTY")
+
     exams_triads_collections: List[ExamEAATriadsCollection] = []
     for exam in track(
         exams_ea_pairs_collections,
@@ -238,7 +260,12 @@ async def orchestrate_generative_process(
             List[ExamEAATriadsCollection]: COMPLETE PROCESSED RESULTS AS A LIST OF LIST OF EXERCISE-ANSWER-AI ANSWER TRIADS
     """
 
-    exams: List[List[Document]] = load_files(uploaded_exams)
+    if not uploaded_exams:
+        raise ValueError(
+            "orchestrate_generative_process() >>> NO uploaded_exams PROVIDED"
+        )
+
+    exams: Library = load_files(uploaded_exams)
     exams_collections_of_ea_pairs: List[
         ExamEAPairsCollection
     ] = await get_collections_of_ea_pairs(exams)
